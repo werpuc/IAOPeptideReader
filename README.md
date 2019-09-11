@@ -5,23 +5,30 @@ This repository contains code which I have written for my master's thesis.
 
 
 ## Repository structure
-* **app**
-    * **plot** -- folder containing all JS scripts used to create the plot.
-        * <ToDo>
-    * **www**
-        * `HaDeX_theme.css` -- [HaDeX](https://github.com/hadexversum/HaDeX) theme.
-    - `server.R` -- file with a main Shiny server function of the app.
-    - `ui.R` -- file with a UI layout of the app.
+* **iaoreader** -- R package with standard structure.
+    * **inst** -- folder containing files to be included with package. Notably:
+        * **www** -- folder with JavaScript files and CSS theme.
 * `README.md` -- this file.
 
 
 ## Task list
-- [x] **(R)** Create an application layout mock-up.
-- [ ] **(R)** Limit maximum number of files possible to upload (accordingly to the selected mode).
-- [ ] **(R)** "Append" newly uploaded files instead of substituting the whole list.
-- [ ] **(R)** File validation in multiple file mode.
-- [ ] **(R)** Read sequence length from input files.
-- [ ] **(R)** Check input files whether there is more than one protein and state combination per file.
-- [ ] **(JavaScript)** Create a simple mock-up plot with customizable elements like: colors, axes labels, title etc.
-- [ ] **(R)** Add an integration and pass customization parameters from R to the JS plot.
-- [ ] **(JavaScript)** Develop a final plot version and implement it.
+### R 
+- [x] Create an application layout mock-up.
+- [ ] Gray out *Plot settings* tab before until input files are uploaded.
+- [ ] Limit maximum number of files possible to upload (accordingly to the selected mode).
+- [ ] "Append" newly uploaded files instead of substituting the whole list.
+- [ ] File validation in multiple file mode.
+- [ ] Read sequence length from input files. Keep the value somewhere to inform user what was read from the files.
+- [ ] List uploaded files.
+- [ ] Add summary table with coverage and other statistics (where to place it?).
+- [ ] Check input files whether there is more than one protein and state combination per file.
+- [ ] Add an integration and pass customization parameters from R to the JS plot.
+- [ ] Report generation (embed JS plot, add summary table, create a template).
+
+### JavaScript
+- [ ] Create a simple mock-up plot with customizable elements like: colors, axes labels, title etc.
+- [ ] Develop a final plot version and implement it.
+- [ ] Saving plot to `.svg` file.
+
+### Thesis
+- [ ] Descirbe input files -- meaning of the columns, what values do they contain.
