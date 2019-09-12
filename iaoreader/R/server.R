@@ -32,6 +32,16 @@ shiny_server <- function(input, output, session) {
         }
     })
 
+    plot_params <- reactive({
+        list("plot_settings_title" = input[["plot_settings_title"]],
+             "plot_settings_text_color" = input[["plot_settings_text_color"]],
+             "tmp_radius" = input[["tmp_radius"]])
+    })
+
+    observeEvent(eventExpr = input[["plot_update"]], {
+        session$sendCustomMessage("plot_draw", plot_params())
+    })
+
     output[["results_plot"]] <- renderPlot(shinipsum::random_ggplot(type = "bar"))
     output[["tmp_plot"]] <- renderText("Please upload files first.")
     output[["tmp_data"]] <- renderText("Please upload files first.")
@@ -46,7 +56,7 @@ shiny_server <- function(input, output, session) {
                 DT::datatable(shinipsum::random_table(15, 6, type = "numeric")))
 
             # JS communication example
-            session$sendCustomMessage("background-color", list(color = "black"))
+            click("plot_update")
         } else {
             results.plot <- textOutput("tmp_plot")
             results.data <- textOutput("tmp_data")

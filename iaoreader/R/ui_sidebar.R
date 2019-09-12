@@ -27,6 +27,9 @@ sidebar_plot_settings <- function() {
     tabPanel(
         "Plot settings", br(),
         textInput("plot_settings_title", label = "Title"),
-        textInput("plot_settings_text_color", label = "Text color")
+        textInput("plot_settings_text_color", label = "Text color"),
+        sliderInput("tmp_radius", label = "Radius", min = 1, max = 30, value = 10),
+        br(),
+        actionButton("plot_update", label = "Update plot") # <ToDo> gray out if nothing has changed
     )
 }

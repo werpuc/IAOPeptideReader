@@ -14,6 +14,7 @@ This repository contains code which I have written for my master's thesis.
 ## Task list
 ### R 
 - [x] Create an application layout mock-up.
+- [x] Add an integration and pass customization parameters from R to the JS plot.
 - [ ] Gray out *Plot settings* tab before until input files are uploaded.
 - [ ] Limit maximum number of files possible to upload (accordingly to the selected mode).
 - [ ] "Append" newly uploaded files instead of substituting the whole list.
@@ -22,11 +23,10 @@ This repository contains code which I have written for my master's thesis.
 - [ ] List uploaded files.
 - [ ] Add summary table with coverage and other statistics (where to place it?).
 - [ ] Check input files whether there is more than one protein and state combination per file.
-- [ ] Add an integration and pass customization parameters from R to the JS plot.
 - [ ] Report generation (embed JS plot, add summary table, create a template).
 
 ### JavaScript
-- [ ] Create a simple mock-up plot with customizable elements like: colors, axes labels, title etc.
+- [x] Create a simple mock-up plot with customizable elements like: colors, axes labels, title etc.
 - [ ] Develop a final plot version and implement it.
 - [ ] Saving plot to `.svg` file.
 
