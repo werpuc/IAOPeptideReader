@@ -4,6 +4,7 @@ sidebar <- function() {
         class = "scrollable",
         tabsetPanel(
             sidebar_input(),
+            # <ToDo> loaded files
             sidebar_plot_settings()
         )
     )
@@ -17,7 +18,7 @@ sidebar_input <- function() {
         selectInput("mode", label = "Select mode", multiple = FALSE,
                     choices = c("Two files (different experiments)", "Multiple files (one experiment)")),
         fileInput("files_input", "Upload files", multiple = TRUE),
-        uiOutput("files_input_settings")
+        uiOutput("files_settings")
     )
 }
 
