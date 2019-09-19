@@ -1,9 +1,3 @@
-#' IAOReader server function
-#'
-#' <ToDo>
-#'
-#' @import magrittr
-#' @import DT
 shiny_server <- function(input, output, session) {
 
     # Files upload -------------------------------------------------------------
@@ -63,31 +57,56 @@ shiny_server <- function(input, output, session) {
 
     # Detailed settings --------------------------------------------------------
 
-    # Part of the sidebar responsible for specifying (protein, state)
-    # combination if there are multiple present in a single file.
-    settings_ambiguity <- reactive({
-        conditionalPanel("output.files_ambiguity", # <ToDo> prevent auto update
-            br(),
-            h4("Specify protein and state"),
-            sapply(1:input_data$uploaded, function(i)
-                if (i %in% ambiguities()) {
-                    selectInput(paste0("files_settings_ambiguity_", i),
-                                label = input_data$names[[i]],
-                                choices = input_data$ambiguities[[i]])
-                }
-            )
-        )
+    # <ToDo>
+    # # Part of the sidebar responsible for specifying (protein, state)
+    # # combination if there are multiple present in a single file.
+    # settings_ambiguity <- reactive({
+    #     conditionalPanel("output.files_ambiguity",
+    #         br(),
+    #         h4("Specify protein and state"),
+    #         sapply(1:input_data$uploaded, function(i)
+    #             if (i %in% ambiguities()) {
+    #                 selectInput(paste0("files_settings_ambiguity_", i),
+    #                             label = input_data$names[[i]],
+    #                             choices = input_data$ambiguities[[i]])
+    #             }
+    #         )
+    #     )
+    # })
+
+    # <ToDo: comments>
+    observeEvent(input_data$uploaded, {
+        input_value <- input[["sequence_length"]]
+        print(input_value)
+        if (input_value %in% c(NA, 0)) {
+            input_value <- input_data$seq_length
+        }
+        updateNumericInput(session, "sequence_length",
+                           value = input_value)
     })
 
-    # <ToDo: desc>
-    output[["files_settings"]] <- renderUI(
-        conditionalPanel("output.files_uploaded",
-            h3("Detailed settings"),
-            # <ToDo> prevent automatic update on file upload if the value has been changed by user
-            numericInput("files_settings_sequence",
-                         value = input_data$seq_length,
-                         min = 1, label = "Specify sequence length"),
-            settings_ambiguity()
-        )
+    output[["sequence_length_files"]] <- renderText(
+        sprintf("Maximum sequence length in files: %d", input_data$seq_length)
     )
+
+
+    # Data preview -------------------------------------------------------------
+
+    # <ToDo: comments>
+    output[["data_preview_df"]] <- DT::renderDataTable(
+        get_data(input_data, input[["data_preview_select"]])
+    )
+
+    observeEvent(input_data$uploaded, {
+        # <ToDo: order of upload or alphabetical order?>
+        # <ToDo> Expand vertically for all names to fit
+        input_value <- input[["data_preview_select"]]
+        # Select a first option on a first upload.
+        if (input_value == "") {
+            input_value <- sort(input_data$names)[1]
+        }
+        updateSelectInput(session, "data_preview_select",
+                          choices = sort(input_data$names),
+                          selected = input_value)
+    })
 }

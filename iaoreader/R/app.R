@@ -4,8 +4,9 @@
 #' package.
 #'
 #' @import shiny
+#' @importFrom magrittr %>%
 #'
 #' @export
 runApp <- function() {
-    shiny::shinyApp(user_interface(), shiny_server)
+    shinyApp(user_interface(), shiny_server)
 }
