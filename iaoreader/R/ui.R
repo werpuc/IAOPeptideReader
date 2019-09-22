@@ -1,24 +1,28 @@
+# Main function for user interface. Returns a complete application UI.
 user_interface <- function() {
     fluidPage(
 
         # Including CSS theme and JS scripts.
         includeCSS(get_file_path("HaDeX_theme.css")),
-        # includeScript(get_file_path("plot.js")),
-        # includeScript(get_file_path("d3.v5.js")),
+        includeScript(get_file_path("plot.js")),
+        includeScript(get_file_path("d3.v5.js")),
+
+        # Hiding a header of table with files names.
+        tags$style(type = "text/css", "#files_names th {display:none;}"),
 
         ui_sidebar(),
         mainPanel(
             class = "scrollable",
             tabsetPanel(
 
-                # Plot panel
-                # tabPanel("Peptide Coverage", br(),
-                #     placeholder_before_upload(),
-                #
-                #     tags$div(id = "js_plot")
-                # ),
+                # A plot panel. ------------------------------------------------
+                tabPanel("Peptide Coverage", br(),
+                    placeholder_before_upload(),
 
-                # Data preview panel
+                    tags$div(id = "js_plot")
+                ),
+
+                # A data preview panel. ----------------------------------------
                 tabPanel("Data preview", br(),
                     placeholder_before_upload(),
 

@@ -9,7 +9,9 @@ Authors@R:
 Description: What the package does (one paragraph).
 License: What license it uses
 Imports:
+    colourpicker,
     data.table,
+    dplyr,
     DT,
     magrittr,
     shiny

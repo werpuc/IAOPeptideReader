@@ -2,23 +2,16 @@
 % Please edit documentation in R/app.R
 \name{runApp}
 \alias{runApp}
-\title{<ToDo>}
+\title{Run shiny application}
 \usage{
-runApp()
+runApp(launch_browser = FALSE, port = 8080)
 }
 \arguments{
-\item{x}{A number.}
+\item{launch_browser}{...}
 
-\item{y}{A number.}
-}
-\value{
-The sum of \code{x} and \code{y}.
+\item{port}{...}
 }
 \description{
-<ToDo>
-}
-\examples{
-add(1, 1)
-add(10, 1)
-
+This is a master function used to start an application implemented by this
+package.
 }

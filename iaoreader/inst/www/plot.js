@@ -1,5 +1,19 @@
-// <ToDo: description>
-Shiny.addCustomMessageHandler('plot_draw', function(data) {
+// <ToDo: description & commenting>
+Shiny.addCustomMessageHandler('plot_draw', function(plot_data) {
+
+    console.log(plot_data);
+
+    const ps = plot_data.plot_settings;
+
+    // Transforming the data
+    var single_data = plot_data.data[0];
+    const dane = d3.range(single_data.Start.length).map(idx => ({
+        Start: single_data.Start[idx],
+        End: single_data.End[idx],
+        y: idx
+    }));
+
+    console.log(dane);
 
     // Margin
     var
@@ -9,30 +23,49 @@ Shiny.addCustomMessageHandler('plot_draw', function(data) {
 
     // Svg canvas
     d3.select("#js_plot").select("svg").remove();
-    var svg = d3.select("#js_plot").append("svg");
+    var svg = d3.select("#js_plot").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
 
-    svg.attr("width", width)
-        .attr("height", height);
+    /*
+    var
+        plot_top = margin.top,
+        plot_bottom = height - margin.bottom,
 
-    // Example circles positions and radius
-    var radius = data.tmp_radius;
-    const circles = d3.range(20).map(i => ({
-        x: Math.random() * (width - radius * 2) + radius,
-        y: Math.random() * (height - radius * 2) + radius
-    }));
+        plot_left = margin.left,
+        plot_right = width - margin.right;
 
-    // Drawing circles
-    svg.selectAll("circle")
-        .data(circles)
-        .join("circle")
-            .attr("cx", d => d.x)
-            .attr("cy", d => d.y)
-            .attr("r", radius)
-            .style("fill", data.plot_settings_text_color);
+    // Creating axes variables
+    var xAxis = d3.scaleLinear()
+        .domain([0, d3.max(data, function(d) { return d.End })]) // Values on the axis
+        .range([plot_left, plot_right]) // Position of the axis (pixels)
+
+    var yAxis = d3.scaleLinear()
+        .domain([0, d3.max(data, function(d) { return d.y })]) // Values on the axi
+        .range([plot_bottom, plot_top]) // Position of the axis (pixels)
+
+    // Adding axes to the plot
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0, " + height + ")")
+        .call(d3.axisBottom(xAxis))
+    */
+
+    svg.append("g").selectAll("line")
+        .data(dane)
+        .join("line")
+            .attr("x1", d => d.Start)
+            .attr("y1", d => d.y)
+            .attr("x2", d => d.End)
+            .attr("y2", d => d.y)
+            .style("stroke-width", 2)
+            .style("stroke", ps.lines_color);
 
     // Adding text
     svg.append("text")
-        .attr("x", width / 2)
-        .attr("y", height / 2)
-        .text(data.plot_settings_title);
+        .attr("x", width / 5)
+        .attr("y", height / 8)
+        .text(ps.title);
 });
