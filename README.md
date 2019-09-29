@@ -24,25 +24,32 @@ This repository contains code which I have written for my master's thesis.
 - [x] List uploaded files.
 - [x] Add an example plot based on the uploaded data.
 - [x] Fix ambiguities selectionInputs -- either append new ones with new files or store values, create all input fields (old & new) and restore values.
+- [ ] Remove `colourpicker` dependency (maybe leave only `colourInput` out of it).
+- [ ] Support for uploading multiple files with the same names (differentiate them in backend).
 - [ ] Update package description.
 - [ ] File names validation in multiple file mode.
 - [ ] Columns' names verification for the received files (should contain: `Protein`, `State`, `Start`, `End`).
-- [ ] Make loading elements smoother.
-- [ ] Fiddle with fileInput settings to make it prettier.
-- [ ] Limit maximum number of files possible to upload (accordingly to the selected mode). Reject an upload with files going over the limit and display appropriate message (gray out background and show it in a middle of a screen).
+- [ ] Limit maximum number of files possible to upload (accordingly to the selected mode).
 - [ ] Add an option to reset plot settings. Ask for confirmation before proceeding.
 - [ ] Allow deletion of uploaded files -- select which ones should be deleted (integrate with upload list?).
 - [ ] Add summary table with coverage and other statistics (detachable, hideable?).
 - [ ] Report generation (embed JS plot, add summary table, create a template).
-- [ ] Fix `scrollable` CSS class to expand nicely when element goes out of bonds.
-- [ ] Fix file preview selectInput width to fit the choices.
-- [ ] Fix glitch where whole (unfiltered by protein/state) data appears on the plot after upload.
-- [ ] Limit files number *before* the upload.
 
 ### JavaScript
 - [x] Create a simple mock-up plot with customizable elements like: colors, axes labels, title etc.
+- [ ] Create good canvas.
+- [ ] Add canvas scaling to browser's window.
+- [ ] Add separate update trigger for each plot setting.
 - [ ] Develop a final plot version and implement it.
 - [ ] Saving plot to `.svg` file.
 
 ### Thesis
 - [ ] Describe input files -- meaning of the columns, what values do they contain.
+
+### Final touches & other
+- [ ] App deployment step-by-step guide.
+- [ ] Make loading elements smoother.
+- [ ] Fix `scrollable` CSS class to expand nicely when element goes out of bonds.
+- [ ] Fix file preview selectInput width to fit the choices.
+- [ ] Fix glitch where whole (unfiltered by protein/state) data appears on the plot after upload.
+- [ ] Fiddle with fileInput settings to make it prettier.
