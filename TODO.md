@@ -1,3 +1,58 @@
- - [ ] License
+ - [ ] Rewrite relevant points from the old TODO on **refactoring** branch.
+ - [ ] License.
     - [ ] Add a `LICENSE` file.
     - [ ] Update `DESCRIPTION` file's license field.
+ - [ ] `README.md`.
+    - [ ] Create the file.
+    - [ ] Add a step-by-step deployment guide.
+ - [ ] Add CSS.
+ - [ ] Create a mock UI.
+    - [ ] Write TODOs for the serverside during implementation.
+    - [ ] Create a *Hello world* app with:
+        - [ ] UI in `ui.R`.
+        - [ ] Server in `server.R`.
+        - [ ] Exported function for starting the app in `R\RunShinyApp.R`.
+    - [ ] Include CSS.
+        - [ ] Add a static path with `addResourcePath`.
+        - [ ] Link the static path stylesheet into the HTML with `tags$link`.
+    - [ ] Add a `sidebarPage`.
+    - [ ] Sidebar:
+        - [ ] Add `tabsetPanel`.
+        - [ ] **File settings**:
+            - [ ] `fileInput`
+            - [ ] Uploaded files summary:
+                - [ ] Details about the files.
+                    - [ ] Name.
+                    - [ ] Sequence length.
+                - [ ] Button to delete an uploaded file.
+                - [ ] `numericInput` for modifying sequence length.
+            - [ ] `numericInput` for specyfing maximum sequence length (?).
+            - [ ] `textOutput` with information about maximum sequence length read from input files.
+            - [ ] Disambiguity solving:
+                - [ ] For each uploaded file a `selectInput` for choosing a protein.
+                - [ ] For each uploaded file a `selectInput` for choosing a state for the protein.
+                    - [ ] Updated based on the selected protein.
+        - [ ] **Plot settings**:
+            - [ ] Inputs for customizing the plot:
+                - [ ] Title.
+                - [ ] Plot color.
+                - [ ] Plot background.
+                - [ ] ...
+    - [ ] Main panel:
+        - [ ] Add `tabsetPanel`.
+        - [ ] **Peptide Coverage**:
+            - [ ] Add the `plotOutput` (with mock plot).
+            - [ ] Add a `tableOutput` for summary and statistics table.
+        - [ ] **Data preview**:
+            - [ ] `selectInput` for choosing the file to preview.
+            - [ ] Table created with `DT` for previewing the selected file.
+ - [ ] Create the server function.
+    - [ ] Update this list based on TODOs noted during UI creation.
+    - **Note**
+        - There should be a wrapper for updating plot settings so that multiple updaters (one for each plot setting) can be created easily. 
+        - JS should have a separate updater for each setting.
+ - [ ] Create the JS plot.
+    - [ ] Add div for the plot.
+    - [ ] Create canvas.
+    - [ ] Ensure that the plot behaves *correctly* when the browser window is resized.
+ - [ ] Test interrupting file upload when too many files were selected.
