@@ -1,0 +1,3 @@
+ - [ ] License
+    - [ ] Add a `LICENSE` file.
+    - [ ] Update `DESCRIPTION` file's license field.
