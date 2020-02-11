@@ -8,10 +8,10 @@
  - [ ] Add CSS.
  - [ ] Create a mock UI.
     - [ ] Write TODOs for the serverside during implementation.
-    - [ ] Create a *Hello world* app with:
-        - [ ] UI in `ui.R`.
-        - [ ] Server in `server.R`.
-        - [ ] Exported function for starting the app in `R\RunShinyApp.R`.
+    - [x] Create a *Hello world* app with:
+        - [x] UI in `ui.R`.
+        - [x] Server in `server.R`.
+        - [x] Exported function for starting the app in `R\RunShinyApp.R`.
     - [ ] Include CSS.
         - [ ] Add a static path with `addResourcePath`.
         - [ ] Link the static path stylesheet into the HTML with `tags$link`.
