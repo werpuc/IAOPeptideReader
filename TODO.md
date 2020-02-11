@@ -2,9 +2,9 @@
  - [ ] License.
     - [ ] Add a `LICENSE` file.
     - [ ] Update `DESCRIPTION` file's license field.
- - [ ] `README.md`.
-    - [ ] Create the file.
-    - [ ] Add a step-by-step deployment guide.
+ - [x] `README.md`.
+    - [x] Create the file.
+    - [x] Add a step-by-step deployment guide.
  - [ ] Add CSS.
  - [ ] Create a mock UI.
     - [ ] Write TODOs for the serverside during implementation.
@@ -12,9 +12,9 @@
         - [x] UI in `ui.R`.
         - [x] Server in `server.R`.
         - [x] Exported function for starting the app in `R\RunShinyApp.R`.
-    - [ ] Include CSS.
-        - [ ] Add a static path with `addResourcePath`.
-        - [ ] Link the static path stylesheet into the HTML with `tags$link`.
+    - [x] Include CSS.
+        - [x] Add a static path with `addResourcePath`.
+        - [x] Link the static path stylesheet into the HTML with `tags$link`.
     - [ ] Add a `sidebarPage`.
     - [ ] Sidebar:
         - [ ] Add `tabsetPanel`.

@@ -18,4 +18,4 @@ run_shiny_app <- function(port = 8080) {
     }
 
     runApp(appPath, port)
-
+}

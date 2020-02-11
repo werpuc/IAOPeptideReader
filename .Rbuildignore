@@ -1,4 +1,3 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^TODO\.md$
-^ChangeLog\.md$
+^.*\.md$
