@@ -1,4 +1,6 @@
 # Sidebar panel ----------------------------------------------------------------
-sp <- sidebarPanel(
-    h3("Sidebar Panel")
-)
+spFunc <- function() {
+    sidebarPanel(
+        h3("Sidebar Panel")
+    )
+}

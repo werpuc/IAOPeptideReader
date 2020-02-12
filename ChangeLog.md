@@ -1,3 +1,8 @@
+###### v0.0.6 (2020-02-12):
+ * Moved main panel and sidebar panel objects to function to allow top-bottom structure of the scripts.
+ * Added `shinipsum` as a requirement for development.
+ * Created a plot output for the application's main plot.
+
 ###### v0.0.5 (2020-02-12):
  * Fixed an issue with UI using function defined below the UI definition.
 

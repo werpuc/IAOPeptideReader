@@ -1,5 +1,9 @@
 source(file.path("ui", "MainPanel.R"), local = TRUE)
 source(file.path("ui", "SidebarPanel.R"), local = TRUE)
+if (!nchar(system.file(package = "shinipsum"))) {
+    stop(paste("shinipsum package is required for mocks.",
+               "remotes::install_github('Thinkr-open/shinipsum')", sep = "\n"))
+}
 
 
 # Main UI function -------------------------------------------------------------
@@ -7,8 +11,8 @@ uiFunc <- function() {
     fluidPage(
         attachCSS("theme.css"),
         attachCSS("HaDeX_theme.css"),
-        sp,
-        mp
+        spFunc(),
+        mpFunc()
     )
 }
 

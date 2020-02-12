@@ -41,7 +41,7 @@
     - [ ] Main panel:
         - [ ] Add `tabsetPanel`.
         - [ ] **Peptide Coverage**:
-            - [ ] Add the `plotOutput` (with mock plot).
+            - [x] Add the `plotOutput` (with mock plot).
             - [ ] Add a `tableOutput` for summary and statistics table.
         - [ ] **Data preview**:
             - [ ] `selectInput` for choosing the file to preview.

@@ -1,3 +1,5 @@
 server <- function(input, output, session) {
-    output[["text"]] <- renderText("Hello world!")
+    output[["plot"]] <- renderPlot(
+        shinipsum::random_ggplot("dot")
+    )
 }
