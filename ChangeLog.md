@@ -1,3 +1,9 @@
+###### v0.0.4 (2020-02-12):
+ * Created structure for sidebar page.
+ * Extender folder structure in preparation for UI development.
+ * Attached [HaDeX](https://github.com/hadexversum/HaDeX) theme.
+ * Fixed typo in `README.md`.
+
 ###### v0.0.3 (2020-02-11):
  * Added a simple CSS theme.
  * Created `README.md` with installation instructions and updated `.Rbuildignore`.

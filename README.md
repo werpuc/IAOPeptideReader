@@ -4,7 +4,7 @@
 The simplest way to try the application is running it directly from GitHub.
 ```
 # install.packages("shiny")
-shiny::runGithub("tmakowski/masters-thesis", subdir = "inst/shinyApp", ref = "refactoring-from-scratch")
+shiny::runGitHub("tmakowski/masters-thesis", subdir = "inst/shinyApp", ref = "refactoring-from-scratch")
 ```
 
 If one wishes to install the package before starting the application it can be done as shown below.

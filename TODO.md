@@ -5,7 +5,7 @@
  - [x] `README.md`.
     - [x] Create the file.
     - [x] Add a step-by-step deployment guide.
- - [ ] Add CSS.
+ - [x] Add CSS.
  - [ ] Create a mock UI.
     - [ ] Write TODOs for the serverside during implementation.
     - [x] Create a *Hello world* app with:
@@ -15,7 +15,7 @@
     - [x] Include CSS.
         - [x] Add a static path with `addResourcePath`.
         - [x] Link the static path stylesheet into the HTML with `tags$link`.
-    - [ ] Add a `sidebarPage`.
+    - [x] Add a `sidebarPage`.
     - [ ] Sidebar:
         - [ ] Add `tabsetPanel`.
         - [ ] **File settings**:
