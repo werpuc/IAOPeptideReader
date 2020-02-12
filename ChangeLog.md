@@ -1,3 +1,8 @@
+###### v0.0.7 (2020-02-12):
+ * Updated functions naming convention.
+ * Added `tabsetPanel` and tabs to the main panel.
+ * Added mock summary table to the **Peptide Coverage** tab.
+
 ###### v0.0.6 (2020-02-12):
  * Moved main panel and sidebar panel objects to function to allow top-bottom structure of the scripts.
  * Added `shinipsum` as a requirement for development.

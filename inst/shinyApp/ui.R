@@ -7,18 +7,18 @@ if (!nchar(system.file(package = "shinipsum"))) {
 
 
 # Main UI function -------------------------------------------------------------
-uiFunc <- function() {
+ui_func <- function() {
     fluidPage(
-        attachCSS("theme.css"),
-        attachCSS("HaDeX_theme.css"),
-        spFunc(),
-        mpFunc()
+        attach_css("theme.css"),
+        attach_css("HaDeX_theme.css"),
+        sidebar_panel(),
+        main_panel()
     )
 }
 
 
 # Global UI utilities ----------------------------------------------------------
-attachCSS <- function(cssPath) {
+attach_css <- function(cssPath) {
     tags$head(
         tags$link(href = cssPath, rel = "stylesheet")
     )
@@ -28,4 +28,5 @@ attachCSS <- function(cssPath) {
 # Calling the UI at the end of the script allows top-bottom structure.
 # If UI would not be wrapped in a function then an error would be thrown due to
 # the utilities functions being used before their definition.
-ui <- uiFunc()
+ui <- ui_func()
+

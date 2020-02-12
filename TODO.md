@@ -16,6 +16,7 @@
         - [x] Add a static path with `addResourcePath`.
         - [x] Link the static path stylesheet into the HTML with `tags$link`.
     - [x] Add a `sidebarPage`.
+    - [ ] Add titlePanel (with better CSS than the default `titlePanel` has).
     - [ ] Sidebar:
         - [ ] Add `tabsetPanel`.
         - [ ] **File settings**:
@@ -39,10 +40,10 @@
                 - [ ] Plot background.
                 - [ ] ...
     - [ ] Main panel:
-        - [ ] Add `tabsetPanel`.
-        - [ ] **Peptide Coverage**:
+        - [x] Add `tabsetPanel`.
+        - [x] **Peptide Coverage**:
             - [x] Add the `plotOutput` (with mock plot).
-            - [ ] Add a `tableOutput` for summary and statistics table.
+            - [x] Add a `tableOutput` for summary and statistics table.
         - [ ] **Data preview**:
             - [ ] `selectInput` for choosing the file to preview.
             - [ ] Table created with `DT` for previewing the selected file.
@@ -56,3 +57,4 @@
     - [ ] Create canvas.
     - [ ] Ensure that the plot behaves *correctly* when the browser window is resized.
  - [ ] Test interrupting file upload when too many files were selected.
+ - [ ] Make the summary table detachable or relocate it so that it can be viewed alongside the plot.
