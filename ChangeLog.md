@@ -1,3 +1,6 @@
+###### v0.0.5 (2020-02-12):
+ * Fixed an issue with UI using function defined below the UI definition.
+
 ###### v0.0.4 (2020-02-12):
  * Created structure for sidebar page.
  * Extender folder structure in preparation for UI development.

@@ -3,12 +3,14 @@ source(file.path("ui", "SidebarPanel.R"), local = TRUE)
 
 
 # Main UI function -------------------------------------------------------------
-ui <- fluidPage(
-    attachCSS("theme.css"),
-    attachCSS("HaDeX_theme.css"),
-    sp,
-    mp
-)
+uiFunc <- function() {
+    fluidPage(
+        attachCSS("theme.css"),
+        attachCSS("HaDeX_theme.css"),
+        sp,
+        mp
+    )
+}
 
 
 # Global UI utilities ----------------------------------------------------------
@@ -17,3 +19,9 @@ attachCSS <- function(cssPath) {
         tags$link(href = cssPath, rel = "stylesheet")
     )
 }
+
+
+# Calling the UI at the end of the script allows top-bottom structure.
+# If UI would not be wrapped in a function then an error would be thrown due to
+# the utilities functions being used before their definition.
+ui <- uiFunc()
