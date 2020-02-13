@@ -9,6 +9,7 @@ main_panel <- function() {
 }
 
 
+# Peptide Coverage tab ---------------------------------------------------------
 peptide_coverage_ui <- function() {
     tabPanel(
         "Peptide Coverage",
@@ -27,9 +28,14 @@ peptide_coverage_ui <- function() {
 }
 
 
+# Data Preview tab ------------------------------------------------------------
 data_preview_ui <- function() {
     tabPanel(
         "Data Preview",
+        div(
+            id = "previewed_file",
+            selectInput("previewed_file", "Select File to Preview", NULL)
+        ),
         tags$p("This is data preview tab.")
     )
 }

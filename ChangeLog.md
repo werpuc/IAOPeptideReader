@@ -1,3 +1,7 @@
+###### v0.0.8 (2020-02-13):
+ * Added `selectInput` with mock choices for selecting file for preview.
+ * Updated CSS of the main panel and the newly added `selectInput`.
+
 ###### v0.0.7 (2020-02-12):
  * Updated functions naming convention.
  * Added `tabsetPanel` and tabs to the main panel.

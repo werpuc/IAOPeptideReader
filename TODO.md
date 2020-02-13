@@ -45,7 +45,7 @@
             - [x] Add the `plotOutput` (with mock plot).
             - [x] Add a `tableOutput` for summary and statistics table.
         - [ ] **Data preview**:
-            - [ ] `selectInput` for choosing the file to preview.
+            - [x] `selectInput` for choosing the file to preview.
             - [ ] Table created with `DT` for previewing the selected file.
  - [ ] Create the server function.
     - [ ] Update this list based on TODOs noted during UI creation.
@@ -58,3 +58,5 @@
     - [ ] Ensure that the plot behaves *correctly* when the browser window is resized.
  - [ ] Test interrupting file upload when too many files were selected.
  - [ ] Make the summary table detachable or relocate it so that it can be viewed alongside the plot.
+ - [ ] Fixes:
+    - [ ] Update `selectInput` in the **Data Preview** tab to work better when there is a file with a long name and the resolution is low (browser is resized).

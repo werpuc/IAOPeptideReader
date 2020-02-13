@@ -1,0 +1,20 @@
+/* Better styling */
+ul.nav.nav-tabs {
+    margin-bottom: 20px;
+}
+
+
+/* For selectInputs to not get clipped by .tab-content parent element */
+div.tab-content {
+    overflow-y: visible;
+}
+
+
+/* selctInput for the file to preview */
+div#previewed_file div.selectize-control, div#previewed_file div.selectize-dropdown {
+    min-width: max-content;
+}
+
+div#previewed_file div.has-items {
+    padding-right: 32px;
+}
