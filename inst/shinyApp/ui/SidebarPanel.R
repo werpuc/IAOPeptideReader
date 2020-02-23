@@ -1,6 +1,9 @@
 # Sidebar panel ----------------------------------------------------------------
 sidebar_panel <- function() {
     sidebarPanel(
-        h3("Sidebar Panel")
+        tags$div(
+            id = "sidebar_panel",
+            h3("Sidebar Panel")
+        )
     )
 }

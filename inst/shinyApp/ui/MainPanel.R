@@ -1,9 +1,12 @@
 # Main panel -------------------------------------------------------------------
 main_panel <- function() {
     mainPanel(
-        tabsetPanel(
-            peptide_coverage_ui(),
-            data_preview_ui()
+        tags$div(
+            id = "main_panel",
+            tabsetPanel(
+                peptide_coverage_ui(),
+                data_preview_ui()
+            )
         )
     )
 }

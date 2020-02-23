@@ -10,11 +10,17 @@ div.tab-content {
 }
 
 
-/* selctInput for the file to preview */
+/* selctInput for the file to preview (extending the input to file's name) */
 div#previewed_file div.selectize-control, div#previewed_file div.selectize-dropdown {
     min-width: max-content;
 }
 
 div#previewed_file div.has-items {
     padding-right: 32px;
+}
+
+/* Sides padding for main panel tabs' contents. */
+#main_panel div.tabbable > div.tab-content {
+    padding-left: 10px;
+    padding-right: 10px;
 }

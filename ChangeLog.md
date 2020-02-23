@@ -1,3 +1,7 @@
+###### v0.0.9 (2020-02-23):
+ * Added ids to main panel and sidebar panel for easy distinguishing main panel from sidebar panel in CSS.
+ * Added side padding to main panel contents.
+
 ###### v0.0.8 (2020-02-13):
  * Added `selectInput` with mock choices for selecting file for preview.
  * Updated CSS of the main panel and the newly added `selectInput`.
