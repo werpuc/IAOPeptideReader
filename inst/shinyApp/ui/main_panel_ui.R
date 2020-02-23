@@ -38,6 +38,6 @@ data_preview_ui <- function() {
             id = "previewed_file",
             selectInput("previewed_file", "Select File to Preview", NULL)
         ),
-        tags$p("This is data preview tab.")
+        DT::dataTableOutput("data_preview")
     )
 }

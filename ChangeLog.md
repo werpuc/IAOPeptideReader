@@ -1,3 +1,7 @@
+###### v0.0.11 (2020-02-23):
+ * Added `DT` package as an import.
+ * Created mock `DT` table in the **Data Preview** tab.
+
 ###### v0.0.10 (2020-02-23):
  * Renamed files names to match the function naming convention.
  * Split out a part of `server.R` in preparation for multiple file structure.

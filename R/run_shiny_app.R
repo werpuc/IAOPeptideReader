@@ -7,6 +7,7 @@
 #' @param port a port on which the Shiny application will be hosted.
 #' 
 #' @import shiny
+#' @importFrom DT dataTableOutput renderDataTable
 #'
 #' @export
 run_shiny_app <- function(port = 8080) {

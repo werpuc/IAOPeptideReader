@@ -39,14 +39,14 @@
                 - [ ] Plot color.
                 - [ ] Plot background.
                 - [ ] ...
-    - [ ] Main panel:
+    - [x] Main panel:
         - [x] Add `tabsetPanel`.
         - [x] **Peptide Coverage**:
             - [x] Add the `plotOutput` (with mock plot).
             - [x] Add a `tableOutput` for summary and statistics table.
-        - [ ] **Data preview**:
+        - [x] **Data preview**:
             - [x] `selectInput` for choosing the file to preview.
-            - [ ] Table created with `DT` for previewing the selected file.
+            - [x] Table created with `DT` for previewing the selected file.
  - [ ] Create the server function.
     - [ ] Update this list based on TODOs noted during UI creation.
     - **Note**

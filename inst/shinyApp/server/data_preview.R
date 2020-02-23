@@ -8,4 +8,12 @@ data_preview <- function(input, output, session) {
     # TODO: update with uploaded files' names.
     updateSelectInput(session, "previewed_file",
                       choices = isolate(mock_file_names()))
+
+
+    # TODO: update the table with selected uploaded file.
+    # TODO: format the table to handle data with large number of columns.
+    # TODO: customize the table.
+    output[["data_preview"]] <- DT::renderDataTable({
+        iris
+    })
 }
