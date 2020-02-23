@@ -1,5 +1,5 @@
-# Main panel -------------------------------------------------------------------
-main_panel <- function() {
+# Main panel UI ----------------------------------------------------------------
+main_panel_ui <- function() {
     mainPanel(
         tags$div(
             id = "main_panel",
@@ -18,7 +18,6 @@ peptide_coverage_ui <- function() {
         "Peptide Coverage",
 
         # TODO: change to div for D3 plot.
-        # TODO: add padding.
         h3("Coverage Plot"),
         plotOutput("plot"),
 

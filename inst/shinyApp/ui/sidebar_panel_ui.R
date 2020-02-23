@@ -1,5 +1,5 @@
-# Sidebar panel ----------------------------------------------------------------
-sidebar_panel <- function() {
+# Sidebar panel UI -------------------------------------------------------------
+sidebar_panel_ui <- function() {
     sidebarPanel(
         tags$div(
             id = "sidebar_panel",

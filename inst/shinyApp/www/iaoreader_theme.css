@@ -19,8 +19,14 @@ div#previewed_file div.has-items {
     padding-right: 32px;
 }
 
+
 /* Sides padding for main panel tabs' contents. */
 #main_panel div.tabbable > div.tab-content {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+
+body {
+    padding: 10px;
 }

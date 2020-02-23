@@ -1,3 +1,7 @@
+###### v0.0.10 (2020-02-23):
+ * Renamed files names to match the function naming convention.
+ * Split out a part of `server.R` in preparation for multiple file structure.
+
 ###### v0.0.9 (2020-02-23):
  * Added ids to main panel and sidebar panel for easy distinguishing main panel from sidebar panel in CSS.
  * Added side padding to main panel contents.
