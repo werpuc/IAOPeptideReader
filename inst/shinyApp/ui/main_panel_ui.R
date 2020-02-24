@@ -12,7 +12,7 @@ main_panel_ui <- function() {
 }
 
 
-# Peptide Coverage tab ---------------------------------------------------------
+# Peptide Coverage tab UI ------------------------------------------------------
 peptide_coverage_ui <- function() {
     tabPanel(
         "Peptide Coverage",
@@ -30,7 +30,7 @@ peptide_coverage_ui <- function() {
 }
 
 
-# Data Preview tab ------------------------------------------------------------
+# Data Preview tab UI ---------------------------------------------------------
 data_preview_ui <- function() {
     tabPanel(
         "Data Preview",

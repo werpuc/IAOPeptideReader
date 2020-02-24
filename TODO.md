@@ -18,7 +18,7 @@
     - [x] Add a `sidebarPage`.
     - [ ] Add titlePanel (with better CSS than the default `titlePanel` has).
     - [ ] Sidebar:
-        - [ ] Add `tabsetPanel`.
+        - [x] Add `tabsetPanel`.
         - [ ] **File settings**:
             - [ ] `fileInput`
             - [ ] Uploaded files summary:

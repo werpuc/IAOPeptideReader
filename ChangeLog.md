@@ -1,3 +1,6 @@
+###### v0.0.12 (2020-02-24):
+ * Added tabs to the sidebar panel.
+
 ###### v0.0.11 (2020-02-23):
  * Added `DT` package as an import.
  * Created mock `DT` table in the **Data Preview** tab.
