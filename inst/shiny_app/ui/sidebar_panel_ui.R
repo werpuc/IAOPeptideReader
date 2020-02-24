@@ -1,3 +1,6 @@
+source("plot_settings_ui.R", local = TRUE)
+
+
 # Sidebar panel UI -------------------------------------------------------------
 sidebar_panel_ui <- function() {
     sidebarPanel(
@@ -17,14 +20,5 @@ input_settings_ui <- function() {
     tabPanel(
         "Input Settings",
         tags$p("This is Input Settings tab.")
-    )
-}
-
-
-# Plot Settings tab UI ---------------------------------------------------------
-plot_settings_ui <- function() {
-    tabPanel(
-        "Plot Settings",
-        tags$p("This is Plot Settings tab.")
     )
 }

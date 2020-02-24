@@ -1,4 +1,4 @@
-source(file.path("server", "data_preview.R"), local = TRUE)
+source(file.path("server", "data_preview.R"), local = TRUE, chdir = TRUE)
 
 
 # Main server function ---------------------------------------------------------

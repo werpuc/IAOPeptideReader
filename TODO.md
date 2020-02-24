@@ -35,7 +35,7 @@
                     - [ ] Updated based on the selected protein.
         - [ ] **Plot settings**:
             - [ ] Inputs for customizing the plot:
-                - [ ] Title.
+                - [x] Title.
                 - [ ] Plot color.
                 - [ ] Plot background.
                 - [ ] ...

@@ -1,3 +1,8 @@
+###### v0.0.13 (2020-02-24):
+ * Added wrapper for creating plot settings inputs.
+ * Added `chdir` argument to `source` calls.
+ * Finished variables, functions and files names refactoring.
+
 ###### v0.0.12 (2020-02-24):
  * Added tabs to the sidebar panel.
 

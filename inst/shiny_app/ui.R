@@ -1,5 +1,5 @@
-source(file.path("ui", "main_panel_ui.R"), local = TRUE)
-source(file.path("ui", "sidebar_panel_ui.R"), local = TRUE)
+source(file.path("ui", "main_panel_ui.R"), local = TRUE, chdir = TRUE)
+source(file.path("ui", "sidebar_panel_ui.R"), local = TRUE, chdir = TRUE)
 
 # TODO: remove when mocks won't be needed.
 if (!nchar(system.file(package = "shinipsum"))) {
@@ -20,9 +20,9 @@ ui_func <- function() {
 
 
 # Global UI utilities ----------------------------------------------------------
-attach_css <- function(cssPath) {
+attach_css <- function(css_path) {
     tags$head(
-        tags$link(href = cssPath, rel = "stylesheet")
+        tags$link(href = css_path, rel = "stylesheet")
     )
 }
 
