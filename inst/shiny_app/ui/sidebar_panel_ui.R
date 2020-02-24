@@ -25,6 +25,11 @@ input_settings_ui <- function() {
 plot_settings_ui <- function() {
     tabPanel(
         "Plot Settings",
-        uiOutput("plot_settings_inputs")
+        uiOutput("plot_settings_inputs"),
+        tags$div(
+            id = "plot_settings_reset_div", align = "center",
+            actionButton("plot_settings_reset", "Reset Plot Settings",
+                         class = "btn-danger")
+        )
     )
 }

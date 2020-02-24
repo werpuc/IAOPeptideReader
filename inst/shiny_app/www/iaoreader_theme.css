@@ -30,3 +30,8 @@ div#previewed_file div.has-items {
 body {
     padding: 10px;
 }
+
+
+#plot_settings_reset_div {
+    margin-top: 35px;
+}

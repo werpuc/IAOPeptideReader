@@ -6,7 +6,8 @@ plot_settings <- function(input, output, session) {
     plot_settings_input_mapping <- reactive({
         mapping <- list(
             list("input_type" = "text",
-                 "label" = "Plot Title")
+                 "label" = "Plot Title",
+                 "value" = "Peptide Coverage")
         )
 
         lapply(
@@ -29,7 +30,25 @@ plot_settings <- function(input, output, session) {
 
                 # UI (this is the returned value for the renderUI)
                 plot_settings_input(meta[["input_type"]], meta[["input_id"]],
-                                    meta[["label"]])
+                                    meta[["label"]], meta[["value"]])
+            }
+        )
+    })
+
+
+    # Reset button observer ----------------------------------------------------
+    observeEvent(input[["plot_settings_reset"]], {
+        lapply(
+            plot_settings_input_mapping(),
+            function(meta) {
+                input_type <- meta[["input_type"]]
+                substr(input_type, 1, 1) <- toupper(substr(input_type, 1, 1))
+
+                update_func_name <- sprintf("update%sInput", input_type)
+                update_call <- call(update_func_name, session,
+                                    meta[["input_id"]], value = meta[["value"]])
+
+                eval(update_call)
             }
         )
     })
@@ -37,18 +56,19 @@ plot_settings <- function(input, output, session) {
 
 
 # Utilities --------------------------------------------------------------------
+# Function creating input's server backend.
 plot_settings_input_observer <- function(input, session, input_id) {
     observe({
         session$sendCustomMessage(input_id, input[[input_id]])
     })
 }
 
-# Function created input in the UI.
-plot_settings_input <- function(input_type, input_id, label) {
+# Function creating input in the UI.
+plot_settings_input <- function(input_type, input_id, label, value) {
     stopifnot(input_type %in% "text") # TODO: extend if needed.
 
     input_func_name <- sprintf("%sInput", input_type)
-    input_call <- call(input_func_name, input_id, label)
+    input_call <- call(input_func_name, input_id, label, value)
 
     eval(input_call)
 }

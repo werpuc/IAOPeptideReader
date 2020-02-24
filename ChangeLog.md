@@ -1,3 +1,7 @@
+###### v0.0.15 (2020-02-25):
+ * Added default values to the input mapping.
+ * Added button for resetting plot settings to default.
+
 ###### v0.0.14 (2020-02-24):
  * Moved inputs generation for the **Plot Settings** tab to the server function.
  * Moved the input mapping to a reactive inside the server function.
