@@ -1,3 +1,8 @@
+###### v0.0.14 (2020-02-24):
+ * Moved inputs generation for the **Plot Settings** tab to the server function.
+ * Moved the input mapping to a reactive inside the server function.
+ * Created basic connection from R server function to JS.
+
 ###### v0.0.13 (2020-02-24):
  * Added wrapper for creating plot settings inputs.
  * Added `chdir` argument to `source` calls.
