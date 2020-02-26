@@ -1,3 +1,8 @@
+###### v0.0.16 (2020-02-26):
+ * Moved single element CSS to the element definition.
+ * Added some sidebar global CSS.
+ * Added full **Input Settings** tab mock UI.
+
 ###### v0.0.15 (2020-02-25):
  * Added default values to the input mapping.
  * Added button for resetting plot settings to default.

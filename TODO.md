@@ -17,24 +17,24 @@
         - [x] Link the static path stylesheet into the HTML with `tags$link`.
     - [x] Add a `sidebarPage`.
     - [ ] Add titlePanel (with better CSS than the default `titlePanel` has).
-    - [ ] Sidebar:
+    - [x] Sidebar:
         - [x] Add `tabsetPanel`.
-        - [ ] **File settings**:
-            - [ ] `fileInput`
-            - [ ] Uploaded files summary:
-                - [ ] Details about the files.
-                    - [ ] Name.
-                    - [ ] Sequence length.
-                - [ ] Button to delete an uploaded file.
-                - [ ] `numericInput` for modifying sequence length.
-            - [ ] `numericInput` for specyfing maximum sequence length (?).
-            - [ ] `textOutput` with information about maximum sequence length read from input files.
-            - [ ] Disambiguity solving:
-                - [ ] For each uploaded file a `selectInput` for choosing a protein.
-                - [ ] For each uploaded file a `selectInput` for choosing a state for the protein.
+        - [x] **File settings**:
+            - [x] `fileInput`
+            - [x] Uploaded files summary:
+                - [x] Details about the files.
+                    - [x] Name.
+                    - [x] Sequence length.
+                - [x] Button to delete an uploaded file.
+                - [x] `numericInput` for modifying sequence length.
+            - [x] `numericInput` for specyfing maximum sequence length (?).
+            - [x] `textOutput` with information about maximum sequence length read from input files.
+            - [x] Disambiguity solving:
+                - [x] For each uploaded file a `selectInput` for choosing a protein.
+                - [x] For each uploaded file a `selectInput` for choosing a state for the protein.
                     - [ ] Updated based on the selected protein.
-        - [ ] **Plot settings**:
-            - [ ] Inputs for customizing the plot:
+        - [x] **Plot settings**:
+            - [x] Inputs for customizing the plot:
                 - [x] Title.
                 - [ ] Plot color.
                 - [ ] Plot background.
@@ -53,6 +53,7 @@
         - There should be a wrapper for updating plot settings so that multiple updaters (one for each plot setting) can be created easily. 
         - JS should have a separate updater for each setting.
  - [ ] Create the JS plot.
+    - [ ] During the plot creation create new inputs in the **Plot Settings** tab for each feature which should be customizable.
     - [ ] Add div for the plot.
     - [ ] Create canvas.
     - [ ] Ensure that the plot behaves *correctly* when the browser window is resized.

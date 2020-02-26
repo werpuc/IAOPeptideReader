@@ -4,13 +4,13 @@ ul.nav.nav-tabs {
 }
 
 
-/* For selectInputs to not get clipped by .tab-content parent element */
+/* For selectInputs to not get clipped by .tab-content parent element. */
 div.tab-content {
     overflow-y: visible;
 }
 
 
-/* selctInput for the file to preview (extending the input to file's name) */
+/* selectInput for the file to preview (extending the input to file's name). */
 div#previewed_file div.selectize-control, div#previewed_file div.selectize-dropdown {
     min-width: max-content;
 }
@@ -32,6 +32,11 @@ body {
 }
 
 
-#plot_settings_reset_div {
-    margin-top: 35px;
+/* Improving sidebar layout. */
+#sidebar_panel .tab-content > .active {
+    margin: 0 10px;
+}
+
+#sidebar_panel .tab-content > .active > *:not(h3) {
+    margin: 0 10px;
 }
