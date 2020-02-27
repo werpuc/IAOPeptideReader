@@ -1,3 +1,6 @@
+###### v0.1.0 (2020-02-27):
+ * Merged `refactoring-from-scratch` branch into `master` and cleaned up after the merge.
+
 ###### v0.0.16 (2020-02-26):
  * Moved single element CSS to the element definition.
  * Added some sidebar global CSS.

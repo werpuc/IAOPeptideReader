@@ -16,7 +16,7 @@ sidebar_panel_ui <- function() {
 input_settings_ui <- function() {
     tabPanel(
         "Input Settings",
-        fileInput("file_upload", "Upload input files"),
+        fileInput("file_upload", "Upload input files", multiple = TRUE),
 
         h3("Sequence Length"),
         splitLayout(
@@ -43,6 +43,7 @@ input_settings_ui <- function() {
             ),
             # TODO: generate the tables body in the server function based on the uploaded files.
             # TODO: add CSS to this table.
+            # TODO: gray out (mark) the rows which have file with incorrect structure.
             tags$tbody(
                 tags$tr(
                     tags$td("file1.csv"),
