@@ -1,0 +1,17 @@
+Package: iaoreader
+Title: A Web Application for Analysing IAO Files
+Version: 0.0.16
+Authors@R: 
+    person(given = "Tymoteusz", family = "Makowski",
+           role = c("aut", "cre"),
+           email = "tymek.makowski@gmail.com")
+Description: Package contains a Shiny application which allows visualization and analysis of IAO files data.
+License: What license it uses
+Depends:
+    R (>= 3.0.2)
+Imports:
+    DT,
+    shiny
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.2
