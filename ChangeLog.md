@@ -1,3 +1,10 @@
+###### v0.1.3 (2020-02-28):
+ * Added license.
+ * Added Travis.
+ * Added Appveyor.
+ * Added code coverage.
+ * Removed finished points from the `TODO.md`.
+
 ###### v0.1.2 (2020-02-28):
  * Created server file for **Input Settings** with mock fileInput handler and an outline of the handler which will be implemented.
  * Added `Remarks` section to the `README.md`.

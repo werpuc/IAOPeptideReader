@@ -1,0 +1,21 @@
+language: r
+cache: packages
+r_check_args: --as-cran
+
+r:
+  - release
+  - devel
+  - 3.5
+  - 3.4
+
+os:
+  - linux
+  - osx
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - r: devel
+
+after_success:
+    - Rscript -e 'covr::codecov()'
