@@ -2,6 +2,9 @@
  - [ ] License.
     - [ ] Add a `LICENSE` file.
     - [ ] Update `DESCRIPTION` file's license field.
+ - [ ] Add Travis.
+ - [ ] Add Appveyor.
+ - [ ] Add code coverage.
  - [x] `README.md`.
     - [x] Create the file.
     - [x] Add a step-by-step deployment guide.

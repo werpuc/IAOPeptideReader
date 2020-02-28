@@ -1,3 +1,8 @@
+###### v0.1.1 (2020-02-28):
+ * Added function for extending an objects class by reference.
+ * Added tests for the above function.
+ * The above two changes resulted in adding a new import (`data.table`) and a new suggestion (`testthat`).
+
 ###### v0.1.0 (2020-02-27):
  * Merged `refactoring-from-scratch` branch into `master` and cleaned up after the merge.
 
