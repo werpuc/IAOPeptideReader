@@ -1,8 +1,3 @@
-# TODO: test_that("add_class argument validation works", {
-#
-# })
-
-
 test_that("add_class function works", {
     x1 <- c(1, 2, 3)
     x2 <- letters

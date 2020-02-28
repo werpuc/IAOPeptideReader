@@ -1,3 +1,7 @@
+###### v0.1.2 (2020-02-28):
+ * Created server file for **Input Settings** with mock fileInput handler and an outline of the handler which will be implemented.
+ * Added `Remarks` section to the `README.md`.
+
 ###### v0.1.1 (2020-02-28):
  * Added function for extending an objects class by reference.
  * Added tests for the above function.

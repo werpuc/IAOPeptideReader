@@ -14,3 +14,8 @@ remotes::install_github("tmakowski/masters-thesis")
 
 iaoreader::run_shiny_app()
 ```
+
+### Remarks
+During the implementation following assumptions were made:
+
+ * uploaded files have unique names.

@@ -1,8 +1,6 @@
 #' @importFrom data.table setattr is.data.table
 add_class <- function(object, class_name, as_first = TRUE) {
-    # TODO: add argument validation (as separate set of functions).
     old_class <- class(object)
-
 
     new_class <- c(class_name, old_class)
     if (!as_first) {
