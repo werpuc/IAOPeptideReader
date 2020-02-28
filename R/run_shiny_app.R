@@ -6,12 +6,13 @@
 #' 
 #' @param port a port on which the Shiny application will be hosted.
 #' 
-#' @import shiny
+#' @rawNamespace import(shiny, except = c(dataTableOutput, renderDataTable))
 #' @importFrom DT dataTableOutput renderDataTable
+#' @importFrom data.table fread
 #'
 #' @export
 run_shiny_app <- function(port = 8080) {
-    app_Path <- system.file("shiny_App", package = "iaoreader")
+    app_path <- system.file("shiny_App", package = "iaoreader")
 
     if (app_path == "") {
         stop(paste("Internal package files are missing.",

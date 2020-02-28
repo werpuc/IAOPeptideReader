@@ -1,3 +1,7 @@
+###### v0.1.4 (2020-02-28):
+ * Added documentation.
+ * Updated `NAMESPACE` to not override imports.
+
 ###### v0.1.3 (2020-02-28):
  * Added license.
  * Added Travis.

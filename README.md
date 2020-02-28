@@ -1,7 +1,7 @@
 ## IAO Reader
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/tmakowski/masters-thesis.svg?branch=master)](https://travis-ci.org/tmakowski/masters-thesis)
+[![Travis build status](https://travis-ci.com/tmakowski/masters-thesis.svg?branch=master)](https://travis-ci.com/tmakowski/masters-thesis)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/tmakowski/masters-thesis?branch=master&svg=true)](https://ci.appveyor.com/project/tmakowski/masters-thesis)
 [![Codecov test coverage](https://codecov.io/gh/tmakowski/masters-thesis/branch/master/graph/badge.svg)](https://codecov.io/gh/tmakowski/masters-thesis?branch=master)
 <!-- badges: end -->

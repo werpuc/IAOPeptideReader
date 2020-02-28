@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^.*\.md$
+^.*\.bat$
 ^\.gitignore$
 ^\.covrignore$
 ^\.travis\.yml$
