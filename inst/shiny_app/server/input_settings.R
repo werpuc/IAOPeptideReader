@@ -10,7 +10,7 @@ input_settings <- function(input, output, session) {
 
             single_res <- list(
                 "is_ok" = NULL,
-                "error_message" = NULL,
+                "error_messages" = NULL,
                 "sequence_length" = NULL,
                 "protein_state_mapping" = NULL
             )

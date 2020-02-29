@@ -1,3 +1,6 @@
+###### v0.1.6 (2020-02-29):
+ * Implemented the `verify_colnames` function and added tests.
+
 ###### v0.1.5 (2020-02-29):
  * Added reactive for holding files meta information which have not been fully implemented yet.
  * Added functions signatures for verifying IAO file's correctness.
