@@ -1,3 +1,7 @@
+###### v0.1.5 (2020-02-29):
+ * Added reactive for holding files meta information which have not been fully implemented yet.
+ * Added functions signatures for verifying IAO file's correctness.
+
 ###### v0.1.4 (2020-02-28):
  * Added documentation.
  * Updated `NAMESPACE` to not override imports.
