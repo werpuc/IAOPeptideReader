@@ -24,7 +24,18 @@ verify_colnames <- function(df) {
 }
 
 
-# TODO: add tests.
-verify_column_data <- function() {
-    # TODO: check column elements types.
+verify_column_types <- function(df) {
+    is_ok <- TRUE
+    err_msg <- NULL
+
+    column_names <- colnames(df)
+    cols_to_check <- c("Start", "End")
+    for (cname in cols_to_check) {
+        if (cname %in% column_names && !is.numeric(df[[cname]])) {
+            is_ok <- FALSE
+            err_msg <- c(err_msg, sprintf("Column %s is not numeric.", cname))
+        }
+    }
+
+    list("is_ok" = is_ok, "error_messages" = err_msg)
 }

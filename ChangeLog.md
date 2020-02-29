@@ -1,3 +1,6 @@
+###### v0.1.7 (2020-02-29):
+ * Implemented the `verify_column_types` function and added tests.
+
 ###### v0.1.6 (2020-02-29):
  * Implemented the `verify_colnames` function and added tests.
 
