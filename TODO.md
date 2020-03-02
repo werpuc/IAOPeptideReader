@@ -1,3 +1,5 @@
+ - [ ] Change repo name to `iaoreader`.
+ - [ ] Add button with URL to the repo to the app.
  - [ ] Add titlePanel (with better CSS than the default `titlePanel` has).
  - [ ] Create the JS plot.
     - [ ] During the plot creation create new inputs in the **Plot Settings** tab for each feature which should be customizable.

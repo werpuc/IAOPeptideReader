@@ -1,3 +1,7 @@
+###### v0.1.10 (2020-03-02):
+ * Updated `README.md` and excluded option to run directly from GitHub (the imported packages would not be loaded).
+ * Fixed misspells in the file upload handler.
+
 ###### v0.1.9 (2020-03-02):
  * Fixed few typos and variable names.
  * Changed Travis notifications frequency.

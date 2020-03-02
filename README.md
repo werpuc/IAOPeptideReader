@@ -7,14 +7,8 @@
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 <!-- badges: end -->
 
-### Running the App
-The simplest way to try the application is running it directly from GitHub.
-```
-# install.packages("shiny")
-shiny::runGitHub("tmakowski/masters-thesis", subdir = "inst/shiny_app")
-```
-
-If one wishes to install the package before starting the application it can be done as shown below.
+### Installation and Running the App
+If one wishes to install the package it can be done as shown below.
 ```
 # install.packages("remotes")
 remotes::install_github("tmakowski/masters-thesis")
