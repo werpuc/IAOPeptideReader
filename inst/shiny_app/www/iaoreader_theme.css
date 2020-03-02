@@ -40,3 +40,10 @@ body {
 #sidebar_panel .tab-content > .active > *:not(h3) {
     margin: 0 10px;
 }
+
+
+/* Input Summary table styling. */
+/* TODO: update this CSS. */
+.import_summary_row.error {
+    background-color: red;
+}

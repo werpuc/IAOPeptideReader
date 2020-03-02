@@ -1,3 +1,7 @@
+###### v0.1.11 (2020-03-02):
+ * Moved Input Summary table generation to the server function.
+ * Implemented function generating single Input Summary table's row UI.
+
 ###### v0.1.10 (2020-03-02):
  * Updated `README.md` and excluded option to run directly from GitHub (the imported packages would not be loaded).
  * Fixed misspells in the file upload handler.

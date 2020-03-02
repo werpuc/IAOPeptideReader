@@ -31,29 +31,9 @@ input_settings_ui <- function() {
         ),
 
         h3("Input Files Summary"),
-        tags$table(
-            tags$thead(
-                tags$tr(
-                    lapply(
-                        c("File Name", "Sequence Length", "Protein", "State", ""),
-                        tags$td,
-                        style = "width: 20%;"
-                    )
-                )
-            ),
-            # TODO: generate the tables body in the server function based on the uploaded files.
-            # TODO: add CSS to this table.
-            # TODO: gray out (mark) the rows which have file with incorrect structure.
-            tags$tbody(
-                tags$tr(
-                    tags$td("file1.csv"),
-                    tags$td(123),
-                    tags$td(selectInput("file1_protein", NULL, c("Prot A", "Prot B"))),
-                    tags$td(selectInput("file1_state", NULL, c("State X", "State Y"))),
-                    tags$td(actionButton("file1_delete", "Delete file", class = "btn-danger"))
-                )
-            )
-        )
+        uiOutput("input_summary_table")
+        # TODO: add CSS to this table.
+        # TODO: gray out (mark) the rows which have file with incorrect structure.
     )
 }
 
