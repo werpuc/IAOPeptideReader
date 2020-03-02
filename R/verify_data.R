@@ -1,8 +1,15 @@
 # TODO: add tests.
 verify_iao_data <- function(df) {
-    # TODO: perform verification with functions found below.
-    # TODO: concatenate the error message.
-    list("is_ok" = TRUE, "error_messages" = "")
+    check1 <- verify_colnames(df)
+    check2 <- verify_column_types(df)
+
+    list(
+        "is_ok" = check1[["is_ok"]] && check2[["is_ok"]],
+        "error_messages" = c(
+            check1[["error_messages"]],
+            check2[["error_messages"]]
+        )
+    )
 }
 
 
@@ -15,7 +22,7 @@ verify_colnames <- function(df) {
         err_msg <- NULL
     } else {
         err_msg <- sprintf(
-            "%s column is missing.",
+            "'%s' column is missing.",
             expected_colnames[missing_cols]
         )
     }
@@ -33,7 +40,7 @@ verify_column_types <- function(df) {
     for (cname in cols_to_check) {
         if (cname %in% column_names && !is.numeric(df[[cname]])) {
             is_ok <- FALSE
-            err_msg <- c(err_msg, sprintf("Column %s is not numeric.", cname))
+            err_msg <- c(err_msg, sprintf("'%s' column is not numeric.", cname))
         }
     }
 

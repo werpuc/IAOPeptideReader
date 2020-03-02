@@ -1,15 +1,57 @@
+test_that("verify_iao_data function works", {
+    df1 <- data.frame("Protein" = "X", "State" = "Y", "Start" = 1, "End" = 2)
+    df2 <- data.frame("Protein" = "X", "State" = "Y", "Start" = 1, "End" = "b")
+    df3 <- data.frame("Protein" = "X", "Start" = "a", "End" = 2)
+    df4 <- data.frame("Start" = "a")
+    df5 <- data.frame()
+
+    r1 <- list("is_ok" = TRUE, "error_messages" = NULL)
+    r2 <- list(
+        "is_ok" = FALSE,
+        "error_messages" = "'End' column is not numeric."
+    )
+    r3 <- list(
+        "is_ok" = FALSE,
+        "error_messages" = c(
+            "'State' column is missing.",
+            "'Start' column is not numeric."
+        )
+    )
+    r4 <- list(
+        "is_ok" = FALSE,
+        "error_messages" = c(
+            "'Protein' column is missing.", "'State' column is missing.",
+            "'End' column is missing.", "'Start' column is not numeric."
+        )
+    )
+    r5 <- list(
+        "is_ok" = FALSE,
+        "error_messages" = c(
+            "'Protein' column is missing.", "'State' column is missing.",
+            "'Start' column is missing.", "'End' column is missing."
+        )
+    )
+
+    expect_equal(verify_iao_data(df1), r1)
+    expect_equal(verify_iao_data(df2), r2)
+    expect_equal(verify_iao_data(df3), r3)
+    expect_equal(verify_iao_data(df4), r4)
+    expect_equal(verify_iao_data(df5), r5)
+})
+
+
 test_that("verify_colnames function works", {
     df1 <- data.frame("Protein" = "X", "State" = "Y", "Start" = 1, "End" = 2)
     df2 <- data.frame("Protein" = "X", "Start" = 1, "End" = 2)
     df3 <- data.frame()
 
     r1 <- list("is_ok" = TRUE, "error_messages" = NULL)
-    r2 <- list("is_ok" = FALSE, "error_messages" = "State column is missing.")
+    r2 <- list("is_ok" = FALSE, "error_messages" = "'State' column is missing.")
     r3 <- list(
         "is_ok" = FALSE,
         "error_messages" = c(
-            "Protein column is missing.", "State column is missing.",
-            "Start column is missing.", "End column is missing."
+            "'Protein' column is missing.", "'State' column is missing.",
+            "'Start' column is missing.", "'End' column is missing."
         )
     )
 
@@ -26,12 +68,15 @@ test_that("verify_column_types function works", {
     df4 <- data.frame()
     
     r1 <- list("is_ok" = TRUE, "error_messages" = NULL)
-    r2 <- list("is_ok" = FALSE, "error_messages" = "Column End is not numeric.")
+    r2 <- list(
+        "is_ok" = FALSE,
+        "error_messages" = "'End' column is not numeric."
+    )
     r3 <- list(
         "is_ok" = FALSE,
         "error_messages" = c(
-            "Column Start is not numeric.",
-            "Column End is not numeric."
+            "'Start' column is not numeric.",
+            "'End' column is not numeric."
         )
     )
     r4 <- list("is_ok" = TRUE, "error_messages" = NULL)

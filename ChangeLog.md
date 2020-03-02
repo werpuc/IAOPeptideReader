@@ -1,3 +1,8 @@
+###### v0.1.8 (2020-03-02):
+ * Implemented the `vefify_iao_data` function and added tests.
+ * Updated the error messages returned by the two subfunctions of the above function.
+ * Updated the `.travis.yml` file with lines which should prevent the build from failing on OSX with R 3.4.
+
 ###### v0.1.7 (2020-02-29):
  * Implemented the `verify_column_types` function and added tests.
 
