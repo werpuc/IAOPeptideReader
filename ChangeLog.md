@@ -1,3 +1,7 @@
+###### v0.1.13 (2020-03-02):
+ * Added data (including few incorrect files) for testing the application during the development.
+ * Minor update in `README.md`.
+
 ###### v0.1.12 (2020-03-02):
  * Added mouseover hint with error messages on rows with incorrect inputs in the Input Summary table.
 

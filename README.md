@@ -7,6 +7,8 @@
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 <!-- badges: end -->
 
+This is my masters thesis project at the [Faculty of Mathematics and Information Sciences](https://ww2.mini.pw.edu.pl) at the [Warsaw University of Technology](https://www.pw.edu.pl).
+
 ### Installation and Running the App
 If one wishes to install the package it can be done as shown below.
 ```
