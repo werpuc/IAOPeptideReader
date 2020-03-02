@@ -16,25 +16,28 @@ sidebar_panel_ui <- function() {
 input_settings_ui <- function() {
     tabPanel(
         "Input Settings",
-        fileInput("file_upload", "Upload input files", multiple = TRUE),
+        fileInput("files_upload", "Upload input files", multiple = TRUE),
 
-        # TODO: hide below part when there are no files uploaded.
-        h3("Sequence Length"),
-        splitLayout(
-            cellWidths = c("30%", "70%"),
+        conditionalPanel(
+            "output.files_uploaded",
 
-            # TODO: update the initial value with a maximum value read from input files.
-            numericInput("sequence_length", NULL, 123, width = "100%"),
+            h3("Sequence Length"),
+            splitLayout(
+                cellWidths = c("30%", "70%"),
 
-            # TODO: change to textOutput and update with a maximum value read from input files.
-            tags$p("Maximum sequence length read from files: 123",
-                   style = "margin-left: 20px;") # textOutput("sequence_length_default")
-        ),
+                # TODO: update the initial value with a maximum value read from input files.
+                numericInput("sequence_length", NULL, 123, width = "100%"),
 
-        h3("Input Files Summary"),
-        uiOutput("input_summary_table")
-        # TODO: add CSS to this table.
-        # TODO: gray out (mark) the rows which have file with incorrect structure.
+                # TODO: change to textOutput and update with a maximum value read from input files.
+                tags$p("Maximum sequence length read from files: 123",
+                       style = "margin-left: 20px;") # textOutput("sequence_length_default")
+            ),
+
+            h3("Input Files Summary"),
+            uiOutput("input_summary_table")
+            # TODO: add CSS to this table.
+            # TODO: gray out (mark) the rows which have file with incorrect structure.
+        )
     )
 }
 

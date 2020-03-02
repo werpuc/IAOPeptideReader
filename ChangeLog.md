@@ -1,3 +1,6 @@
+###### v0.1.14 (2020-03-02):
+ * Hidden everything but the file upload input until a file is uploaded.
+
 ###### v0.1.13 (2020-03-02):
  * Added data (including few incorrect files) for testing the application during the development.
  * Minor update in `README.md`.

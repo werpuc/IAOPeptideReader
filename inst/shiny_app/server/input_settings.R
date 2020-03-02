@@ -1,10 +1,18 @@
 # Input settings server function -----------------------------------------------
 input_settings <- function(input, output, session) {
 
+    # Output for the conditionalPanel ------------------------------------------
+    output[["files_uploaded"]] <- reactive({
+        req(input[["files_upload"]])
+        TRUE
+    })
+    outputOptions(output, "files_uploaded", suspendWhenHidden = FALSE)
+
+
     # Uploaded files meta information ------------------------------------------
     files_meta <- reactive({
         res <- list()
-        file_input_meta <- input[["file_upload"]]
+        file_input_meta <- input[["files_upload"]]
         req(file_input_meta)
 
         for (i in 1:nrow(file_input_meta)) {
