@@ -24,13 +24,8 @@ input_settings_ui <- function() {
             h3("Sequence Length"),
             splitLayout(
                 cellWidths = c("30%", "70%"),
-
-                # TODO: update the initial value with a maximum value read from input files.
-                numericInput("sequence_length", NULL, 123, width = "100%"),
-
-                # TODO: change to textOutput and update with a maximum value read from input files.
-                tags$p("Maximum sequence length read from files: 123",
-                       style = "margin-left: 20px;") # textOutput("sequence_length_default")
+                numericInput("sequence_length", NULL, NULL, width = "100%"),
+                textOutput("sequence_length_max")
             ),
 
             h3("Input Files Summary"),

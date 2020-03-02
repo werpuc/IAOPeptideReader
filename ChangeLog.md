@@ -1,3 +1,7 @@
+###### v0.1.15 (2020-03-02):
+ * Added sequence length calculation for each file.
+ * Updated the mock information about maximum sequence length to be a value read from input files.
+
 ###### v0.1.14 (2020-03-02):
  * Hidden everything but the file upload input until a file is uploaded.
 

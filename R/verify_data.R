@@ -30,6 +30,7 @@ verify_colnames <- function(df) {
 }
 
 
+# TODO: check if columns are not NA after reading (missing values in file).
 verify_column_types <- function(df) {
     is_ok <- TRUE
     err_msg <- NULL

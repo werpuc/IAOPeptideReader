@@ -32,7 +32,7 @@ input_settings <- function(input, output, session) {
             single_file_data <- fread(file_path) # TODO: tryCatch this.
             single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
             if (single_res[["is_ok"]]) {
-               # sequence_length
+               single_res[["sequence_length"]] <- max(single_file_data[["End"]])
                # protein_state_mapping
             }
 
@@ -40,7 +40,35 @@ input_settings <- function(input, output, session) {
         }
 
         res
-    })    
+    })
+
+
+    # Max sequence length ------------------------------------------------------
+    sequence_max_length <- reactive({
+        # Note: sapply does not work (unlist) correctly when one of the results
+        #       is NULL. Hence the lapply & unlist combination is used.
+        seq_lenghts <- unlist(
+            lapply(
+                files_meta(),
+                function(sfim) sfim[["sequence_length"]]
+            )
+        )
+
+        # TODO: handle case when there is no correct file and max returns -Inf.
+        max(seq_lenghts) 
+    })
+
+    # TODO: debug mysterious error with this updater.
+    # updateNumericInput(
+    #     session, "sequence_length", value = isolate(sequence_max_length()))
+
+
+    output[["sequence_length_max"]] <- renderText({
+        sprintf(
+            "Maximum sequence length read from files: %d.",
+            sequence_max_length()
+        )
+    })
 
 
     # Import summary table UI --------------------------------------------------
