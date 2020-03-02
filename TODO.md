@@ -6,5 +6,6 @@
     - [ ] Ensure that the plot behaves *correctly* when the browser window is resized.
  - [ ] Test interrupting file upload when too many files were selected.
  - [ ] Make the summary table detachable or relocate it so that it can be viewed alongside the plot.
+ - [ ] Add `shinycssloaders`.
  - [ ] Fixes:
     - [ ] Update `selectInput` in the **Data Preview** tab to work better when there is a file with a long name and the resolution is low (browser is resized).

@@ -2,8 +2,9 @@ input_settings <- function(input, output, session) {
     files_meta <- reactive({
         res <- list()
         file_input_meta <- input[["file_upload"]]
+        req(file_input_meta) # TODO: change to validate & need.
 
-        for (i in 1:nrow(upload_meta)) {
+        for (i in 1:nrow(file_input_meta)) {
             single_file_input_meta <- file_input_meta[i, , drop = FALSE]
             file_name <- single_file_input_meta[["filename"]]
             file_path <- single_file_input_meta[["datapath"]]

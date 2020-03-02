@@ -23,5 +23,10 @@ before_install:
     export LDFLAGS="-L/usr/local/opt/llvm/lib" &&
     export CFLAGS="-I/usr/local/opt/llvm/include"; fi
 
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
 after_success:
     - Rscript -e 'covr::codecov()'

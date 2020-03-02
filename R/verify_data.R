@@ -1,4 +1,3 @@
-# TODO: add tests.
 verify_iao_data <- function(df) {
     check1 <- verify_colnames(df)
     check2 <- verify_column_types(df)

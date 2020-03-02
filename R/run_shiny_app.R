@@ -12,11 +12,16 @@
 #'
 #' @export
 run_shiny_app <- function(port = 8080) {
-    app_path <- system.file("shiny_App", package = "iaoreader")
+    app_path <- system.file("shiny_app", package = "iaoreader")
 
     if (app_path == "") {
-        stop(paste("Internal package files are missing.",
-                   "Consider re-installing the iaoreader package."))
+        stop(
+            paste(
+                "Internal package files are missing.",
+                "Consider re-installing the iaoreader package."
+            ),
+            call. = FALSE
+        )
     }
 
     runApp(app_path, port)
