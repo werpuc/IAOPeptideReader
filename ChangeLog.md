@@ -1,3 +1,6 @@
+###### v0.1.12 (2020-03-02):
+ * Added mouseover hint with error messages on rows with incorrect inputs in the Input Summary table.
+
 ###### v0.1.11 (2020-03-02):
  * Moved Input Summary table generation to the server function.
  * Implemented function generating single Input Summary table's row UI.

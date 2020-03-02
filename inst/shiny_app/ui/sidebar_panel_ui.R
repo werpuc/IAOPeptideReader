@@ -18,6 +18,7 @@ input_settings_ui <- function() {
         "Input Settings",
         fileInput("file_upload", "Upload input files", multiple = TRUE),
 
+        # TODO: hide below part when there are no files uploaded.
         h3("Sequence Length"),
         splitLayout(
             cellWidths = c("30%", "70%"),

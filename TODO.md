@@ -1,4 +1,4 @@
- - [ ] Change repo name to `iaoreader`.
+ - [ ] Add an information that rows corresponding to incorrect input files have error messages displayed on mouseover (or change the way those messages are shown).
  - [ ] Add button with URL to the repo to the app.
  - [ ] Add titlePanel (with better CSS than the default `titlePanel` has).
  - [ ] Create the JS plot.
