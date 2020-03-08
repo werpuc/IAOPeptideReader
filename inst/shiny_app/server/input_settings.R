@@ -33,7 +33,7 @@ input_settings <- function(input, output, session) {
             single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
             if (single_res[["is_ok"]]) {
                single_res[["sequence_length"]] <- max(single_file_data[["End"]])
-               # protein_state_mapping
+               single_res[["protein_state_mapping"]] <- read_protein_state_mapping(single_file_data)
             }
 
             res[[file_name]] <- single_res

@@ -1,3 +1,7 @@
+###### v0.1.17 (2020-03-08):
+ * Added a function for reading the `(protein, state)` mapping.
+ * Updated badges in `README.md` after renaming the repository.
+
 ###### v0.1.16 (2020-03-08):
  * Fixed handling `NA` values in the `verify_column_types` function.
 

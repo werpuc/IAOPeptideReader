@@ -11,3 +11,4 @@
  - [ ] Add `shinycssloaders`.
  - [ ] Fixes:
     - [ ] Update `selectInput` in the **Data Preview** tab to work better when there is a file with a long name and the resolution is low (browser is resized).
+    - [ ] Fix the bug where the shiny application cannot find `fread` function for some reason.
