@@ -1,3 +1,6 @@
+###### v0.1.16 (2020-03-08):
+ * Fixed handling `NA` values in the `verify_column_types` function.
+
 ###### v0.1.15 (2020-03-02):
  * Added sequence length calculation for each file.
  * Updated the mock information about maximum sequence length to be a value read from input files.

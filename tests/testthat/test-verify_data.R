@@ -66,6 +66,7 @@ test_that("verify_column_types function works", {
     df2 <- data.frame("Start" = 1, "End" = letters)
     df3 <- data.frame("Start" = c(1, "a"), "End" = LETTERS)
     df4 <- data.frame()
+    df5 <- data.frame("Start" = 1:2, "End" = c(3, NA))
     
     r1 <- list("is_ok" = TRUE, "error_messages" = NULL)
     r2 <- list(
@@ -80,9 +81,14 @@ test_that("verify_column_types function works", {
         )
     )
     r4 <- list("is_ok" = TRUE, "error_messages" = NULL)
+    r5 <- list(
+        "is_ok" = FALSE,
+        "error_messages" = "'End' column contains missing values."
+    )
 
     expect_equal(verify_column_types(df1), r1)
     expect_equal(verify_column_types(df2), r2)
     expect_equal(verify_column_types(df3), r3)
     expect_equal(verify_column_types(df4), r4)
+    expect_equal(verify_column_types(df5), r5)
 })

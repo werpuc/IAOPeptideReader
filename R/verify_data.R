@@ -30,7 +30,6 @@ verify_colnames <- function(df) {
 }
 
 
-# TODO: check if columns are not NA after reading (missing values in file).
 verify_column_types <- function(df) {
     is_ok <- TRUE
     err_msg <- NULL
@@ -38,9 +37,24 @@ verify_column_types <- function(df) {
     column_names <- colnames(df)
     cols_to_check <- c("Start", "End")
     for (cname in cols_to_check) {
-        if (cname %in% column_names && !is.numeric(df[[cname]])) {
-            is_ok <- FALSE
-            err_msg <- c(err_msg, sprintf("'%s' column is not numeric.", cname))
+        if (cname %in% column_names) {
+            col_values <- df[[cname]]
+
+            if (!is.numeric(col_values)) {
+                is_ok <- FALSE
+                err_msg <- c(
+                    err_msg,
+                    sprintf("'%s' column is not numeric.", cname)
+                )
+            }
+
+            if (any(is.na(col_values))) {
+                is_ok <- FALSE
+                err_msg <- c(
+                    err_msg,
+                    sprintf("'%s' column contains missing values.", cname)
+                )
+            }
         }
     }
 
