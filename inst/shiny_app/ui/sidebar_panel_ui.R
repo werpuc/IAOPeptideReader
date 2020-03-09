@@ -22,13 +22,30 @@ input_settings_ui <- function() {
             "output.files_uploaded",
 
             h3("Sequence Length"),
-            splitLayout(
-                cellWidths = c("30%", "70%"),
-                numericInput("sequence_length", NULL, NULL, width = "100%"),
-                textOutput("sequence_length_max")
+            conditionalPanel(
+                "!output.any_file_good",
+                tags$p(
+                    id = "no_good_file", class = "bad_files_info",
+                    "None of the uploaded files passed the verification."
+                )
+            ),
+            conditionalPanel(
+                "output.any_file_good",
+                splitLayout(
+                    cellWidths = c("30%", "70%"),
+                    numericInput("sequence_length", NULL, NULL, width = "100%"),
+                    textOutput("sequence_length_max")
+                )
             ),
 
             h3("Input Files Summary"),
+            conditionalPanel(
+                "output.any_file_bad",
+                tags$p(
+                    class = "bad_files_info",
+                    "For error details about the files hover a highlighted row."
+                )
+            ),
             uiOutput("input_summary_table")
             # TODO: add CSS to this table.
             # TODO: gray out (mark) the rows which have file with incorrect structure.

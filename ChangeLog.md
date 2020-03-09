@@ -1,3 +1,6 @@
+###### v0.1.19 (2020-03-09):
+ * Improved handling of the wrong files in the sidebars. Now the UI is more informative about the issues.
+
 ###### v0.1.18 (2020-03-09):
  * Added wrapper for attaching scripts.
  * Restructured the `run_shiny_app` function to source the files in `inst` folder. This fixes the bug (or rather namespace issue) where package's imported functions are not found by the Shiny application.

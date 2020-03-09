@@ -13,7 +13,7 @@ This is my masters thesis project at the [Faculty of Mathematics and Information
 If one wishes to install the package it can be done as shown below.
 ```
 # install.packages("remotes")
-remotes::install_github("tmakowski/masters-thesis")
+remotes::install_github("tmakowski/iaoreader")
 
 iaoreader::run_shiny_app()
 ```
@@ -21,5 +21,6 @@ iaoreader::run_shiny_app()
 ### Remarks
 During the implementation following assumptions were made:
 
- * uploaded files have unique names.
+ * uploaded files have unique names,
+ * the application will be started by `run_shiny_app` function, i.e. not directly with `shiny::runApp`.
 

@@ -51,6 +51,17 @@ div#previewed_file div.has-items {
 }
 
 /* [[ Input Settings ]] */
+p.bad_files_info {
+    margin-left: 10px;
+    font-style: italic;
+    color: gray;
+}
+
+p#no_good_file {
+    color: orangered;
+    font-weight: bold;
+}
+
 /* TODO: update this CSS. */
 .import_summary_row.error {
     background-color: red;

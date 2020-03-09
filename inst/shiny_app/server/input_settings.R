@@ -1,20 +1,27 @@
 # Input settings server function -----------------------------------------------
 input_settings <- function(input, output, session) {
 
-    # Output for the conditionalPanel ------------------------------------------
+    # Outputs for the conditionalPanel -----------------------------------------
     output[["files_uploaded"]] <- reactive({
         req(input[["files_upload"]])
         TRUE
     })
     outputOptions(output, "files_uploaded", suspendWhenHidden = FALSE)
 
+    any_file_good <- reactive(any(is_okay_values()))
+    output[["any_file_good"]] <- any_file_good
+    outputOptions(output, "any_file_good", suspendWhenHidden = FALSE)
+
+    output[["any_file_bad"]] <- reactive(!all(is_okay_values()))
+    outputOptions(output, "any_file_bad", suspendWhenHidden = FALSE)
+
 
     # Uploaded files meta information ------------------------------------------
     files_meta <- reactive({
-        res <- list()
         file_input_meta <- input[["files_upload"]]
         req(file_input_meta)
 
+        res <- list()
         for (i in 1:nrow(file_input_meta)) {
             single_file_input_meta <- file_input_meta[i, , drop = FALSE]
             file_name <- single_file_input_meta[["name"]]
@@ -40,6 +47,10 @@ input_settings <- function(input, output, session) {
         }
 
         res
+    })
+
+    is_okay_values <- reactive({
+        sapply(files_meta(), function(sfim) sfim[["is_ok"]])
     })
 
 

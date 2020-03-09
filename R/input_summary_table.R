@@ -1,3 +1,12 @@
+# single_file_input_meta structure:
+#   list(
+#       "input_id" = /character/
+#       "file_name" = /character/,
+#       "is_ok" = /TRUE or FALSE/,
+#       "error_messages" = /character vector or NULL/,
+#       "sequence_length" = /numeric or NULL/,
+#       "protein_state_mapping" = /named (character) list of character vectors or NULL/
+#   )
 input_summary_row_ui <- function(single_file_input_meta) {
     input_id <- single_file_input_meta[["input_id"]]
     row_class <- "import_summary_row"
