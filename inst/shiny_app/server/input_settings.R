@@ -28,7 +28,7 @@ input_settings <- function(input, output, session) {
             file_path <- single_file_input_meta[["datapath"]]
 
             single_res <- list(
-                "input_id" = sprintf("is_row%d", i),
+                "input_id" = sprintf("IS_row%d", i),
                 "file_name" = file_name,
                 "is_ok" = NULL,
                 "error_messages" = NULL,
@@ -80,7 +80,6 @@ input_settings <- function(input, output, session) {
             session, "sequence_length", value = sequence_max_length())
     })
 
-
     output[["sequence_length_max"]] <- renderText({
         sprintf(
             "Maximum sequence length read from files: %d.",
@@ -105,13 +104,13 @@ input_settings <- function(input, output, session) {
                 lapply(
                     files_meta(),
                     function(sfim) {
-                        # TODO: server generating function.
+                        input_summary_row_server(sfim, input, session)
                         input_summary_row_ui(sfim)
                     }
                 )
             )
         )
     })
-    # TODO: import summary table generation from the files_meta (clear the meta after generating the table?).
+
     # TODO: delete button observers and state upadters generation.
 }

@@ -1,3 +1,7 @@
+###### v0.1.22 (2020-03-09):
+ * Updated the data for the **Input Files Summary** testing.
+ * Implemented server function generation with select input updaters for the **Input Files Summary**.
+
 ###### v0.1.21 (2020-03-09):
  * Fixed the `read_protein_state_mapping` function for `data.table` arguments added tests for the this case.
 

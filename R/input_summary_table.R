@@ -29,6 +29,21 @@ input_summary_row_ui <- function(single_file_input_meta) {
 }
 
 
-input_summary_row_server <- function(single_file_input_meta) {
-    # TODO: implement this.
+input_summary_row_server <- function(single_file_input_meta, input, session) {
+    input_id <- single_file_input_meta[["input_id"]]
+    protein_id <- sprintf("%s_protein", input_id)
+    state_id <- sprintf("%s_state", input_id)
+    prot_state_mapping <- single_file_input_meta[["protein_state_mapping"]]
+
+    # Initial update of the protein choices.
+    updateSelectInput(session, protein_id, choices = names(prot_state_mapping))
+
+    # Updater for the state choices based on protein selection.
+    observe({
+        selected_protein <- input[[protein_id]]
+        req(selected_protein)
+
+        state_choices <- prot_state_mapping[[selected_protein]]
+        updateSelectInput(session, state_id, choices = state_choices)
+    })
 }
