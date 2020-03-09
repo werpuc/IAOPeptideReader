@@ -2,9 +2,6 @@
 ^\.Rproj\.user$
 ^.*\.md$
 ^.*\.bat$
-^\.gitignore$
-^\.covrignore$
-^\.travis\.yml$
-^codecov\.yml$
-^appveyor\.yml$
+^.*\.yml$
+^\..*ignore$
 ^dev$

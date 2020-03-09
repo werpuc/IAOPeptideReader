@@ -10,6 +10,7 @@ test_that("read_protein_state_mapping function works", {
         "Protein" = c("X", "Y", "Y", "Z"),
         "State" = c("A", "a", "b", "C")
     )
+    df4 <- data.table::as.data.table(df3)
 
     r1 <- list("P" = "S")
     r2 <- list("X" = "A", "Y" = "a", "Z" = "C")
@@ -18,4 +19,5 @@ test_that("read_protein_state_mapping function works", {
     expect_equal(read_protein_state_mapping(df1), r1)
     expect_equal(read_protein_state_mapping(df2), r2)
     expect_equal(read_protein_state_mapping(df3), r3)
+    expect_equal(read_protein_state_mapping(df4), r3)
 })

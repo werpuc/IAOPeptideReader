@@ -1,3 +1,6 @@
+###### v0.1.21 (2020-03-09):
+ * Fixed the `read_protein_state_mapping` function for `data.table` arguments added tests for the this case.
+
 ###### v0.1.20 (2020-03-09):
  * Added automatic updating of the sequence length input when the files are uploaded.
  * Added `req` to in the maximum sequence length reactive to avoid calculation when there is no correct file uploaded.

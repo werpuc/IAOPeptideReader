@@ -3,7 +3,7 @@ read_protein_state_mapping <- function(df) {
 
     res <- list()
     for (protein in pairs_df[["Protein"]]) {
-        res[[protein]] <- pairs_df[pairs_df[["Protein"]] == protein, "State"]
+        res[[protein]] <- pairs_df[pairs_df[["Protein"]] == protein, ][["State"]]
     }
 
     res
