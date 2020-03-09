@@ -1,14 +1,17 @@
- - [ ] Add an information that rows corresponding to incorrect input files have error messages displayed on mouseover (or change the way those messages are shown).
- - [ ] Add button with URL to the repo to the app.
- - [ ] Add titlePanel (with better CSS than the default `titlePanel` has).
- - [ ] Create the JS plot.
-    - [ ] During the plot creation create new inputs in the **Plot Settings** tab for each feature which should be customizable.
-    - [ ] Add div for the plot.
-    - [ ] Create canvas.
-    - [ ] Ensure that the plot behaves *correctly* when the browser window is resized.
- - [ ] Test interrupting file upload when too many files were selected.
- - [ ] Make the summary table detachable or relocate it so that it can be viewed alongside the plot.
- - [ ] Add `shinycssloaders`.
- - [ ] Fixes:
-    - [ ] Update `selectInput` in the **Data Preview** tab to work better when there is a file with a long name and the resolution is low (browser is resized).
-    - [ ] Fix the bug where the shiny application cannot find `fread` function for some reason.
+ - Add an information that rows corresponding to incorrect input files have error messages displayed on mouseover (or change the way those messages are shown).
+ - Add button with URL to the repo to the app.
+ - Add titlePanel (with better CSS than the default `titlePanel` has).
+ - Create the JS plot.
+    - During the plot creation create new inputs in the **Plot Settings** tab for each feature which should be customizable.
+    - Add div for the plot.
+    - Create canvas.
+    - Ensure that the plot behaves *correctly* when the browser window is resized.
+ - Test interrupting file upload when too many files were selected.
+ - Make the summary table detachable or relocate it so that it can be viewed alongside the plot.
+ - Add `shinycssloaders`.
+ - Fixes:
+    - Update `selectInput` in the **Data Preview** tab to work better when there is a file with a long name and the resolution is low (browser is resized).
+ - Nice to haves:
+    - Confirmation when resetting the plot settings.
+    - Option to disable the reset confirmation for current session.
+    - Consider renaming the `shiny_app` folder to something like `iaoreader` or `iaoreader_app`.

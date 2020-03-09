@@ -9,11 +9,11 @@ if (!nchar(system.file(package = "shinipsum"))) {
 
 
 # Main UI function -------------------------------------------------------------
-ui_func <- function() {
+ui <- function() {
     fluidPage(
         attach_css("iaoreader_theme.css"),
         attach_css("HaDeX_theme.css"),
-        tags$script(src = "plot_settings.js"),
+        attach_script("plot_settings.js"),
         sidebar_panel_ui(),
         main_panel_ui()
     )
@@ -21,15 +21,17 @@ ui_func <- function() {
 
 
 # Global UI utilities ----------------------------------------------------------
-attach_css <- function(css_path) {
+attach_css <- function(css_name, url_static_path = "www") {
     tags$head(
-        tags$link(href = css_path, rel = "stylesheet")
+        tags$link(
+            href = sprintf("%s/%s", url_static_path, css_name),
+            rel = "stylesheet"
+        )
     )
 }
 
-
-# Calling the UI at the end of the script allows top-bottom structure.
-# If UI would not be wrapped in a function then an error would be thrown due to
-# the utilities functions being used before their definition.
-ui <- ui_func()
-
+attach_script <- function(script_name, url_static_path = "www") {
+    tags$head(
+        tags$script(src = sprintf("%s/%s", url_static_path, script_name))
+    )
+}

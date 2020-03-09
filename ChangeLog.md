@@ -1,3 +1,8 @@
+###### v0.1.18 (2020-03-09):
+ * Added wrapper for attaching scripts.
+ * Restructured the `run_shiny_app` function to source the files in `inst` folder. This fixes the bug (or rather namespace issue) where package's imported functions are not found by the Shiny application.
+ * Reordered CSS file a little.
+
 ###### v0.1.17 (2020-03-08):
  * Added a function for reading the `(protein, state)` mapping.
  * Updated badges in `README.md` after renaming the repository.
