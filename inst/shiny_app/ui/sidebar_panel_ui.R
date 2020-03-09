@@ -33,6 +33,7 @@ input_settings_ui <- function() {
                 "output.any_file_good",
                 splitLayout(
                     cellWidths = c("30%", "70%"),
+                    # TODO: add minimal value of 1, add necessary checks and handle incorrect values.
                     numericInput("sequence_length", NULL, NULL, width = "100%"),
                     textOutput("sequence_length_max")
                 )

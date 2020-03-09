@@ -1,3 +1,7 @@
+###### v0.1.20 (2020-03-09):
+ * Added automatic updating of the sequence length input when the files are uploaded.
+ * Added `req` to in the maximum sequence length reactive to avoid calculation when there is no correct file uploaded.
+
 ###### v0.1.19 (2020-03-09):
  * Improved handling of the wrong files in the sidebars. Now the UI is more informative about the issues.
 

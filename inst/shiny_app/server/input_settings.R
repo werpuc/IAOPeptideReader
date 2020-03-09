@@ -36,6 +36,7 @@ input_settings <- function(input, output, session) {
                 "protein_state_mapping" = NULL
             )
 
+            # TODO: save the data somewhere.
             single_file_data <- fread(file_path) # TODO: tryCatch this.
             single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
             if (single_res[["is_ok"]]) {
@@ -55,23 +56,29 @@ input_settings <- function(input, output, session) {
 
 
     # Max sequence length ------------------------------------------------------
+    # This reactive is updated when any_file_good updates thus making this
+    # reactive indirectly dependent on files_meta.
+    # Note: if the isolate would be by the any_file_good and files_meta didn't
+    #       have it this reactive won't work correctly.
     sequence_max_length <- reactive({
+        req(any_file_good())
+
         # Note: sapply does not work (unlist) correctly when one of the results
         #       is NULL. Hence the lapply & unlist combination is used.
-        seq_lenghts <- unlist(
-            lapply(
-                files_meta(),
-                function(sfim) sfim[["sequence_length"]]
+        max(
+            unlist(
+                lapply(
+                    isolate(files_meta()),
+                    function(sfim) sfim[["sequence_length"]]
+                )
             )
         )
-
-        # TODO: handle case when there is no correct file and max returns -Inf.
-        max(seq_lenghts) 
     })
 
-    # TODO: debug mysterious error with this updater.
-    # updateNumericInput(
-    #     session, "sequence_length", value = isolate(sequence_max_length()))
+    observeEvent(input[["files_upload"]], {
+        updateNumericInput(
+            session, "sequence_length", value = sequence_max_length())
+    })
 
 
     output[["sequence_length_max"]] <- renderText({
