@@ -1,3 +1,7 @@
+###### v0.1.27 (2020-03-10):
+ * Deletion handler now properly deletes data associated with the file.
+ * Added data preparation for passing it over to the JS.
+
 ###### v0.1.26 (2020-03-10):
  * Improved saving the files meta information to `input_settings_rv` and added saving of the data to that structure.
  * Minor other improvements.

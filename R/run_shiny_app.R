@@ -8,7 +8,7 @@
 #' 
 #' @rawNamespace import(shiny, except = c(dataTableOutput, renderDataTable))
 #' @importFrom DT dataTableOutput renderDataTable
-#' @importFrom data.table fread
+#' @importFrom data.table fread rbindlist
 #'
 #' @export
 run_shiny_app <- function(port = 8080) {

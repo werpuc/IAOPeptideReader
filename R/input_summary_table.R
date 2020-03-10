@@ -69,6 +69,7 @@ input_summary_row_server <- function(single_file_input_meta, input, session,
 
     obs2 <- observeEvent(input[[delete_id]], ignoreInit = TRUE, once = TRUE, {
         input_settings_rv[["fm"]][[file_name]] <- NULL
+        input_settings_rv[["data"]][[file_name]] <- NULL
 
         for (sfim in input_settings_rv[["fm"]]) {
             sfim_file_name <- sfim[["file_name"]]

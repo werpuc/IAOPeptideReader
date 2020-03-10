@@ -49,7 +49,6 @@ input_settings <- function(input, output, session) {
                 "selected_state" = NULL
             )
 
-            # TODO: save the data somewhere (concatenate data before saving).
             single_file_data <- fread(file_path) # TODO: tryCatch this.
             single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
             if (single_res[["is_ok"]]) {
@@ -129,6 +128,42 @@ input_settings <- function(input, output, session) {
             function(sfim) {
                 input_summary_row_server(sfim, input, session, input_settings_rv)
             }
+        )
+    })
+
+
+
+    # Preparing data for the plot ----------------------------------------------
+    observe({
+        req(any_file_good())
+
+        res <- list()
+        for (sfim in isolate(files_meta())) {
+            if (!sfim[["is_ok"]]) next
+
+            file_name <- sfim[["file_name"]]
+            input_id <- sfim[["input_id"]]
+            protein_id <- sprintf("%s_protein", input_id)
+            state_id <- sprintf("%s_state", input_id)
+
+            protein <- input[[protein_id]]
+            state <- input[[state_id]]
+
+            # If the inputs did not load yet retry after 1 second.
+            if (!isTruthy(protein) || !isTruthy(state)) {
+                invalidateLater(1 * 1000)
+                return()
+            }
+
+            current_data <- input_settings_rv[["data"]][[file_name]]
+            current_data[, FileName := file_name]
+
+            res[[file_name]] <- current_data[Protein == protein & State == state]
+        }
+
+        # TODO: send the data to JS.
+        print(
+            rbindlist(res)
         )
     })
 }
