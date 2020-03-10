@@ -1,3 +1,7 @@
+###### v0.1.25 (2020-03-10):
+ * Handled case when all files are deleted through the **Input Files Summary** table.
+ * Improved setting the protein and state during **Input Files Summary** table UI creation.
+
 ###### v0.1.24 (2020-03-10):
  * Fixed the bug of observers not being deleted mentioned in previous change log entry.
  * Removed redundant `codecov.yml` configuration file.

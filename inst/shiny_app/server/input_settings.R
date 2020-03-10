@@ -1,10 +1,14 @@
 # Input settings server function -----------------------------------------------
 input_settings <- function(input, output, session) {
 
+    input_settings_rv <- reactiveValues(
+        "fm" = NULL, "obs" = list(), "data" = list()
+    )
+
+
     # Outputs for the conditionalPanel -----------------------------------------
     output[["files_uploaded"]] <- reactive({
-        req(input[["files_upload"]])
-        TRUE
+        length(input_settings_rv[["fm"]]) > 0
     })
     outputOptions(output, "files_uploaded", suspendWhenHidden = FALSE)
 
@@ -17,8 +21,6 @@ input_settings <- function(input, output, session) {
 
 
     # Uploaded files meta information ------------------------------------------
-    input_settings_rv <- reactiveValues("fm" = NULL, "obs" = list(),
-                                        "data" = list())
     files_meta <- reactive({
         fm <- input_settings_rv[["fm"]]
         req(fm)
@@ -111,16 +113,7 @@ input_settings <- function(input, output, session) {
                 )
             ),
             tags$tbody(
-                lapply(
-                    files_meta(),
-                    function(sfim) {
-                        input_summary_row_ui(
-                            sfim,
-                            sfim[["selected_protein"]],
-                            sfim[["selected_state"]]
-                        )
-                    }
-                )
+                lapply(files_meta(), input_summary_row_ui)
             )
         )
     })

@@ -6,9 +6,10 @@
 #       "error_messages" = /character vector or NULL/,
 #       "sequence_length" = /numeric or NULL/,
 #       "protein_state_mapping" = /named (character) list of character vectors or NULL/
+#       "selected_protein" = /character or NULL/,
+#       "selected_state" = /character or NULL/
 #   )
-input_summary_row_ui <- function(single_file_input_meta, protein = NULL,
-                                 state = NULL) {
+input_summary_row_ui <- function(single_file_input_meta) {
     input_id <- single_file_input_meta[["input_id"]]
     row_class <- "import_summary_row"
     if (!single_file_input_meta[["is_ok"]]) {
@@ -16,10 +17,14 @@ input_summary_row_ui <- function(single_file_input_meta, protein = NULL,
     }
 
     prot_state_mapping <- single_file_input_meta[["protein_state_mapping"]]
-    protein_choices <- names(prot_state_mapping)
 
+    protein_choices <- names(prot_state_mapping)
+    protein <- single_file_input_meta[["selected_protein"]]
     if (is.null(protein)) protein <- protein_choices[1]
+
     state_choices <- prot_state_mapping[[protein]]
+    state <- single_file_input_meta[["selected_state"]]
+    if (is.null(state)) state <- state_choices[1]
 
     tags$tr(
         class = paste(row_class, collapse = " "),
@@ -31,18 +36,12 @@ input_summary_row_ui <- function(single_file_input_meta, protein = NULL,
         tags$td(single_file_input_meta[["sequence_length"]]),
         tags$td(
             selectInput(
-                sprintf("%s_protein", input_id),
-                NULL,
-                protein_choices,
-                protein
+                sprintf("%s_protein", input_id), NULL, protein_choices, protein
             )
         ),
         tags$td(
             selectInput(
-                sprintf("%s_state", input_id),
-                NULL,
-                state_choices,
-                state
+                sprintf("%s_state", input_id), NULL, state_choices, state
             )
         ),
         tags$td(actionButton(sprintf("%s_delete", input_id), "Delete")) # TODO: consider changin this label.
@@ -59,9 +58,6 @@ input_summary_row_server <- function(single_file_input_meta, input, session,
     file_name <- single_file_input_meta[["file_name"]]
     prot_state_mapping <- single_file_input_meta[["protein_state_mapping"]]
 
-    # Initial update of the protein choices.
-    updateSelectInput(session, protein_id, choices = names(prot_state_mapping))
-
     # Updater for the state choices based on protein selection.
     obs1 <- observe({
         selected_protein <- input[[protein_id]]
@@ -71,7 +67,6 @@ input_summary_row_server <- function(single_file_input_meta, input, session,
         updateSelectInput(session, state_id, choices = state_choices)
     })
 
-    # TODO: handle the case when last file is deleted.
     obs2 <- observeEvent(input[[delete_id]], ignoreInit = TRUE, once = TRUE, {
         input_settings_rv[["fm"]][[file_name]] <- NULL
 
