@@ -11,6 +11,7 @@
  - Add `shinycssloaders`.
  - Fixes:
     - Update `selectInput` in the **Data Preview** tab to work better when there is a file with a long name and the resolution is low (browser is resized).
+    - Fix the infinitely stacking observers created by `input_summary_row_server` (maybe creating custom domain and shutting it down?). For the deletion observers only the not used ones persist and all the regular observers persist.
  - Nice to haves:
     - Confirmation when resetting the plot settings.
     - Option to disable the reset confirmation for current session.

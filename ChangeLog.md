@@ -1,3 +1,9 @@
+###### v0.1.23 (2020-03-10):
+ * Changed `files_meta` to a `reactiveVal` to support deleting objects from it.
+ * Implemented delete button handler in the server function generator.
+ * Added preserving of the selected values through the deletions.
+ * **Note:** current version contains a bug where the observers aren't deleted properly on new files upload. 
+
 ###### v0.1.22 (2020-03-09):
  * Updated the data for the **Input Files Summary** testing.
  * Implemented server function generation with select input updaters for the **Input Files Summary**.

@@ -17,7 +17,14 @@ input_settings <- function(input, output, session) {
 
 
     # Uploaded files meta information ------------------------------------------
+    files_meta_rv <- reactiveValues()
     files_meta <- reactive({
+        fm <- files_meta_rv[["fm"]]
+        req(fm)
+        fm[order(names(fm))]
+    })
+    
+    observe({
         file_input_meta <- input[["files_upload"]]
         req(file_input_meta)
 
@@ -33,21 +40,23 @@ input_settings <- function(input, output, session) {
                 "is_ok" = NULL,
                 "error_messages" = NULL,
                 "sequence_length" = NULL,
-                "protein_state_mapping" = NULL
+                "protein_state_mapping" = NULL,
+                "selected_protein" = NULL,
+                "selected_state" = NULL
             )
 
             # TODO: save the data somewhere.
             single_file_data <- fread(file_path) # TODO: tryCatch this.
             single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
             if (single_res[["is_ok"]]) {
-               single_res[["sequence_length"]] <- max(single_file_data[["End"]])
-               single_res[["protein_state_mapping"]] <- read_protein_state_mapping(single_file_data)
+                single_res[["sequence_length"]] <- max(single_file_data[["End"]])
+                single_res[["protein_state_mapping"]] <- read_protein_state_mapping(single_file_data)
             }
 
             res[[file_name]] <- single_res
         }
 
-        res
+        files_meta_rv[["fm"]] <- res
     })
 
     is_okay_values <- reactive({
@@ -104,13 +113,25 @@ input_settings <- function(input, output, session) {
                 lapply(
                     files_meta(),
                     function(sfim) {
-                        input_summary_row_server(sfim, input, session)
-                        input_summary_row_ui(sfim)
+                        input_summary_row_ui(
+                            sfim,
+                            sfim[["selected_protein"]],
+                            sfim[["selected_state"]]
+                        )
                     }
                 )
             )
         )
     })
 
-    # TODO: delete button observers and state upadters generation.
+    # The server is created separately because we don't want to re-create
+    # observes with every deletion. TODO: this doesn't work anyways.
+    observeEvent(input[["files_upload"]], {
+        lapply(
+            files_meta(),
+            function(sfim) {
+                input_summary_row_server(sfim, input, session, files_meta_rv)
+            }
+        )
+    })
 }
