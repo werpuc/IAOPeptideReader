@@ -2,14 +2,13 @@
 input_settings <- function(input, output, session) {
 
     input_settings_rv <- reactiveValues(
-        "fm" = NULL, "obs" = list(), "data" = list()
+        "fm" = list(), "obs" = list(), "data" = list()
     )
 
 
     # Outputs for the conditionalPanel -----------------------------------------
-    output[["files_uploaded"]] <- reactive({
-        length(input_settings_rv[["fm"]]) > 0
-    })
+    files_uploaded <- reactive(length(input_settings_rv[["fm"]]) > 0)
+    output[["files_uploaded"]] <- files_uploaded
     outputOptions(output, "files_uploaded", suspendWhenHidden = FALSE)
 
     any_file_good <- reactive(any(is_okay_values()))
@@ -22,16 +21,18 @@ input_settings <- function(input, output, session) {
 
     # Uploaded files meta information ------------------------------------------
     files_meta <- reactive({
-        fm <- input_settings_rv[["fm"]]
-        req(fm)
+        req(files_uploaded())
+        fm <- isolate(input_settings_rv[["fm"]])
         fm[order(names(fm))]
     })
     
-    observe({
+    observeEvent(input[["files_upload"]], {
         file_input_meta <- input[["files_upload"]]
         req(file_input_meta)
 
-        res <- list()
+        input_settings_rv[["fm"]] <- list()
+        input_settings_rv[["data"]] <- list()
+
         for (i in 1:nrow(file_input_meta)) {
             single_file_input_meta <- file_input_meta[i, , drop = FALSE]
             file_name <- single_file_input_meta[["name"]]
@@ -56,10 +57,9 @@ input_settings <- function(input, output, session) {
                 single_res[["protein_state_mapping"]] <- read_protein_state_mapping(single_file_data)
             }
 
-            res[[file_name]] <- single_res
+            input_settings_rv[["data"]][[file_name]] <- single_file_data
+            input_settings_rv[["fm"]][[file_name]] <- single_res
         }
-
-        input_settings_rv[["fm"]] <- res
     })
 
     is_okay_values <- reactive({

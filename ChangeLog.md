@@ -1,3 +1,7 @@
+###### v0.1.26 (2020-03-10):
+ * Improved saving the files meta information to `input_settings_rv` and added saving of the data to that structure.
+ * Minor other improvements.
+
 ###### v0.1.25 (2020-03-10):
  * Handled case when all files are deleted through the **Input Files Summary** table.
  * Improved setting the protein and state during **Input Files Summary** table UI creation.
