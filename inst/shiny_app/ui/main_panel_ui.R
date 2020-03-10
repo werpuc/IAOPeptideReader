@@ -16,15 +16,19 @@ main_panel_ui <- function() {
 peptide_coverage_ui <- function() {
     tabPanel(
         "Peptide Coverage",
+        no_file_uploaded_wrapper(
+            no_file_good_wrapper(
 
-        # TODO: change to div for D3 plot.
-        h3("Coverage Plot"),
-        plotOutput("plot"),
+                # TODO: change to div for D3 plot.
+                h3("Coverage Plot"),
+                plotOutput("plot"),
 
-        h3("Summary Table"),
-        div(
-            align = "center",
-            tableOutput("summary_table")
+                h3("Summary Table"),
+                div(
+                    align = "center",
+                    tableOutput("summary_table")
+                )
+            )
         )
     )
 }
@@ -34,10 +38,14 @@ peptide_coverage_ui <- function() {
 data_preview_ui <- function() {
     tabPanel(
         "Data Preview",
-        div(
-            id = "previewed_file",
-            selectInput("previewed_file", "Select File to Preview", NULL)
-        ),
-        DT::dataTableOutput("data_preview")
+        no_file_uploaded_wrapper(
+            no_file_good_wrapper(
+                div(
+                    id = "previewed_file",
+                    selectInput("previewed_file", "Select File to Preview", NULL)
+                ),
+                DT::dataTableOutput("data_preview")
+            )
+        )
     )
 }

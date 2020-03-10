@@ -1,5 +1,6 @@
 # Input settings server function -----------------------------------------------
 input_settings <- function(input, output, session) {
+    data_preview(input, output, session, input_settings_rv, any_file_good)
 
     input_settings_rv <- reactiveValues(
         "fm" = list(), "obs" = list(), "data" = list(), "seq_max_len" = -Inf
@@ -58,9 +59,10 @@ input_settings <- function(input, output, session) {
 
                 single_res[["sequence_length"]] <- seq_len
                 single_res[["protein_state_mapping"]] <- read_protein_state_mapping(single_file_data)
+
+                input_settings_rv[["data"]][[file_name]] <- single_file_data[, .(Protein, State, Start, End)]
             }
 
-            input_settings_rv[["data"]][[file_name]] <- single_file_data
             input_settings_rv[["fm"]][[file_name]] <- single_res
         }
 
@@ -141,9 +143,10 @@ input_settings <- function(input, output, session) {
             }
 
             current_data <- input_settings_rv[["data"]][[file_name]]
-            current_data[, FileName := file_name]
+            data_filtered <- current_data[Protein == protein & State == state]
+            data_filtered[, FileName := file_name]
 
-            res[[file_name]] <- current_data[Protein == protein & State == state]
+            res[[file_name]] <- data_filtered
         }
 
         # TODO: send the data to JS.

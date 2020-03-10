@@ -5,7 +5,6 @@ source(file.path("server", "input_settings.R"), local = TRUE, chdir = TRUE)
 
 # Main server function ---------------------------------------------------------
 server <- function(input, output, session) {
-    data_preview(input, output, session)
     plot_settings(input, output, session)
     input_settings(input, output, session)
 

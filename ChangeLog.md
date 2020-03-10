@@ -1,3 +1,10 @@
+###### v0.2.0 (2020-03-11):
+ * The data is now saved only for correct files.
+ * The saved data now includes only the columns used by the app.
+ * Connected **Data Preview** to the uploaded files.
+ * Added placeholders for when there is no file uploaded.
+ * This update marks the end of file management and settings development as well as **Data Preview** tab implementation. However, the CSS for the **Input Summary Table** and styling of **Data Preview** table are yet to be improved.
+
 ###### v0.1.28 (2020-03-10):
  * Improved the way the maximum sequence length is handled.
 

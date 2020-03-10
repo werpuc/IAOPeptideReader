@@ -35,3 +35,32 @@ attach_script <- function(script_name, url_static_path = "www") {
         tags$script(src = sprintf("%s/%s", url_static_path, script_name))
     )
 }
+
+no_file_uploaded_wrapper <- function(...) {
+    tagList(
+        conditionalPanel(
+            "!output.files_uploaded",
+            tags$p(class = "no_file_uploaded", "Please upload files first.")
+        ),
+        conditionalPanel(
+            "output.files_uploaded",
+            ...
+        )
+    )
+}
+
+no_file_good_wrapper <- function(...) {
+    tagList(
+        conditionalPanel(
+            "!output.any_file_good",
+            tags$p(
+                class = "no_good_file bad_files_info",
+                "None of the uploaded files passed the verification."
+            )
+        ),
+        conditionalPanel(
+            "output.any_file_good",
+            ...
+        )
+    )
+}

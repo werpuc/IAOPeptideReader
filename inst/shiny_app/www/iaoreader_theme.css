@@ -51,13 +51,13 @@ div#previewed_file div.has-items {
 }
 
 /* [[ Input Settings ]] */
-p.bad_files_info {
+p.bad_files_info, p.no_file_uploaded {
     margin-left: 10px;
     font-style: italic;
     color: gray;
 }
 
-p#no_good_file {
+p.no_good_file {
     color: orangered;
     font-weight: bold;
 }

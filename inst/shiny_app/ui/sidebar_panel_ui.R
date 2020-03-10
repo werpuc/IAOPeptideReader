@@ -22,15 +22,7 @@ input_settings_ui <- function() {
             "output.files_uploaded",
 
             h3("Sequence Length"),
-            conditionalPanel(
-                "!output.any_file_good",
-                tags$p(
-                    id = "no_good_file", class = "bad_files_info",
-                    "None of the uploaded files passed the verification."
-                )
-            ),
-            conditionalPanel(
-                "output.any_file_good",
+            no_file_good_wrapper(
                 splitLayout(
                     cellWidths = c("30%", "70%"),
                     # TODO: add minimal value of 1, add necessary checks and handle incorrect values.

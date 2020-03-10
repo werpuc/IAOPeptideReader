@@ -1,19 +1,20 @@
 # Data Preview server function -------------------------------------------------
-data_preview <- function(input, output, session) {
-    mock_file_names <- reactive({
-        c("File_1", "File_2", "File_with_a_really_long_name_which_could_possibly_make_selectInput_ugly.")
+data_preview <- function(input, output, session, input_settings_rv, any_file_good) {
+    observe({
+        req(any_file_good())
+
+        name_ok_mapping <- sapply(input_settings_rv[["fm"]], `[[`, "is_ok")
+        file_names <- names(name_ok_mapping[which(name_ok_mapping)])
+
+        updateSelectInput(
+            session, "previewed_file", choices = file_names,
+            selected = file_names[1]
+        )
     })
 
-
-    # TODO: update with uploaded files' names.
-    updateSelectInput(session, "previewed_file",
-                      choices = isolate(mock_file_names()))
-
-
-    # TODO: update the table with selected uploaded file.
-    # TODO: format the table to handle data with large number of columns.
     # TODO: customize the table.
     output[["data_preview"]] <- DT::renderDataTable({
-        iris
+        selected_file <- input[["previewed_file"]]
+        isolate(input_settings_rv[["data"]][[selected_file]])
     })
 }
