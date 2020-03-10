@@ -1,3 +1,7 @@
+###### v0.1.24 (2020-03-10):
+ * Fixed the bug of observers not being deleted mentioned in previous change log entry.
+ * Removed redundant `codecov.yml` configuration file.
+
 ###### v0.1.23 (2020-03-10):
  * Changed `files_meta` to a `reactiveVal` to support deleting objects from it.
  * Implemented delete button handler in the server function generator.

@@ -51,7 +51,7 @@ input_summary_row_ui <- function(single_file_input_meta, protein = NULL,
 
 
 input_summary_row_server <- function(single_file_input_meta, input, session,
-                                     files_meta_rv) {
+                                     input_settings_rv) {
     input_id <- single_file_input_meta[["input_id"]]
     protein_id <- sprintf("%s_protein", input_id)
     state_id <- sprintf("%s_state", input_id)
@@ -63,7 +63,7 @@ input_summary_row_server <- function(single_file_input_meta, input, session,
     updateSelectInput(session, protein_id, choices = names(prot_state_mapping))
 
     # Updater for the state choices based on protein selection.
-    observe({
+    obs1 <- observe({
         selected_protein <- input[[protein_id]]
         req(selected_protein)
 
@@ -72,17 +72,21 @@ input_summary_row_server <- function(single_file_input_meta, input, session,
     })
 
     # TODO: handle the case when last file is deleted.
-    observeEvent(input[[delete_id]], ignoreInit = TRUE, once = TRUE, {
-        files_meta_rv[["fm"]][[file_name]] <- NULL
+    obs2 <- observeEvent(input[[delete_id]], ignoreInit = TRUE, once = TRUE, {
+        input_settings_rv[["fm"]][[file_name]] <- NULL
 
-        for (sfim in files_meta_rv[["fm"]]) {
+        for (sfim in input_settings_rv[["fm"]]) {
             sfim_file_name <- sfim[["file_name"]]
             sfim_input_id <- sfim[["input_id"]]
             sfim_protein_id <- sprintf("%s_protein", sfim_input_id)
             sfim_state_id <- sprintf("%s_state", sfim_input_id)
 
-            files_meta_rv[["fm"]][[sfim_file_name]][["selected_protein"]] <- input[[sfim_protein_id]]
-            files_meta_rv[["fm"]][[sfim_file_name]][["selected_state"]] <- input[[sfim_state_id]]
+            input_settings_rv[["fm"]][[sfim_file_name]][["selected_protein"]] <- input[[sfim_protein_id]]
+            input_settings_rv[["fm"]][[sfim_file_name]][["selected_state"]] <- input[[sfim_state_id]]
         }
     })
+
+    # Saving the observers to destroy them manually on new file upload.
+    old_observers <- isolate(input_settings_rv[["obs"]])
+    input_settings_rv[["obs"]] <- c(old_observers, obs1, obs2)
 }

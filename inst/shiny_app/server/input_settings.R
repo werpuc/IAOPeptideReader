@@ -17,9 +17,10 @@ input_settings <- function(input, output, session) {
 
 
     # Uploaded files meta information ------------------------------------------
-    files_meta_rv <- reactiveValues()
+    input_settings_rv <- reactiveValues("fm" = NULL, "obs" = list(),
+                                        "data" = list())
     files_meta <- reactive({
-        fm <- files_meta_rv[["fm"]]
+        fm <- input_settings_rv[["fm"]]
         req(fm)
         fm[order(names(fm))]
     })
@@ -45,7 +46,7 @@ input_settings <- function(input, output, session) {
                 "selected_state" = NULL
             )
 
-            # TODO: save the data somewhere.
+            # TODO: save the data somewhere (concatenate data before saving).
             single_file_data <- fread(file_path) # TODO: tryCatch this.
             single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
             if (single_res[["is_ok"]]) {
@@ -56,7 +57,7 @@ input_settings <- function(input, output, session) {
             res[[file_name]] <- single_res
         }
 
-        files_meta_rv[["fm"]] <- res
+        input_settings_rv[["fm"]] <- res
     })
 
     is_okay_values <- reactive({
@@ -125,12 +126,15 @@ input_settings <- function(input, output, session) {
     })
 
     # The server is created separately because we don't want to re-create
-    # observes with every deletion. TODO: this doesn't work anyways.
+    # observes with every deletion. Additionally, it destroys every already
+    # existing observer to prevent stacking them infinitely.
     observeEvent(input[["files_upload"]], {
+        lapply(input_settings_rv[["obs"]], function(obs) obs$destroy())
+
         lapply(
             files_meta(),
             function(sfim) {
-                input_summary_row_server(sfim, input, session, files_meta_rv)
+                input_summary_row_server(sfim, input, session, input_settings_rv)
             }
         )
     })
