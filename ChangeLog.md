@@ -1,3 +1,6 @@
+###### v0.1.28 (2020-03-10):
+ * Improved the way the maximum sequence length is handled.
+
 ###### v0.1.27 (2020-03-10):
  * Deletion handler now properly deletes data associated with the file.
  * Added data preparation for passing it over to the JS.

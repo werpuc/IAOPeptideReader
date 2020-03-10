@@ -2,7 +2,7 @@
 input_settings <- function(input, output, session) {
 
     input_settings_rv <- reactiveValues(
-        "fm" = list(), "obs" = list(), "data" = list()
+        "fm" = list(), "obs" = list(), "data" = list(), "seq_max_len" = -Inf
     )
 
 
@@ -32,6 +32,7 @@ input_settings <- function(input, output, session) {
 
         input_settings_rv[["fm"]] <- list()
         input_settings_rv[["data"]] <- list()
+        seq_max_len <- -Inf
 
         for (i in 1:nrow(file_input_meta)) {
             single_file_input_meta <- file_input_meta[i, , drop = FALSE]
@@ -52,49 +53,33 @@ input_settings <- function(input, output, session) {
             single_file_data <- fread(file_path) # TODO: tryCatch this.
             single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
             if (single_res[["is_ok"]]) {
-                single_res[["sequence_length"]] <- max(single_file_data[["End"]])
+                seq_len <- max(single_file_data[["End"]])
+                seq_max_len <- max(seq_max_len, seq_len)
+
+                single_res[["sequence_length"]] <- seq_len
                 single_res[["protein_state_mapping"]] <- read_protein_state_mapping(single_file_data)
             }
 
             input_settings_rv[["data"]][[file_name]] <- single_file_data
             input_settings_rv[["fm"]][[file_name]] <- single_res
         }
+
+        input_settings_rv[["seq_max_len"]] <- seq_max_len
+        updateNumericInput(session, "sequence_length", value = seq_max_len)
     })
 
     is_okay_values <- reactive({
-        sapply(files_meta(), function(sfim) sfim[["is_ok"]])
+        sapply(files_meta(), `[[`, "is_ok")
     })
 
 
-    # Max sequence length ------------------------------------------------------
-    # This reactive is updated when any_file_good updates thus making this
-    # reactive indirectly dependent on files_meta.
-    # Note: if the isolate would be by the any_file_good and files_meta didn't
-    #       have it this reactive won't work correctly.
-    sequence_max_length <- reactive({
+    # Max sequence length output -----------------------------------------------
+    output[["sequence_length_max"]] <- renderText({
         req(any_file_good())
 
-        # Note: sapply does not work (unlist) correctly when one of the results
-        #       is NULL. Hence the lapply & unlist combination is used.
-        max(
-            unlist(
-                lapply(
-                    isolate(files_meta()),
-                    function(sfim) sfim[["sequence_length"]]
-                )
-            )
-        )
-    })
-
-    observeEvent(input[["files_upload"]], {
-        updateNumericInput(
-            session, "sequence_length", value = sequence_max_length())
-    })
-
-    output[["sequence_length_max"]] <- renderText({
         sprintf(
             "Maximum sequence length read from files: %d.",
-            sequence_max_length()
+            max(unlist(lapply(isolate(files_meta()), `[[`, "sequence_length")))
         )
     })
 
