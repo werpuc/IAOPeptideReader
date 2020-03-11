@@ -1,4 +1,9 @@
- - Add an information that rows corresponding to incorrect input files have error messages displayed on mouseover (or change the way those messages are shown).
+ - Write down the dependency graph of sourcing files in `inst/shiny_app`.
+ - Write down the dependency graph of the reactives in the app.
+ - Update sidebar CSS.
+    - Padding or margin so that arrows in selectInputs do not overlap the text.
+    - Consider resizing the sidebar.
+    - Add minimum resolution tested to the `README.md`.
  - Add button with URL to the repo to the app.
  - Add titlePanel (with better CSS than the default `titlePanel` has).
  - Create the JS plot.

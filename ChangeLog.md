@@ -1,3 +1,7 @@
+###### v0.2.1 (2020-03-11):
+ * Added resetting of the observers list within `input_settings_rv` on a new file upload.
+ * Updated `TODO.md`.
+
 ###### v0.2.0 (2020-03-11):
  * The data is now saved only for correct files.
  * The saved data now includes only the columns used by the app.

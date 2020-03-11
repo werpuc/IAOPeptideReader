@@ -33,6 +33,7 @@ input_settings <- function(input, output, session) {
 
         input_settings_rv[["fm"]] <- list()
         input_settings_rv[["data"]] <- list()
+        input_settings_rv[["obs"]] <- list()
         seq_max_len <- -Inf
 
         for (i in 1:nrow(file_input_meta)) {
