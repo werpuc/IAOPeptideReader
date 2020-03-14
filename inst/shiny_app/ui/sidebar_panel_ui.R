@@ -25,8 +25,14 @@ input_settings_ui <- function() {
             no_file_good_wrapper(
                 splitLayout(
                     cellWidths = c("30%", "70%"),
-                    # TODO: add minimal value of 1, add necessary checks and handle incorrect values.
-                    numericInput("sequence_length", NULL, NULL, width = "100%"),
+                    {
+                        # Note: setting value to one makes the initial value
+                        #       okay. This prevents the red border flashing on
+                        #       the initial upload.
+                        x <- numericInput("sequence_length", NULL, 1, width = "100%")
+                        x[["attribs"]][["title"]] <- "Sequence length should be a positive integer."
+                        x
+                    },
                     textOutput("sequence_length_max")
                 )
             ),

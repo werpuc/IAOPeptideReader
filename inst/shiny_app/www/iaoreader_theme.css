@@ -15,6 +15,17 @@ div.tab-content {
     overflow-y: visible;
 }
 
+p.bad_files_info, p.no_file_uploaded {
+    margin-left: 10px;
+    font-style: italic;
+    color: gray;
+}
+
+p.no_good_file {
+    color: orangered;
+    font-weight: bold;
+}
+
 
 /* -----------------------------------------------------------------------------
  *  Main Panel
@@ -51,15 +62,9 @@ div#previewed_file div.has-items {
 }
 
 /* [[ Input Settings ]] */
-p.bad_files_info, p.no_file_uploaded {
-    margin-left: 10px;
-    font-style: italic;
-    color: gray;
-}
-
-p.no_good_file {
-    color: orangered;
-    font-weight: bold;
+#sequence_length[is_wrong] {
+    border-color: orangered;
+    border-width: 2px;
 }
 
 /* TODO: update this CSS. */

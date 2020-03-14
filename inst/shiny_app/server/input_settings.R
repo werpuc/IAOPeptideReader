@@ -90,6 +90,14 @@ input_settings <- function(input, output, session) {
     })
 
 
+    # Verifying sequence length input -------------------------------------------
+    observe({
+        session$sendCustomMessage(
+            "seq_len_check", is_positive_integer(input[["sequence_length"]])
+        )
+    })
+
+
     # Import summary table UI --------------------------------------------------
     output[["input_summary_table"]] <- renderUI({
         tags$table(
@@ -121,7 +129,6 @@ input_settings <- function(input, output, session) {
             }
         )
     })
-
 
 
     # Preparing data for the plot ----------------------------------------------

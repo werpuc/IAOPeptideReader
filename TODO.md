@@ -2,7 +2,7 @@
     - Padding or margin so that arrows in selectInputs do not overlap the text.
     - Consider resizing the sidebar.
     - Add minimum resolution tested to the `README.md`.
- - Add button with URL to the repo to the app.
+ - An icon with GitHub URL of the app's repo.
  - Add titlePanel (with better CSS than the default `titlePanel` has).
  - Create the JS plot.
     - During the plot creation create new inputs in the **Plot Settings** tab for each feature which should be customizable.
@@ -16,5 +16,5 @@
     - Update `selectInput` in the **Data Preview** tab to work better when there is a file with a long name and the resolution is low (browser is resized).
  - Nice to haves:
     - Confirmation when resetting the plot settings.
-    - Option to disable the reset confirmation for current session.
+       - Option to disable the reset confirmation for current session.
     - Consider renaming the `shiny_app` folder to something like `iaoreader` or `iaoreader_app`.

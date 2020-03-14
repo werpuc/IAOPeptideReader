@@ -1,3 +1,6 @@
+###### v0.2.4 (2020-03-14):
+ * Added sequence length verification and mouseover information.
+
 ###### v0.2.3 (2020-03-14):
  * Moved `data_preview.R` sourcing to the file which calls `data_preview` module.
  * Added file sourcing summary for the application.
