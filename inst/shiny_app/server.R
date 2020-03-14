@@ -1,4 +1,3 @@
-source(file.path("server", "data_preview.R"), local = TRUE, chdir = TRUE)
 source(file.path("server", "plot_settings.R"), local = TRUE, chdir = TRUE)
 source(file.path("server", "input_settings.R"), local = TRUE, chdir = TRUE)
 

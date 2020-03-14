@@ -24,3 +24,11 @@ During the implementation following assumptions were made:
  * uploaded files have unique names,
  * the application will be started by `run_shiny_app` function, i.e. not directly with `shiny::runApp`.
 
+### Shiny App Sourcing Summary
+The table found below states which file sources which within the app. The main files with function returning UI and server function are respectively, `ui.R` and `server.R`.
+
+| File Name                 | Sourced Files                                         |
+|---------------------------|-------------------------------------------------------|
+| `ui.R`                    | `ui/main_panel_ui.R`<br>`ui/sidebar_panel_ui.R`       |
+| `server.R`                | `server/input_settings.R`<br>`server/plot_settings.R` |
+| `server/input_settings.R` | `server/data_preview.R`                               |

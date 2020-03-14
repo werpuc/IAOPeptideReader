@@ -1,3 +1,6 @@
+source("data_preview.R", local = TRUE)
+
+
 # Input settings server function -----------------------------------------------
 input_settings <- function(input, output, session) {
     data_preview(input, output, session, input_settings_rv, any_file_good)

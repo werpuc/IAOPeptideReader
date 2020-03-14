@@ -1,5 +1,3 @@
- - Write down the dependency graph of sourcing files in `inst/shiny_app`.
- - Write down the dependency graph of the reactives in the app.
  - Update sidebar CSS.
     - Padding or margin so that arrows in selectInputs do not overlap the text.
     - Consider resizing the sidebar.

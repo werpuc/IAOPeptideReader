@@ -1,3 +1,7 @@
+###### v0.2.3 (2020-03-14):
+ * Moved `data_preview.R` sourcing to the file which calls `data_preview` module.
+ * Added file sourcing summary for the application.
+
 ###### v0.2.2 (2020-03-14):
  * Renamed buttons in **Input Summary Table** to not suggest that user's file will be deleted from their system.
 
