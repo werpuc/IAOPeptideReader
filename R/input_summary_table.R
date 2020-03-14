@@ -44,7 +44,7 @@ input_summary_row_ui <- function(single_file_input_meta) {
                 sprintf("%s_state", input_id), NULL, state_choices, state
             )
         ),
-        tags$td(actionButton(sprintf("%s_delete", input_id), "Delete")) # TODO: consider changin this label.
+        tags$td(actionButton(sprintf("%s_remove", input_id), "Remove"))
     )
 }
 
@@ -54,7 +54,7 @@ input_summary_row_server <- function(single_file_input_meta, input, session,
     input_id <- single_file_input_meta[["input_id"]]
     protein_id <- sprintf("%s_protein", input_id)
     state_id <- sprintf("%s_state", input_id)
-    delete_id <- sprintf("%s_delete", input_id)
+    remove_id <- sprintf("%s_remove", input_id)
     file_name <- single_file_input_meta[["file_name"]]
     prot_state_mapping <- single_file_input_meta[["protein_state_mapping"]]
 
@@ -67,7 +67,7 @@ input_summary_row_server <- function(single_file_input_meta, input, session,
         updateSelectInput(session, state_id, choices = state_choices)
     })
 
-    obs2 <- observeEvent(input[[delete_id]], ignoreInit = TRUE, once = TRUE, {
+    obs2 <- observeEvent(input[[remove_id]], ignoreInit = TRUE, once = TRUE, {
         input_settings_rv[["fm"]][[file_name]] <- NULL
         input_settings_rv[["data"]][[file_name]] <- NULL
 

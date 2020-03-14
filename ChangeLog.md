@@ -1,3 +1,6 @@
+###### v0.2.2 (2020-03-14):
+ * Renamed buttons in **Input Summary Table** to not suggest that user's file will be deleted from their system.
+
 ###### v0.2.1 (2020-03-11):
  * Added resetting of the observers list within `input_settings_rv` on a new file upload.
  * Updated `TODO.md`.
