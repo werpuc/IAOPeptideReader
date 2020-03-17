@@ -67,7 +67,34 @@ div#previewed_file div.has-items {
     border-width: 2px;
 }
 
-/* TODO: update this CSS. */
-.import_summary_row.error {
-    background-color: red;
+/* Input summary table. */
+#input_summary_table thead {
+    background-color: var(--theme-color-main);
+    color: var(--theme-color-bright-text);
+    font-weight: bold;
+    text-align: center;
+}
+
+#input_summary_table td:not(:last-child) {
+    padding: 0 3px;
+}
+
+#input_summary_table tbody td {
+    max-width: 0;
+}
+
+#input_summary_table td > p {
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#input_summary_table button {
+    margin: 5px;
+}
+
+.import_summary_row.error > :not(:last-child) {
+    background-color: var(--theme-color-background-warning);
+    color: var(--theme-color-warning-text);
 }

@@ -1,3 +1,13 @@
+###### v0.2.6 (2020-03-17):
+ * Updated **Input Summary Table** CSS:
+    * Changed colour of error rows.
+    * Improved coloring of header row.
+    * Added padding to the cells.
+    * Aligned text cells.
+    * Handled text overflow in text cells.
+    * Added mouseover hints for file names (to show full name when truncated).
+    * Removed empty header cell from over the buttons.
+
 ###### v0.2.5 (2020-03-17):
  * Disabled selectInput creation for the wrong files.
 

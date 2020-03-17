@@ -34,8 +34,13 @@ input_summary_row_ui <- function(single_file_input_meta) {
             single_file_input_meta[["error_messages"]],
             collapse = "\n"
         ),
-        tags$td(single_file_input_meta[["file_name"]]),
-        tags$td(single_file_input_meta[["sequence_length"]]),
+        tags$td(
+            tags$p(
+                title = single_file_input_meta[["file_name"]],
+                single_file_input_meta[["file_name"]]
+            )
+        ),
+        tags$td(tags$p(single_file_input_meta[["sequence_length"]])),
         tags$td(
             if (is_ok) {
                 selectInput(
