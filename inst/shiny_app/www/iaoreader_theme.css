@@ -16,7 +16,6 @@ div.tab-content {
 }
 
 p.bad_files_info, p.no_file_uploaded {
-    margin-left: 10px;
     font-style: italic;
     color: gray;
 }
@@ -61,6 +60,11 @@ div#previewed_file div.has-items {
     margin: 0 10px;
 }
 
+#sidebar_panel p.bad_files_info, #sidebar_panel p.no_file_uploaded, #input_summary_table{
+    margin-left: 10px;
+}
+
+
 /* [[ Input Settings ]] */
 #sequence_length[is_wrong] {
     border-color: orangered;
@@ -75,14 +79,23 @@ div#previewed_file div.has-items {
     text-align: center;
 }
 
-#input_summary_table td:not(:last-child) {
-    padding: 0 3px;
+#input_summary_table thead td {
+    width: 22%;
+    padding: 6px;
 }
 
-#input_summary_table tbody td {
+#input_summary_table tbody td:not(:last-child) {
+    padding: 0 3px;
     max-width: 0;
 }
 
+/* Alternating colors starting from the first row, excluding error files. */
+#input_summary_table tbody tr:nth-child(even):not(.error) td:not(:last-child) {
+    background-color: var(--theme-color-bright-text);
+}
+
+
+/* File name & sequence length cells. */
 #input_summary_table td > p {
     text-align: center;
     margin: 0;
@@ -90,7 +103,18 @@ div#previewed_file div.has-items {
     text-overflow: ellipsis;
 }
 
+/* selectInput cells. */
+#input_summary_table td:not(:last-child) * {
+    margin: 0px;
+}
+
+#input_summary_table div.selectize-control {
+    display: flex;
+}
+
 #input_summary_table button {
+    font-size: 14px;
+    padding: 4px 6px;
     margin: 5px;
 }
 

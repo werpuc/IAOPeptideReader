@@ -46,8 +46,6 @@ input_settings_ui <- function() {
                 )
             ),
             uiOutput("input_summary_table")
-            # TODO: add CSS to this table.
-            # TODO: gray out (mark) the rows which have file with incorrect structure.
         )
     )
 }

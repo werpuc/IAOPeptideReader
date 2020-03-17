@@ -2,6 +2,7 @@
     - Padding or margin so that arrows in selectInputs do not overlap the text.
     - Consider resizing the sidebar.
     - Add minimum resolution tested to the `README.md`.
+    - Add styling for maximum sequence length.
  - An icon with GitHub URL of the app's repo.
  - Add titlePanel (with better CSS than the default `titlePanel` has).
  - Create the JS plot.

@@ -104,9 +104,8 @@ input_settings <- function(input, output, session) {
             tags$thead(
                 tags$tr(
                     lapply(
-                        c("File Name", "Sequence Length", "Protein", "State"),
-                        tags$td,
-                        style = "width: 20%;"
+                        c("File Name", "Seq. Length", "Protein", "State"),
+                        tags$td
                     )
                 )
             ),

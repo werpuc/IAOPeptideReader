@@ -1,3 +1,13 @@
+###### v0.2.7 (2020-03-17):
+ * Updated **Input Summary Table** CSS:
+    * Added alternating colors to the table rows.
+    * Removed unnecessary margins from the selectInputs.
+    * Shrunk the buttons.
+    * Moved the header row width settings to the CSS file.
+    * Updated header padding.
+    * Shortened `Sequence Length` to `Seq. Length`.
+    * Replaced button's error hover tooltip with a proper one.
+
 ###### v0.2.6 (2020-03-17):
  * Updated **Input Summary Table** CSS:
     * Changed colour of error rows.
