@@ -11,8 +11,10 @@
 #   )
 input_summary_row_ui <- function(single_file_input_meta) {
     input_id <- single_file_input_meta[["input_id"]]
+    is_ok <- single_file_input_meta[["is_ok"]]
+
     row_class <- "import_summary_row"
-    if (!single_file_input_meta[["is_ok"]]) {
+    if (!is_ok) {
         row_class <- c(row_class, "error")
     }
 
@@ -35,14 +37,18 @@ input_summary_row_ui <- function(single_file_input_meta) {
         tags$td(single_file_input_meta[["file_name"]]),
         tags$td(single_file_input_meta[["sequence_length"]]),
         tags$td(
-            selectInput(
-                sprintf("%s_protein", input_id), NULL, protein_choices, protein
-            )
+            if (is_ok) {
+                selectInput(
+                    sprintf("%s_protein", input_id), NULL, protein_choices, protein
+                )
+            }
         ),
         tags$td(
-            selectInput(
-                sprintf("%s_state", input_id), NULL, state_choices, state
-            )
+            if (is_ok) {
+                selectInput(
+                    sprintf("%s_state", input_id), NULL, state_choices, state
+                )
+            }
         ),
         tags$td(actionButton(sprintf("%s_remove", input_id), "Remove"))
     )

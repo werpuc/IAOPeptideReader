@@ -1,3 +1,6 @@
+###### v0.2.5 (2020-03-17):
+ * Disabled selectInput creation for the wrong files.
+
 ###### v0.2.4 (2020-03-14):
  * Added sequence length verification and mouseover information.
 
