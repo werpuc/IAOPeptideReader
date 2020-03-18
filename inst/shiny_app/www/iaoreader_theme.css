@@ -60,8 +60,16 @@ div#previewed_file div.has-items {
     margin: 0 10px;
 }
 
-#sidebar_panel p.bad_files_info, #sidebar_panel p.no_file_uploaded, #input_summary_table{
+.sidebar_margin {
     margin-left: 10px;
+}
+
+#seq_len_div.sidebar_margin * {
+    margin-bottom: 0;
+}
+
+#sequence_length_max {
+    margin-top: 9px;
 }
 
 

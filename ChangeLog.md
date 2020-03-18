@@ -1,3 +1,6 @@
+###### v0.2.8 (2020-03-18):
+ * Updated **Sequence Length** section CSS and alignment.
+
 ###### v0.2.7 (2020-03-17):
  * Updated **Input Summary Table** CSS:
     * Added alternating colors to the table rows.

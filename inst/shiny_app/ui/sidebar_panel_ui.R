@@ -22,30 +22,36 @@ input_settings_ui <- function() {
             "output.files_uploaded",
 
             h3("Sequence Length"),
-            no_file_good_wrapper(
-                splitLayout(
-                    cellWidths = c("30%", "70%"),
-                    {
-                        # Note: setting value to one makes the initial value
-                        #       okay. This prevents the red border flashing on
-                        #       the initial upload.
-                        x <- numericInput("sequence_length", NULL, 1, width = "100%")
-                        x[["attribs"]][["title"]] <- "Sequence length should be a positive integer."
-                        x
-                    },
-                    textOutput("sequence_length_max")
+            div(
+                id = "seq_len_div", class = "sidebar_margin", align = "center",
+                no_file_good_wrapper(
+                    splitLayout(
+                        cellWidths = c("30%", "70%"),
+                        {
+                            # Note: setting value to one makes the initial value
+                            #       okay. This prevents the red border flashing on
+                            #       the initial upload.
+                            x <- numericInput("sequence_length", NULL, 1, width = "100%")
+                            x[["attribs"]][["title"]] <- "Sequence length should be a positive integer."
+                            x
+                        },
+                        textOutput("sequence_length_max")
+                    )
                 )
             ),
 
             h3("Input Files Summary"),
-            conditionalPanel(
-                "output.any_file_bad",
-                tags$p(
-                    class = "bad_files_info",
-                    "For error details about the files hover a highlighted row."
-                )
-            ),
-            uiOutput("input_summary_table")
+            div(
+                class = "sidebar_margin",
+                conditionalPanel(
+                    "output.any_file_bad",
+                    tags$p(
+                        class = "bad_files_info",
+                        "For error details about the files hover a highlighted row."
+                    )
+                ),
+                uiOutput("input_summary_table")
+            )
         )
     )
 }
