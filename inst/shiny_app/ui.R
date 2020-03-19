@@ -13,6 +13,8 @@ ui <- function() {
     fluidPage(
         attach_css("iaoreader_theme.css"),
         attach_css("HaDeX_theme.css"),
+        attach_script("d3.min.js"),
+        attach_script("plot.js"),
         attach_script("plot_settings.js"),
         attach_script("seq_len_check.js"),
         sidebar_panel_ui(),

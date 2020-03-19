@@ -1,3 +1,7 @@
+###### v0.2.9 (2020-03-19):
+ * Added `d3.min.js` script.
+ * Changed the mock plot to an empty div for the real plot.
+
 ###### v0.2.8 (2020-03-18):
  * Updated **Sequence Length** section CSS and alignment.
 

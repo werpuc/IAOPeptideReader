@@ -21,7 +21,7 @@ peptide_coverage_ui <- function() {
 
                 # TODO: change to div for D3 plot.
                 h3("Coverage Plot"),
-                plotOutput("plot"),
+                div(id = "plot"),
 
                 h3("Summary Table"),
                 div(
