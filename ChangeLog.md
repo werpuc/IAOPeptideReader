@@ -1,3 +1,6 @@
+###### v0.2.12 (2020-03-20):
+ * Hidden **Plot Settings** until a correct file is uploaded.
+
 ###### v0.2.11 (2020-03-20):
  * Changed `splitLayout` in **Sequence Length** to a manual split layout to improve formatting.
  * Added text wrapping to the maximum sequence length output.

@@ -64,11 +64,15 @@ input_settings_ui <- function() {
 plot_settings_ui <- function() {
     tabPanel(
         "Plot Settings",
-        uiOutput("plot_settings_inputs"),
-        tags$div(
-            align = "center", style = "margin-top: 35px;",
-            actionButton("plot_settings_reset", "Reset Plot Settings",
-                         class = "btn-danger")
+        no_file_uploaded_wrapper(
+            no_file_good_wrapper(
+                uiOutput("plot_settings_inputs"),
+                tags$div(
+                    align = "center", style = "margin-top: 35px;",
+                    actionButton("plot_settings_reset", "Reset Plot Settings",
+                                 class = "btn-danger")
+                )
+            )
         )
     )
 }
