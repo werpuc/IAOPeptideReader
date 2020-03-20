@@ -1,3 +1,9 @@
+###### v0.2.13 (2020-03-20):
+ * Implemented plot title updater handler.
+ * Added forced update for all **Plot Settings** after the new filtered data is plotted.
+ * Set `suspendWhenHidden` to `FALSE` for the **Plot Settings** `uiOutput`. This allows the UI and server generator create it before the user visits the **Plot Settings** tab which is crucial for proper application of the settings.
+ * Fixed typo in `plot.js`.
+
 ###### v0.2.12 (2020-03-20):
  * Hidden **Plot Settings** until a correct file is uploaded.
 

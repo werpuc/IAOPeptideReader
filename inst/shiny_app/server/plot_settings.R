@@ -35,6 +35,11 @@ plot_settings <- function(input, output, session) {
         )
     })
 
+    # This line makes the UI render before the Plot Settings tab is selected,
+    # therefore creating the server functions and updating the plot without the
+    # need of entering this tab first.
+    outputOptions(output, "plot_settings_inputs", suspendWhenHidden = FALSE)
+
 
     # Reset button observer ----------------------------------------------------
     observeEvent(input[["plot_settings_reset"]], {
@@ -59,6 +64,9 @@ plot_settings <- function(input, output, session) {
 # Function creating input's server backend.
 plot_settings_input_observer <- function(input, session, input_id) {
     observe({
+        # This input call forces the update after the data has been filtered.
+        input[["update_plot_settings"]]
+
         session$sendCustomMessage(input_id, input[[input_id]])
     })
 }
