@@ -72,6 +72,9 @@ input_settings <- function(input, output, session) {
 
         input_settings_rv[["seq_max_len"]] <- seq_max_len
         updateNumericInput(session, "sequence_length", value = seq_max_len)
+
+        # Something has to be sent.
+        session$sendCustomMessage("draw_canvas", 1)
     })
 
     is_okay_values <- reactive({
@@ -159,9 +162,6 @@ input_settings <- function(input, output, session) {
             res[[file_name]] <- data_filtered
         }
 
-        # TODO: send the data to JS.
-        print(
-            rbindlist(res)
-        )
+        session$sendCustomMessage("update_data", rbindlist(res))
     })
 }

@@ -1,3 +1,7 @@
+###### v0.2.10 (2020-03-20):
+ * Added handler for creating an empty canvas for the plot.
+ * Created mock handler for updating the data on the plot.
+
 ###### v0.2.9 (2020-03-19):
  * Added `d3.min.js` script.
  * Changed the mock plot to an empty div for the real plot.

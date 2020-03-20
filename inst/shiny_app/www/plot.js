@@ -1,11 +1,14 @@
-// TODO: create svg here:
-// svg = d3.select("#plot").append("svg")
+Shiny.addCustomMessageHandler("draw_canvas", function(_) {
+    var svg = d3.select("#plot") .append("svg").attr("viewBox", "-10 -10 1280 800");
+    var g = svg.append("g").attr("id", "data_visualization")
+                           .attr("transform", "translate(0, 0)");
+});
 
-// TODO: create "g" for data objects:
-// svg.append("g").attr("id", "data_stuff")
 
-// TODO: add custom message handler for updating the data:
-// svg.selectAll("g#data_stuff > circle").data(data).join().[...]
+Shiny.addCustomMessageHandler("update_data", function(plot_data) {
+    // TODO: update the plot.
+    // svg.selectAll("g#data_stuff > circle").data(data).join().[...]
+    console.log("Received data!");
 
-// TODO: add reactiveVal in R to trigger plot settings update on data filtering
-// (load plot_settings module in input_settings and pass the RV).
+    // TODO: trigger plot settings handlers.
+});
