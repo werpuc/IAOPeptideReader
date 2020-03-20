@@ -68,8 +68,15 @@ div#previewed_file div.has-items {
     margin-bottom: 0;
 }
 
+#seq_len_div.sidebar_margin div.manual_split_layout {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 #sequence_length_max {
-    margin-top: 9px;
+    margin-bottom: 3px;
+    margin-left: 5px;
+    white-space: normal;
 }
 
 

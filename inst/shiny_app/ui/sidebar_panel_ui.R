@@ -25,8 +25,8 @@ input_settings_ui <- function() {
             div(
                 id = "seq_len_div", class = "sidebar_margin", align = "center",
                 no_file_good_wrapper(
-                    splitLayout(
-                        cellWidths = c("30%", "70%"),
+                    div(
+                        class = "manual_split_layout", style = "width: 29%;",
                         {
                             # Note: setting value to one makes the initial value
                             #       okay. This prevents the red border flashing on
@@ -34,7 +34,10 @@ input_settings_ui <- function() {
                             x <- numericInput("sequence_length", NULL, 1, width = "100%")
                             x[["attribs"]][["title"]] <- "Sequence length should be a positive integer."
                             x
-                        },
+                        }
+                    ),
+                    div(
+                        class = "manual_split_layout", style = "width: 69%;",
                         textOutput("sequence_length_max")
                     )
                 )

@@ -1,3 +1,7 @@
+###### v0.2.11 (2020-03-20):
+ * Changed `splitLayout` in **Sequence Length** to a manual split layout to improve formatting.
+ * Added text wrapping to the maximum sequence length output.
+
 ###### v0.2.10 (2020-03-20):
  * Added handler for creating an empty canvas for the plot.
  * Created mock handler for updating the data on the plot.
