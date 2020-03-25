@@ -15,6 +15,9 @@
  - Add `shinycssloaders`.
  - Fixes:
     - Update `selectInput` in the **Data Preview** tab to work better when there is a file with a long name and the resolution is low (browser is resized).
+    - Update selctInputs in **Input Files Summary** for lower resolutions.
+        - Move arrows towards right edge of the input.
+        - Assure that the text is not overlapping with the arrow.
  - Nice to haves:
     - Confirmation when resetting the plot settings.
        - Option to disable the reset confirmation for current session.
