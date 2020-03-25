@@ -13,11 +13,14 @@
  - Test interrupting file upload when too many files were selected.
  - Make the summary table detachable or relocate it so that it can be viewed alongside the plot.
  - Add `shinycssloaders`.
+     - **Input Files Summary** (?)
  - Fixes:
     - Update `selectInput` in the **Data Preview** tab to work better when there is a file with a long name and the resolution is low (browser is resized).
     - Update selctInputs in **Input Files Summary** for lower resolutions.
         - Move arrows towards right edge of the input.
         - Assure that the text is not overlapping with the arrow.
+    - `white-space` CSS attribute to `p` tags in **Input Files Summary**.
+    - Add scroll to the **Input Files Summary** when there are too many files.
  - Nice to haves:
     - Confirmation when resetting the plot settings.
        - Option to disable the reset confirmation for current session.
