@@ -18,10 +18,36 @@ Shiny.addCustomMessageHandler("draw_canvas", function(_) {
 });
 
 
+Shiny.addCustomMessageHandler("x_axis", function(max_seq_len) {
+    var svg = d3.select("div#plot svg");
+    var g = svg.select("g#x_axis");
+
+    var x = svg.attr("_x"), y = svg.attr("_y"), margin = svg.attr("_margin");
+
+    if (g.empty()) {
+        g = svg
+            .append("g")
+                .attr("id", "x_axis")
+                .attr(
+                    "transform",
+                    "translate(0, " + (y - margin) + ")"
+                );
+    }
+
+    var x_scale = d3.scaleLinear()
+        .domain([1, max_seq_len])
+        .range([0 + margin, x - margin]);
+
+    var x_axis = d3.axisBottom().scale(x_scale);
+
+    g.call(x_axis);
+});
+
+
 Shiny.addCustomMessageHandler("update_data", function(plot_data) {
     // TODO: update the plot.
     // svg.selectAll("g#data_stuff > circle").data(data).join().[...]
-    console.log("Received data!");
+    console.log(plot_data);
 
     // This will set input[["update_plot_settings"]] to current timestamp what
     // will cause all observers including that phrase to recalculate.

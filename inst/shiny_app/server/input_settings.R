@@ -93,11 +93,19 @@ input_settings <- function(input, output, session) {
     })
 
 
-    # Verifying sequence length input -------------------------------------------
+    # Sequence length input ----------------------------------------------------
     observe({
-        session$sendCustomMessage(
-            "seq_len_check", is_positive_integer(input[["sequence_length"]])
-        )
+        seq_len <- input[["sequence_length"]]
+        is_ok <- is_positive_integer(seq_len)
+
+        # Sending is_ok to seq_len_check handler which turns on and off the red
+        # border around sequence length input. 
+        session$sendCustomMessage("seq_len_check", is_ok)
+
+        # Send the sequence length to the x_axis handler if the value is correct.
+        if (is_ok) {
+            session$sendCustomMessage("x_axis", seq_len)
+        }
     })
 
 

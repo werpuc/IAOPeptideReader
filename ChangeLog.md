@@ -1,3 +1,6 @@
+###### v0.2.18 (2020-05-23):
+ * Added handler for drawing X axis of the plot.
+
 ###### v0.2.17 (2020-05-23):
  * Added `_x`, `_y`, and `_margin` attributes to the svg to parametrize those values throughout the plot.
 
