@@ -17,40 +17,20 @@ Shiny.addCustomMessageHandler("draw_canvas", function(_) {
 });
 
 
-Shiny.addCustomMessageHandler("x_axis", function(max_seq_len) {
+Shiny.addCustomMessageHandler("update_data", function(plot_info) {
     var svg = d3.select("div#plot svg");
     if (svg.empty()) return;
     var x = svg.attr("_x"), y = svg.attr("_y"), margin = svg.attr("_margin");
 
-    // Creating X axis if it does not exist.
-    var g = svg.select("g#x_axis");
-    if (g.empty()) {
-        g = svg
-            .append("g")
-                .attr("id", "x_axis")
-                .attr(
-                    "transform",
-                    "translate(0, " + (y - margin) + ")"
-                );
-    }
 
-    var x_scale = d3.scaleLinear()
-        .domain([1, max_seq_len])
-        .range([0 + margin, x - margin]);
-
-    var x_axis = d3.axisBottom().scale(x_scale);
-
-    g.call(x_axis);
-});
+    // Unpacking informations from plot_info JSON.
+    var seq_len = plot_info.seq_len;
+    var plot_data = plot_info.plot_data;
 
 
-Shiny.addCustomMessageHandler("update_data", function(plot_data) {
-    var svg = d3.select("div#plot svg");
-    if (svg.empty()) return;
-    var x = svg.attr("_x"), y = svg.attr("_y"), margin = svg.attr("_margin");
-
+    // Transforming and preparing the data.
     var n = plot_data.Start.length;
-    // TODO: account for varying number of files.
+    // TODO: account for varying number of files (modify colors of lines too).
     var plot_data_transformed = d3
         .range(n)
         .map(
@@ -63,6 +43,28 @@ Shiny.addCustomMessageHandler("update_data", function(plot_data) {
                 }
             }
         );
+
+
+    // Creating X axis if it does not exist.
+    var g_x_axis = svg.select("g#x_axis");
+    if (g_x_axis.empty()) {
+        g_x_axis = svg
+            .append("g")
+                .attr("id", "x_axis")
+                .attr(
+                    "transform",
+                    "translate(0, " + (y - margin) + ")"
+                );
+    }
+
+    var x_scale = d3.scaleLinear()
+        .domain([1, seq_len])
+        .range([0 + margin, x - margin]);
+
+    var x_axis = d3.axisBottom().scale(x_scale);
+
+    g_x_axis.call(x_axis);
+
 
     // Creating Y axis if it does not exist.
     var g_y_axis = svg.select("g#y_axis");
@@ -81,6 +83,7 @@ Shiny.addCustomMessageHandler("update_data", function(plot_data) {
 
     g_y_axis.call(y_axis);
 
+
     // Creating lines g if it does not exist
     var g_lines = svg.select("g#lines");
     if (g_lines.empty()) {
@@ -89,17 +92,19 @@ Shiny.addCustomMessageHandler("update_data", function(plot_data) {
                 .attr("id", "lines");
     }
 
+
     // Drawing the lines.
     g_lines
         .selectAll("line")
             .data(plot_data_transformed)
             .join("line")
-                .attr("x1", d => d.Start)
+                .attr("x1", d => x_scale(d.Start))
                 .attr("y1", d => y_scale(d.y))
-                .attr("x2", d => d.End)
+                .attr("x2", d => x_scale(d.End))
                 .attr("y2", d => y_scale(d.y))
                 .style("stroke-width", 2)
-                .style("stroke", "gray");
+                .style("stroke", "black");
+
 
     // This will set input[["update_plot_settings"]] to current timestamp what
     // will cause all observers including that phrase to recalculate.

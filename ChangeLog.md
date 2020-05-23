@@ -1,3 +1,7 @@
+###### v0.2.21 (2020-05-23):
+ * Changing the sequence length is now tied to data redrawing.
+ * Moved X axis creation to plot updating.
+
 ###### v0.2.20 (2020-05-23):
  * Added wonky data plotting.
 
