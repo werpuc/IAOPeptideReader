@@ -1,6 +1,13 @@
 Shiny.addCustomMessageHandler("draw_canvas", function(_) {
-    d3.select("#plot > svg").remove();
-    var svg = d3.select("#plot").append("svg").attr("viewBox", "-10 -10 1280 800");
+    var plot_div = d3.select("div#plot");
+    var svg = plot_div.select("svg");
+
+    // Creating the svg if it does not exist.
+    if (svg.empty()) {
+        svg = plot_div
+            .append("svg")
+                .attr("viewBox", "0 0 1280 720");
+    }
 });
 
 

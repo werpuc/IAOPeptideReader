@@ -1,3 +1,7 @@
+###### v0.2.15 (2020-05-23):
+ * Updated JS files style.
+ * Changed svg removal to a check before creation.
+
 ###### v0.2.14 (2020-05-23):
  * The JS plot is now deleted on data upload before appending a new one.
  * Reduced the amount of data sent to JS to only unique records.
