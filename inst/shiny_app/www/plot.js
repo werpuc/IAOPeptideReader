@@ -39,7 +39,7 @@ Shiny.addCustomMessageHandler("update_data", function(plot_info) {
                     Start: plot_data.Start[i],
                     End: plot_data.End[i],
                     FileName: plot_data.FileName[i],
-                    y: i
+                    y: i + 1
                 }
             }
         );

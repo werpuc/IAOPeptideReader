@@ -1,3 +1,6 @@
+###### v0.2.22 (2020-05-23):
+ * Fixed plot by adding y offset to data transformation.
+
 ###### v0.2.21 (2020-05-23):
  * Changing the sequence length is now tied to data redrawing.
  * Moved X axis creation to plot updating.

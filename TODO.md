@@ -25,3 +25,4 @@
     - Confirmation when resetting the plot settings.
        - Option to disable the reset confirmation for current session.
     - Consider renaming the `shiny_app` folder to something like `iaoreader` or `iaoreader_app`.
+    - Warning that (such as sequence length border orange) when after filtering to given seq len yields no pepitdes to plot.
