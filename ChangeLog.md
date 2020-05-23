@@ -1,3 +1,6 @@
+###### v0.2.16 (2020-05-23):
+ * Split `utils.R` into separate files.
+
 ###### v0.2.15 (2020-05-23):
  * Updated JS files style.
  * Changed svg removal to a check before creation.

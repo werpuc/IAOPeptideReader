@@ -15,12 +15,3 @@ add_class <- function(object, class_name, as_first = TRUE) {
     class(object) <- new_class
     object
 }
-
-
-is_positive_integer <- function(x) {
-    if (is.null(x) || is.na(x) || !is.numeric(x)) {
-        return(FALSE)
-    }
-
-    (x %% 1 == 0) && (x > 0)
-}
