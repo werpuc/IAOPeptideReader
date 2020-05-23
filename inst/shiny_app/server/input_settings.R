@@ -162,6 +162,7 @@ input_settings <- function(input, output, session) {
             res[[file_name]] <- data_filtered
         }
 
-        session$sendCustomMessage("update_data", rbindlist(res))
+        # TODO: reduce the amount of data sent to JS (Start, End and FileName should suffice).
+        session$sendCustomMessage("update_data", unique(rbindlist(res)))
     })
 }

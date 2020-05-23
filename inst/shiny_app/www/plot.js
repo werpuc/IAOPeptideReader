@@ -1,7 +1,6 @@
 Shiny.addCustomMessageHandler("draw_canvas", function(_) {
+    d3.select("#plot > svg").remove();
     var svg = d3.select("#plot").append("svg").attr("viewBox", "-10 -10 1280 800");
-    var g = svg.append("g").attr("id", "data_visualization")
-                           .attr("transform", "translate(0, 0)");
 });
 
 
