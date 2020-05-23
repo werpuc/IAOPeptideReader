@@ -1,3 +1,6 @@
+###### v0.2.20 (2020-05-23):
+ * Added wonky data plotting.
+
 ###### v0.2.19 (2020-05-23):
  * Added drawing of Y axis to plot data updater.
  * Increased margin.

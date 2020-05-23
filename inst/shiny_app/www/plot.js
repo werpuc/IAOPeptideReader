@@ -50,6 +50,19 @@ Shiny.addCustomMessageHandler("update_data", function(plot_data) {
     var x = svg.attr("_x"), y = svg.attr("_y"), margin = svg.attr("_margin");
 
     var n = plot_data.Start.length;
+    // TODO: account for varying number of files.
+    var plot_data_transformed = d3
+        .range(n)
+        .map(
+            function(i) {
+                return {
+                    Start: plot_data.Start[i],
+                    End: plot_data.End[i],
+                    FileName: plot_data.FileName[i],
+                    y: i
+                }
+            }
+        );
 
     // Creating Y axis if it does not exist.
     var g_y_axis = svg.select("g#y_axis");
@@ -68,9 +81,25 @@ Shiny.addCustomMessageHandler("update_data", function(plot_data) {
 
     g_y_axis.call(y_axis);
 
-    // TODO: update the plot.
-    // svg.selectAll("g#data_stuff > circle").data(data).join().[...]
-    console.log(plot_data);
+    // Creating lines g if it does not exist
+    var g_lines = svg.select("g#lines");
+    if (g_lines.empty()) {
+        g_lines = svg
+            .append("g")
+                .attr("id", "lines");
+    }
+
+    // Drawing the lines.
+    g_lines
+        .selectAll("line")
+            .data(plot_data_transformed)
+            .join("line")
+                .attr("x1", d => d.Start)
+                .attr("y1", d => y_scale(d.y))
+                .attr("x2", d => d.End)
+                .attr("y2", d => y_scale(d.y))
+                .style("stroke-width", 2)
+                .style("stroke", "gray");
 
     // This will set input[["update_plot_settings"]] to current timestamp what
     // will cause all observers including that phrase to recalculate.
