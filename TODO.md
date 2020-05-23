@@ -26,3 +26,6 @@
        - Option to disable the reset confirmation for current session.
     - Consider renaming the `shiny_app` folder to something like `iaoreader` or `iaoreader_app`.
     - Warning that (such as sequence length border orange) when after filtering to given seq len yields no pepitdes to plot.
+    - Additional sequence length utilities:
+        - checkbox to toggle automatic adjustment of sequence length to the displayed data,
+        - button to set the max seq len.

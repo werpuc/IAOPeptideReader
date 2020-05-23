@@ -36,6 +36,11 @@ p.no_good_file {
     padding-right: 10px;
 }
 
+/* [[ Plot ]] */
+div#plot svg {
+    user-select: none;
+}
+
 /* [[ Data Preview ]] */
 /* selectInput for the file to preview (extending the input to file's name). */
 div#previewed_file div.selectize-control, div#previewed_file div.selectize-dropdown {
