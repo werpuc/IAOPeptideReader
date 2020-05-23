@@ -1,3 +1,6 @@
+###### v0.2.17 (2020-05-23):
+ * Added `_x`, `_y`, and `_margin` attributes to the svg to parametrize those values throughout the plot.
+
 ###### v0.2.16 (2020-05-23):
  * Split `utils.R` into separate files.
 

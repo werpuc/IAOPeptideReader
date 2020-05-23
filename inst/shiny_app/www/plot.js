@@ -1,4 +1,6 @@
 Shiny.addCustomMessageHandler("draw_canvas", function(_) {
+    var x = 1280, y = 720, margin = 20;
+
     var plot_div = d3.select("div#plot");
     var svg = plot_div.select("svg");
 
@@ -6,7 +8,12 @@ Shiny.addCustomMessageHandler("draw_canvas", function(_) {
     if (svg.empty()) {
         svg = plot_div
             .append("svg")
-                .attr("viewBox", "0 0 1280 720");
+                // Attributes _x, _y and _margin are used to parametrize the
+                // size of the plot.
+                .attr("_x", x)
+                .attr("_y", y)
+                .attr("_margin", margin)
+                .attr("viewBox", "0 0 " + x + " " + y);
     }
 });
 
