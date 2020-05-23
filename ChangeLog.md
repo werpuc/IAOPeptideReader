@@ -1,3 +1,9 @@
+###### v0.2.19 (2020-05-23):
+ * Added drawing of Y axis to plot data updater.
+ * Increased margin.
+ * Moved plot title.
+ * Added early stops to the plot handlers if the plot does not exist yet.
+
 ###### v0.2.18 (2020-05-23):
  * Added handler for drawing X axis of the plot.
 
