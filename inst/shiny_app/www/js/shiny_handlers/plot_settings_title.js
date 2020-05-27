@@ -1,4 +1,5 @@
-Shiny.addCustomMessageHandler("plot_title", function(plot_title_value) {
+// TODO: center the text.
+Shiny.addCustomMessageHandler("plot_settings_title", function(plot_title_value) {
     var svg = d3.select("div#plot svg");
     if (svg.empty()) return;
 

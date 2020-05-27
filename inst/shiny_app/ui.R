@@ -10,13 +10,14 @@ if (!nchar(system.file(package = "shinipsum"))) {
 
 # Main UI function -------------------------------------------------------------
 ui <- function() {
+    css_names <- c("iaoreader_theme.css", "HaDeX_theme.css")
+    script_names <- c("d3.min.js", "plot.js")
+    handler_script_names <- c("plot_settings_title.js", "seq_len_check.js")
+
     fluidPage(
-        attach_css("iaoreader_theme.css"),
-        attach_css("HaDeX_theme.css"),
-        attach_script("d3.min.js"),
-        attach_script("plot.js"),
-        attach_script("plot_settings.js"),
-        attach_script("seq_len_check.js"),
+        lapply(css_names, attach_css),
+        lapply(script_names, attach_script),
+        lapply(handler_script_names, attach_script, "www/js/shiny_handlers"),
         sidebar_panel_ui(),
         main_panel_ui()
     )
@@ -24,7 +25,7 @@ ui <- function() {
 
 
 # Global UI utilities ----------------------------------------------------------
-attach_css <- function(css_name, url_static_path = "www") {
+attach_css <- function(css_name, url_static_path = "www/css") {
     tags$head(
         tags$link(
             href = sprintf("%s/%s", url_static_path, css_name),
@@ -33,7 +34,7 @@ attach_css <- function(css_name, url_static_path = "www") {
     )
 }
 
-attach_script <- function(script_name, url_static_path = "www") {
+attach_script <- function(script_name, url_static_path = "www/js") {
     tags$head(
         tags$script(src = sprintf("%s/%s", url_static_path, script_name))
     )

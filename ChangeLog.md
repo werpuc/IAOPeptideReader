@@ -1,3 +1,8 @@
+###### v0.2.23 (2020-05-27):
+ * Reorganized scripts in the `www` subdirectory.
+ * Updated **Plot Settings** mapping to include `input_id` provided by hand.
+ * Changed the way scripts and CSS are attached.
+
 ###### v0.2.22 (2020-05-23):
  * Fixed plot by adding y offset to data transformation.
 

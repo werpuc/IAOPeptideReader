@@ -5,18 +5,13 @@ plot_settings <- function(input, output, session) {
     # This mapping allows automatic UI and server handlers generation.
     plot_settings_input_mapping <- reactive({
         mapping <- list(
-            list("input_type" = "text",
+            list("input_id" = "plot_settings_title",
+                 "input_type" = "text",
                  "label" = "Plot Title",
                  "value" = "Peptide Coverage")
         )
 
-        lapply(
-            mapping,
-            function(meta) {
-                meta[["input_id"]] <- label_to_id(meta[["label"]])
-                meta
-            }
-        )
+        mapping
     })
 
 
@@ -79,8 +74,4 @@ plot_settings_input <- function(input_type, input_id, label, value) {
     input_call <- call(input_func_name, input_id, label, value)
 
     eval(input_call)
-}
-
-label_to_id <- function(label) {
-    gsub(" ", "_", tolower(label))
 }
