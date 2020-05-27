@@ -20,10 +20,7 @@ peptide_coverage_ui <- function() {
             no_file_good_wrapper(
 
                 h3("Coverage Plot"),
-                div(
-                    id = "plot",
-                    tag("svg", NULL) # This tag is created manually for convenience.
-                ),
+                div(id = "plot"),
 
                 h3("Summary Table"),
                 div(

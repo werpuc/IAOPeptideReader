@@ -72,10 +72,6 @@ input_settings <- function(input, output, session) {
 
         input_settings_rv[["seq_max_len"]] <- seq_max_len
         updateNumericInput(session, "sequence_length", value = seq_max_len)
-
-        # Poke the IAOReader JS class object to update the svg. The 1 is sent
-        # because something has to be sent for the handler to work.
-        session$sendCustomMessage("update_svg", 1)
     })
 
     is_okay_values <- reactive({

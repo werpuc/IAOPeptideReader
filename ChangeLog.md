@@ -1,3 +1,7 @@
+###### v0.2.26 (2020-05-27):
+ * Moved the creation of IAOReader class object to a Shiny handler. This way the svg can be created in class' constructor which in turn allows to reduce amount of workarounds.
+ * Removed the plot title fix as it is no longer necessary.
+
 ###### v0.2.25 (2020-05-27):
  * Implemented IAOReader JS class for better handling of the application.
  * Rewritten svg canvas creation to use the IAOReader class.

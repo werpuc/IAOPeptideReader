@@ -12,10 +12,22 @@ if (!nchar(system.file(package = "shinipsum"))) {
 ui <- function() {
     # TODO: is it okay to have so many small files to organize the code or will
     #       it negatively affect the page loading times?
-    css_names <- c("iaoreader_theme.css", "HaDeX_theme.css")
-    script_names <- c("d3.min.js", "plot.js", "iaoreader.js")
-    handler_script_names <- c("plot_settings_title.js", "seq_len_check.js",
-                              "update_svg.js")
+    css_names <- c(
+        "iaoreader_theme.css",
+        "HaDeX_theme.css"
+    )
+
+    script_names <- c(
+        "d3.min.js",
+        "plot.js",
+        "iaoreader.js"
+    )
+
+    handler_script_names <- c(
+        "initialize_iaoreader.js",
+        "plot_settings_title.js",
+        "seq_len_check.js"
+    )
 
     fluidPage(
         lapply(css_names, attach_css),
