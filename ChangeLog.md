@@ -1,3 +1,8 @@
+###### v0.2.25 (2020-05-27):
+ * Implemented IAOReader JS class for better handling of the application.
+ * Rewritten svg canvas creation to use the IAOReader class.
+ * Added temporary fix for plot title which is created too early.
+
 ###### v0.2.24 (2020-05-27):
  * Centered the plot title.
 

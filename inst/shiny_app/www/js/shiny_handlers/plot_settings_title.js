@@ -1,6 +1,7 @@
 Shiny.addCustomMessageHandler("plot_settings_title", function(plot_title_value) {
     var svg = d3.select("div#plot svg");
     if (svg.empty()) return;
+    var margin = svg.attr("_margin");
 
     // Creating the title if it does not exist.
     var plot_title = svg.select("text#plot_title");
@@ -10,7 +11,7 @@ Shiny.addCustomMessageHandler("plot_settings_title", function(plot_title_value) 
                 .attr("id", "plot_title")
                 .attr("text-anchor", "middle")
                 .attr("x", "50%")
-                .attr("y", svg.attr("_margin") / 2 + "px");
+                .attr("y", (margin === null ? 30 : margin)  / 2 + "px");
     }
 
     plot_title.text(plot_title_value);

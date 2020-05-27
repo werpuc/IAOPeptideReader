@@ -19,9 +19,11 @@ peptide_coverage_ui <- function() {
         no_file_uploaded_wrapper(
             no_file_good_wrapper(
 
-                # TODO: change to div for D3 plot.
                 h3("Coverage Plot"),
-                div(id = "plot"),
+                div(
+                    id = "plot",
+                    tag("svg", NULL) # This tag is created manually for convenience.
+                ),
 
                 h3("Summary Table"),
                 div(

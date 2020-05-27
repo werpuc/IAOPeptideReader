@@ -1,22 +1,3 @@
-Shiny.addCustomMessageHandler("draw_canvas", function(_) {
-    var x = 1280, y = 720, margin = 30;
-    var plot_div = d3.select("div#plot");
-
-    // Creating the svg if it does not exist.
-    var svg = plot_div.select("svg");
-    if (svg.empty()) {
-        svg = plot_div
-            .append("svg")
-                // Attributes _x, _y and _margin are used to parametrize the
-                // size of the plot.
-                .attr("_x", x)
-                .attr("_y", y)
-                .attr("_margin", margin)
-                .attr("viewBox", "0 0 " + x + " " + y);
-    }
-});
-
-
 Shiny.addCustomMessageHandler("update_data", function(plot_info) {
     var svg = d3.select("div#plot svg");
     if (svg.empty()) return;
