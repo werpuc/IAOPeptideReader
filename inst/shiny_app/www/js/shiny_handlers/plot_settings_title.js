@@ -1,4 +1,3 @@
-// TODO: center the text.
 Shiny.addCustomMessageHandler("plot_settings_title", function(plot_title_value) {
     var svg = d3.select("div#plot svg");
     if (svg.empty()) return;
@@ -9,6 +8,7 @@ Shiny.addCustomMessageHandler("plot_settings_title", function(plot_title_value) 
         plot_title = svg
             .append("text")
                 .attr("id", "plot_title")
+                .attr("text-anchor", "middle")
                 .attr("x", "50%")
                 .attr("y", svg.attr("_margin") / 2 + "px");
     }

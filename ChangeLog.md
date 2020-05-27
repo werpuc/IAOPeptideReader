@@ -1,3 +1,6 @@
+###### v0.2.24 (2020-05-27):
+ * Centered the plot title.
+
 ###### v0.2.23 (2020-05-27):
  * Reorganized scripts in the `www` subdirectory.
  * Updated **Plot Settings** mapping to include `input_id` provided by hand.
