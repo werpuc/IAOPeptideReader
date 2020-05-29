@@ -94,9 +94,18 @@ input_settings <- function(input, output, session) {
     is_seq_len_ok <- reactive(is_positive_integer(input[["sequence_length"]]))
 
     observe({
+        is_ok <- is_seq_len_ok()
+
         # Sending is_ok to seq_len_check handler which turns on and off the red
         # border around sequence length input. 
-        session$sendCustomMessage("seq_len_check", is_seq_len_ok())
+        session$sendCustomMessage("seq_len_check", is_ok)
+
+        if (is_ok) {
+            session$sendCustomMessage(
+                "update_seq_len",
+                isolate(input[["sequence_length"]])
+            )
+        }
     })
 
 
@@ -165,12 +174,7 @@ input_settings <- function(input, output, session) {
         seq_len <- input[["sequence_length"]]
 
         # TODO: reduce the amount of data sent to JS (Start, End and FileName should suffice).
-        session$sendCustomMessage(
-            "update_data",
-            list(
-                "plot_data" = plot_data[End <= seq_len],
-                "seq_len" = seq_len
-            )
-        )
+        # TODO: where to filter the data? Here or on JS side?
+        session$sendCustomMessage("update_data", plot_data[End <= seq_len])
     })
 }

@@ -6,7 +6,7 @@ let IAOReader = class {
     svg; x_axis; y_axis; lines;
 
     // Axis limits values.
-    x_min; x_max;
+    x_min = 1; x_max;
 
     constructor() {
         var plot_div = d3.select("div#plot");
@@ -63,15 +63,9 @@ let IAOReader = class {
     }
 
 
-    draw_data(plot_info) {
+    draw_data(plot_data) {
         var svg = this.svg;
         var x = svg.attr("_x"), y = svg.attr("_y"), margin = svg.attr("_margin");
-        // Unpacking informations from plot_info JSON.
-        var seq_len = plot_info.seq_len;
-        var plot_data = plot_info.plot_data;
-
-        this.x_min = 1;
-        this.x_max = seq_len;
 
         // Transforming and preparing the data.
         var n = plot_data.Start.length;

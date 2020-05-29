@@ -1,3 +1,6 @@
+###### v0.2.33 (2020-05-29):
+ * Split handler which sent data and seq length into two.
+
 ###### v0.2.32 (2020-05-29):
  * Moved Shiny handlers to a single file.
 

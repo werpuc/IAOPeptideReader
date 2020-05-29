@@ -59,6 +59,7 @@ plot_settings <- function(input, output, session) {
 # Function creating input's server backend.
 plot_settings_input_observer <- function(input, session, input_id) {
     observe({
+        # TODO: remove this.
         # This input call forces the update after the data has been filtered.
         input[["update_plot_settings"]]
 
