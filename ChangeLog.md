@@ -1,3 +1,8 @@
+###### v0.3.7 (2020-05-29):
+ * Parametrized the moved vert in moving functions.
+ * Separated verts_g and vert creation for easier addition of new guides.
+ * Added section headers to the IAOReader class.
+
 ###### v0.3.6 (2020-05-29):
  * Added utility functions for handling vertical guide and mouse.
 

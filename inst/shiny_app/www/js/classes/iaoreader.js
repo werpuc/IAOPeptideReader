@@ -30,32 +30,42 @@ let IAOReader = class {
         this.lines = this.svg.append("g")
             .attr("id", "lines");
 
+        // Creating g tag for all vertical guides.
+        var verts_g = this.svg.append("g")
+            .attr("id", "verts");
+
         // Adding the vertical line and it's g tag.
-        this.vert = this.svg.append("g")
+        this.vert = verts_g.append("line")
             .attr("id", "vert")
-            .append("line")
-                .attr("x1", this.margin)
-                .attr("x2", this.margin)
-                .attr("y1", this.height - this.margin)
-                .attr("y2", this.margin)
-                .style("stroke-width", 2)
-                .style("stroke", "orangered");
+            .attr("x1", this.margin)
+            .attr("x2", this.margin)
+            .attr("y1", this.height - this.margin)
+            .attr("y2", this.margin)
+            .style("stroke-width", 2)
+            .style("stroke", "orangered");
 
         // This mousemove handler makes the vertical guide follow the cursor.
         var self = this;
         this.svg.on("mousemove", function() {
+            if (!self.vert_show) return;
+
             var m = d3.mouse(this);
 
             if (self.mouse_in_svg(m)) {
-                self.move_vert(self.x_min);
+                self.move_vert(self.vert, self.x_min);
                 return;
             }
 
-            self.move_vert_to_mouse(m);
+            self.move_vert_to_mouse(self.vert, m);
         })
 
         this.plot_settings = new PlotSettings(this.svg, this.margin);
     }
+
+
+    /* -------------------------------------------------------------------------
+     * [Getters] Filtering plot data and creating scales
+     * ---------------------------------------------------------------------- */
 
     get plot_data() {
         if (this.plot_data_raw === null) return null;
@@ -80,10 +90,10 @@ let IAOReader = class {
             .range([this.height - this.margin, this.margin]);
     }
 
-    mouse_in_svg(m) {
-        return (m[0] < this.margin || m[0] > this.width - this.margin ||
-                m[1] < this.margin || m[1] > this.height - this.margin)
-    }
+
+    /* -------------------------------------------------------------------------
+     * Drawing plot elements
+     * ---------------------------------------------------------------------- */
 
     update_plot() {
         // This check is performed because some handlers call the update_plot
@@ -119,17 +129,25 @@ let IAOReader = class {
                     .style("stroke", "black");
     }
 
-    move_vert_to_mouse(m) {
-        this.move_vert(this.x_scale.invert(m[0]));
+
+    /* -------------------------------------------------------------------------
+     * Vertical guides handling
+     * ---------------------------------------------------------------------- */
+
+    mouse_in_svg(m) {
+        return (m[0] < this.margin || m[0] > this.width - this.margin ||
+                m[1] < this.margin || m[1] > this.height - this.margin)
     }
 
-    move_vert(x) {
-        if (!this.vert_show) return;
+    move_vert_to_mouse(vert, m) {
+        this.move_vert(vert, this.x_scale.invert(m[0]));
+    }
 
+    move_vert(vert, x) {
         // This round makes the guide snap to integer values on the axis.
         var axis_x = this.x_scale(Math.round(x));
 
-        this.vert
+        vert
             .attr("x1", axis_x)
             .attr("x2", axis_x)
             .style("visibility", "visible");
@@ -137,7 +155,7 @@ let IAOReader = class {
 }
 
 
-// This variable has valueu assigned by Shiny main server function.
+// This variable's value is assigned by Shiny main server function.
 var iaoreader;
 
 //    // Drag 
