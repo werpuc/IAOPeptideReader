@@ -80,6 +80,8 @@ input_settings <- function(input, output, session) {
 
 
     # Max sequence length output -----------------------------------------------
+    # TODO: create a summary which displays maximum seq length for current filtering.
+    # TODO: add similar options for setting sequence start.
     output[["sequence_length_max"]] <- renderText({
         req(any_file_good())
 
@@ -143,7 +145,7 @@ input_settings <- function(input, output, session) {
 
     # Preparing data for the plot ----------------------------------------------
     observe({
-        req(any_file_good(), is_seq_len_ok())
+        req(any_file_good())
 
         res <- list()
         for (sfim in isolate(files_meta())) {
@@ -170,11 +172,7 @@ input_settings <- function(input, output, session) {
             res[[file_name]] <- data_filtered
         }
 
-        plot_data <- unique(rbindlist(res))
-        seq_len <- input[["sequence_length"]]
-
         # TODO: reduce the amount of data sent to JS (Start, End and FileName should suffice).
-        # TODO: where to filter the data? Here or on JS side?
-        session$sendCustomMessage("update_data", plot_data[End <= seq_len])
+        session$sendCustomMessage("update_data", unique(rbindlist(res)))
     })
 }

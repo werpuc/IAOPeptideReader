@@ -19,11 +19,6 @@ Shiny.addCustomMessageHandler("update_data", function(plot_data) {
         }
     ));
     iaoreader.update_plot();
-
-    // TODO: remove this.
-    // This will set input[["update_plot_settings"]] to current timestamp what
-    // will cause all observers including that phrase to recalculate.
-    Shiny.setInputValue("update_plot_settings", Date.now(), null);
 });
 
 

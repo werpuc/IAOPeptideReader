@@ -17,11 +17,7 @@ let IAOReader = class {
 
         // Creating the SVG tag if it does not exist.
         if (svg.empty()) {
-            // TODO: remove redundant parameters
             svg = plot_div.append("svg")
-                .attr("_x", this.width)
-                .attr("_y", this.height)
-                .attr("_margin", this.margin)
                 .attr("viewBox", "0 0 " + this.width + " " + this.height);
         }
         this.svg = svg;
@@ -96,13 +92,15 @@ let IAOReader = class {
 
     draw_lines() {
         // TODO: account for varying number of files (modify colors of lines too).
+        // Note: max and min functions trim the line to not extend over
+        //       the plots edge into the margin.
         this.lines
             .selectAll("line")
                 .data(this.plot_data)
                 .join("line")
-                    .attr("x1", d => this.x_scale(d.Start))
+                    .attr("x1", d => this.x_scale(Math.max(d.Start, this.x_min)))
                     .attr("y1", d => this.y_scale(d.y))
-                    .attr("x2", d => this.x_scale(d.End))
+                    .attr("x2", d => this.x_scale(Math.min(d.End, this.x_max)))
                     .attr("y2", d => this.y_scale(d.y))
                     .style("stroke-width", 2)
                     .style("stroke", "black");
