@@ -1,3 +1,7 @@
+###### v0.3.5 (2020-05-29):
+ * Added `mousemove` handler for the vertical guide.
+ * Renamed `draw_vert` to `move_vert` which is more appropriate.
+
 ###### v0.3.4 (2020-05-29):
  * Added rounding of X value to which the draw_vert method moves the vertical guide.
  * Moved declaration of attributes for the guide to constructor.
@@ -25,7 +29,7 @@
  * Moved IAOReader.plot_data to plot_data_raw and added filtered data as IAOReader.plot_data getter.
 
 ###### v0.2.35 (2020-05-29):
- * Moved plot data transformation to endpoint reponsible for updating it in IAOReader class object.
+ * Moved plot data transformation to endpoint responsible for updating it in IAOReader class object.
 
 ###### v0.2.34 (2020-05-29):
  * The plot data is now stored in the IAOReader object.

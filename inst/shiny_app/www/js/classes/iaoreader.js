@@ -34,10 +34,26 @@ let IAOReader = class {
         this.vert = this.svg.append("g")
             .attr("id", "vert")
             .append("line")
+                .attr("x1", this.margin)
+                .attr("x2", this.margin)
                 .attr("y1", this.height - this.margin)
                 .attr("y2", this.margin)
                 .style("stroke-width", 2)
                 .style("stroke", "orangered");
+
+        // This mousemove handler makes the vertical guide follow the cursor.
+        var self = this;
+        this.svg.on("mousemove", function() {
+            var m = d3.mouse(this);
+
+            if (m[0] < self.margin || m[0] > self.width - self.margin ||
+                m[1] < self.margin || m[1] > self.height - self.margin) {
+                self.move_vert(self.x_min);
+                return;
+            }
+
+            self.move_vert(self.x_scale.invert(m[0]));
+        })
 
         this.plot_settings = new PlotSettings(this.svg, this.margin);
     }
@@ -73,7 +89,6 @@ let IAOReader = class {
         this.draw_x_axis();
         this.draw_y_axis();
         this.draw_lines();
-        this.draw_vert(1);
     }
 
     draw_x_axis() {
@@ -100,7 +115,7 @@ let IAOReader = class {
                     .style("stroke", "black");
     }
 
-    draw_vert(x) {
+    move_vert(x) {
         if (!this.vert_show) return;
 
         // This round makes the guide snap to integer values on the axis.
@@ -108,7 +123,8 @@ let IAOReader = class {
 
         this.vert
             .attr("x1", axis_x)
-            .attr("x2", axis_x);
+            .attr("x2", axis_x)
+            .style("visibility", "visible");
     }
 }
 
@@ -117,12 +133,12 @@ let IAOReader = class {
 var iaoreader;
 
 //    // Drag 
-//    // TODO: on mouseover display vertical line snapping to integer X values.
 //    // TODO: on click keep the vertical line in place (stop displaying mouseover).
 //    // TODO: calculate coverage and lambda_k for mouseover/click line.
 //    // TODO: dragging creates an area for which Lambda_k is calculated.
 //    // TODO: double click clears vertical line and drag area.
 //    // TODO: add hints for the above.
+//    // TODO: color peptides under the vertical guide.
 //
 //    var drag_coords = {start: null, end: null};
 //
