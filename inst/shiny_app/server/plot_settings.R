@@ -8,7 +8,11 @@ plot_settings <- function(input, output, session) {
             list("input_id" = "plot_settings_title_text",
                  "input_type" = "text",
                  "label" = "Plot Title",
-                 "value" = "Peptide Coverage")
+                 "value" = "Peptide Coverage"),
+            list("input_id" = "plot_settings_vert_show",
+                 "input_type" = "checkbox",
+                 "label" = "Show vertical guide on mouseover",
+                 "value" = TRUE)
         )
 
         mapping
@@ -65,7 +69,7 @@ plot_settings_input_observer <- function(input, session, input_id) {
 
 # Function creating input in the UI.
 plot_settings_input <- function(input_type, input_id, label, value) {
-    stopifnot(input_type %in% "text") # TODO: extend if needed.
+    stopifnot(input_type %in% c("text", "checkbox")) # TODO: extend if needed.
 
     input_func_name <- sprintf("%sInput", input_type)
     input_call <- call(input_func_name, input_id, label, value)

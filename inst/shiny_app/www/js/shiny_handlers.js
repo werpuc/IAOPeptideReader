@@ -41,3 +41,11 @@ Shiny.addCustomMessageHandler("seq_len_check", function(is_ok) {
 Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
     iaoreader.plot_settings.title.text(title_text);
 });
+
+
+// [[ Vertical guide ]]
+Shiny.addCustomMessageHandler("plot_settings_vert_show", function(vert_show) {
+    // vert_show attribute prevents the line from showing on draw_vert call.
+    iaoreader.vert_show = vert_show;
+    iaoreader.vert.style("visibility", vert_show ? "visible" : "hidden");
+});

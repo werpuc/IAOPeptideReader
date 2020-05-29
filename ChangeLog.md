@@ -1,3 +1,7 @@
+###### v0.3.2 (2020-05-29):
+ * Added function for drawing vertical guide.
+ * Added plot setting do disable the line.
+
 ###### v0.3.1 (2020-05-29):
  * Fixed the overextending Y axis.
 

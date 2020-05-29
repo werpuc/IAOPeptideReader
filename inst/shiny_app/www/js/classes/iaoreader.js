@@ -3,19 +3,19 @@ let IAOReader = class {
     width = 1280; height = 720; margin = 30;
 
     // Plot elements.
-    svg; x_axis; y_axis; lines;
+    svg; x_axis; y_axis; lines; vert;
 
-    // Axis limits values.
-    x_min = 1; x_max;
+    // Axis limits values and other variables.
+    x_min = 1; x_max; vert_show;
 
     // Data uploaded by the user.
     plot_data_raw = null;
 
     constructor() {
         var plot_div = d3.select("div#plot");
-        var svg = plot_div.select("svg");
 
         // Creating the SVG tag if it does not exist.
+        var svg = plot_div.select("svg");
         if (svg.empty()) {
             svg = plot_div.append("svg")
                 .attr("viewBox", "0 0 " + this.width + " " + this.height);
@@ -47,6 +47,20 @@ let IAOReader = class {
                 .attr("id", "lines");
         }
         this.lines = lines;
+
+        // Adding the vertical line g tag.
+        var vert_g = svg.select("g#vert");
+        if (vert_g.empty()) {
+            vert_g = svg.append("g")
+                .attr("id", "vert");
+        }
+
+        // Adding the vertical line.
+        var vert = vert_g.select("line");
+        if (vert.empty()) {
+            vert = vert_g.append("line")
+        }
+        this.vert = vert;
 
         this.plot_settings = new PlotSettings(svg, this.margin);
     }
@@ -82,6 +96,7 @@ let IAOReader = class {
         this.draw_x_axis();
         this.draw_y_axis();
         this.draw_lines();
+        this.draw_vert(1);
     }
 
     draw_x_axis() {
@@ -106,6 +121,18 @@ let IAOReader = class {
                     .attr("y2", d => this.y_scale(d.y))
                     .style("stroke-width", 2)
                     .style("stroke", "black");
+    }
+
+    draw_vert(x) {
+        if (!this.vert_show) return;
+
+        this.vert
+            .attr("x1", this.x_scale(x))
+            .attr("x2", this.x_scale(x))
+            .attr("y1", this.y_scale(1))
+            .attr("y2", this.y_scale(this.plot_data.length))
+            .style("stroke-width", 2)
+            .style("stroke", "orangered");
     }
 }
 
