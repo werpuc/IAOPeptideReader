@@ -41,6 +41,13 @@ div#plot svg {
     user-select: none;
 }
 
+div#plot g.verts text {
+    font-family: sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-anchor: middle;
+}
+
 /* [[ Data Preview ]] */
 /* selectInput for the file to preview (extending the input to file's name). */
 div#previewed_file div.selectize-control, div#previewed_file div.selectize-dropdown {

@@ -11,6 +11,10 @@ let IAOReader = class {
 
     // Data uploaded by the user.
     plot_data_raw = null;
+    
+    // Verts colors.
+    color_vert = "orangered";
+    color_vert_click = "orange";
 
     constructor() {
         // Creating the SVG tag.
@@ -31,15 +35,21 @@ let IAOReader = class {
         this.lines = this.svg.append("g")
             .attr("id", "lines");
 
-        // Creating g tag and line for mouseover vert.
+        // Creating g tag, line and label for mouseover vert.
         this.vert = this.svg.append("g")
-            .attr("id", "vert");
+            .attr("id", "vert")
+            .attr("class", "verts");
 
         this.vert.append("line")
-            .attr("y1", this.height - this.margin)
+            .attr("y1", this.height - this.margin + 6)
             .attr("y2", this.margin)
             .style("stroke-width", 2)
-            .style("stroke", "orangered");
+            .style("stroke", this.color_vert);
+
+        this.vert.append("text")
+            .attr("y", this.height - this.margin + 6)
+            .attr("dy", "1em")
+            .style("fill", this.color_vert);
 
         // This mousemove handler makes the vertical guide follow the cursor.
         var self = this;
@@ -56,13 +66,16 @@ let IAOReader = class {
             self.move_vert_to_mouse(self.vert, m);
         })
 
-        // Creating g tag and line for click vert.
+        // Creating g tag, line and label for click vert.
         this.vert_click = this.vert.clone(true)
             .attr("id", "vert_click")
             .style("visibility", "hidden");
 
         this.vert_click.select("line")
-            .style("stroke", "orange");
+            .style("stroke", this.color_vert_click);
+
+        this.vert_click.select("text")
+            .style("fill", this.color_vert_click);
 
         // This handler creates persistent guide on click.
         this.svg.on("click", function() {
@@ -166,13 +179,15 @@ let IAOReader = class {
         this.move_vert(vert, this.x_scale.invert(m[0]));
     }
 
-    move_vert(vert, x) {
+    move_vert(vert, x_dest) {
         // This round makes the guide snap to integer values on the axis.
-        var axis_x = this.x_scale(Math.round(x));
+        var x = Math.round(x_dest);
 
         vert
-            .attr("transform", "translate(" + axis_x + ", 0)")
-            .style("visibility", "visible");
+            .attr("transform", "translate(" + this.x_scale(x) + ", 0)")
+            .style("visibility", "visible")
+            .select("text")
+                .text(x);
     }
 }
 

@@ -1,3 +1,7 @@
+###### v0.3.10 (2020-05-29):
+ * Added X axis value labels to vertical guides. Extended them to imitate axis ticks.
+ * Parametrized vertical guides' colors.
+
 ###### v0.3.9 (2020-05-29):
  * Changed the vertical guides to actually be g tags containing lines. This will allow easier addition of labels.
 
