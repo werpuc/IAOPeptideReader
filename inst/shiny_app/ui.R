@@ -19,13 +19,14 @@ ui <- function() {
 
     script_names <- c(
         "d3.min.js",
+        "iaoreader.js",
         "plot.js",
-        "iaoreader.js"
+        "plot_settings.js"
     )
 
     handler_script_names <- c(
         "initialize_iaoreader.js",
-        "plot_settings_title.js",
+        "plot_settings.js",
         "seq_len_check.js"
     )
 

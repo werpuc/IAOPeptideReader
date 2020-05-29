@@ -1,3 +1,8 @@
+###### v0.2.27 (2020-05-29):
+ * Added PlotSettings class for managing configurable plot elements.
+ * Rewritten the plot title to utilize this class.
+ * Moved plot title handler file to `plot_settings.js` due to rather brief nature of the handlers.
+
 ###### v0.2.26 (2020-05-27):
  * Moved the creation of IAOReader class object to a Shiny handler. This way the svg can be created in class' constructor which in turn allows to reduce amount of workarounds.
  * Removed the plot title fix as it is no longer necessary.

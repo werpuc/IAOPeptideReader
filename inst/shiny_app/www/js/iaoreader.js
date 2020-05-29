@@ -17,6 +17,7 @@ let IAOReader = class {
                 .attr("viewBox", "0 0 " + this.width + " " + this.height);
         }
 
+        this.plot_settings = new PlotSettings(svg, this.margin);
         this.svg = svg;
     }
 
