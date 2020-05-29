@@ -3,11 +3,17 @@ let IAOReader = class {
     height = 720;
     margin = 30;
 
+    // Plot elements.
+    svg;
+    x_axis;
+    y_axis;
+    lines;
+
     constructor() {
         var plot_div = d3.select("div#plot");
         var svg = plot_div.select("svg");
 
-        // Creating the SVG if it does not exist.
+        // Creating the SVG tag if it does not exist.
         if (svg.empty()) {
             // TODO: remove redundant parameters
             svg = plot_div.append("svg")
@@ -16,9 +22,35 @@ let IAOReader = class {
                 .attr("_margin", this.margin)
                 .attr("viewBox", "0 0 " + this.width + " " + this.height);
         }
+        this.svg = svg;
+
+        // Creating X axis g tag if it does not exist.
+        var x_axis = svg.select("g#x_axis");
+        if (x_axis.empty()) {
+            x_axis = svg.append("g")
+                .attr("id", "x_axis")
+                .attr("transform", "translate(0, " + (this.height - this.margin) + ")");
+        }
+        this.x_axis = x_axis;
+
+        // Creating Y axis g tag if it does not exist.
+        var y_axis = svg.select("g#y_axis");
+        if (y_axis.empty()) {
+            y_axis = svg.append("g")
+                .attr("id", "y_axis")
+                .attr("transform", "translate(" + this.margin + ", 0)");
+        }
+        this.y_axis = y_axis;
+
+        // Creating lines g tag if it does not exist.
+        var lines = svg.select("g#lines");
+        if (lines.empty()) {
+            lines = svg.append("g")
+                .attr("id", "lines");
+        }
+        this.lines = lines;
 
         this.plot_settings = new PlotSettings(svg, this.margin);
-        this.svg = svg;
     }
 
     draw_data(plot_info) {
@@ -45,36 +77,14 @@ let IAOReader = class {
                 }
             );
 
-
-        // Creating X axis if it does not exist.
-        var g_x_axis = svg.select("g#x_axis");
-        if (g_x_axis.empty()) {
-            g_x_axis = svg
-                .append("g")
-                    .attr("id", "x_axis")
-                    .attr(
-                        "transform",
-                        "translate(0, " + (y - margin) + ")"
-                    );
-        }
-
         var x_scale = d3.scaleLinear()
             .domain([1, seq_len])
             .range([0 + margin, x - margin]);
 
         var x_axis = d3.axisBottom().scale(x_scale);
 
-        g_x_axis.call(x_axis);
+        this.x_axis.call(x_axis);
 
-
-        // Creating Y axis if it does not exist.
-        var g_y_axis = svg.select("g#y_axis");
-        if (g_y_axis.empty()) {
-            g_y_axis = svg
-                .append("g")
-                    .attr("id", "y_axis")
-                    .attr("transform", "translate(" + margin + ", 0)");
-        }
 
         var y_scale = d3.scaleLinear()
             .domain([1, n])
@@ -82,20 +92,11 @@ let IAOReader = class {
 
         var y_axis = d3.axisLeft().scale(y_scale);
 
-        g_y_axis.call(y_axis);
-
-
-        // Creating lines g if it does not exist
-        var g_lines = svg.select("g#lines");
-        if (g_lines.empty()) {
-            g_lines = svg
-                .append("g")
-                    .attr("id", "lines");
-        }
+        this.y_axis.call(y_axis);
 
 
         // Drawing the lines.
-        g_lines
+        this.lines
             .selectAll("line")
                 .data(plot_data_transformed)
                 .join("line")

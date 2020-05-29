@@ -1,3 +1,6 @@
+###### v0.2.30 (2020-05-29):
+ * Moved creation of g tags for X and Y axes and lines to IAOReader constructor.
+
 ###### v0.2.29 (2020-05-29):
  * Moved plot data drawing to IAOReader class.
 
