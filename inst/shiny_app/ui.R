@@ -17,14 +17,17 @@ ui <- function() {
         "HaDeX_theme.css"
     )
 
-    script_names <- c(
+    scripts_names <- c(
         "d3.min.js",
+        "plot.js"
+    )
+
+    class_scripts_names <- c(
         "iaoreader.js",
-        "plot.js",
         "plot_settings.js"
     )
 
-    handler_script_names <- c(
+    handler_scripts_names <- c(
         "initialize_iaoreader.js",
         "plot_settings.js",
         "seq_len_check.js"
@@ -32,8 +35,9 @@ ui <- function() {
 
     fluidPage(
         lapply(css_names, attach_css),
-        lapply(script_names, attach_script),
-        lapply(handler_script_names, attach_script, "www/js/shiny_handlers"),
+        lapply(scripts_names, attach_script),
+        lapply(class_scripts_names, attach_script, "www/js/classes"),
+        lapply(handler_scripts_names, attach_script, "www/js/shiny_handlers"),
         sidebar_panel_ui(),
         main_panel_ui()
     )

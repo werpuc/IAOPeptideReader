@@ -1,3 +1,6 @@
+###### v0.2.28 (2020-05-29):
+ * Created `www/js/classes` directory and adjusted sourcing in `ui.R`.
+
 ###### v0.2.27 (2020-05-29):
  * Added PlotSettings class for managing configurable plot elements.
  * Rewritten the plot title to utilize this class.
