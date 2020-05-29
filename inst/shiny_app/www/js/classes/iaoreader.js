@@ -31,25 +31,15 @@ let IAOReader = class {
         this.lines = this.svg.append("g")
             .attr("id", "lines");
 
-        // Creating g tag for all vertical guides.
-        var verts_g = this.svg.append("g")
-            .attr("id", "verts");
+        // Creating g tag and line for mouseover vert.
+        this.vert = this.svg.append("g")
+            .attr("id", "vert");
 
-        // Adding the vertical line and it's g tag.
-        this.vert = verts_g.append("line")
-            .attr("id", "vert")
-            .attr("x1", this.margin)
-            .attr("x2", this.margin)
+        this.vert.append("line")
             .attr("y1", this.height - this.margin)
             .attr("y2", this.margin)
             .style("stroke-width", 2)
             .style("stroke", "orangered");
-
-        this.vert_click = this.vert.clone(true)
-            .attr("id", "vert_click")
-            .style("stroke-width", 2)
-            .style("stroke", "orange")
-            .style("visibility", "hidden");
 
         // This mousemove handler makes the vertical guide follow the cursor.
         var self = this;
@@ -65,6 +55,14 @@ let IAOReader = class {
 
             self.move_vert_to_mouse(self.vert, m);
         })
+
+        // Creating g tag and line for click vert.
+        this.vert_click = this.vert.clone(true)
+            .attr("id", "vert_click")
+            .style("visibility", "hidden");
+
+        this.vert_click.select("line")
+            .style("stroke", "orange");
 
         // This handler creates persistent guide on click.
         this.svg.on("click", function() {
@@ -173,8 +171,7 @@ let IAOReader = class {
         var axis_x = this.x_scale(Math.round(x));
 
         vert
-            .attr("x1", axis_x)
-            .attr("x2", axis_x)
+            .attr("transform", "translate(" + axis_x + ", 0)")
             .style("visibility", "visible");
     }
 }

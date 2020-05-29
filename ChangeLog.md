@@ -1,3 +1,6 @@
+###### v0.3.9 (2020-05-29):
+ * Changed the vertical guides to actually be g tags containing lines. This will allow easier addition of labels.
+
 ###### v0.3.8 (2020-05-29):
  * Added persistent vertical guide appearing on click.
  * Added removal of the persistent guide on double click.
