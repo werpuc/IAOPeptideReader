@@ -1,3 +1,6 @@
+###### v0.2.29 (2020-05-29):
+ * Moved plot data drawing to IAOReader class.
+
 ###### v0.2.28 (2020-05-29):
  * Created `www/js/classes` directory and adjusted sourcing in `ui.R`.
 
