@@ -19,7 +19,7 @@ ui <- function() {
 
     scripts_names <- c(
         "d3.min.js",
-        "plot.js"
+        "shiny_handlers.js"
     )
 
     class_scripts_names <- c(
@@ -27,17 +27,10 @@ ui <- function() {
         "plot_settings.js"
     )
 
-    handler_scripts_names <- c(
-        "initialize_iaoreader.js",
-        "plot_settings.js",
-        "seq_len_check.js"
-    )
-
     fluidPage(
         lapply(css_names, attach_css),
         lapply(scripts_names, attach_script),
         lapply(class_scripts_names, attach_script, "www/js/classes"),
-        lapply(handler_scripts_names, attach_script, "www/js/shiny_handlers"),
         sidebar_panel_ui(),
         main_panel_ui()
     )

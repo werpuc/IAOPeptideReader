@@ -1,3 +1,6 @@
+###### v0.2.32 (2020-05-29):
+ * Moved Shiny handlers to a single file.
+
 ###### v0.2.31 (2020-05-29):
  * Rewritten x_scale to be created by IAOReader class.
 
