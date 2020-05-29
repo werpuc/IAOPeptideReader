@@ -8,6 +8,9 @@ let IAOReader = class {
     // Axis limits values.
     x_min = 1; x_max;
 
+    // Data uploaded by the user.
+    plot_data = null;
+
     constructor() {
         var plot_div = d3.select("div#plot");
         var svg = plot_div.select("svg");
@@ -52,6 +55,11 @@ let IAOReader = class {
         this.plot_settings = new PlotSettings(svg, this.margin);
     }
 
+    update_plot() {
+        this.draw_x_axis();
+        this.draw_data();
+    }
+
     draw_x_axis() {
         this.x_axis.call(d3.axisBottom().scale(this.x_scale));
     }
@@ -62,11 +70,15 @@ let IAOReader = class {
             .range([this.margin, this.width - this.margin]);
     }
 
+    draw_data() {
+        // This check is performed because some handlers call the update_plot
+        // method before the data is uploaded.
+        if (this.plot_data === null) return;
 
-    draw_data(plot_data) {
         var svg = this.svg;
         var x = svg.attr("_x"), y = svg.attr("_y"), margin = svg.attr("_margin");
 
+        var plot_data = this.plot_data;
         // Transforming and preparing the data.
         var n = plot_data.Start.length;
         // TODO: account for varying number of files (modify colors of lines too).
@@ -82,9 +94,6 @@ let IAOReader = class {
                     }
                 }
             );
-
-        this.draw_x_axis();
-
 
         var y_scale = d3.scaleLinear()
             .domain([1, n])

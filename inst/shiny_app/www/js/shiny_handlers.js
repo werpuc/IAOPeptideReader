@@ -5,12 +5,13 @@ Shiny.addCustomMessageHandler("initialize_iaoreader", function(_) {
 
 Shiny.addCustomMessageHandler("update_seq_len", function(seq_len) {
     iaoreader.x_max = seq_len;
-    iaoreader.draw_x_axis();
+    iaoreader.update_plot();
 });
 
 
 Shiny.addCustomMessageHandler("update_data", function(plot_data) {
-    iaoreader.draw_data(plot_data);
+    iaoreader.plot_data = plot_data;
+    iaoreader.update_plot();
 
     // TODO: remove this.
     // This will set input[["update_plot_settings"]] to current timestamp what

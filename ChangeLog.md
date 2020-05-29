@@ -1,3 +1,6 @@
+###### v0.2.34 (2020-05-29):
+ * The plot data is now stored in the IAOReader object.
+
 ###### v0.2.33 (2020-05-29):
  * Split handler which sent data and seq length into two.
 
