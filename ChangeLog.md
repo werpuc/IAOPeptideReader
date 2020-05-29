@@ -1,3 +1,6 @@
+###### v0.2.31 (2020-05-29):
+ * Rewritten x_scale to be created by IAOReader class.
+
 ###### v0.2.30 (2020-05-29):
  * Moved creation of g tags for X and Y axes and lines to IAOReader constructor.
 

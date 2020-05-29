@@ -1,13 +1,12 @@
 let IAOReader = class {
-    width = 1280;
-    height = 720;
-    margin = 30;
+    // Canvas dimensions.
+    width = 1280; height = 720; margin = 30;
 
     // Plot elements.
-    svg;
-    x_axis;
-    y_axis;
-    lines;
+    svg; x_axis; y_axis; lines;
+
+    // Axis limits values.
+    x_min; x_max;
 
     constructor() {
         var plot_div = d3.select("div#plot");
@@ -53,6 +52,17 @@ let IAOReader = class {
         this.plot_settings = new PlotSettings(svg, this.margin);
     }
 
+    draw_x_axis() {
+        this.x_axis.call(d3.axisBottom().scale(this.x_scale));
+    }
+
+    get x_scale() {
+        return d3.scaleLinear()
+            .domain([this.x_min, this.x_max])
+            .range([this.margin, this.width - this.margin]);
+    }
+
+
     draw_data(plot_info) {
         var svg = this.svg;
         var x = svg.attr("_x"), y = svg.attr("_y"), margin = svg.attr("_margin");
@@ -60,6 +70,8 @@ let IAOReader = class {
         var seq_len = plot_info.seq_len;
         var plot_data = plot_info.plot_data;
 
+        this.x_min = 1;
+        this.x_max = seq_len;
 
         // Transforming and preparing the data.
         var n = plot_data.Start.length;
@@ -77,13 +89,7 @@ let IAOReader = class {
                 }
             );
 
-        var x_scale = d3.scaleLinear()
-            .domain([1, seq_len])
-            .range([0 + margin, x - margin]);
-
-        var x_axis = d3.axisBottom().scale(x_scale);
-
-        this.x_axis.call(x_axis);
+        this.draw_x_axis();
 
 
         var y_scale = d3.scaleLinear()
@@ -100,9 +106,9 @@ let IAOReader = class {
             .selectAll("line")
                 .data(plot_data_transformed)
                 .join("line")
-                    .attr("x1", d => x_scale(d.Start))
+                    .attr("x1", d => this.x_scale(d.Start))
                     .attr("y1", d => y_scale(d.y))
-                    .attr("x2", d => x_scale(d.End))
+                    .attr("x2", d => this.x_scale(d.End))
                     .attr("y2", d => y_scale(d.y))
                     .style("stroke-width", 2)
                     .style("stroke", "black");
