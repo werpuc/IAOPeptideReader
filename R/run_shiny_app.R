@@ -32,7 +32,7 @@ run_shiny_app <- function(port = 8080) {
     #       then the functions imported by the package could not be used within
     #       the application due to the Shiny creating its own namespace.
     #       By sourcing those files all functions imported by the package are
-    #       available withing the application.
+    #       available within the application.
     source(ui_path, local = TRUE, chdir = TRUE)
     source(server_path, local = TRUE, chdir = TRUE)
 

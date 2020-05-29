@@ -1,3 +1,6 @@
+###### v0.3.1 (2020-05-29):
+ * Fixed the overextending Y axis.
+
 ###### v0.3.0 (2020-05-29):
  * Now the plot data is filtered solely by the JS. This marks an end of rewriting old code into proper JS classes.
  * Removed the updater of plot settings as they should be handler properly now.

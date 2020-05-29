@@ -56,8 +56,10 @@ let IAOReader = class {
 
         var self = this;
 
+        // Note: upper limit isn't inclusive due to lines starting at x_max
+        //       were accounted for on Y axis but not actually displayed.
         return this.plot_data_raw
-            .filter(d => (self.x_min <= d.Start && d.Start <= self.x_max));
+            .filter(d => (self.x_min <= d.Start && d.Start < self.x_max));
     }
 
     get x_scale() {
