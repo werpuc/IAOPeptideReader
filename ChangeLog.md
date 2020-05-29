@@ -1,3 +1,7 @@
+###### v0.3.4 (2020-05-29):
+ * Added rounding of X value to which the draw_vert method moves the vertical guide.
+ * Moved declaration of attributes for the guide to constructor.
+
 ###### v0.3.3 (2020-05-29):
  * Cleaned-up JS classes constructors.
 

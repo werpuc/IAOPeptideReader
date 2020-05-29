@@ -33,7 +33,11 @@ let IAOReader = class {
         // Adding the vertical line and it's g tag.
         this.vert = this.svg.append("g")
             .attr("id", "vert")
-            .append("line");
+            .append("line")
+                .attr("y1", this.height - this.margin)
+                .attr("y2", this.margin)
+                .style("stroke-width", 2)
+                .style("stroke", "orangered");
 
         this.plot_settings = new PlotSettings(this.svg, this.margin);
     }
@@ -99,13 +103,12 @@ let IAOReader = class {
     draw_vert(x) {
         if (!this.vert_show) return;
 
+        // This round makes the guide snap to integer values on the axis.
+        var axis_x = this.x_scale(Math.round(x));
+
         this.vert
-            .attr("x1", this.x_scale(x))
-            .attr("x2", this.x_scale(x))
-            .attr("y1", this.y_scale(1))
-            .attr("y2", this.y_scale(this.plot_data.length))
-            .style("stroke-width", 2)
-            .style("stroke", "orangered");
+            .attr("x1", axis_x)
+            .attr("x2", axis_x);
     }
 }
 
