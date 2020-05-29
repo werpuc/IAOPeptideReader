@@ -70,52 +70,43 @@ let IAOReader = class {
             .range([this.margin, this.width - this.margin]);
     }
 
+    get y_scale() {
+        return d3.scaleLinear()
+            .domain([1, this.plot_data.length])
+            .range([this.height - this.margin, this.margin]);
+    }
+
     update_plot() {
+        // This check is performed because some handlers call the update_plot
+        // method before the data is uploaded.
+        if (this.plot_data_raw === null) return;
+
         this.draw_x_axis();
-        this.draw_data();
+        this.draw_y_axis();
+        this.draw_lines();
     }
 
     draw_x_axis() {
         this.x_axis.call(d3.axisBottom().scale(this.x_scale));
     }
 
-    draw_data() {
-        // This check is performed because some handlers call the update_plot
-        // method before the data is uploaded.
-        if (this.plot_data === null) return;
+    draw_y_axis() {
+        this.y_axis.call(d3.axisLeft().scale(this.y_scale));
+    }
 
-        var svg = this.svg;
-        var x = svg.attr("_x"), y = svg.attr("_y"), margin = svg.attr("_margin");
-
-        // Transforming and preparing the data.
-        var n = this.plot_data.length;
-
-        var y_scale = d3.scaleLinear()
-            .domain([1, n])
-            .range([y - margin, 0 + margin]);
-
-        var y_axis = d3.axisLeft().scale(y_scale);
-
-        this.y_axis.call(y_axis);
-
-
-        // Drawing the lines.
+    draw_lines() {
         // TODO: account for varying number of files (modify colors of lines too).
         this.lines
             .selectAll("line")
                 .data(this.plot_data)
                 .join("line")
                     .attr("x1", d => this.x_scale(d.Start))
-                    .attr("y1", d => y_scale(d.y))
+                    .attr("y1", d => this.y_scale(d.y))
                     .attr("x2", d => this.x_scale(d.End))
-                    .attr("y2", d => y_scale(d.y))
+                    .attr("y2", d => this.y_scale(d.y))
                     .style("stroke-width", 2)
                     .style("stroke", "black");
     }
-
-
-    // TODO: add plot settings parameters object.
-    // TODO: move axis creation, scales, max_seq_len etc. to this class.
 }
 
 

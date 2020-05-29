@@ -1,3 +1,8 @@
+###### v0.2.37 (2020-05-29):
+ * Rewritten y_scale to be created by IAOReader class.
+ * Removed redundant variables and attributes.
+ * Updated the checks for whether the data has been already passed to the IAOReader class object.
+
 ###### v0.2.36 (2020-05-29):
  * Moved IAOReader.plot_data to plot_data_raw and added filtered data as IAOReader.plot_data getter.
 
