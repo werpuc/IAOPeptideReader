@@ -1,3 +1,8 @@
+###### v0.3.8 (2020-05-29):
+ * Added persistent vertical guide appearing on click.
+ * Added removal of the persistent guide on double click.
+ * Renamed `mouse_in_svg` function to `mouse_out_of_bonds` to be more descriptive.
+
 ###### v0.3.7 (2020-05-29):
  * Parametrized the moved vert in moving functions.
  * Separated verts_g and vert creation for easier addition of new guides.

@@ -3,7 +3,8 @@ let IAOReader = class {
     width = 1280; height = 720; margin = 30;
 
     // Plot elements.
-    svg; x_axis; y_axis; lines; vert;
+    svg; x_axis; y_axis; lines;
+    vert; vert_click;
 
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show;
@@ -44,6 +45,12 @@ let IAOReader = class {
             .style("stroke-width", 2)
             .style("stroke", "orangered");
 
+        this.vert_click = this.vert.clone(true)
+            .attr("id", "vert_click")
+            .style("stroke-width", 2)
+            .style("stroke", "orange")
+            .style("visibility", "hidden");
+
         // This mousemove handler makes the vertical guide follow the cursor.
         var self = this;
         this.svg.on("mousemove", function() {
@@ -51,12 +58,30 @@ let IAOReader = class {
 
             var m = d3.mouse(this);
 
-            if (self.mouse_in_svg(m)) {
+            if (self.mouse_out_of_bonds(m)) {
                 self.move_vert(self.vert, self.x_min);
                 return;
             }
 
             self.move_vert_to_mouse(self.vert, m);
+        })
+
+        // This handler creates persistent guide on click.
+        this.svg.on("click", function() {
+            var m = d3.mouse(this);
+
+            if (self.mouse_out_of_bonds(m)) return;
+
+            self.move_vert_to_mouse(self.vert_click, m);
+        })
+
+        // This handler clears the persistent guide created on click.
+        this.svg.on("dblclick", function() {
+            var m = d3.mouse(this);
+
+            if (self.mouse_out_of_bonds(m)) return;
+
+            self.vert_click.style("visibility", "hidden");
         })
 
         this.plot_settings = new PlotSettings(this.svg, this.margin);
@@ -134,7 +159,7 @@ let IAOReader = class {
      * Vertical guides handling
      * ---------------------------------------------------------------------- */
 
-    mouse_in_svg(m) {
+    mouse_out_of_bonds(m) {
         return (m[0] < this.margin || m[0] > this.width - this.margin ||
                 m[1] < this.margin || m[1] > this.height - this.margin)
     }
@@ -159,7 +184,6 @@ let IAOReader = class {
 var iaoreader;
 
 //    // Drag 
-//    // TODO: on click keep the vertical line in place (stop displaying mouseover).
 //    // TODO: calculate coverage and lambda_k for mouseover/click line.
 //    // TODO: dragging creates an area for which Lambda_k is calculated.
 //    // TODO: double click clears vertical line and drag area.
