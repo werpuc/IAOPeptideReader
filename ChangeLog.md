@@ -1,3 +1,6 @@
+###### v0.2.35 (2020-05-29):
+ * Moved plot data transformation to endpoint reponsible for updating it in IAOReader class object.
+
 ###### v0.2.34 (2020-05-29):
  * The plot data is now stored in the IAOReader object.
 

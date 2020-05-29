@@ -55,6 +55,12 @@ let IAOReader = class {
         this.plot_settings = new PlotSettings(svg, this.margin);
     }
 
+    get x_scale() {
+        return d3.scaleLinear()
+            .domain([this.x_min, this.x_max])
+            .range([this.margin, this.width - this.margin]);
+    }
+
     update_plot() {
         this.draw_x_axis();
         this.draw_data();
@@ -62,12 +68,6 @@ let IAOReader = class {
 
     draw_x_axis() {
         this.x_axis.call(d3.axisBottom().scale(this.x_scale));
-    }
-
-    get x_scale() {
-        return d3.scaleLinear()
-            .domain([this.x_min, this.x_max])
-            .range([this.margin, this.width - this.margin]);
     }
 
     draw_data() {
@@ -78,22 +78,8 @@ let IAOReader = class {
         var svg = this.svg;
         var x = svg.attr("_x"), y = svg.attr("_y"), margin = svg.attr("_margin");
 
-        var plot_data = this.plot_data;
         // Transforming and preparing the data.
-        var n = plot_data.Start.length;
-        // TODO: account for varying number of files (modify colors of lines too).
-        var plot_data_transformed = d3
-            .range(n)
-            .map(
-                function(i) {
-                    return {
-                        Start: plot_data.Start[i],
-                        End: plot_data.End[i],
-                        FileName: plot_data.FileName[i],
-                        y: i + 1
-                    }
-                }
-            );
+        var n = this.plot_data.length;
 
         var y_scale = d3.scaleLinear()
             .domain([1, n])
@@ -105,9 +91,10 @@ let IAOReader = class {
 
 
         // Drawing the lines.
+        // TODO: account for varying number of files (modify colors of lines too).
         this.lines
             .selectAll("line")
-                .data(plot_data_transformed)
+                .data(this.plot_data)
                 .join("line")
                     .attr("x1", d => this.x_scale(d.Start))
                     .attr("y1", d => y_scale(d.y))
@@ -115,8 +102,6 @@ let IAOReader = class {
                     .attr("y2", d => y_scale(d.y))
                     .style("stroke-width", 2)
                     .style("stroke", "black");
-
-
     }
 
 

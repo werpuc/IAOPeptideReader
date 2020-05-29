@@ -10,7 +10,14 @@ Shiny.addCustomMessageHandler("update_seq_len", function(seq_len) {
 
 
 Shiny.addCustomMessageHandler("update_data", function(plot_data) {
-    iaoreader.plot_data = plot_data;
+    iaoreader.plot_data = d3.range(plot_data.Start.length).map(i => (
+        {
+            Start: plot_data.Start[i],
+            End: plot_data.End[i],
+            FileName: plot_data.FileName[i],
+            y: i + 1
+        }
+    ));
     iaoreader.update_plot();
 
     // TODO: remove this.
