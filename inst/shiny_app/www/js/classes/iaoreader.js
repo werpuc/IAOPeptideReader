@@ -12,57 +12,30 @@ let IAOReader = class {
     plot_data_raw = null;
 
     constructor() {
-        var plot_div = d3.select("div#plot");
+        // Creating the SVG tag.
+        this.svg = d3.select("div#plot").append("svg")
+            .attr("viewBox", "0 0 " + this.width + " " + this.height);
 
-        // Creating the SVG tag if it does not exist.
-        var svg = plot_div.select("svg");
-        if (svg.empty()) {
-            svg = plot_div.append("svg")
-                .attr("viewBox", "0 0 " + this.width + " " + this.height);
-        }
-        this.svg = svg;
+        // Creating X axis g tag.
+        this.x_axis = this.svg.append("g")
+            .attr("id", "x_axis")
+            .attr("transform", "translate(0, " + (this.height - this.margin) + ")");
 
-        // Creating X axis g tag if it does not exist.
-        var x_axis = svg.select("g#x_axis");
-        if (x_axis.empty()) {
-            x_axis = svg.append("g")
-                .attr("id", "x_axis")
-                .attr("transform", "translate(0, " + (this.height - this.margin) + ")");
-        }
-        this.x_axis = x_axis;
+        // Creating Y axis g tag.
+        this.y_axis = this.svg.append("g")
+            .attr("id", "y_axis")
+            .attr("transform", "translate(" + this.margin + ", 0)");
 
-        // Creating Y axis g tag if it does not exist.
-        var y_axis = svg.select("g#y_axis");
-        if (y_axis.empty()) {
-            y_axis = svg.append("g")
-                .attr("id", "y_axis")
-                .attr("transform", "translate(" + this.margin + ", 0)");
-        }
-        this.y_axis = y_axis;
+        // Creating lines g tag.
+        this.lines = this.svg.append("g")
+            .attr("id", "lines");
 
-        // Creating lines g tag if it does not exist.
-        var lines = svg.select("g#lines");
-        if (lines.empty()) {
-            lines = svg.append("g")
-                .attr("id", "lines");
-        }
-        this.lines = lines;
+        // Adding the vertical line and it's g tag.
+        this.vert = this.svg.append("g")
+            .attr("id", "vert")
+            .append("line");
 
-        // Adding the vertical line g tag.
-        var vert_g = svg.select("g#vert");
-        if (vert_g.empty()) {
-            vert_g = svg.append("g")
-                .attr("id", "vert");
-        }
-
-        // Adding the vertical line.
-        var vert = vert_g.select("line");
-        if (vert.empty()) {
-            vert = vert_g.append("line")
-        }
-        this.vert = vert;
-
-        this.plot_settings = new PlotSettings(svg, this.margin);
+        this.plot_settings = new PlotSettings(this.svg, this.margin);
     }
 
     get plot_data() {

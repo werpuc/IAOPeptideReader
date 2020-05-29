@@ -1,3 +1,6 @@
+###### v0.3.3 (2020-05-29):
+ * Cleaned-up JS classes constructors.
+
 ###### v0.3.2 (2020-05-29):
  * Added function for drawing vertical guide.
  * Added plot setting do disable the line.
