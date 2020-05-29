@@ -46,13 +46,12 @@ let IAOReader = class {
         this.svg.on("mousemove", function() {
             var m = d3.mouse(this);
 
-            if (m[0] < self.margin || m[0] > self.width - self.margin ||
-                m[1] < self.margin || m[1] > self.height - self.margin) {
+            if (self.mouse_in_svg(m)) {
                 self.move_vert(self.x_min);
                 return;
             }
 
-            self.move_vert(self.x_scale.invert(m[0]));
+            self.move_vert_to_mouse(m);
         })
 
         this.plot_settings = new PlotSettings(this.svg, this.margin);
@@ -79,6 +78,11 @@ let IAOReader = class {
         return d3.scaleLinear()
             .domain([1, this.plot_data.length])
             .range([this.height - this.margin, this.margin]);
+    }
+
+    mouse_in_svg(m) {
+        return (m[0] < this.margin || m[0] > this.width - this.margin ||
+                m[1] < this.margin || m[1] > this.height - this.margin)
     }
 
     update_plot() {
@@ -113,6 +117,10 @@ let IAOReader = class {
                     .attr("y2", d => this.y_scale(d.y))
                     .style("stroke-width", 2)
                     .style("stroke", "black");
+    }
+
+    move_vert_to_mouse(m) {
+        this.move_vert(this.x_scale.invert(m[0]));
     }
 
     move_vert(x) {

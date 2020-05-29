@@ -1,3 +1,6 @@
+###### v0.3.6 (2020-05-29):
+ * Added utility functions for handling vertical guide and mouse.
+
 ###### v0.3.5 (2020-05-29):
  * Added `mousemove` handler for the vertical guide.
  * Renamed `draw_vert` to `move_vert` which is more appropriate.
