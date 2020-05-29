@@ -9,7 +9,7 @@ let IAOReader = class {
     x_min = 1; x_max;
 
     // Data uploaded by the user.
-    plot_data = null;
+    plot_data_raw = null;
 
     constructor() {
         var plot_div = d3.select("div#plot");
@@ -53,6 +53,15 @@ let IAOReader = class {
         this.lines = lines;
 
         this.plot_settings = new PlotSettings(svg, this.margin);
+    }
+
+    get plot_data() {
+        if (this.plot_data_raw === null) return null;
+
+        var self = this;
+
+        return this.plot_data_raw
+            .filter(d => (self.x_min <= d.Start && d.Start <= self.x_max));
     }
 
     get x_scale() {

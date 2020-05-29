@@ -10,7 +10,7 @@ Shiny.addCustomMessageHandler("update_seq_len", function(seq_len) {
 
 
 Shiny.addCustomMessageHandler("update_data", function(plot_data) {
-    iaoreader.plot_data = d3.range(plot_data.Start.length).map(i => (
+    iaoreader.plot_data_raw = d3.range(plot_data.Start.length).map(i => (
         {
             Start: plot_data.Start[i],
             End: plot_data.End[i],

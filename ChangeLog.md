@@ -1,3 +1,6 @@
+###### v0.2.36 (2020-05-29):
+ * Moved IAOReader.plot_data to plot_data_raw and added filtered data as IAOReader.plot_data getter.
+
 ###### v0.2.35 (2020-05-29):
  * Moved plot data transformation to endpoint reponsible for updating it in IAOReader class object.
 
