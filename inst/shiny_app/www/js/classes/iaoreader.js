@@ -70,6 +70,19 @@ let IAOReader = class {
             self.move_vert(self.vert, x);
         })
 
+        // This handler resets position of vert. This is particularly useful
+        // for a case when user moves mouse outside the plot after pressing
+        // mouse wheel and scrolling out.
+        this.svg.on("mouseout", function() {
+            if (!self.vert_show) return;
+
+            // This check prevents tearing and lagging of the mousemove handler.
+            if (!self.mouse_out_of_bonds(d3.mouse(this))) return;
+
+            self.unmark_lines(self.vert_mark);
+            self.move_vert(self.vert, self.x_min);
+        })
+
         // Creating g tag, line and label for click vert.
         this.vert_click = this.vert.clone(true)
             .attr("id", "vert_click")
@@ -225,6 +238,7 @@ var iaoreader;
 //    // TODO: double click clears vertical line and drag area.
 //    // TODO: add hints for the above.
 //    // TODO: color peptides under the vertical guide.
+//    // TODO: reset mouseover vert position on window enter (?) to reset it after alt-tabbing into the app.
 //
 //    var drag_coords = {start: null, end: null};
 //

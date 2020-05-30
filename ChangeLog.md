@@ -1,3 +1,6 @@
+###### v0.3.16 (2020-05-30):
+ * Added handler for resetting the mouseover vertical guide on svg mouse exit.
+
 ###### v0.3.15 (2020-05-30):
  * Added coloring lines to the persistent vertical guide.
 
