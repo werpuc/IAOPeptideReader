@@ -1,3 +1,6 @@
+###### v0.3.19 (2020-05-31):
+ * Added resetting of the guides to their initial state on data redraw.
+
 ###### v0.3.18 (2020-05-31):
  * Added a plot settings to toggle line marking by the vertical guides.
 

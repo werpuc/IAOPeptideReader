@@ -15,7 +15,7 @@ plot_settings <- function(input, output, session) {
                  "value" = TRUE),
             list("input_id" = "plot_settings_allow_verts_marking",
                  "input_type" = "checkbox",
-                 "label" = "Color lines under the vertical guides",
+                 "label" = "Color lines crossing the vertical guides",
                  "value" = TRUE)
         )
 

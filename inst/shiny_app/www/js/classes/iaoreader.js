@@ -161,7 +161,13 @@ let IAOReader = class {
         this.draw_x_axis();
         this.draw_y_axis();
         this.draw_lines();
+
+        // Resetting verts to their default states.
+        this.unmark_lines(this.vert_mark);
         this.move_vert(this.vert, this.x_min);
+
+        this.unmark_lines(this.vert_click_mark);
+        this.vert_click.style("visibility", "hidden");
     }
 
     draw_x_axis() {
@@ -187,6 +193,11 @@ let IAOReader = class {
                     .style("stroke-width", 2)
                     .style("stroke", "black");
     }
+
+
+    /* -------------------------------------------------------------------------
+     * Lines coloring
+     * ---------------------------------------------------------------------- */
 
     mark_lines(x_dest, class_name, remove = false) {
         var lines = this.lines.selectAll("line");
@@ -241,7 +252,6 @@ var iaoreader;
 //    // TODO: dragging creates an area for which Lambda_k is calculated.
 //    // TODO: double click clears vertical line and drag area.
 //    // TODO: add hints for the above.
-//    // TODO: color peptides under the vertical guide.
 //    // TODO: reset mouseover vert position on window enter (?) to reset it after alt-tabbing into the app.
 //
 //    var drag_coords = {start: null, end: null};
