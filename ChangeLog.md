@@ -1,3 +1,6 @@
+###### v0.3.17 (2020-05-30):
+ * Added "snapping" to the `mark_lines` method effectively fixing lines not being marked although the vert was overlapping given line.
+
 ###### v0.3.16 (2020-05-30):
  * Added handler for resetting the mouseover vertical guide on svg mouse exit.
 

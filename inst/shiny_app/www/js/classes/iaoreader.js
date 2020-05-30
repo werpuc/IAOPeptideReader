@@ -188,12 +188,15 @@ let IAOReader = class {
                     .style("stroke", "black");
     }
 
-    mark_lines(x, class_name, remove = false) {
+    mark_lines(x_dest, class_name, remove = false) {
         var lines = this.lines.selectAll("line");
 
         lines.nodes().forEach(d => d.classList.remove(class_name));
 
         if (!remove) {
+            // This round makes the guide snap to integer values on the axis.
+            var x = Math.round(x_dest);
+
             lines.filter(d => d.Start <= x && x <= d.End).nodes()
                 .forEach(d => d.classList.add(class_name));
         }
@@ -213,6 +216,7 @@ let IAOReader = class {
                 m[1] < this.margin.top || m[1] > this.height - this.margin.bottom)
     }
 
+    // TODO: remove if unused.
     move_vert_to_mouse(vert, m) {
         this.move_vert(vert, this.x_scale.invert(m[0]));
     }
