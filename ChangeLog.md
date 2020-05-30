@@ -1,3 +1,8 @@
+###### v0.3.14 (2020-05-30):
+ * Added coloring lines under the mouseover vertical guide.
+ * Added unmark_lines function.
+ * Removed changing `visibility` to `visible` on every `move_vert` call.
+
 ###### v0.3.13 (2020-05-30):
  * Changed single value margin to a separate value for each side.
 

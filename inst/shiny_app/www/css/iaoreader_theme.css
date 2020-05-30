@@ -53,6 +53,10 @@ div#plot g.verts text {
     text-anchor: middle;
 }
 
+div#plot g#lines line.vert-mark {
+    stroke: var(--plot-color-vert) !important;
+}
+
 /* [[ Data Preview ]] */
 /* selectInput for the file to preview (extending the input to file's name). */
 div#previewed_file div.selectize-control, div#previewed_file div.selectize-dropdown {

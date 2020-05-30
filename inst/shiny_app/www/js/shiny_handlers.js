@@ -48,4 +48,5 @@ Shiny.addCustomMessageHandler("plot_settings_vert_show", function(vert_show) {
     // vert_show attribute is tracked by the mousemove handler.
     iaoreader.vert_show = vert_show;
     iaoreader.vert.style("visibility", vert_show ? "visible" : "hidden");
+    iaoreader.unmark_lines("vert-mark");
 });

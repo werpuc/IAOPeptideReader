@@ -7,6 +7,9 @@ let IAOReader = class {
     svg; x_axis; y_axis; lines;
     vert; vert_click;
 
+    // Vertical guides mark class names.
+    vert_mark = "vert-mark";
+
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show;
 
@@ -56,11 +59,15 @@ let IAOReader = class {
             var m = d3.mouse(this);
 
             if (self.mouse_out_of_bonds(m)) {
+                self.unmark_lines(self.vert_mark);
                 self.move_vert(self.vert, self.x_min);
                 return;
             }
 
-            self.move_vert_to_mouse(self.vert, m);
+            var x = self.x_scale.invert(m[0]);
+
+            self.mark_lines(x, self.vert_mark);
+            self.move_vert(self.vert, x);
         })
 
         // Creating g tag, line and label for click vert.
@@ -174,6 +181,10 @@ let IAOReader = class {
         }
     }
 
+    unmark_lines(class_name) {
+        this.mark_lines(null, class_name, true);
+    }
+
 
     /* -------------------------------------------------------------------------
      * Vertical guides handling
@@ -194,7 +205,6 @@ let IAOReader = class {
 
         vert
             .attr("transform", "translate(" + this.x_scale(x) + ", 0)")
-            .style("visibility", "visible")
             .select("text")
                 .text(x);
     }
