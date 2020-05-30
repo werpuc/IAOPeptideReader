@@ -53,11 +53,11 @@ div#plot g.verts text {
     text-anchor: middle;
 }
 
-div#plot g#lines line.vert-mark {
+div#plot g#lines.allow-verts-marking line.vert-mark {
     stroke: var(--plot-color-vert) !important;
 }
 
-div#plot g#lines line.vert-click-mark:not(.vert-mark) {
+div#plot g#lines.allow-verts-marking line.vert-click-mark:not(.vert-mark) {
     stroke: var(--plot-color-vert-click) !important;
 }
 

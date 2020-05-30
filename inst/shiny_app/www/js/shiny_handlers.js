@@ -50,3 +50,14 @@ Shiny.addCustomMessageHandler("plot_settings_vert_show", function(vert_show) {
     iaoreader.vert.style("visibility", vert_show ? "visible" : "hidden");
     iaoreader.unmark_lines("vert-mark");
 });
+
+Shiny.addCustomMessageHandler("plot_settings_allow_verts_marking", function(allow_marking) {
+    var cl = iaoreader.lines.node().classList;
+
+    if (allow_marking) {
+        cl.add("allow-verts-marking");
+        return
+    }
+
+    cl.remove("allow-verts-marking");
+});

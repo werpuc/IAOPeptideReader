@@ -12,6 +12,10 @@ plot_settings <- function(input, output, session) {
             list("input_id" = "plot_settings_vert_show",
                  "input_type" = "checkbox",
                  "label" = "Show vertical guide on mouseover",
+                 "value" = TRUE),
+            list("input_id" = "plot_settings_allow_verts_marking",
+                 "input_type" = "checkbox",
+                 "label" = "Color lines under the vertical guides",
                  "value" = TRUE)
         )
 

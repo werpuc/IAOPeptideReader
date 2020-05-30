@@ -1,3 +1,6 @@
+###### v0.3.18 (2020-05-31):
+ * Added a plot settings to toggle line marking by the vertical guides.
+
 ###### v0.3.17 (2020-05-30):
  * Added "snapping" to the `mark_lines` method effectively fixing lines not being marked although the vert was overlapping given line.
 
