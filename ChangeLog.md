@@ -1,3 +1,7 @@
+###### v0.3.12 (2020-05-30):
+ * Moved vertical guides colors to CSS variables.
+ * Fixed starting position of the mouseover vert.
+
 ###### v0.3.11 (2020-05-30):
  * Added function for adding class to lines.
 

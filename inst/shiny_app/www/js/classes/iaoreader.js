@@ -12,10 +12,6 @@ let IAOReader = class {
     // Data uploaded by the user.
     plot_data_raw = null;
     
-    // Verts colors.
-    color_vert = "orangered";
-    color_vert_click = "orange";
-
     constructor() {
         // Creating the SVG tag.
         this.svg = d3.select("div#plot").append("svg")
@@ -44,12 +40,12 @@ let IAOReader = class {
             .attr("y1", this.height - this.margin + 6)
             .attr("y2", this.margin)
             .style("stroke-width", 2)
-            .style("stroke", this.color_vert);
+            .style("stroke", "var(--plot-color-vert)");
 
         this.vert.append("text")
             .attr("y", this.height - this.margin + 6)
             .attr("dy", "1em")
-            .style("fill", this.color_vert);
+            .style("fill", "var(--plot-color-vert)");
 
         // This mousemove handler makes the vertical guide follow the cursor.
         var self = this;
@@ -72,10 +68,10 @@ let IAOReader = class {
             .style("visibility", "hidden");
 
         this.vert_click.select("line")
-            .style("stroke", this.color_vert_click);
+            .style("stroke", "var(--plot-color-vert-click)");
 
         this.vert_click.select("text")
-            .style("fill", this.color_vert_click);
+            .style("fill", "var(--plot-color-vert-click)");
 
         // This handler creates persistent guide on click.
         this.svg.on("click", function() {
@@ -139,6 +135,7 @@ let IAOReader = class {
         this.draw_x_axis();
         this.draw_y_axis();
         this.draw_lines();
+        this.move_vert(this.vert, this.x_min);
     }
 
     draw_x_axis() {

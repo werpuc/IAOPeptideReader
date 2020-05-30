@@ -45,7 +45,7 @@ Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
 
 // [[ Vertical guide ]]
 Shiny.addCustomMessageHandler("plot_settings_vert_show", function(vert_show) {
-    // vert_show attribute prevents the line from showing on draw_vert call.
+    // vert_show attribute is tracked by the mousemove handler.
     iaoreader.vert_show = vert_show;
     iaoreader.vert.style("visibility", vert_show ? "visible" : "hidden");
 });

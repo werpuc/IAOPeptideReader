@@ -37,6 +37,11 @@ p.no_good_file {
 }
 
 /* [[ Plot ]] */
+:root {
+    --plot-color-vert: orangered;
+    --plot-color-vert-click: orange;
+}
+
 div#plot svg {
     user-select: none;
 }
