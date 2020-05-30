@@ -10,6 +10,6 @@ let PlotSettings = class {
             .attr("id", "plot_title")
             .attr("text-anchor", "middle")
             .attr("x", "50%")
-            .attr("y", margin / 2 + "px");
+            .attr("y", margin.top / 2 + "px");
     }
 }

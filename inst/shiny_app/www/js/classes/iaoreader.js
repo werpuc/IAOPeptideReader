@@ -1,6 +1,7 @@
 let IAOReader = class {
     // Canvas dimensions.
-    width = 1280; height = 720; margin = 30;
+    width = 1280; height = 720;
+    margin = { top: 30, right: 30, bottom: 30, left: 30 };
 
     // Plot elements.
     svg; x_axis; y_axis; lines;
@@ -20,12 +21,12 @@ let IAOReader = class {
         // Creating X axis g tag.
         this.x_axis = this.svg.append("g")
             .attr("id", "x_axis")
-            .attr("transform", "translate(0, " + (this.height - this.margin) + ")");
+            .attr("transform", "translate(0, " + (this.height - this.margin.bottom) + ")");
 
         // Creating Y axis g tag.
         this.y_axis = this.svg.append("g")
             .attr("id", "y_axis")
-            .attr("transform", "translate(" + this.margin + ", 0)");
+            .attr("transform", "translate(" + this.margin.left + ", 0)");
 
         // Creating lines g tag.
         this.lines = this.svg.append("g")
@@ -37,13 +38,13 @@ let IAOReader = class {
             .attr("class", "verts");
 
         this.vert.append("line")
-            .attr("y1", this.height - this.margin + 6)
-            .attr("y2", this.margin)
+            .attr("y1", this.height - this.margin.bottom + 6)
+            .attr("y2", this.margin.top)
             .style("stroke-width", 2)
             .style("stroke", "var(--plot-color-vert)");
 
         this.vert.append("text")
-            .attr("y", this.height - this.margin + 6)
+            .attr("y", this.height - this.margin.bottom + 6)
             .attr("dy", "1em")
             .style("fill", "var(--plot-color-vert)");
 
@@ -113,13 +114,13 @@ let IAOReader = class {
     get x_scale() {
         return d3.scaleLinear()
             .domain([this.x_min, this.x_max])
-            .range([this.margin, this.width - this.margin]);
+            .range([this.margin.left, this.width - this.margin.right]);
     }
 
     get y_scale() {
         return d3.scaleLinear()
             .domain([1, this.plot_data.length])
-            .range([this.height - this.margin, this.margin]);
+            .range([this.height - this.margin.bottom, this.margin.top]);
     }
 
 
@@ -179,8 +180,8 @@ let IAOReader = class {
      * ---------------------------------------------------------------------- */
 
     mouse_out_of_bonds(m) {
-        return (m[0] < this.margin || m[0] > this.width - this.margin ||
-                m[1] < this.margin || m[1] > this.height - this.margin)
+        return (m[0] < this.margin.left || m[0] > this.width - this.margin.right ||
+                m[1] < this.margin.top || m[1] > this.height - this.margin.bottom)
     }
 
     move_vert_to_mouse(vert, m) {

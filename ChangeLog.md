@@ -1,3 +1,6 @@
+###### v0.3.13 (2020-05-30):
+ * Changed single value margin to a separate value for each side.
+
 ###### v0.3.12 (2020-05-30):
  * Moved vertical guides colors to CSS variables.
  * Fixed starting position of the mouseover vert.
