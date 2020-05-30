@@ -1,3 +1,6 @@
+###### v0.3.15 (2020-05-30):
+ * Added coloring lines to the persistent vertical guide.
+
 ###### v0.3.14 (2020-05-30):
  * Added coloring lines under the mouseover vertical guide.
  * Added unmark_lines function.

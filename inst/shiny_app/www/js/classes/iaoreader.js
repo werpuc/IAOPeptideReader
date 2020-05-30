@@ -8,7 +8,7 @@ let IAOReader = class {
     vert; vert_click;
 
     // Vertical guides mark class names.
-    vert_mark = "vert-mark";
+    vert_mark = "vert-mark"; vert_click_mark = "vert-click-mark";
 
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show;
@@ -87,7 +87,11 @@ let IAOReader = class {
 
             if (self.mouse_out_of_bonds(m)) return;
 
-            self.move_vert_to_mouse(self.vert_click, m);
+            var x = self.x_scale.invert(m[0]);
+
+            self.mark_lines(x, self.vert_click_mark);
+            self.move_vert(self.vert_click, x);
+            self.vert_click.style("visibility", "visible");
         })
 
         // This handler clears the persistent guide created on click.
@@ -96,6 +100,7 @@ let IAOReader = class {
 
             if (self.mouse_out_of_bonds(m)) return;
 
+            self.unmark_lines(self.vert_click_mark);
             self.vert_click.style("visibility", "hidden");
         })
 

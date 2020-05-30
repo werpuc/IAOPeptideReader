@@ -57,6 +57,10 @@ div#plot g#lines line.vert-mark {
     stroke: var(--plot-color-vert) !important;
 }
 
+div#plot g#lines line.vert-click-mark:not(.vert-mark) {
+    stroke: var(--plot-color-vert-click) !important;
+}
+
 /* [[ Data Preview ]] */
 /* selectInput for the file to preview (extending the input to file's name). */
 div#previewed_file div.selectize-control, div#previewed_file div.selectize-dropdown {
