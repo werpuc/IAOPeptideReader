@@ -9,13 +9,14 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "text",
                  "label" = "Plot Title",
                  "value" = "Peptide Coverage"),
+            h5("Vertical guides"),
             list("input_id" = "plot_settings_vert_show",
                  "input_type" = "checkbox",
-                 "label" = "Show vertical guide on mouseover",
+                 "label" = "Show guide on mouseover",
                  "value" = TRUE),
             list("input_id" = "plot_settings_allow_verts_marking",
                  "input_type" = "checkbox",
-                 "label" = "Color lines crossing the vertical guides",
+                 "label" = "Color lines crossing the guides",
                  "value" = TRUE)
         )
 
@@ -28,6 +29,7 @@ plot_settings <- function(input, output, session) {
         lapply(
             plot_settings_input_mapping(),
             function(meta) {
+                if (!is_plot_settings_meta(meta)) return(meta)
                 # Server
                 plot_settings_input_observer(input, session, meta[["input_id"]])
 
@@ -79,4 +81,9 @@ plot_settings_input <- function(input_type, input_id, label, value) {
     input_call <- call(input_func_name, input_id, label, value)
 
     eval(input_call)
+}
+
+is_plot_settings_meta <- function(meta) {
+    req_names <- c("input_id", "input_type", "label", "value")
+    setequal(names(meta), req_names)
 }

@@ -1,3 +1,7 @@
+###### v0.4.0 (2020-05-31):
+ * This version has functional vertical guides (mouseover and on click).
+ * Extended the plot settings generation interface to allow addition of manual shiny elements.
+
 ###### v0.3.19 (2020-05-31):
  * Added resetting of the guides to their initial state on data redraw.
 
