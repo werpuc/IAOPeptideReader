@@ -165,6 +165,17 @@ let IAOReader = class {
                     .style("stroke", "black");
     }
 
+    mark_lines(x, class_name, remove = false) {
+        var lines = this.lines.selectAll("line");
+
+        lines.nodes().forEach(d => d.classList.remove(class_name));
+
+        if (!remove) {
+            lines.filter(d => d.Start <= x && x <= d.End).nodes()
+                .forEach(d => d.classList.add(class_name));
+        }
+    }
+
 
     /* -------------------------------------------------------------------------
      * Vertical guides handling

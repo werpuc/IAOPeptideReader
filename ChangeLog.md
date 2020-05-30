@@ -1,3 +1,6 @@
+###### v0.3.11 (2020-05-30):
+ * Added function for adding class to lines.
+
 ###### v0.3.10 (2020-05-29):
  * Added X axis value labels to vertical guides. Extended them to imitate axis ticks.
  * Parametrized vertical guides' colors.
