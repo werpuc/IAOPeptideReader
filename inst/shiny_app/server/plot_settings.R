@@ -51,6 +51,8 @@ plot_settings <- function(input, output, session) {
         lapply(
             plot_settings_input_mapping(),
             function(meta) {
+                if (!is_plot_settings_meta(meta)) return()
+
                 input_type <- meta[["input_type"]]
                 substr(input_type, 1, 1) <- toupper(substr(input_type, 1, 1))
 

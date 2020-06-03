@@ -1,3 +1,6 @@
+###### v0.4.1 (2020-06-03):
+ * Fixed the Plot Settings Reset button. It no longer tries to reset objects which are not meta elements.
+
 ###### v0.4.0 (2020-05-31):
  * This version has functional vertical guides (mouseover and on click).
  * Extended the plot settings generation interface to allow addition of manual shiny elements.
