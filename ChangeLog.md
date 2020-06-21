@@ -1,3 +1,6 @@
+###### v0.4.3 (2020-06-21):
+ * Fixed y axis value calculation by moving it to data filtering.
+
 ###### v0.4.2 (2020-06-21):
  * Added lines coloring by file.
 

@@ -17,8 +17,7 @@ Shiny.addCustomMessageHandler("update_data", function(plot_data) {
             Start: plot_data.Start[i],
             End: plot_data.End[i],
             FileName: plot_data.FileName[i],
-            ColorId: plot_data.FileName[i] != plot_data.FileName[i - 1] ? ++color_id : color_id,
-            y: i + 1
+            ColorId: plot_data.FileName[i] != plot_data.FileName[i - 1] ? ++color_id : color_id
         }
     ));
 

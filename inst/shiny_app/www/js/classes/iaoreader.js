@@ -136,7 +136,11 @@ let IAOReader = class {
         // Note: upper limit isn't inclusive due to lines starting at x_max
         //       were accounted for on Y axis but not actually displayed.
         return this.plot_data_raw
-            .filter(d => (self.x_min <= d.Start && d.Start < self.x_max));
+            .filter(d => (self.x_min <= d.Start && d.Start < self.x_max))
+            .map(function(d, i) {
+                d["y"] = i + 1;
+                return d;
+            });
     }
 
     get x_scale() {
@@ -182,7 +186,6 @@ let IAOReader = class {
     }
 
     draw_lines() {
-        // TODO: account for varying number of files (modify colors of lines too).
         // Note: max and min functions trim the line to not extend over
         //       the plots edge into the margin.
         this.lines
