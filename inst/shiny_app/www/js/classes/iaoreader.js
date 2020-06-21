@@ -15,6 +15,9 @@ let IAOReader = class {
 
     // Data uploaded by the user.
     plot_data_raw = null;
+
+    // Color pallete for files.
+    color_palette = ["green", "blue", "yellow"];
     
     constructor() {
         // Creating the SVG tag.
@@ -191,7 +194,7 @@ let IAOReader = class {
                     .attr("x2", d => this.x_scale(Math.min(d.End, this.x_max)))
                     .attr("y2", d => this.y_scale(d.y))
                     .style("stroke-width", 2)
-                    .style("stroke", "black");
+                    .style("stroke", d => this.file_color(d.ColorId));
     }
 
 
@@ -215,6 +218,10 @@ let IAOReader = class {
 
     unmark_lines(class_name) {
         this.mark_lines(null, class_name, true);
+    }
+    
+    file_color(i) {
+        return this.color_palette[i % this.color_palette.length];
     }
 
 

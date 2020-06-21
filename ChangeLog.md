@@ -1,3 +1,6 @@
+###### v0.4.2 (2020-06-21):
+ * Added lines coloring by file.
+
 ###### v0.4.1 (2020-06-03):
  * Fixed the Plot Settings Reset button. It no longer tries to reset objects which are not meta elements.
 
