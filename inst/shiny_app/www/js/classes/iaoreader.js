@@ -14,7 +14,7 @@ let IAOReader = class {
     x_min = 1; x_max; vert_show;
 
     // Data uploaded by the user.
-    plot_data_raw = null; file_names = null;
+    plot_data_raw = null; plot_data = null; file_names = null;
 
     // Color pallete for files.
     color_palette = ["green", "blue", "yellow"];
@@ -150,25 +150,25 @@ let IAOReader = class {
         this.file_names = file_names;
     }
 
-
-    /* -------------------------------------------------------------------------
-     * [Getters] Filtering plot data and creating scales
-     * ---------------------------------------------------------------------- */
-
-    get plot_data() {
+    filter_data() {
         if (this.plot_data_raw === null) return null;
-
+        
         var self = this;
 
         // Note: upper limit isn't inclusive due to lines starting at x_max
         //       were accounted for on Y axis but not actually displayed.
-        return this.plot_data_raw
+        this.plot_data = this.plot_data_raw
             .filter(d => (self.x_min <= d.Start && d.Start < self.x_max))
             .map(function(d, i) {
                 d["y"] = i + 1;
                 return d;
             });
     }
+
+
+    /* -------------------------------------------------------------------------
+     * [Getters] Filtering plot data and creating scales
+     * ---------------------------------------------------------------------- */
 
     get x_scale() {
         return d3.scaleLinear()
@@ -191,6 +191,8 @@ let IAOReader = class {
         // This check is performed because some handlers call the update_plot
         // method before the data is uploaded.
         if (this.plot_data_raw === null) return;
+
+        this.filter_data();
 
         this.draw_x_axis();
         this.draw_y_axis();

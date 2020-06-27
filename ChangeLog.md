@@ -1,3 +1,6 @@
+###### v0.4.5 (2020-06-27):
+ * Reorganised data flow in IAOReader. Now the data is filtered only once every plot redraw.
+
 ###### v0.4.4 (2020-06-27):
  * Moved the data preparation to IAOReader class method.
 
