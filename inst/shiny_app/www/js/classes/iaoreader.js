@@ -14,7 +14,7 @@ let IAOReader = class {
     x_min = 1; x_max; vert_show;
 
     // Data uploaded by the user.
-    plot_data_raw = null;
+    plot_data_raw = null; file_names = null;
 
     // Color pallete for files.
     color_palette = ["green", "blue", "yellow"];
@@ -121,6 +121,33 @@ let IAOReader = class {
         })
 
         this.plot_settings = new PlotSettings(this.svg, this.margin);
+    }
+
+    /* -------------------------------------------------------------------------
+     * Data handling
+     * ---------------------------------------------------------------------- */
+
+    // This function assumes that plot_data is a JSON with three fields: Start,
+    // End, and FileName.
+    update_plot_data(plot_data) {
+        var file_names = [];
+
+        this.plot_data_raw = d3.range(plot_data.Start.length).map(function(i) {
+            var file_name = plot_data.FileName[i];
+
+            if (file_name != plot_data.FileName[i - 1]) {
+                file_names.push(file_name);
+            };
+
+            return {
+                Start: plot_data.Start[i],
+                End: plot_data.End[i],
+                FileName: file_name,
+                ColorId: file_names.length
+            }
+        });
+
+        this.file_names = file_names;
     }
 
 

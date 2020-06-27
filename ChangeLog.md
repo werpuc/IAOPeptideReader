@@ -1,3 +1,6 @@
+###### v0.4.4 (2020-06-27):
+ * Moved the data preparation to IAOReader class method.
+
 ###### v0.4.3 (2020-06-21):
  * Fixed y axis value calculation by moving it to data filtering.
 

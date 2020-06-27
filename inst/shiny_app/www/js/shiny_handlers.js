@@ -10,17 +10,7 @@ Shiny.addCustomMessageHandler("update_seq_len", function(seq_len) {
 
 
 Shiny.addCustomMessageHandler("update_data", function(plot_data) {
-    var color_id = 0;
-
-    iaoreader.plot_data_raw = d3.range(plot_data.Start.length).map(i => (
-        {
-            Start: plot_data.Start[i],
-            End: plot_data.End[i],
-            FileName: plot_data.FileName[i],
-            ColorId: plot_data.FileName[i] != plot_data.FileName[i - 1] ? ++color_id : color_id
-        }
-    ));
-
+    iaoreader.update_plot_data(plot_data)
     iaoreader.update_plot();
 });
 
