@@ -32,6 +32,8 @@ input_settings <- function(input, output, session) {
     
     observeEvent(input[["files_upload"]], {
         file_input_meta <- input[["files_upload"]]
+        # TODO: remove after development.
+        if (file_input_meta == -1) file_input_meta <- prop_fim()
         req(file_input_meta)
 
         input_settings_rv[["fm"]] <- list()
@@ -175,4 +177,19 @@ input_settings <- function(input, output, session) {
         # TODO: reduce the amount of data sent to JS (Start, End and FileName should suffice).
         session$sendCustomMessage("update_data", unique(rbindlist(res)))
     })
+}
+
+
+# TODO: remove after development.
+prop_fim <- function() {
+    file_names <- c(
+        sprintf("example_data%d.csv", 1:2),
+        sprintf("incorrect_data%d.csv", 1:3)
+    )
+
+    data.frame(
+        "name" = file_names,
+        "datapath" = paste0("./dev/data/",  file_names), 
+        stringsAsFactors = FALSE
+    )
 }

@@ -1,3 +1,6 @@
+###### v0.4.6 (2020-06-28):
+ * Added button for uploading the development data usually used for testing.
+
 ###### v0.4.5 (2020-06-27):
  * Reorganised data flow in IAOReader. Now the data is filtered only once every plot redraw.
 

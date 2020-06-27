@@ -18,6 +18,18 @@ input_settings_ui <- function() {
         "Input Settings",
         fileInput("files_upload", "Upload input files", multiple = TRUE),
 
+        # TODO: remove after development.
+        div(
+            align = "center",
+            actionButton(
+                "dev_upload", "Upload development data",
+                onclick = paste0(
+                    'Shiny.setInputValue("files_upload", null);',
+                    'Shiny.setInputValue("files_upload", -1);'
+                )
+            )
+        ),
+
         conditionalPanel(
             "output.files_uploaded",
 
