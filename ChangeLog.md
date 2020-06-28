@@ -1,3 +1,7 @@
+###### v0.4.7 (2020-06-28):
+ * Extended input_ids in files input meta which were used in **Input Summary** table. This should solve some issues with overlapping input_ids.
+ * Fixed if added in previous version.
+
 ###### v0.4.6 (2020-06-28):
  * Added button for uploading the development data usually used for testing.
 

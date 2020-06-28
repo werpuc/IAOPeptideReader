@@ -33,7 +33,9 @@ input_settings <- function(input, output, session) {
     observeEvent(input[["files_upload"]], {
         file_input_meta <- input[["files_upload"]]
         # TODO: remove after development.
-        if (file_input_meta == -1) file_input_meta <- prop_fim()
+        if (class(file_input_meta) != "data.frame" && file_input_meta == -1) {
+            file_input_meta <- prop_fim()
+        }
         req(file_input_meta)
 
         input_settings_rv[["fm"]] <- list()
@@ -47,7 +49,7 @@ input_settings <- function(input, output, session) {
             file_path <- single_file_input_meta[["datapath"]]
 
             single_res <- list(
-                "input_id" = sprintf("IS_row%d", i),
+                "input_id" = sprintf("IS_row_%s", file_name),
                 "file_name" = file_name,
                 "is_ok" = NULL,
                 "error_messages" = NULL,
