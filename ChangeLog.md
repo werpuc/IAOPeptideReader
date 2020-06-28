@@ -1,3 +1,6 @@
+###### v0.4.8 (2020-06-28):
+ * Fixed observers from **Input Summary** table not being properly deleted. The list of observers was being reset before the observers were destroyed.
+
 ###### v0.4.7 (2020-06-28):
  * Extended input_ids in files input meta which were used in **Input Summary** table. This should solve some issues with overlapping input_ids.
  * Fixed if added in previous version.

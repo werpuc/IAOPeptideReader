@@ -40,7 +40,6 @@ input_settings <- function(input, output, session) {
 
         input_settings_rv[["fm"]] <- list()
         input_settings_rv[["data"]] <- list()
-        input_settings_rv[["obs"]] <- list()
         seq_max_len <- -Inf
 
         for (i in 1:nrow(file_input_meta)) {
@@ -134,9 +133,12 @@ input_settings <- function(input, output, session) {
 
     # The server is created separately because we don't want to re-create
     # observes with every deletion. Additionally, it destroys every already
-    # existing observer to prevent stacking them infinitely.
+    # existing observer to prevent stacking them infinitely and clears current
+    # list before saving new observers.
     observeEvent(input[["files_upload"]], {
         lapply(input_settings_rv[["obs"]], function(obs) obs$destroy())
+
+        input_settings_rv[["obs"]] <- list()
 
         lapply(
             files_meta(),
