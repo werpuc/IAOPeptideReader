@@ -1,3 +1,7 @@
+###### v0.4.11 (2020-06-28):
+ * Disabled Y axis ticks.
+ * Added missing fonts.
+
 ###### v0.4.10 (2020-06-28):
  * Implemented the displayed file hiding in the JavaScript.
 
