@@ -15,6 +15,7 @@ let IAOReader = class {
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
+    file_names_displayed = new Map();
 
     // Color pallete for files.
     color_palette = ["green", "blue", "yellow"];
@@ -158,11 +159,18 @@ let IAOReader = class {
         // Note: upper limit isn't inclusive due to lines starting at x_max
         //       were accounted for on Y axis but not actually displayed.
         this.plot_data = this.plot_data_raw
-            .filter(d => (self.x_min <= d.Start && d.Start < self.x_max))
+            .filter(d => (
+                self.x_min <= d.Start && d.Start < self.x_max &&
+                self.file_names_displayed.get(d.FileName))
+            )
             .map(function(d, i) {
                 d["y"] = i + 1;
                 return d;
             });
+    }
+
+    set_file_visibility(file_name, display_flag) {
+        this.file_names_displayed.set(file_name, display_flag);
     }
 
 

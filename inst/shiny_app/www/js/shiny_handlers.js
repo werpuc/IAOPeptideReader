@@ -15,6 +15,12 @@ Shiny.addCustomMessageHandler("update_data", function(plot_data) {
 });
 
 
+Shiny.addCustomMessageHandler("set_file_visibility", function(file_vis) {
+    iaoreader.set_file_visibility(file_vis.FileName, file_vis.Visibility);
+    iaoreader.update_plot();
+});
+
+
 Shiny.addCustomMessageHandler("seq_len_check", function(is_ok) {
     var seq_len_input = document.getElementById("sequence_length");
 

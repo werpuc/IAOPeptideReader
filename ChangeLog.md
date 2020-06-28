@@ -1,3 +1,6 @@
+###### v0.4.10 (2020-06-28):
+ * Implemented the displayed file hiding in the JavaScript.
+
 ###### v0.4.9 (2020-06-28):
  * Prepared the R side for file display toggling.
 
