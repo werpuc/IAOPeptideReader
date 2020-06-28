@@ -2,6 +2,9 @@ let PlotSettings = class {
     // Plot elements.
     svg; title;
 
+    // Color pallete for files.
+    color_palette = ["green", "blue", "yellow"];
+
     constructor(svg, margin) {
         this.svg = svg;
 

@@ -16,9 +16,6 @@ let IAOReader = class {
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
     file_names_displayed = new Map();
-
-    // Color pallete for files.
-    color_palette = ["green", "blue", "yellow"];
     
     constructor() {
         // Creating the SVG tag.
@@ -138,13 +135,12 @@ let IAOReader = class {
 
             if (file_name != plot_data.FileName[i - 1]) {
                 file_names.push(file_name);
-            };
+            }
 
             return {
                 Start: plot_data.Start[i],
                 End: plot_data.End[i],
-                FileName: file_name,
-                ColorId: file_names.length
+                FileName: file_name
             }
         });
 
@@ -249,7 +245,7 @@ let IAOReader = class {
                     .attr("x2", d => this.x_scale(Math.min(d.End, this.x_max)))
                     .attr("y2", d => this.y_scale(d.y))
                     .style("stroke-width", 2)
-                    .style("stroke", d => this.file_color(d.ColorId));
+                    .style("stroke", d => this.file_color(d.FileName));
     }
 
 
@@ -275,8 +271,16 @@ let IAOReader = class {
         this.mark_lines(null, class_name, true);
     }
     
-    file_color(i) {
-        return this.color_palette[i % this.color_palette.length];
+    file_color(file_name) {
+        var color_id = this.displayed_files.indexOf(file_name);
+
+        // This assures the function will work properly even if file with
+        // provided file_name is currently not displayed.
+        if (color_id == -1) return "black";
+
+        var col_pal = this.plot_settings.color_palette;
+
+        return col_pal[color_id % col_pal.length];
     }
 
 

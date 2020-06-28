@@ -1,3 +1,9 @@
+###### v0.4.13 (2020-06-28):
+ * Colors are only assigned to the displayed files now.
+ * Removed `ColorId` - now lines get colored based on the file name.
+ * Moved `color_pallette` to `plot_settings`.
+ * Vertically centered checkboxes with CSS.
+
 ###### v0.4.12 (2020-06-28):
  * Added getter for currently displayed files to the JavaScript class.
 

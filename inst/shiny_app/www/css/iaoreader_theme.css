@@ -156,6 +156,11 @@ div#previewed_file div.has-items {
     display: flex;
 }
 
+#input_summary_table div.checkbox {
+    display: inline;
+    vertical-align: middle;
+}
+
 #input_summary_table button {
     font-size: 14px;
     padding: 4px 6px;
