@@ -55,7 +55,8 @@ input_settings <- function(input, output, session) {
                 "sequence_length" = NULL,
                 "protein_state_mapping" = NULL,
                 "selected_protein" = NULL,
-                "selected_state" = NULL
+                "selected_state" = NULL,
+                "display" = TRUE
             )
 
             single_file_data <- fread(file_path) # TODO: tryCatch this.
@@ -120,7 +121,7 @@ input_settings <- function(input, output, session) {
             tags$thead(
                 tags$tr(
                     lapply(
-                        c("File Name", "Seq. Length", "Protein", "State"),
+                        c("File Name", "Seq. Length", "Protein", "State", "Display"),
                         tags$td
                     )
                 )

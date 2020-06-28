@@ -1,3 +1,6 @@
+###### v0.4.9 (2020-06-28):
+ * Prepared the R side for file display toggling.
+
 ###### v0.4.8 (2020-06-28):
  * Fixed observers from **Input Summary** table not being properly deleted. The list of observers was being reset before the observers were destroyed.
 
