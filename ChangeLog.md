@@ -1,3 +1,6 @@
+###### v0.4.12 (2020-06-28):
+ * Added getter for currently displayed files to the JavaScript class.
+
 ###### v0.4.11 (2020-06-28):
  * Disabled Y axis ticks.
  * Added missing fonts.

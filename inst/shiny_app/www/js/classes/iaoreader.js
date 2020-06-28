@@ -190,6 +190,21 @@ let IAOReader = class {
             .range([this.height - this.margin.bottom, this.margin.top]);
     }
 
+    get displayed_files() {
+        if (this.file_names === null) return [];
+
+        var disp_files = [];
+        var self = this;
+
+        this.file_names.forEach(function(file_name) {
+            if (self.file_names_displayed.get(file_name)) {
+                disp_files.push(file_name);
+            }
+        });
+
+        return disp_files;
+    }
+
 
     /* -------------------------------------------------------------------------
      * Drawing plot elements
