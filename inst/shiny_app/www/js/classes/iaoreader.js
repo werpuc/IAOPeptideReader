@@ -171,7 +171,7 @@ let IAOReader = class {
 
 
     /* -------------------------------------------------------------------------
-     * [Getters] Filtering plot data and creating scales
+     * Getters
      * ---------------------------------------------------------------------- */
 
     get x_scale() {
@@ -199,6 +199,16 @@ let IAOReader = class {
         });
 
         return disp_files;
+    }
+
+
+    /* -------------------------------------------------------------------------
+     * Setters
+     * ---------------------------------------------------------------------- */
+
+    set color_palette(col_pal) {
+        this.plot_settings.color_palette = col_pal;
+        this.update_plot();
     }
 
 

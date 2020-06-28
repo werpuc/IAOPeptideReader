@@ -19,7 +19,8 @@ ui <- function() {
 
     scripts_names <- c(
         "d3.min.js",
-        "shiny_handlers.js"
+        "shiny_handlers.js",
+        "color_brewer.js"
     )
 
     class_scripts_names <- c(

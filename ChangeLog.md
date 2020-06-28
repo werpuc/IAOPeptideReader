@@ -1,3 +1,7 @@
+###### v0.4.14 (2020-06-28):
+ * Added ColorBrewer object for managing color palettes.
+ * Implemented setter for color palettes.
+
 ###### v0.4.13 (2020-06-28):
  * Colors are only assigned to the displayed files now.
  * Removed `ColorId` - now lines get colored based on the file name.
