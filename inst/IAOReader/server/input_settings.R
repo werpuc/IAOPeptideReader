@@ -50,7 +50,7 @@ input_settings <- function(input, output, session) {
             single_res <- list(
                 "input_id" = sprintf("IS_row_%s", file_name),
                 "file_name" = file_name,
-                "is_ok" = NULL,
+                "is_ok" = FALSE,
                 "error_messages" = NULL,
                 "sequence_length" = NULL,
                 "protein_state_mapping" = NULL,
@@ -59,8 +59,24 @@ input_settings <- function(input, output, session) {
                 "display" = TRUE
             )
 
-            single_file_data <- fread(file_path) # TODO: tryCatch this.
-            single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
+            # Simple check whether the file has correct extension.
+            if (!grepl("\\.csv$", file_path)) {
+                single_res[["error_messages"]] <- "The file does not have a '.csv' extension."
+            } else {
+                # Proceed to read the file if its CSV.
+                tryCatch({
+                    single_file_data <- fread(file_path)
+                    single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
+                }, error = function(e) {
+                    # The <<- operator allows assigning the value outside
+                    # the error handling function.
+                    single_res[["error_messages"]] <<- paste(
+                        "An error occurred during reading this file:", e$message
+                    )
+                })
+            }
+
+            # Retrieving information from correct files.
             if (single_res[["is_ok"]]) {
                 seq_len <- max(single_file_data[["End"]])
                 seq_max_len <- max(seq_max_len, seq_len)

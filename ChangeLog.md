@@ -1,3 +1,6 @@
+###### v0.4.17 (2020-07-17):
+ * Added error handling to file reading.
+
 ###### v0.4.16 (2020-07-17):
  * Added `accept` parameter to the `fileInput` in the sidebar. Now the browser will suggest `.csv` data format.
 
