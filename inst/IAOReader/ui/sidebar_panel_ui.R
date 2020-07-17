@@ -16,7 +16,8 @@ sidebar_panel_ui <- function() {
 input_settings_ui <- function() {
     tabPanel(
         "Input Settings",
-        fileInput("files_upload", "Upload input files", multiple = TRUE),
+        fileInput("files_upload", "Upload input files", multiple = TRUE,
+                  accept = ".csv"),
 
         # TODO: remove this div after development.
         div(

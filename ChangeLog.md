@@ -1,3 +1,6 @@
+###### v0.4.16 (2020-07-17):
+ * Added `accept` parameter to the `fileInput` in the sidebar. Now the browser will suggest `.csv` data format.
+
 ###### v0.4.15 (2020-07-17):
  * Renamed `shiny_app` folder to `IAOReader` in the `inst` subdirectory.
 
