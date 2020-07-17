@@ -18,7 +18,7 @@ input_settings_ui <- function() {
         "Input Settings",
         fileInput("files_upload", "Upload input files", multiple = TRUE),
 
-        # TODO: remove after development.
+        # TODO: remove this div after development.
         div(
             align = "center",
             actionButton(

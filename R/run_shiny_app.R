@@ -12,9 +12,9 @@
 #'
 #' @export
 run_shiny_app <- function(port = 8080) {
-    ui_path <- system.file("shiny_app", "ui.R", package = "iaoreader")
-    server_path <- system.file("shiny_app", "server.R", package = "iaoreader")
-    www_path <- system.file("shiny_app", "www", package = "iaoreader")
+    ui_path <- system.file("IAOReader", "ui.R", package = "iaoreader")
+    server_path <- system.file("IAOReader", "server.R", package = "iaoreader")
+    www_path <- system.file("IAOReader", "www", package = "iaoreader")
 
     if (ui_path == "" || server_path == "" || www_path == "") {
         stop(

@@ -1,3 +1,6 @@
+###### v0.4.15 (2020-07-17):
+ * Renamed `shiny_app` folder to `IAOReader` in the `inst` subdirectory.
+
 ###### v0.4.14 (2020-06-28):
  * Added ColorBrewer object for managing color palettes.
  * Implemented setter for color palettes.

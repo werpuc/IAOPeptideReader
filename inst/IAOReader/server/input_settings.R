@@ -32,7 +32,7 @@ input_settings <- function(input, output, session) {
     
     observeEvent(input[["files_upload"]], {
         file_input_meta <- input[["files_upload"]]
-        # TODO: remove after development.
+        # TODO: remove this if after development.
         if (class(file_input_meta) != "data.frame" && file_input_meta == -1) {
             file_input_meta <- prop_fim()
         }
@@ -185,7 +185,7 @@ input_settings <- function(input, output, session) {
 }
 
 
-# TODO: remove after development.
+# TODO: remove this function after development.
 prop_fim <- function() {
     file_names <- c(
         sprintf("example_data%d.csv", 1:2),
