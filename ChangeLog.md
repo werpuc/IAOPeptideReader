@@ -1,3 +1,6 @@
+###### v0.4.18 (2020-07-29):
+ * Added type verification to `Protein` and `State` columns.
+
 ###### v0.4.17 (2020-07-17):
  * Added error handling to file reading.
 

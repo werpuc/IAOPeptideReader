@@ -35,12 +35,19 @@ verify_column_types <- function(df) {
     err_msg <- NULL
 
     column_names <- colnames(df)
-    cols_to_check <- c("Start", "End")
-    for (cname in cols_to_check) {
+    check_map <- list(
+        "Protein" = is.character,
+        "State" = is.character,
+        "Start" = is.numeric,
+        "End" = is.numeric
+    )
+
+    for (cname in names(check_map)) {
         if (cname %in% column_names) {
+            check_func <- check_map[[cname]]
             col_values <- df[[cname]]
 
-            if (!is.numeric(col_values)) {
+            if (!check_func(col_values)) {
                 is_ok <- FALSE
                 err_msg <- c(
                     err_msg,
@@ -48,11 +55,11 @@ verify_column_types <- function(df) {
                 )
             }
 
-            if (any(is.na(col_values))) {
+            if (any(is.na(col_values) | col_values == "")) {
                 is_ok <- FALSE
                 err_msg <- c(
                     err_msg,
-                    sprintf("'%s' column contains missing values.", cname)
+                    sprintf("'%s' column contains missing (empty) values.", cname)
                 )
             }
         }
