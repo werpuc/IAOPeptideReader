@@ -1,3 +1,7 @@
+###### v0.4.19 (2020-07-29):
+ * Fixed verification error messages.
+ * Updated and extended tests.
+
 ###### v0.4.18 (2020-07-29):
  * Added type verification to `Protein` and `State` columns.
 

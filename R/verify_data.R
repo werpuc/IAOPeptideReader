@@ -36,22 +36,23 @@ verify_column_types <- function(df) {
 
     column_names <- colnames(df)
     check_map <- list(
-        "Protein" = is.character,
-        "State" = is.character,
-        "Start" = is.numeric,
-        "End" = is.numeric
+        "Protein" = list("Func" = is.character, "Type" = "character"),
+        "State" = list("Func" = is.character, "Type" = "character"),
+        "Start" = list("Func" = is.numeric, "Type" = "numeric"),
+        "End" = list("Func" = is.numeric, "Type" = "numeric")
     )
 
     for (cname in names(check_map)) {
         if (cname %in% column_names) {
-            check_func <- check_map[[cname]]
+            check_func <- check_map[[cname]][["Func"]]
+            expected_col_type <- check_map[[cname]][["Type"]]
             col_values <- df[[cname]]
 
             if (!check_func(col_values)) {
                 is_ok <- FALSE
                 err_msg <- c(
                     err_msg,
-                    sprintf("'%s' column is not numeric.", cname)
+                    sprintf("'%s' column is not %s.", cname, expected_col_type)
                 )
             }
 
