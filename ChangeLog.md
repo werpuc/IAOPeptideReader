@@ -1,3 +1,7 @@
+###### v0.4.20 (2020-07-31):
+ * Removed redundant functions used in the verification of the data.
+ * Removed unused tests.
+
 ###### v0.4.19 (2020-07-29):
  * Fixed verification error messages.
  * Updated and extended tests.
