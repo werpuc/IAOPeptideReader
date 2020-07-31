@@ -1,3 +1,7 @@
+###### v0.4.21 (2020-07-31):
+ * Added scrolling to the **Input Summary Table** when there are too many files.
+ * Added page title.
+
 ###### v0.4.20 (2020-07-31):
  * Removed redundant functions used in the verification of the data.
  * Removed unused tests.

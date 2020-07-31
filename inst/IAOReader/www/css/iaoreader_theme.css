@@ -116,6 +116,13 @@ div#previewed_file div.has-items {
 }
 
 /* Input summary table. */
+#input_summary_table table {
+    display: inline-block;
+    overflow-y: scroll;
+    min-height: 120px;
+    max-height: 40vh;
+}
+
 #input_summary_table thead {
     background-color: var(--theme-color-main);
     color: var(--theme-color-bright-text);

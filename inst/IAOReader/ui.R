@@ -29,6 +29,7 @@ ui <- function() {
     )
 
     fluidPage(
+        tags$head(tags$title("IAO Reader")),
         lapply(css_names, attach_css),
         lapply(scripts_names, attach_script),
         lapply(class_scripts_names, attach_script, "www/js/classes"),
