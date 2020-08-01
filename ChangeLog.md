@@ -1,3 +1,6 @@
+###### v0.4.22 (2020-08-01):
+ * Updated CSS.
+
 ###### v0.4.21 (2020-07-31):
  * Added scrolling to the **Input Summary Table** when there are too many files.
  * Added page title.
