@@ -1,0 +1,36 @@
+diff --git a/inst/IAOReader/server/input_settings.R b/inst/IAOReader/server/input_settings.R
+index 61b6c02..9b0b5a7 100644
+--- a/inst/IAOReader/server/input_settings.R
++++ b/inst/IAOReader/server/input_settings.R
+@@ -227,9 +227,30 @@ prop_fim <- function() {
+         sprintf("incorrect_data%d.csv", 1:3)
+     )
+ 
+-    data.frame(
++    x <- data.frame(
+         "name" = file_names,
+         "datapath" = paste0("./dev/data/",  file_names), 
+         stringsAsFactors = FALSE
+     )
++
++    res <- rep(x, 5)
++    res[["name"]] <- sprintf(
++        "%s_%d.csv",
++        sub("\\.csv", "", res[["name"]]),
++        1:nrow(res)
++    )
++    res
++}
++
++
++rep.data.frame <- function(df, n, ...) {
++    stopifnot(is.numeric(n), n %% 1 == 0, n > 0)
++    if (n == 1) return(df)
++
++    res <- df
++    for (j in 1:(n - 1)) {
++        res <- rbind(res, df)
++    }
++
++    res
+ }
