@@ -51,7 +51,11 @@ input_settings_ui <- function() {
                     ),
                     div(
                         class = "manual_split_layout", style = "width: 69%;",
-                        textOutput("sequence_length_max")
+                        div(
+                            tags$strong("Maximum Sequence Length")
+                        ),
+                        textOutput("sequence_length_max"),
+                        htmlOutput("sequence_length_max_displayed"),
                     )
                 )
             ),

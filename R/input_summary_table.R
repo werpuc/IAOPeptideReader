@@ -113,8 +113,16 @@ input_summary_row_server <- function(single_file_input_meta, input, session,
 
     # This observer updates visibility settings for given file.
     obs3 <- observe({
-        file_vis <- list("FileName" = file_name, "Visibility" = input[[display_id]])
+        display <- input[[display_id]]
+        file_vis <- list("FileName" = file_name, "Visibility" = display)
         session$sendCustomMessage("set_file_visibility", file_vis)
+
+        req(
+            !is.null(display),
+            # In order to not trigger on file's removal.
+            isolate(input_settings_rv[["fm"]][[file_name]])
+        )
+        input_settings_rv[["fm"]][[file_name]][["display"]] <- display
     })
 
     # Saving the observers to destroy them manually on new file upload.

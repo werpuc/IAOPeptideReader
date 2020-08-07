@@ -106,8 +106,27 @@ input_settings <- function(input, output, session) {
         req(any_file_good())
 
         sprintf(
-            "Maximum sequence length read from files: %d.",
+            "Read from files: %d.",
             max(unlist(lapply(isolate(files_meta()), `[[`, "sequence_length")))
+        )
+    })
+
+    output[["sequence_length_max_displayed"]] <- renderText({
+        req(any_file_good())
+
+        displayed_seq_len <- -Inf
+        for (sfim in files_meta()) {
+            if (sfim[["is_ok"]] && sfim[["display"]]) {
+                displayed_seq_len <- max(
+                    displayed_seq_len,
+                    sfim[["sequence_length"]]
+                )
+            }
+        }
+
+        sprintf(
+            "Currently displayed: %s.",
+            if (displayed_seq_len == -Inf) "<i>none</i>" else displayed_seq_len
         )
     })
 
