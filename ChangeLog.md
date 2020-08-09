@@ -1,3 +1,6 @@
+###### v0.5.7 (2020-08-10):
+ * Added development disclaimer to the title panel.
+
 ###### v0.5.6 (2020-08-09):
  * Added HTML title attribute to the `IAO Reader` in the title panel which indicates version of currently used application.
 
