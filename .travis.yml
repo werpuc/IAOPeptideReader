@@ -13,14 +13,12 @@ os:
   - linux
   - osx
 
-matrix:
-  fast_finish: true
-
 notifications:
   email:
     on_success: change
     on_failure: change
 
-deploy:
-  provider: script
-  script: Rscript dev/deploy.R
+jobs:
+  include:
+    - stage: deploy
+      script: Rscript dev/deploy.R
