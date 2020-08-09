@@ -15,6 +15,7 @@ data_preview <- function(input, output, session, input_settings_rv, any_file_goo
     # TODO: customize the table.
     output[["data_preview"]] <- DT::renderDataTable({
         selected_file <- input[["previewed_file"]]
-        isolate(input_settings_rv[["data"]][[selected_file]])
+        file_data <- isolate(input_settings_rv[["data"]][[selected_file]])
+        file_data[order(Protein, State, Start, End)]
     })
 }

@@ -1,3 +1,6 @@
+###### v0.5.4 (2020-08-09):
+ * Added sorting to the data preview.
+
 ###### v0.5.3 (2020-08-09):
  * Added title panel.
 
