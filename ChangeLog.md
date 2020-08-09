@@ -1,3 +1,7 @@
+###### v0.5.2 (2020-08-09):
+ * Updated Travis config.
+ * This version marks start of differentiation between `master` and `devel` branches.
+
 ###### v0.5.1 (2020-08-09):
  * Continous delivery config update.
 

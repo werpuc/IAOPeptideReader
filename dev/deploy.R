@@ -1,7 +1,4 @@
-# Script for running tests coverage and deploying the application to shinyapps.io
-# on successful Travis build.
-covr::codecov()
-
+# Script for deploying the application to shinyapps.io.
 rsconnect::setAccountInfo(
     name = Sys.getenv("SHINYAPPS_NAME"),
     token = Sys.getenv("SHINYAPPS_TOKEN"),

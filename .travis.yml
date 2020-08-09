@@ -21,4 +21,6 @@ notifications:
 jobs:
   include:
     - stage: deploy
+      if: branch = master
+      script: Rscript -e 'covr::codecov()'
       script: Rscript dev/deploy.R
