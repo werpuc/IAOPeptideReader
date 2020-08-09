@@ -1,3 +1,6 @@
+###### v0.5.5 (2020-08-09):
+ * Extended title panel with GitHub project's URL.
+
 ###### v0.5.4 (2020-08-09):
  * Added sorting to the data preview.
 

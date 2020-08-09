@@ -6,13 +6,6 @@ body > div.container-fluid {
     padding: 10px;
 }
 
-body > h2 {
-    margin-top: 0px;
-    margin-bottom: 5px;
-    border-radius: 0px;
-    box-shadow: 0px 0px 2px 3px var(--theme-color-dark);
-}
-
 ul.nav.nav-tabs {
     margin-bottom: 20px;
 }
@@ -30,6 +23,26 @@ p.bad_files_info, p.no_file_uploaded {
 p.no_good_file {
     color: orangered;
     font-weight: bold;
+}
+
+/* -----------------------------------------------------------------------------
+ *  Title Panel
+ * -------------------------------------------------------------------------- */
+
+body > h2 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border-radius: 0px;
+    box-shadow: 0px 0px 2px 3px var(--theme-color-dark);
+}
+
+div#title {
+    display: inline-block;
+}
+
+a#github_url {
+    float: right;
+    color: var(--theme-color-secondary);
 }
 
 

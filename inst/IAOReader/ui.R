@@ -25,7 +25,17 @@ ui <- function() {
     tagList(
         # Note: title panel has to be defined before the fluidPage in order to
         #       not get caught within the padding the div.container-fluid has.
-        titlePanel("IAO Reader"),
+        titlePanel(
+            tagList(
+                div(id = "title", "IAO Reader"),
+                tags$a(
+                    id = "github_url",
+                    href = "https://github.com/tmakowski/iaoreader",
+                    icon("github")
+                )
+            ),
+            "IAO Reader"
+        ),
         fluidPage(
             lapply(css_names, attach_css),
             lapply(scripts_names, attach_script),
