@@ -1,3 +1,18 @@
+###### v0.5.7 (2020-08-10):
+ * Added development disclaimer to the title panel.
+
+###### v0.5.6 (2020-08-09):
+ * Added HTML title attribute to the `IAO Reader` in the title panel which indicates version of currently used application.
+
+###### v0.5.5 (2020-08-09):
+ * Extended title panel with GitHub project's URL.
+
+###### v0.5.4 (2020-08-09):
+ * Added sorting to the data preview.
+
+###### v0.5.3 (2020-08-09):
+ * Added title panel.
+
 ###### v0.5.2 (2020-08-09):
  * Updated Travis config.
  * This version marks start of differentiation between `master` and `devel` branches.
