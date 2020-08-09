@@ -1,3 +1,6 @@
+###### v0.5.1 (2020-08-09):
+ * Continous delivery config update.
+
 ###### v0.5.0 (2020-08-09):
  * Added continuous delivery to the [shinyapps.io](https://www.shinyapps.io/).
 

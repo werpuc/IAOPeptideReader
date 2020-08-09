@@ -21,6 +21,6 @@ notifications:
     on_success: change
     on_failure: change
 
-after_success:
-    - Rscript -e 'covr::codecov()'
-    - Rscript dev/deploy.R
+deploy:
+  provider: script
+  script: Rscript dev/deploy.R

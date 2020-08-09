@@ -1,5 +1,6 @@
-# Script for deploying application to shinyapps.io on successful Travis build.
-pkgload::load_all(export_all = FALSE, helpers = FALSE, attach_testthat = FALSE)
+# Script for running tests coverage and deploying the application to shinyapps.io
+# on successful Travis build.
+covr::codecov()
 
 rsconnect::setAccountInfo(
     name = Sys.getenv("SHINYAPPS_NAME"),
