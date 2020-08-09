@@ -5,13 +5,20 @@
 #'  \code{iaoreader} package files.
 #' 
 #' @param port a port on which the Shiny application will be hosted.
+#' @param run_app when \code{FALSE} the app object is returned and the
+#'  application is not started. This is mainly used for deployment of the
+#'  Shiny application to services such as \url{https://www.shinyapps.io/}.
 #' 
 #' @rawNamespace import(shiny, except = c(dataTableOutput, renderDataTable))
 #' @importFrom DT dataTableOutput renderDataTable
 #' @importFrom data.table fread rbindlist
 #'
 #' @export
-run_shiny_app <- function(port = 8080) {
+run_shiny_app <- function(port = 8080, run_app = TRUE) {
+    if (!is.logical(run_app) || is.na(run_app)) {
+        stop("run_app argument has to be either TRUE or FALSE", call. = FALSE)
+    } 
+
     ui_path <- system.file("IAOReader", "ui.R", package = "iaoreader")
     server_path <- system.file("IAOReader", "server.R", package = "iaoreader")
     www_path <- system.file("IAOReader", "www", package = "iaoreader")
@@ -39,6 +46,10 @@ run_shiny_app <- function(port = 8080) {
     # Manually attaching the resources to /www static URL.
     addResourcePath("www", www_path)
     app <- shinyApp(ui(), server)
+
+    if (!run_app) {
+        return(app)
+    }
 
     runApp(app, port)
 }

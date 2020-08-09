@@ -4,10 +4,14 @@
 \alias{run_shiny_app}
 \title{Run IAO Reader App}
 \usage{
-run_shiny_app(port = 8080)
+run_shiny_app(port = 8080, run_app = TRUE)
 }
 \arguments{
 \item{port}{a port on which the Shiny application will be hosted.}
+
+\item{run_app}{when \code{FALSE} the app object is returned and the
+application is not started. This is mainly used for deployment of the
+Shiny application to services such as \url{https://www.shinyapps.io/}.}
 }
 \description{
 This function is responsible for starting the core application
