@@ -27,7 +27,11 @@ ui <- function() {
         #       not get caught within the padding the div.container-fluid has.
         titlePanel(
             tagList(
-                div(id = "title", "IAO Reader"),
+                div(
+                    id = "title",
+                    title = paste("Version:", packageVersion("iaoreader")),
+                    "IAO Reader"
+                ),
                 tags$a(
                     id = "github_url",
                     href = "https://github.com/tmakowski/iaoreader",

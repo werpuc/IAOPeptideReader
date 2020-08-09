@@ -1,3 +1,6 @@
+###### v0.5.6 (2020-08-09):
+ * Added HTML title attribute to the `IAO Reader` in the title panel which indicates version of currently used application.
+
 ###### v0.5.5 (2020-08-09):
  * Extended title panel with GitHub project's URL.
 
