@@ -22,13 +22,17 @@ ui <- function() {
         "plot_settings.js"
     )
 
-    fluidPage(
-        tags$head(tags$title("IAO Reader")),
-        lapply(css_names, attach_css),
-        lapply(scripts_names, attach_script),
-        lapply(class_scripts_names, attach_script, "www/js/classes"),
-        sidebar_panel_ui(),
-        main_panel_ui()
+    tagList(
+        # Note: title panel has to be defined before the fluidPage in order to
+        #       not get caught within the padding the div.container-fluid has.
+        titlePanel("IAO Reader"),
+        fluidPage(
+            lapply(css_names, attach_css),
+            lapply(scripts_names, attach_script),
+            lapply(class_scripts_names, attach_script, "www/js/classes"),
+            sidebar_panel_ui(),
+            main_panel_ui()
+        )
     )
 }
 

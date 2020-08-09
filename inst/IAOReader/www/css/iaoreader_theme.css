@@ -2,8 +2,15 @@
  * Global
  * -------------------------------------------------------------------------- */
 
-body {
+body > div.container-fluid {
     padding: 10px;
+}
+
+body > h2 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border-radius: 0px;
+    box-shadow: 0px 0px 2px 3px var(--theme-color-dark);
 }
 
 ul.nav.nav-tabs {

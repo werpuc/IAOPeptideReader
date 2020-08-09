@@ -1,3 +1,6 @@
+###### v0.5.3 (2020-08-09):
+ * Added title panel.
+
 ###### v0.5.2 (2020-08-09):
  * Updated Travis config.
  * This version marks start of differentiation between `master` and `devel` branches.

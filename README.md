@@ -9,6 +9,8 @@
 
 This is my masters thesis project at the [Faculty of Mathematics and Information Sciences](https://ww2.mini.pw.edu.pl) at the [Warsaw University of Technology](https://www.pw.edu.pl).
 
+Newest version of the application found on the `master` branch is deployed to [shinyapps.io](https://www.shinyapps.io/) and can be accessed via [https://tmakowski.shinyapps.io/iaoreader/](https://tmakowski.shinyapps.io/iaoreader/).
+
 ### Installation and Running the App
 If one wishes to install the package it can be done as shown below.
 ```
