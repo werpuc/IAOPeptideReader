@@ -5,3 +5,4 @@
 ^.*\.yml$
 ^\..*ignore$
 ^dev$
+^app\.R$

@@ -4,7 +4,10 @@ r_check_args: --as-cran
 
 r:
   - release
-  - devel
+
+r_packages:
+  - pkgload
+  - rsconnect
 
 os:
   - linux
@@ -12,8 +15,6 @@ os:
 
 matrix:
   fast_finish: true
-  allow_failures:
-    - r: devel
 
 notifications:
   email:
@@ -22,3 +23,4 @@ notifications:
 
 after_success:
     - Rscript -e 'covr::codecov()'
+    - Rscript dev/deploy.R

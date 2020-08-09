@@ -1,3 +1,6 @@
+###### v0.5.0 (2020-08-09):
+ * Added continuous delivery to the [shinyapps.io](https://www.shinyapps.io/).
+
 ###### v0.4.25 (2020-08-09):
  * Added `run_app` argument to `run_shiny_app` to allow deployment of the application to [shinyapps.io](https://www.shinyapps.io/).
 
