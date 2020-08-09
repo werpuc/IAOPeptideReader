@@ -15,6 +15,6 @@ server <- function(input, output, session) {
 
     # TODO: update with real statistics.
     output[["summary_table"]] <- renderTable({
-        shinipsum::random_table(3, 8)
+        data.frame("X" = 1:3, "Y" = 4:6, "Z" = 7:9, "XYZ" = 11:13)
     })
 }

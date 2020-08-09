@@ -1,12 +1,6 @@
 source(file.path("ui", "main_panel_ui.R"), local = TRUE, chdir = TRUE)
 source(file.path("ui", "sidebar_panel_ui.R"), local = TRUE, chdir = TRUE)
 
-# TODO: remove when mocks won't be needed.
-if (!nchar(system.file(package = "shinipsum"))) {
-    stop(paste("shinipsum package is required for mocks.",
-               "remotes::install_github('Thinkr-open/shinipsum')", sep = "\n"))
-}
-
 
 # Main UI function -------------------------------------------------------------
 ui <- function() {

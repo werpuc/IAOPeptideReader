@@ -1,3 +1,6 @@
+###### v0.4.24 (2020-08-09):
+ * Removed shinipsum hidden dependency.
+
 ###### v0.4.23 (2020-08-07):
  * Added information about maximum sequence length currently displayed to the Sequence Length section of the sidebar.
 
