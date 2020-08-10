@@ -23,8 +23,9 @@ branches:
     - master
     - devel
 
-jobs:
-  include:
-    - stage: deploy
-      script: Rscript -e 'covr::codecov()'
-      script: if [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_BRANCH}" = "master" ]; then Rscript dev/deploy.R; fi
+after_success:
+  - Rscript -e 'covr::codecov()'
+  - if [ "${TRAVIS_BRANCH}" = "master" ] &&
+      [ "${TRAVIS_OS_NAME}" = "linux" ] &&
+      [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
+      [ "${TRAVIS_R_VERSION_STRING}" = "release" ]; then Rscript dev/deploy.R; fi
