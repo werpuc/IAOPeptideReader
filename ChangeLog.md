@@ -1,3 +1,6 @@
+###### v0.5.13 (2020-08-14):
+ * Fixed vertical offset adjustment after testing with multiple files.
+
 ###### v0.5.12 (2020-08-14):
  * Added customization of the vertical spacing between files.
 

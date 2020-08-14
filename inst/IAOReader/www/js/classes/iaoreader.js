@@ -173,12 +173,12 @@ let IAOReader = class {
         if (this.plot_data === null) return null;
 
         var differences = this.height_differences;
+        var disp_files = this.displayed_files;
         var self = this;
 
         this.plot_data = this.plot_data.map(function(d) {
-            if (differences[d.FileName] != undefined) {
-                d.y = d.y - differences[d.FileName] + self.vertical_offset;
-            }
+            var offset = self.vertical_offset * disp_files.indexOf(d.FileName);
+            d.y = d.y - differences[d.FileName] + offset;
             return d;
         });
     }
@@ -243,6 +243,7 @@ let IAOReader = class {
 
         // Calculating differences in height between files.
         var differences = new Map();
+        differences[disp_files[0]] = 0;
         for (var i = 1; i < disp_files.length; i++) {
             var lower_values = heights[disp_files[i - 1]]["Max"];
             var higher_values = heights[disp_files[i]]["Min"];
@@ -254,7 +255,7 @@ let IAOReader = class {
                 }
             }
 
-            differences[disp_files[i]] = d3.min(diffs);
+            differences[disp_files[i]] = d3.min(diffs) + differences[disp_files[i - 1]];
         }
 
         return differences;
