@@ -1,6 +1,5 @@
 # Plot Settings server function ------------------------------------------------
 plot_settings <- function(input, output, session) {
-
     # Plot Settings input mapping ----------------------------------------------
     # This mapping allows automatic UI and server handlers generation.
     plot_settings_input_mapping <- reactive({
@@ -35,10 +34,13 @@ plot_settings <- function(input, output, session) {
                  "value" = c("Accent", "Category10", "Dark2", "Paired",
                              "Pastel1", "Pastel2", "Set1", "Set2", "Set3",
                              "Tableau10"),
-                 "selected" = "Set1", "width" = "40%")
+                 "selected" = "Set1", "width" = "40%"),
+            h5("Background color"),
+            # TODO: set this input to default value on application start.
+            tags$input(id = "plot_background_color", type = "color",
+                       onchange = "iaoreader.update_background_color()")
             # TODO: coloring mouseover vert.
             # TODO: coloring click vert.
-            # TODO: background color.
         )
 
         mapping
@@ -68,6 +70,8 @@ plot_settings <- function(input, output, session) {
 
     # Reset button observer ----------------------------------------------------
     observeEvent(input[["plot_settings_reset"]], {
+        session$sendCustomMessage("reset_background_color", 1)
+
         lapply(
             plot_settings_input_mapping(),
             function(meta) {

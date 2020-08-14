@@ -11,7 +11,9 @@ let IAOReader = class {
     vert_mark = "vert-mark"; vert_click_mark = "vert-click-mark";
 
     // Axis limits values and other variables.
+    // TODO: move show_background to settings.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
+    show_background = true;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -324,6 +326,13 @@ let IAOReader = class {
                     .attr("y2", d => this.y_scale(d.y))
                     .style("stroke-width", 2)
                     .style("stroke", d => this.file_color(d.FileName));
+    }
+
+    update_background_color() {
+        var color = document.getElementById("plot_background_color").value;
+        var style = this.show_background ? "background: " + color + ";" : "";
+
+        this.svg.attr("style", style);
     }
 
 

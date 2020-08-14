@@ -118,3 +118,8 @@ Shiny.addCustomMessageHandler("plot_settings_color_palette", function(color_pale
 
     iaoreader.color_palette = color_palette;
 });
+
+Shiny.addCustomMessageHandler("reset_background_color", function(_) {
+    document.getElementById("plot_background_color").value = "#ffffff";
+    iaoreader.update_background_color();
+});

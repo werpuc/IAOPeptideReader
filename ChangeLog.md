@@ -1,3 +1,6 @@
+###### v0.6.4 (2020-08-14):
+ * Added color input for plot background.
+
 ###### v0.6.3 (2020-08-14):
  * Increased top margin.
  * Removed unused JS script.
