@@ -1,5 +1,8 @@
+###### v0.6.6 (2020-08-14):
+ * Improved color plot settings arrangement and styling.
+
 ###### v0.6.5 (2020-08-14):
- * Added checkbox for toggling the plot's background
+ * Added checkbox for toggling the plot's background.
  * Added initial color to the plot's background color input.
 
 ###### v0.6.4 (2020-08-14):

@@ -330,9 +330,7 @@ let IAOReader = class {
 
     update_background_color() {
         var color = document.getElementById("plot_background_color").value;
-        var style = this.show_background ? "background: " + color + ";" : "";
-
-        this.svg.attr("style", style);
+        this.svg.style("background", this.show_background ? color : "");
     }
 
 

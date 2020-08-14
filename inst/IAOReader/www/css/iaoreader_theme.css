@@ -206,3 +206,11 @@ div#previewed_file div.has-items {
 div#plot_settings_inputs > h3 {
     margin-top: 25px;
 }
+
+div#background_color_input {
+    margin-bottom: 10px;
+}
+
+div#background_color_input > h5 {
+    margin-bottom: 5px;
+}
