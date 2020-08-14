@@ -203,6 +203,6 @@ div#previewed_file div.has-items {
 
 
 /* [[ Plot Settings ]] */
-div#plot_settings_inputs > h5 {
-    margin-top: 30px;
+div#plot_settings_inputs > h3 {
+    margin-top: 25px;
 }

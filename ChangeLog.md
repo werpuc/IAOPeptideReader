@@ -1,3 +1,6 @@
+###### v0.6.1 (2020-08-14):
+ * Updated plot settings headers.
+
 ###### v0.6.0 (2020-08-14):
  * This version marks an end to vertical plot space optimization.
  * Extended interface for plot settings generation.
