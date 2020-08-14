@@ -1,3 +1,8 @@
+###### v0.6.0 (2020-08-14):
+ * This version marks an end to vertical plot space optimization.
+ * Extended interface for plot settings generation.
+ * Used the updated interface for customizing the numericInput used for vertical offset between files.
+
 ###### v0.5.13 (2020-08-14):
  * Fixed vertical offset adjustment after testing with multiple files.
 
