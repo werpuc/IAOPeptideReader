@@ -1,3 +1,7 @@
+###### v0.5.11 (2020-08-14):
+ * Added plot setting for choosing whether to optimize the plot vertically.
+ * Added top margin to headers within plot settings.
+
 ###### v0.5.10 (2020-08-14):
  * Fixed Y-axis range being to wide.
 

@@ -17,6 +17,11 @@ plot_settings <- function(input, output, session) {
             list("input_id" = "plot_settings_allow_verts_marking",
                  "input_type" = "checkbox",
                  "label" = "Color lines crossing the guides",
+                 "value" = TRUE),
+            h5("Plot space optimization"),
+            list("input_id" = "plot_settings_optimize_height",
+                 "input_type" = "checkbox",
+                 "label" = "Optimize plot's height",
                  "value" = TRUE)
         )
 

@@ -60,3 +60,10 @@ Shiny.addCustomMessageHandler("plot_settings_allow_verts_marking", function(allo
 
     cl.remove("allow-verts-marking");
 });
+
+
+// [[ Height adjustments ]]
+Shiny.addCustomMessageHandler("plot_settings_optimize_height", function(optimize_height) {
+    iaoreader.optimize_height = optimize_height;
+    iaoreader.update_plot();
+});
