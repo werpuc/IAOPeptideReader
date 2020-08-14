@@ -11,8 +11,7 @@ let IAOReader = class {
     vert_mark = "vert-mark"; vert_click_mark = "vert-click-mark";
 
     // Axis limits values and other variables.
-    // TODO: move optimize_height and offset setting to plot settings in Shiny.
-    x_min = 1; x_max; vert_show; optimize_height = true; offset = 1;
+    x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -178,7 +177,7 @@ let IAOReader = class {
 
         this.plot_data = this.plot_data.map(function(d) {
             if (differences[d.FileName] != undefined) {
-                d.y = d.y - differences[d.FileName] + self.offset;
+                d.y = d.y - differences[d.FileName] + self.vertical_offset;
             }
             return d;
         });

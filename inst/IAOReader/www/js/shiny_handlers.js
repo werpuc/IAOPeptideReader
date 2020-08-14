@@ -67,3 +67,8 @@ Shiny.addCustomMessageHandler("plot_settings_optimize_height", function(optimize
     iaoreader.optimize_height = optimize_height;
     iaoreader.update_plot();
 });
+
+Shiny.addCustomMessageHandler("plot_settings_vertical_offset", function(vertical_offset) {
+    iaoreader.vertical_offset = vertical_offset;
+    iaoreader.update_plot();
+});

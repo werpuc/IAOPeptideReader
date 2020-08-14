@@ -1,3 +1,6 @@
+###### v0.5.12 (2020-08-14):
+ * Added customization of the vertical spacing between files.
+
 ###### v0.5.11 (2020-08-14):
  * Added plot setting for choosing whether to optimize the plot vertically.
  * Added top margin to headers within plot settings.

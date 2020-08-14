@@ -22,7 +22,12 @@ plot_settings <- function(input, output, session) {
             list("input_id" = "plot_settings_optimize_height",
                  "input_type" = "checkbox",
                  "label" = "Optimize plot's height",
-                 "value" = TRUE)
+                 "value" = TRUE),
+            # TODO: extend the interface for additional arguments.
+            list("input_id" = "plot_settings_vertical_offset",
+                 "input_type" = "numeric",
+                 "label" = "Vertical spacing between files",
+                 "value" = 5)
         )
 
         mapping
@@ -82,7 +87,7 @@ plot_settings_input_observer <- function(input, session, input_id) {
 
 # Function creating input in the UI.
 plot_settings_input <- function(input_type, input_id, label, value) {
-    stopifnot(input_type %in% c("text", "checkbox")) # TODO: extend if needed.
+    stopifnot(input_type %in% c("text", "checkbox", "numeric")) # TODO: extend if needed.
 
     input_func_name <- sprintf("%sInput", input_type)
     input_call <- call(input_func_name, input_id, label, value)
