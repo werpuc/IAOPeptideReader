@@ -36,9 +36,13 @@ plot_settings <- function(input, output, session) {
                              "Tableau10"),
                  "selected" = "Set1", "width" = "40%"),
             h5("Background color"),
-            # TODO: set this input to default value on application start.
             tags$input(id = "plot_background_color", type = "color",
-                       onchange = "iaoreader.update_background_color()")
+                       onchange = "iaoreader.update_background_color()",
+                       value = "#ffffff"),
+            list("input_id" = "plot_settings_show_background",
+                 "input_type" = "checkbox",
+                 "label" = "Show background",
+                 "value" = TRUE)
             # TODO: coloring mouseover vert.
             # TODO: coloring click vert.
         )
