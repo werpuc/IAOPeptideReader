@@ -1,3 +1,6 @@
+###### v0.5.10 (2020-08-14):
+ * Fixed Y-axis range being to wide.
+
 ###### v0.5.9 (2020-08-14):
  * Added function which adjusts height based on the calculated height differences and (hardcoded for now) offset.
  * Added assertion to previously implemented function.

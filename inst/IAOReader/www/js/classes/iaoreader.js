@@ -12,7 +12,7 @@ let IAOReader = class {
 
     // Axis limits values and other variables.
     // TODO: move optimize_height and offset setting to plot settings in Shiny.
-    x_min = 1; x_max; y_max; vert_show; optimize_height = true; offset = 1;
+    x_min = 1; x_max; vert_show; optimize_height = true; offset = 1;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -197,7 +197,7 @@ let IAOReader = class {
 
     get y_scale() {
         return d3.scaleLinear()
-            .domain([1, this.plot_data.length])
+            .domain([1, this.y_max])
             .range([this.height - this.margin.bottom, this.margin.top]);
     }
 
@@ -261,6 +261,10 @@ let IAOReader = class {
         return differences;
     }
 
+    get y_max() {
+        return d3.max(this.plot_data.map(d => d.y));
+    }
+
 
     /* -------------------------------------------------------------------------
      * Setters
@@ -283,7 +287,6 @@ let IAOReader = class {
 
         this.filter_data();
 
-        // TODO: fix y-axis range.
         if (this.optimize_height) {
             this.adjust_heights();
         }
