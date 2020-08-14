@@ -3,7 +3,7 @@ let PlotSettings = class {
     svg; title;
 
     // Color pallete for files.
-    color_palette = ["green", "blue", "yellow"];
+    color_palette;
 
     constructor(svg, margin) {
         this.svg = svg;

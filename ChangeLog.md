@@ -1,3 +1,7 @@
+###### v0.6.2 (2020-08-14):
+ * Added a selectInput for picking a color palette of choice.
+ * Extended interface for plot settings generation to account for selectInputs.
+
 ###### v0.6.1 (2020-08-14):
  * Updated plot settings headers.
 

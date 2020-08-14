@@ -72,3 +72,46 @@ Shiny.addCustomMessageHandler("plot_settings_vertical_offset", function(vertical
     iaoreader.vertical_offset = vertical_offset;
     iaoreader.update_plot();
 });
+
+
+// [[ Color settings ]]
+Shiny.addCustomMessageHandler("plot_settings_color_palette", function(color_palette_name) {
+    var color_palette;
+
+    switch (color_palette_name) {
+        case "Accent":
+            color_palette = d3.schemeAccent;
+            break;
+        case "Category10":
+            color_palette = d3.schemeCategory10;
+            break;
+        case "Dark2":
+            color_palette = d3.schemeDark2;
+            break;
+        case "Paired":
+            color_palette = d3.schemePaired;
+            break;
+        case "Pastel1":
+            color_palette = d3.schemePastel1;
+            break;
+        case "Pastel2":
+            color_palette = d3.schemePastel2;
+            break;
+        case "Set1":
+            color_palette = d3.schemeSet1;
+            break;
+        case "Set2":
+            color_palette = d3.schemeSet2;
+            break;
+        case "Set3":
+            color_palette = d3.schemeSet3;
+            break;
+        case "Tableau10":
+            color_palette = d3.schemeTableau10;
+            break;
+        default:
+            color_palette = d3.schemeSet1;
+    }
+
+    iaoreader.color_palette = color_palette;
+});

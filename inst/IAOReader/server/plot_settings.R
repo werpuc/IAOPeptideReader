@@ -27,7 +27,18 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "numeric",
                  "label" = "Vertical spacing between files",
                  "value" = 5,
-                 "min" = 1, "step" = 1, "width" = "40%")
+                 "min" = 1, "step" = 1, "width" = "40%"),
+            h3("Color settings"),
+            list("input_id" = "plot_settings_color_palette",
+                 "input_type" = "select",
+                 "label" = "Color palette",
+                 "value" = c("Accent", "Category10", "Dark2", "Paired",
+                             "Pastel1", "Pastel2", "Set1", "Set2", "Set3",
+                             "Tableau10"),
+                 "selected" = "Set1", "width" = "40%")
+            # TODO: coloring mouseover vert.
+            # TODO: coloring click vert.
+            # TODO: background color.
         )
 
         mapping
@@ -66,8 +77,15 @@ plot_settings <- function(input, output, session) {
                 substr(input_type, 1, 1) <- toupper(substr(input_type, 1, 1))
 
                 update_func_name <- sprintf("update%sInput", input_type)
+
                 update_call <- call(update_func_name, session,
                                     meta[["input_id"]], value = meta[["value"]])
+
+                if (input_type == "Select") {
+                    update_call <- call(update_func_name, session,
+                                        meta[["input_id"]], NULL,
+                                        meta[["value"]], meta[["selected"]])
+                }
 
                 eval(update_call)
             }
@@ -86,7 +104,7 @@ plot_settings_input_observer <- function(input, session, input_id) {
 
 # Function creating input in the UI.
 plot_settings_input <- function(input_type, input_id, label, value, ...) {
-    stopifnot(input_type %in% c("text", "checkbox", "numeric")) # TODO: extend if needed.
+    stopifnot(input_type %in% c("text", "checkbox", "numeric", "select")) # TODO: extend if needed.
 
     input_func_name <- sprintf("%sInput", input_type)
     call_args <- list(input_func_name, input_id, label, value, ...)
