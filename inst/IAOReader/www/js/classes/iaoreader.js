@@ -11,7 +11,7 @@ let IAOReader = class {
     vert_mark = "vert-mark"; vert_click_mark = "vert-click-mark";
 
     // Axis limits values and other variables.
-    x_min = 1; x_max; vert_show;
+    x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -169,6 +169,20 @@ let IAOReader = class {
         this.file_names_displayed.set(file_name, display_flag);
     }
 
+    adjust_heights() {
+        if (this.plot_data === null) return null;
+
+        var differences = this.height_differences;
+        var disp_files = this.displayed_files;
+        var self = this;
+
+        this.plot_data = this.plot_data.map(function(d) {
+            var offset = self.vertical_offset * disp_files.indexOf(d.FileName);
+            d.y = d.y - differences[d.FileName] + offset;
+            return d;
+        });
+    }
+
 
     /* -------------------------------------------------------------------------
      * Getters
@@ -182,7 +196,7 @@ let IAOReader = class {
 
     get y_scale() {
         return d3.scaleLinear()
-            .domain([1, this.plot_data.length])
+            .domain([1, this.y_max])
             .range([this.height - this.margin.bottom, this.margin.top]);
     }
 
@@ -199,6 +213,56 @@ let IAOReader = class {
         });
 
         return disp_files;
+    }
+
+    get height_differences() {
+        if (this.file_names === null || this.plot_data === null) return null;
+
+        var disp_files = this.displayed_files;
+
+        // Calculating y positions for every file for every X coordinate.
+        var heights = new Map();
+
+        // Initializing arrays.
+        var n = this.x_max - this.x_min + 1
+        disp_files.forEach(function(d) {
+            heights[d] = new Map();
+            heights[d]["Max"] = new Array(n).fill(-Infinity);
+            heights[d]["Min"] = new Array(n).fill(Infinity);
+        });
+
+        // Reading both minimum and maximum Y axis value for every file.
+        for (var i = 0; i < n; i++) {
+            this.plot_data.forEach(function(d) {
+                if (d.Start <= i && i <= d.End) {
+                    heights[d.FileName]["Max"][i] = Math.max(d.y, heights[d.FileName]["Max"][i]);
+                    heights[d.FileName]["Min"][i] = Math.min(d.y, heights[d.FileName]["Min"][i]);
+                }
+            });
+        }
+
+        // Calculating differences in height between files.
+        var differences = new Map();
+        differences[disp_files[0]] = 0;
+        for (var i = 1; i < disp_files.length; i++) {
+            var lower_values = heights[disp_files[i - 1]]["Max"];
+            var higher_values = heights[disp_files[i]]["Min"];
+            var diffs = new Array(n).fill(Infinity);
+
+            for (var j = 0; j < n; j++) {
+                if (Number.isFinite(lower_values[j]) && Number.isFinite(higher_values[j])) {
+                    diffs[j] = higher_values[j] - lower_values[j];
+                }
+            }
+
+            differences[disp_files[i]] = d3.min(diffs) + differences[disp_files[i - 1]];
+        }
+
+        return differences;
+    }
+
+    get y_max() {
+        return d3.max(this.plot_data.map(d => d.y));
     }
 
 
@@ -222,6 +286,10 @@ let IAOReader = class {
         if (this.plot_data_raw === null) return;
 
         this.filter_data();
+
+        if (this.optimize_height) {
+            this.adjust_heights();
+        }
 
         this.draw_x_axis();
         this.draw_y_axis();

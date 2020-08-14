@@ -17,7 +17,17 @@ plot_settings <- function(input, output, session) {
             list("input_id" = "plot_settings_allow_verts_marking",
                  "input_type" = "checkbox",
                  "label" = "Color lines crossing the guides",
-                 "value" = TRUE)
+                 "value" = TRUE),
+            h5("Plot space optimization"),
+            list("input_id" = "plot_settings_optimize_height",
+                 "input_type" = "checkbox",
+                 "label" = "Optimize plot's height",
+                 "value" = TRUE),
+            list("input_id" = "plot_settings_vertical_offset",
+                 "input_type" = "numeric",
+                 "label" = "Vertical spacing between files",
+                 "value" = 5,
+                 "min" = 1, "step" = 1, "width" = "40%")
         )
 
         mapping
@@ -34,8 +44,7 @@ plot_settings <- function(input, output, session) {
                 plot_settings_input_observer(input, session, meta[["input_id"]])
 
                 # UI (this is the returned value for the renderUI)
-                plot_settings_input(meta[["input_type"]], meta[["input_id"]],
-                                    meta[["label"]], meta[["value"]])
+                do.call(plot_settings_input, meta)
             }
         )
     })
@@ -76,16 +85,17 @@ plot_settings_input_observer <- function(input, session, input_id) {
 }
 
 # Function creating input in the UI.
-plot_settings_input <- function(input_type, input_id, label, value) {
-    stopifnot(input_type %in% c("text", "checkbox")) # TODO: extend if needed.
+plot_settings_input <- function(input_type, input_id, label, value, ...) {
+    stopifnot(input_type %in% c("text", "checkbox", "numeric")) # TODO: extend if needed.
 
     input_func_name <- sprintf("%sInput", input_type)
-    input_call <- call(input_func_name, input_id, label, value)
+    call_args <- list(input_func_name, input_id, label, value, ...)
+    input_call <- do.call(call, call_args)
 
     eval(input_call)
 }
 
 is_plot_settings_meta <- function(meta) {
     req_names <- c("input_id", "input_type", "label", "value")
-    setequal(names(meta), req_names)
+    setequal(names(meta)[1:4], req_names)
 }

@@ -1,3 +1,28 @@
+###### v0.6.0 (2020-08-14):
+ * This version marks an end to vertical plot space optimization.
+ * Extended interface for plot settings generation.
+ * Used the updated interface for customizing the numericInput used for vertical offset between files.
+
+###### v0.5.13 (2020-08-14):
+ * Fixed vertical offset adjustment after testing with multiple files.
+
+###### v0.5.12 (2020-08-14):
+ * Added customization of the vertical spacing between files.
+
+###### v0.5.11 (2020-08-14):
+ * Added plot setting for choosing whether to optimize the plot vertically.
+ * Added top margin to headers within plot settings.
+
+###### v0.5.10 (2020-08-14):
+ * Fixed Y-axis range being to wide.
+
+###### v0.5.9 (2020-08-14):
+ * Added function which adjusts height based on the calculated height differences and (hardcoded for now) offset.
+ * Added assertion to previously implemented function.
+
+###### v0.5.8 (2020-08-14):
+ * Added function for calculating height differences between files on the plot.
+
 ###### v0.5.7 (2020-08-10):
  * Added development disclaimer to the title panel.
 

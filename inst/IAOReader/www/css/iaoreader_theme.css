@@ -200,3 +200,9 @@ div#previewed_file div.has-items {
     background-color: var(--theme-color-background-warning);
     color: var(--theme-color-warning-text);
 }
+
+
+/* [[ Plot Settings ]] */
+div#plot_settings_inputs > h5 {
+    margin-top: 30px;
+}
