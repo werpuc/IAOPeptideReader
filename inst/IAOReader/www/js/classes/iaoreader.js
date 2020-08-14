@@ -1,7 +1,7 @@
 let IAOReader = class {
     // Canvas dimensions.
     width = 1280; height = 720;
-    margin = { top: 30, right: 30, bottom: 30, left: 30 };
+    margin = { top: 40, right: 30, bottom: 30, left: 30 };
 
     // Plot elements.
     svg; x_axis; y_axis; lines;

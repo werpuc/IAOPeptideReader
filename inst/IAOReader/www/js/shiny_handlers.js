@@ -78,6 +78,9 @@ Shiny.addCustomMessageHandler("plot_settings_vertical_offset", function(vertical
 Shiny.addCustomMessageHandler("plot_settings_color_palette", function(color_palette_name) {
     var color_palette;
 
+    // For color palette details refer to below links:
+    // https://colorbrewer2.org/
+    // https://github.com/d3/d3-scale-chromatic
     switch (color_palette_name) {
         case "Accent":
             color_palette = d3.schemeAccent;

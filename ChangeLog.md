@@ -1,3 +1,8 @@
+###### v0.6.3 (2020-08-14):
+ * Increased top margin.
+ * Removed unused JS script.
+ * Added information about color palettes with URLs to palette update handler.
+
 ###### v0.6.2 (2020-08-14):
  * Added a selectInput for picking a color palette of choice.
  * Extended interface for plot settings generation to account for selectInputs.

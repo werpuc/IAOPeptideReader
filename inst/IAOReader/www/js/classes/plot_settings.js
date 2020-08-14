@@ -9,6 +9,7 @@ let PlotSettings = class {
         this.svg = svg;
 
         // Creating title.
+        // TODO: adjust title's font size.
         this.title = this.svg.append("text")
             .attr("id", "plot_title")
             .attr("text-anchor", "middle")
