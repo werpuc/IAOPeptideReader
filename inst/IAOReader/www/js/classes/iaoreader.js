@@ -201,6 +201,50 @@ let IAOReader = class {
         return disp_files;
     }
 
+    get height_differences() {
+        var disp_files = this.displayed_files;
+
+        // Calculating y positions for every file for every X coordinate.
+        var heights = new Map();
+
+        // Initializing arrays.
+        var n = this.x_max - this.x_min + 1
+        disp_files.forEach(function(d) {
+            heights[d] = new Map();
+            heights[d]["Max"] = new Array(n).fill(-Infinity);
+            heights[d]["Min"] = new Array(n).fill(Infinity);
+        });
+
+        // Reading both minimum and maximum Y axis value for every file.
+        for (var i = 0; i < n; i++) {
+            this.plot_data.forEach(function(d) {
+                if (d.Start <= i && i <= d.End) {
+                    heights[d.FileName]["Max"][i] = Math.max(d.y, heights[d.FileName]["Max"][i]);
+                    heights[d.FileName]["Min"][i] = Math.min(d.y, heights[d.FileName]["Min"][i]);
+                }
+            });
+        }
+
+
+        // Calculating differences in height between files.
+        var differences = new Map();
+        for (var i = 1; i < disp_files.length; i++) {
+            var lower_values = heights[disp_files[i - 1]]["Max"];
+            var higher_values = heights[disp_files[i]]["Min"];
+            var diffs = new Array(n).fill(Infinity);
+
+            for (var j = 0; j < n; j++) {
+                if (Number.isFinite(lower_values[j]) && Number.isFinite(higher_values[j])) {
+                    diffs[j] = higher_values[j] - lower_values[j];
+                }
+            }
+
+            differences[disp_files[i]] = d3.min(diffs);
+        }
+
+        return differences;
+    }
+
 
     /* -------------------------------------------------------------------------
      * Setters

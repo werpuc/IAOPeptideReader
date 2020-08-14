@@ -1,3 +1,6 @@
+###### v0.5.8 (2020-08-14):
+ * Added function for calculating height differences between files on the plot.
+
 ###### v0.5.7 (2020-08-10):
  * Added development disclaimer to the title panel.
 
