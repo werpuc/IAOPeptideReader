@@ -1,3 +1,7 @@
+###### v0.5.9 (2020-08-14):
+ * Added function which adjusts height based on the calculated height differences and (hardcoded for now) offset.
+ * Added assertion to previously implemented function.
+
 ###### v0.5.8 (2020-08-14):
  * Added function for calculating height differences between files on the plot.
 

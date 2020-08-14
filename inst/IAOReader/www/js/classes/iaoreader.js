@@ -11,7 +11,8 @@ let IAOReader = class {
     vert_mark = "vert-mark"; vert_click_mark = "vert-click-mark";
 
     // Axis limits values and other variables.
-    x_min = 1; x_max; vert_show;
+    // TODO: move optimize_height and offset setting to plot settings in Shiny.
+    x_min = 1; x_max; y_max; vert_show; optimize_height = true; offset = 1;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -169,6 +170,20 @@ let IAOReader = class {
         this.file_names_displayed.set(file_name, display_flag);
     }
 
+    adjust_heights() {
+        if (this.plot_data === null) return null;
+
+        var differences = this.height_differences;
+        var self = this;
+
+        this.plot_data = this.plot_data.map(function(d) {
+            if (differences[d.FileName] != undefined) {
+                d.y = d.y - differences[d.FileName] + self.offset;
+            }
+            return d;
+        });
+    }
+
 
     /* -------------------------------------------------------------------------
      * Getters
@@ -202,6 +217,8 @@ let IAOReader = class {
     }
 
     get height_differences() {
+        if (this.file_names === null || this.plot_data === null) return null;
+
         var disp_files = this.displayed_files;
 
         // Calculating y positions for every file for every X coordinate.
@@ -224,7 +241,6 @@ let IAOReader = class {
                 }
             });
         }
-
 
         // Calculating differences in height between files.
         var differences = new Map();
@@ -266,6 +282,11 @@ let IAOReader = class {
         if (this.plot_data_raw === null) return;
 
         this.filter_data();
+
+        // TODO: fix y-axis range.
+        if (this.optimize_height) {
+            this.adjust_heights();
+        }
 
         this.draw_x_axis();
         this.draw_y_axis();
