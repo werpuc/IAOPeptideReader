@@ -53,7 +53,17 @@ plot_settings <- function(input, output, session) {
                  "value" = c("Accent", "Category10", "Dark2", "Paired",
                              "Pastel1", "Pastel2", "Set1", "Set2", "Set3",
                              "Tableau10"),
-                 "selected" = "Set1", "width" = "40%")
+                 "selected" = "Set1", "width" = "40%"),
+            list("input_id" = "axes_color",
+                 "input_type" = "color",
+                 "label" = "Axes color",
+                 "value" = "#000000",
+                 "onchange" = "iaoreader.axes_color = this.value;"),
+            list("input_id" = "axes_labels_color",
+                 "input_type" = "color",
+                 "label" = "Axes labels color",
+                 "value" = "#000000",
+                 "onchange" = "iaoreader.axes_labels_color = this.value;")
         )
 
         mapping
@@ -110,11 +120,11 @@ plot_settings <- function(input, output, session) {
 
 
 # Color Input ------------------------------------------------------------------
-colorInput <- function(input_id, label, value, onchange) {
+colorInput <- function(input_id, label, value, onchange, width = "40%") {
     div(class = "color_input",
         h5(label),
         tags$input(id = input_id, type = "color", value = value,
-                   onchange = onchange))
+                   onchange = onchange, width = width))
 }
 
 updateColorInput <- function(session, input_id, value) {

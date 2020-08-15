@@ -1,3 +1,7 @@
+###### v0.6.15 (2020-08-15):
+ * Added colorInputs for axes and axes labels.
+ * Added default width to colorInput.
+
 ###### v0.6.14 (2020-08-15):
  * Added styling for the axes and their labels.
  * Added setters for setting these colors.
