@@ -119,9 +119,10 @@ Shiny.addCustomMessageHandler("plot_settings_color_palette", function(color_pale
     iaoreader.color_palette = color_palette;
 });
 
-Shiny.addCustomMessageHandler("reset_background_color", function(_) {
-    document.getElementById("plot_background_color").value = "#ffffff";
-    iaoreader.background_color = "#ffffff";
+Shiny.addCustomMessageHandler("reset_color_input", function(reset_meta) {
+    var color_input = document.getElementById(reset_meta.input_id);
+    color_input.value = reset_meta.color;
+    color_input.dispatchEvent(new Event("change"));
 });
 
 Shiny.addCustomMessageHandler("plot_settings_show_background", function(show_background) {

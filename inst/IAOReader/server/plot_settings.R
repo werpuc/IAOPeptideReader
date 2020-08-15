@@ -75,9 +75,6 @@ plot_settings <- function(input, output, session) {
 
     # Reset button observer ----------------------------------------------------
     observeEvent(input[["plot_settings_reset"]], {
-        # TODO: create single color reset handler and pass id and color to set.
-        session$sendCustomMessage("reset_background_color", 1)
-
         lapply(
             plot_settings_input_mapping(),
             function(meta) {
@@ -90,9 +87,6 @@ plot_settings <- function(input, output, session) {
 
                 update_call <- call(update_func_name, session,
                                     meta[["input_id"]], value = meta[["value"]])
-
-                # Special cases.
-                if (input_type == "Color") return()
 
                 if (input_type == "Select") {
                     update_call <- call(update_func_name, session,
@@ -113,6 +107,11 @@ colorInput <- function(input_id, label, value, onchange) {
         h5(label),
         tags$input(id = input_id, type = "color", value = value,
                    onchange = onchange))
+}
+
+updateColorInput <- function(session, input_id, value) {
+    reset_meta <- list("input_id" = input_id, "color" = value)
+    session$sendCustomMessage("reset_color_input", reset_meta)
 }
 
 

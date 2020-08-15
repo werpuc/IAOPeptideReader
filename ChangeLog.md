@@ -1,3 +1,6 @@
+###### v0.6.10 (2020-08-15):
+ * Implemented updateColorInput function to avoid code redundancy.
+
 ###### v0.6.9 (2020-08-15):
  * Added colorInput to facilitate further additions of this input type.
 
