@@ -127,5 +127,7 @@ Shiny.addCustomMessageHandler("reset_color_input", function(reset_meta) {
 
 Shiny.addCustomMessageHandler("plot_settings_show_background", function(show_background) {
     iaoreader.show_background = show_background;
-    iaoreader.background_color = iaoreader.background_color;
+
+    var color = document.getElementById("plot_background_color").value;
+    iaoreader.background_color = color;
 });

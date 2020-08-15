@@ -1,3 +1,6 @@
+###### v0.6.12 (2020-08-15):
+ * Fixed show background checkbox making the background disappear indefinitely.
+
 ###### v0.6.11 (2020-08-15):
  * TODOs and redundant functions clean-up.
  * Reducend data sent to JS to Start, End and FileName columns.

@@ -267,10 +267,6 @@ let IAOReader = class {
         return d3.max(this.plot_data.map(d => d.y));
     }
 
-    get background_color() {
-        return this.svg.style("background");
-    }
-
 
     /* -------------------------------------------------------------------------
      * Setters
