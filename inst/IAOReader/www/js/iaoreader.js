@@ -4,7 +4,7 @@ let IAOReader = class {
     margin = { top: 40, right: 30, bottom: 30, left: 30 };
 
     // Plot elements.
-    svg; x_axis; y_axis; lines;
+    svg; x_axis; y_axis; lines; title;
     vert; vert_click;
 
     // Vertical guides mark class names.
@@ -12,7 +12,7 @@ let IAOReader = class {
 
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
-    show_background;
+    show_background; color_palette;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -23,6 +23,13 @@ let IAOReader = class {
         this.svg = d3.select("div#plot").append("svg")
             .attr("viewBox", "0 0 " + this.width + " " + this.height)
             .style("background", "#ffffff");
+
+        // Creating title.
+        this.title = this.svg.append("text")
+            .attr("id", "plot_title")
+            .attr("text-anchor", "middle")
+            .attr("x", "50%")
+            .attr("y", this.margin.top / 2 + "px");
 
         // Creating X axis g tag.
         this.x_axis = this.svg.append("g")
@@ -121,8 +128,6 @@ let IAOReader = class {
             self.unmark_lines(self.vert_click_mark);
             self.vert_click.style("visibility", "hidden");
         })
-
-        this.plot_settings = new PlotSettings(this.svg, this.margin);
     }
 
     /* -------------------------------------------------------------------------
@@ -274,11 +279,6 @@ let IAOReader = class {
      * Setters
      * ---------------------------------------------------------------------- */
 
-    set color_palette(col_pal) {
-        this.plot_settings.color_palette = col_pal;
-        this.update_plot();
-    }
-
     set vert_color(color) {
         document.documentElement.style.setProperty("--plot-color-vert", color);
     }
@@ -382,7 +382,7 @@ let IAOReader = class {
         // provided file_name is currently not displayed.
         if (color_id == -1) return "black";
 
-        var col_pal = this.plot_settings.color_palette;
+        var col_pal = this.color_palette;
 
         return col_pal[color_id % col_pal.length];
     }

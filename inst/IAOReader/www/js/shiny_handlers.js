@@ -38,7 +38,7 @@ Shiny.addCustomMessageHandler("seq_len_check", function(is_ok) {
 
 // [[ Plot title ]]
 Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
-    iaoreader.plot_settings.title.text(title_text);
+    iaoreader.title.text(title_text);
 });
 
 
@@ -117,6 +117,7 @@ Shiny.addCustomMessageHandler("plot_settings_color_palette", function(color_pale
     }
 
     iaoreader.color_palette = color_palette;
+    iaoreader.update_plot();
 });
 
 Shiny.addCustomMessageHandler("reset_color_input", function(reset_meta) {

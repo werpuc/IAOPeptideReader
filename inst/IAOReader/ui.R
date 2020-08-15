@@ -11,12 +11,8 @@ ui <- function() {
 
     scripts_names <- c(
         "d3.min.js",
-        "shiny_handlers.js"
-    )
-
-    class_scripts_names <- c(
-        "iaoreader.js",
-        "plot_settings.js"
+        "shiny_handlers.js",
+        "iaoreader.js"
     )
 
     tagList(
@@ -42,7 +38,6 @@ ui <- function() {
         fluidPage(
             lapply(css_names, attach_css),
             lapply(scripts_names, attach_script),
-            lapply(class_scripts_names, attach_script, "www/js/classes"),
             sidebar_panel_ui(),
             main_panel_ui()
         )

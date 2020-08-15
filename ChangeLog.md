@@ -1,3 +1,7 @@
+###### v0.6.16 (2020-08-15):
+ * Incorporated plot_settings class functionalities into the IAOReader class.
+ * Restructured `www/js` directory.
+
 ###### v0.6.15 (2020-08-15):
  * Added colorInputs for axes and axes labels.
  * Added default width to colorInput.
