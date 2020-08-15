@@ -60,6 +60,8 @@ a#github_url {
 :root {
     --plot-color-vert: #00008B;
     --plot-color-vert-click: #8B008B;
+    --plot-color-axes: #000000;
+    --plot-color-axes-labels: #000000;
 }
 
 div#plot svg {
@@ -83,6 +85,14 @@ div#plot g#lines.allow-verts-marking line.vert-click-mark:not(.vert-mark) {
 
 div#plot g#y_axis g.tick {
     visibility: hidden;
+}
+
+div#plot g.axis > path, div#plot g.axis g.tick > line {
+    color: var(--plot-color-axes);
+}
+
+div#plot g.axis g.tick > text {
+    color: var(--plot-color-axes-labels);
 }
 
 /* [[ Data Preview ]] */

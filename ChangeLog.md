@@ -1,3 +1,7 @@
+###### v0.6.14 (2020-08-15):
+ * Added styling for the axes and their labels.
+ * Added setters for setting these colors.
+
 ###### v0.6.13 (2020-08-15):
  * Added colorInputs for both mouseover and persistent vertical guides.
  * Changed default colors of the guides.

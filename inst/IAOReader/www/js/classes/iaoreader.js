@@ -27,11 +27,13 @@ let IAOReader = class {
         // Creating X axis g tag.
         this.x_axis = this.svg.append("g")
             .attr("id", "x_axis")
+            .attr("class", "axis")
             .attr("transform", "translate(0, " + (this.height - this.margin.bottom) + ")");
 
         // Creating Y axis g tag.
         this.y_axis = this.svg.append("g")
             .attr("id", "y_axis")
+            .attr("class", "axis")
             .attr("transform", "translate(" + this.margin.left + ", 0)");
 
         // Creating lines g tag.
@@ -288,6 +290,15 @@ let IAOReader = class {
 
     set background_color(color) {
         this.svg.style("background", this.show_background ? color : "");
+    }
+
+    set axes_color(color) {
+        document.documentElement.style.setProperty("--plot-color-axes", color);
+    }
+
+    set axes_labels_color(color) {
+        document.documentElement.style
+            .setProperty("--plot-color-axes-labels", color);
     }
 
 
