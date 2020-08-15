@@ -1,3 +1,6 @@
+###### v0.7.4 (2020-08-15):
+ * Implemented lambda measure methods for IAOReader class.
+
 ###### v0.7.3 (2020-08-15):
  * Implemented `lambda` and `lambda_segment` functions for single files.
 

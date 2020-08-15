@@ -12,7 +12,8 @@ let IAOReader = class {
 
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
-    show_background; color_palette;
+    // TODO: move k_parameter to plot settings.
+    show_background; color_palette; k_parameter = 3;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -189,6 +190,33 @@ let IAOReader = class {
             d.y = d.y - differences[d.FileName] + offset;
             return d;
         });
+    }
+
+    lambda(n0) {
+        return this.lambda_segment(n0, n0);
+    }
+
+    lambda_segment(n1, n2) {
+        if (this.plot_data === null) return null;
+
+        var files_data = new Map();
+
+        // Transforming data into map of arrays.
+        this.plot_data.forEach(function(d) {
+            if (files_data[d.FileName] === undefined) {
+                files_data[d.FileName] = new Array();
+            }
+
+            files_data[d.FileName] = files_data[d.FileName]
+                .concat({Start: d.Start, End: d.End});
+        })
+
+        var results = new Map();
+        for (const [k, v] of Object.entries(files_data)) {
+            results[k] = lambda_segment(v, n1, n2, this.k_parameter);
+        }
+
+        return results;
     }
 
 
