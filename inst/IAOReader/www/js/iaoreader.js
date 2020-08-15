@@ -198,17 +198,19 @@ let IAOReader = class {
     lambda_segment(n1, n2) {
         if (this.plot_data === null) return null;
 
+        var disp_files = this.displayed_files;
         var files_data = new Map();
 
         // Transforming data into map of arrays.
         this.plot_data.forEach(function(d) {
+            if (!disp_files.includes(d.FileName)) return;
             if (files_data[d.FileName] === undefined) {
                 files_data[d.FileName] = new Array();
             }
 
             files_data[d.FileName] = files_data[d.FileName]
                 .concat({Start: d.Start, End: d.End});
-        })
+        });
 
         var results = new Map();
         for (const [k, v] of Object.entries(files_data)) {
@@ -397,6 +399,41 @@ let IAOReader = class {
                     .style("stroke", d => this.file_color(d.FileName));
     }
 
+    draw_lambda_values(x) {
+        if (this.plot_data === null) return;
+
+        var disp_files = this.displayed_files;
+        var vert_lines = this.plot_data.filter(d => d.Start <= x && x <= d.End);
+
+        // Getting highest line at given point for every file.
+        var heights = new Map();
+        vert_lines.forEach(function(d) {
+            if (!disp_files.includes(d.FileName)) return;
+            if (heights[d.FileName] === undefined) {
+                heights[d.FileName] = -Infinity;
+            }
+
+            heights[d.FileName] = Math.max(d.y, heights[d.FileName]);
+        });
+
+        // Calculating lambda values.
+        var lambda_values = this.lambda(x);
+
+        // Adding new values to the vert.
+        this.vert.selectAll("text.lambda").remove();
+        for (const [file_name, y] of Object.entries(heights)) {
+            this.vert.append("text")
+                .attr("class", "lambda")
+                .attr("y", this.y_scale(y))
+                .attr("fill", this.file_color(file_name))
+                .text(Math.round(lambda_values[file_name] * 100) + "%");
+        }
+
+        // TODO: offset the values from the vert.
+        // TODO: create a box for them to be clearly visible.
+        // TODO: do the same for click vert (maybe with offset in different direction).
+    }
+
 
     /* -------------------------------------------------------------------------
      * Lines coloring
@@ -450,6 +487,8 @@ let IAOReader = class {
             .attr("transform", "translate(" + this.x_scale(x) + ", 0)")
             .select("text")
                 .text(x);
+
+        this.draw_lambda_values(x);
     }
 }
 

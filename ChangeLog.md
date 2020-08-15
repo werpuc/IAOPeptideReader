@@ -1,3 +1,7 @@
+###### v0.7.6 (2020-08-15):
+ * The lambda measure values are now displayed on the plot on mouseover.
+ * Restricted IAOReader lambda method to account only for currently displayed files.
+
 ###### v0.7.5 (2020-08-15):
  * Added K penalty parameter customization to plot settings.
 
