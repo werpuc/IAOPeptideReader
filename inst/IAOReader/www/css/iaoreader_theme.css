@@ -207,10 +207,10 @@ div#plot_settings_inputs > h3 {
     margin-top: 25px;
 }
 
-div#background_color_input {
+.color_input {
     margin-bottom: 10px;
 }
 
-div#background_color_input > h5 {
+.color_input > h5 {
     margin-bottom: 5px;
 }

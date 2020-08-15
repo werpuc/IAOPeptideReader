@@ -1,3 +1,6 @@
+###### v0.6.9 (2020-08-15):
+ * Added colorInput to facilitate further additions of this input type.
+
 ###### v0.6.8 (2020-08-15):
  * Improved background color setting implementation.
 

@@ -32,11 +32,11 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "checkbox",
                  "label" = "Show background",
                  "value" = TRUE),
-            div(id = "background_color_input",
-                h5("Background color"),
-                tags$input(id = "plot_background_color", type = "color",
-                           onchange = "iaoreader.background_color = this.value",
-                           value = "#ffffff")),
+            list("input_id" = "plot_background_color",
+                 "input_type" = "color",
+                 "label" = "Background color",
+                 "value" = "#ffffff",
+                 "onchange" = "iaoreader.background_color = this.value;"),
             list("input_id" = "plot_settings_color_palette",
                  "input_type" = "select",
                  "label" = "Lines color palette",
@@ -75,6 +75,7 @@ plot_settings <- function(input, output, session) {
 
     # Reset button observer ----------------------------------------------------
     observeEvent(input[["plot_settings_reset"]], {
+        # TODO: create single color reset handler and pass id and color to set.
         session$sendCustomMessage("reset_background_color", 1)
 
         lapply(
@@ -90,6 +91,9 @@ plot_settings <- function(input, output, session) {
                 update_call <- call(update_func_name, session,
                                     meta[["input_id"]], value = meta[["value"]])
 
+                # Special cases.
+                if (input_type == "Color") return()
+
                 if (input_type == "Select") {
                     update_call <- call(update_func_name, session,
                                         meta[["input_id"]], NULL,
@@ -103,6 +107,15 @@ plot_settings <- function(input, output, session) {
 }
 
 
+# Color Input ------------------------------------------------------------------
+colorInput <- function(input_id, label, value, onchange) {
+    div(class = "color_input",
+        h5(label),
+        tags$input(id = input_id, type = "color", value = value,
+                   onchange = onchange))
+}
+
+
 # Utilities --------------------------------------------------------------------
 # Function creating input's server backend.
 plot_settings_input_observer <- function(input, session, input_id) {
@@ -113,7 +126,8 @@ plot_settings_input_observer <- function(input, session, input_id) {
 
 # Function creating input in the UI.
 plot_settings_input <- function(input_type, input_id, label, value, ...) {
-    stopifnot(input_type %in% c("text", "checkbox", "numeric", "select")) # TODO: extend if needed.
+    stopifnot(input_type %in% c("text", "checkbox", "numeric", "select",
+                                "color"))
 
     input_func_name <- sprintf("%sInput", input_type)
     call_args <- list(input_func_name, input_id, label, value, ...)
