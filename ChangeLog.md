@@ -1,3 +1,6 @@
+###### v0.6.7 (2020-08-15):
+ * Added setters for vertical lines' colors.
+
 ###### v0.6.6 (2020-08-14):
  * Improved color plot settings arrangement and styling.
 

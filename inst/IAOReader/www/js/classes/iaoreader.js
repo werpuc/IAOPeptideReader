@@ -11,9 +11,9 @@ let IAOReader = class {
     vert_mark = "vert-mark"; vert_click_mark = "vert-click-mark";
 
     // Axis limits values and other variables.
-    // TODO: move show_background to settings.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
-    show_background = true;
+    show_background;
+
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -275,6 +275,15 @@ let IAOReader = class {
     set color_palette(col_pal) {
         this.plot_settings.color_palette = col_pal;
         this.update_plot();
+    }
+
+    set vert_color(color) {
+        document.documentElement.style.setProperty("--plot-color-vert", color);
+    }
+
+    set vert_click_color(color) {
+        document.documentElement.style
+            .setProperty("--plot-color-vert-click", color);
     }
 
 
