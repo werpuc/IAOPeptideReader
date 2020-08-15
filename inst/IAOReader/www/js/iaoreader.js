@@ -303,8 +303,10 @@ let IAOReader = class {
 
     set title_font_size(size) {
         // This makes the tile centered at the initial y.
-        this.title.attr("y", this.margin.top * 0.75 + (size - 20) / 2 + "px");
-        this.title.style("font-size", size + "px");
+        if (10 <= size && size <= 72) {
+            this.title.attr("y", this.margin.top * 0.75 + (size - 20) / 2 + "px");
+            this.title.style("font-size", size + "px");
+        }
     }
 
 

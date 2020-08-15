@@ -7,10 +7,16 @@ plot_settings <- function(input, output, session) {
 
         mapping <- list(
             h3("Title Settings"),
+            # TODO: text color.
             list("input_id" = "plot_settings_title_text",
                  "input_type" = "text",
                  "label" = "Plot title",
                  "value" = "Peptide Coverage"),
+            list("input_id" = "plot_settings_title_font_size",
+                 "input_type" = "numeric",
+                 "label" = "Title font size [px]",
+                 "value" = "20",
+                 "min" = 10, "max" = 72, "step" = 1, "width" = width),
             h3("Vertical Guides"),
             list("input_id" = "plot_settings_vert_show",
                  "input_type" = "checkbox",

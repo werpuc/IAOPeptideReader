@@ -47,6 +47,11 @@ Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
     iaoreader.title.text(title_text);
 });
 
+
+Shiny.addCustomMessageHandler("plot_settings_title_font_size", function(font_size) {
+    iaoreader.title_font_size = font_size;
+});
+
 // [[ Vertical guide ]]
 Shiny.addCustomMessageHandler("plot_settings_vert_show", function(vert_show) {
     // vert_show attribute is tracked by the mousemove handler.

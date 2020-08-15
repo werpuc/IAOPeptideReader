@@ -1,3 +1,7 @@
+###### v0.6.19 (2020-08-15):
+ * Added numericInput for title font size.
+ * Added title font size verification before setting it.
+
 ###### v0.6.18 (2020-08-15):
  * Fixed colorInputs width.
  * Moved widths of inputs to a single variable for easier manipulation.
