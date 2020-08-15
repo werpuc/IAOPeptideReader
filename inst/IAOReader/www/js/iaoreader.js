@@ -12,8 +12,7 @@ let IAOReader = class {
 
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
-    // TODO: move k_parameter to plot settings.
-    show_background; color_palette; k_parameter = 3;
+    show_background; color_palette;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;

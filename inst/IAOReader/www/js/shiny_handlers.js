@@ -74,6 +74,12 @@ Shiny.addCustomMessageHandler("plot_settings_allow_verts_marking", function(allo
     cl.remove("allow-verts-marking");
 });
 
+Shiny.addCustomMessageHandler("plot_settings_k_parameter", function(k_parameter) {
+    if (k_parameter >= 0) {
+        iaoreader.k_parameter = k_parameter;
+    }
+});
+
 
 // [[ Height adjustments ]]
 Shiny.addCustomMessageHandler("plot_settings_optimize_height", function(optimize_height) {
