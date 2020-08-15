@@ -13,6 +13,7 @@ ul.nav.nav-tabs {
 /* Fix for selectInputs to not get clipped by .tab-content parent element. */
 div.tab-content {
     overflow-y: visible;
+    max-height: unset;
 }
 
 p.bad_files_info, p.no_file_uploaded {
@@ -58,8 +59,10 @@ a#github_url {
 
 /* [[ Plot ]] */
 :root {
-    --plot-color-vert: orangered;
-    --plot-color-vert-click: orange;
+    --plot-color-vert: #00008B;
+    --plot-color-vert-click: #8B008B;
+    --plot-color-axes: #000000;
+    --plot-color-axes-labels: #000000;
 }
 
 div#plot svg {
@@ -68,7 +71,6 @@ div#plot svg {
 
 div#plot g.verts text {
     font-family: sans-serif;
-    font-size: 10px;
     font-weight: bold;
     text-anchor: middle;
 }
@@ -83,6 +85,14 @@ div#plot g#lines.allow-verts-marking line.vert-click-mark:not(.vert-mark) {
 
 div#plot g#y_axis g.tick {
     visibility: hidden;
+}
+
+div#plot g.axis > path, div#plot g.axis g.tick > line {
+    color: var(--plot-color-axes);
+}
+
+div#plot g.axis g.tick > text {
+    color: var(--plot-color-axes-labels);
 }
 
 /* [[ Data Preview ]] */
@@ -101,8 +111,13 @@ div#previewed_file div.has-items {
  * -------------------------------------------------------------------------- */
 
 /* Improving sidebar layout. */
+body > div.container-fluid > div > form.well {
+    padding: 0;
+}
+
 #sidebar_panel .tab-content > .active {
     margin: 0 10px;
+    padding-bottom: 20px;
 }
 
 #sidebar_panel .tab-content > .active > *:not(h3) {
@@ -136,15 +151,6 @@ div#previewed_file div.has-items {
 }
 
 /* Input summary table. */
-#input_summary_table table {
-    display: inline-block;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    min-height: 120px;
-    max-height: 40vh;
-    width: 100%;
-}
-
 #input_summary_table thead {
     background-color: var(--theme-color-main);
     color: var(--theme-color-bright-text);
@@ -203,6 +209,14 @@ div#previewed_file div.has-items {
 
 
 /* [[ Plot Settings ]] */
-div#plot_settings_inputs > h5 {
-    margin-top: 30px;
+div#plot_settings_inputs > h3 {
+    margin-top: 25px;
+}
+
+.color_input {
+    margin-bottom: 10px;
+}
+
+.color_input > h5 {
+    margin-bottom: 5px;
 }

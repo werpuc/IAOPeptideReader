@@ -1,3 +1,89 @@
+###### v0.7.0 (2020-08-15):
+ * This version marks an end of implementation of plot settings regarding color and text properties of plot elements.
+ * Added numericInput for customizing axes labels font size.
+ * Added axes settings section to the plot settings.
+ * Fixed vertical guides label placement.
+
+###### v0.6.22 (2020-08-15):
+ * Fixed ugly overflow of plot settings.
+ * Improved input settings table handling of many files.
+ * Removed outer padding of the sidebar.
+
+###### v0.6.21 (2020-08-15):
+ * Added font-weight switch between bold and normal for the plot title.
+
+###### v0.6.20 (2020-08-15):
+ * Added colorInput for title text color.
+
+###### v0.6.19 (2020-08-15):
+ * Added numericInput for title font size.
+ * Added title font size verification before setting it.
+
+###### v0.6.18 (2020-08-15):
+ * Fixed colorInputs width.
+ * Moved widths of inputs to a single variable for easier manipulation.
+ * Unified case in plot settings subtitles.
+
+###### v0.6.17 (2020-08-15):
+ * Added title font size configuration interface to JS.
+
+###### v0.6.16 (2020-08-15):
+ * Incorporated plot_settings class functionalities into the IAOReader class.
+ * Restructured `www/js` directory.
+
+###### v0.6.15 (2020-08-15):
+ * Added colorInputs for axes and axes labels.
+ * Added default width to colorInput.
+
+###### v0.6.14 (2020-08-15):
+ * Added styling for the axes and their labels.
+ * Added setters for setting these colors.
+
+###### v0.6.13 (2020-08-15):
+ * Added colorInputs for both mouseover and persistent vertical guides.
+ * Changed default colors of the guides.
+
+###### v0.6.12 (2020-08-15):
+ * Fixed show background checkbox making the background disappear indefinitely.
+
+###### v0.6.11 (2020-08-15):
+ * TODOs and redundant functions clean-up.
+ * Reducend data sent to JS to Start, End and FileName columns.
+
+###### v0.6.10 (2020-08-15):
+ * Implemented updateColorInput function to avoid code redundancy.
+
+###### v0.6.9 (2020-08-15):
+ * Added colorInput to facilitate further additions of this input type.
+
+###### v0.6.8 (2020-08-15):
+ * Improved background color setting implementation.
+
+###### v0.6.7 (2020-08-15):
+ * Added setters for vertical lines' colors.
+
+###### v0.6.6 (2020-08-14):
+ * Improved color plot settings arrangement and styling.
+
+###### v0.6.5 (2020-08-14):
+ * Added checkbox for toggling the plot's background.
+ * Added initial color to the plot's background color input.
+
+###### v0.6.4 (2020-08-14):
+ * Added color input for plot background.
+
+###### v0.6.3 (2020-08-14):
+ * Increased top margin.
+ * Removed unused JS script.
+ * Added information about color palettes with URLs to palette update handler.
+
+###### v0.6.2 (2020-08-14):
+ * Added a selectInput for picking a color palette of choice.
+ * Extended interface for plot settings generation to account for selectInputs.
+
+###### v0.6.1 (2020-08-14):
+ * Updated plot settings headers.
+
 ###### v0.6.0 (2020-08-14):
  * This version marks an end to vertical plot space optimization.
  * Extended interface for plot settings generation.

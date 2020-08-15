@@ -4,8 +4,6 @@ source(file.path("ui", "sidebar_panel_ui.R"), local = TRUE, chdir = TRUE)
 
 # Main UI function -------------------------------------------------------------
 ui <- function() {
-    # TODO: is it okay to have so many small files to organize the code or will
-    #       it negatively affect the page loading times?
     css_names <- c(
         "iaoreader_theme.css",
         "HaDeX_theme.css"
@@ -14,12 +12,7 @@ ui <- function() {
     scripts_names <- c(
         "d3.min.js",
         "shiny_handlers.js",
-        "color_brewer.js"
-    )
-
-    class_scripts_names <- c(
-        "iaoreader.js",
-        "plot_settings.js"
+        "iaoreader.js"
     )
 
     tagList(
@@ -31,7 +24,7 @@ ui <- function() {
                     id = "title",
                     title = paste("Version:", packageVersion("iaoreader")),
                     "IAO Reader",
-                    # TODO: remove after development.
+                    # TODO(dev): remove after development.
                     tags$i("development version", style = "font-size: 14px;")
                 ),
                 tags$a(
@@ -45,7 +38,6 @@ ui <- function() {
         fluidPage(
             lapply(css_names, attach_css),
             lapply(scripts_names, attach_script),
-            lapply(class_scripts_names, attach_script, "www/js/classes"),
             sidebar_panel_ui(),
             main_panel_ui()
         )

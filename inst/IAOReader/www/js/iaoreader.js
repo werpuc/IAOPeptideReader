@@ -1,10 +1,10 @@
 let IAOReader = class {
     // Canvas dimensions.
     width = 1280; height = 720;
-    margin = { top: 30, right: 30, bottom: 30, left: 30 };
+    margin = { top: 40, right: 30, bottom: 40, left: 30 };
 
     // Plot elements.
-    svg; x_axis; y_axis; lines;
+    svg; x_axis; y_axis; lines; title;
     vert; vert_click;
 
     // Vertical guides mark class names.
@@ -12,6 +12,7 @@ let IAOReader = class {
 
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
+    show_background; color_palette;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -20,16 +21,26 @@ let IAOReader = class {
     constructor() {
         // Creating the SVG tag.
         this.svg = d3.select("div#plot").append("svg")
-            .attr("viewBox", "0 0 " + this.width + " " + this.height);
+            .attr("viewBox", "0 0 " + this.width + " " + this.height)
+            .style("background", "#ffffff");
+
+        // Creating title.
+        this.title = this.svg.append("text")
+            .attr("id", "plot_title")
+            .attr("text-anchor", "middle")
+            .attr("x", "50%")
+            .attr("y", this.margin.top * 0.75 + "px");
 
         // Creating X axis g tag.
         this.x_axis = this.svg.append("g")
             .attr("id", "x_axis")
+            .attr("class", "axis")
             .attr("transform", "translate(0, " + (this.height - this.margin.bottom) + ")");
 
         // Creating Y axis g tag.
         this.y_axis = this.svg.append("g")
             .attr("id", "y_axis")
+            .attr("class", "axis")
             .attr("transform", "translate(" + this.margin.left + ", 0)");
 
         // Creating lines g tag.
@@ -48,8 +59,8 @@ let IAOReader = class {
             .style("stroke", "var(--plot-color-vert)");
 
         this.vert.append("text")
-            .attr("y", this.height - this.margin.bottom + 6)
-            .attr("dy", "1em")
+            .attr("y", this.height - this.margin.bottom + 9)
+            .attr("dy", "0.71em")
             .style("fill", "var(--plot-color-vert)");
 
         // This mousemove handler makes the vertical guide follow the cursor.
@@ -117,8 +128,6 @@ let IAOReader = class {
             self.unmark_lines(self.vert_click_mark);
             self.vert_click.style("visibility", "hidden");
         })
-
-        this.plot_settings = new PlotSettings(this.svg, this.margin);
     }
 
     /* -------------------------------------------------------------------------
@@ -270,9 +279,45 @@ let IAOReader = class {
      * Setters
      * ---------------------------------------------------------------------- */
 
-    set color_palette(col_pal) {
-        this.plot_settings.color_palette = col_pal;
-        this.update_plot();
+    set vert_color(color) {
+        document.documentElement.style.setProperty("--plot-color-vert", color);
+    }
+
+    set vert_click_color(color) {
+        document.documentElement.style
+            .setProperty("--plot-color-vert-click", color);
+    }
+
+    set background_color(color) {
+        this.svg.style("background", this.show_background ? color : "");
+    }
+
+    set axes_color(color) {
+        document.documentElement.style.setProperty("--plot-color-axes", color);
+    }
+
+    set axes_labels_color(color) {
+        document.documentElement.style
+            .setProperty("--plot-color-axes-labels", color);
+    }
+
+    set axes_labels_font_size(size) {
+        if (0 <= size && size <= 32) {
+            this.x_axis.selectAll("text").attr("font-size", size + "px");
+            d3.selectAll("g.verts text").attr("font-size", size + "px");
+        }
+    }
+
+    set title_font_size(size) {
+        // This makes the tile centered at the initial y.
+        if (10 <= size && size <= 72) {
+            this.title.attr("y", this.margin.top * 0.75 + (size - 20) / 2 + "px");
+            this.title.attr("font-size", size + "px");
+        }
+    }
+
+    set title_color(color) {
+        this.title.attr("fill", color);
     }
 
 
@@ -356,7 +401,7 @@ let IAOReader = class {
         // provided file_name is currently not displayed.
         if (color_id == -1) return "black";
 
-        var col_pal = this.plot_settings.color_palette;
+        var col_pal = this.color_palette;
 
         return col_pal[color_id % col_pal.length];
     }
@@ -369,11 +414,6 @@ let IAOReader = class {
     mouse_out_of_bonds(m) {
         return (m[0] < this.margin.left || m[0] > this.width - this.margin.right ||
                 m[1] < this.margin.top || m[1] > this.height - this.margin.bottom)
-    }
-
-    // TODO: remove if unused.
-    move_vert_to_mouse(vert, m) {
-        this.move_vert(vert, this.x_scale.invert(m[0]));
     }
 
     move_vert(vert, x_dest) {
@@ -390,33 +430,3 @@ let IAOReader = class {
 
 // This variable's value is assigned by Shiny main server function.
 var iaoreader;
-
-//    // Drag 
-//    // TODO: calculate coverage and lambda_k for mouseover/click line.
-//    // TODO: dragging creates an area for which Lambda_k is calculated.
-//    // TODO: double click clears vertical line and drag area.
-//    // TODO: add hints for the above.
-//    // TODO: reset mouseover vert position on window enter (?) to reset it after alt-tabbing into the app.
-//
-//    var drag_coords = {start: null, end: null};
-//
-//    svg.on("click", function() {
-//        // TODO: on click reset coords.
-//        drag_coords.start = 0;
-//        drag_coords.end = 0;
-//    });
-//
-//    // TODO: translate mouse click to axis values.
-//    var drag = d3.drag()
-//        .on("start", function() {
-//            // TODO: set initial x value to drag_coords.start.
-//        })
-//        .on("drag", function() {
-//            // TODO: keep updating the end value.
-//        })
-//        .on("end", function() {
-//            // TODO: save final x value to drag_coords.end.
-//            // TODO: send drag_coords to R for Lambda_k calculation.
-//        });
-//
-//    svg.call(drag);
