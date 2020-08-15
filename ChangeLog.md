@@ -1,3 +1,6 @@
+###### v0.7.3 (2020-08-15):
+ * Implemented `lambda` and `lambda_segment` functions for single files.
+
 ###### v0.7.2 (2020-08-15):
  * Replaced `Remove` label with trash bin icon in the input summary table.
 
