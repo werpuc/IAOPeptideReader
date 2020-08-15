@@ -1,3 +1,7 @@
+###### v0.6.13 (2020-08-15):
+ * Added colorInputs for both mouseover and persistent vertical guides.
+ * Changed default colors of the guides.
+
 ###### v0.6.12 (2020-08-15):
  * Fixed show background checkbox making the background disappear indefinitely.
 

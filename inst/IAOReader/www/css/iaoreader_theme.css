@@ -58,8 +58,8 @@ a#github_url {
 
 /* [[ Plot ]] */
 :root {
-    --plot-color-vert: orangered;
-    --plot-color-vert-click: orange;
+    --plot-color-vert: #00008B;
+    --plot-color-vert-click: #8B008B;
 }
 
 div#plot svg {

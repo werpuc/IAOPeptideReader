@@ -17,6 +17,16 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "checkbox",
                  "label" = "Color lines crossing the guides",
                  "value" = TRUE),
+            list("input_id" = "vert_color",
+                 "input_type" = "color",
+                 "label" = "Mouseover guide color",
+                 "value" = "#00008B",
+                 "onchange" = "iaoreader.vert_color = this.value;"),
+            list("input_id" = "vert_click_color",
+                 "input_type" = "color",
+                 "label" = "Persistent guide color",
+                 "value" = "#8B008B",
+                 "onchange" = "iaoreader.vert_click_color = this.value;"),
             h3("Plot space optimization"),
             list("input_id" = "plot_settings_optimize_height",
                  "input_type" = "checkbox",
@@ -44,8 +54,6 @@ plot_settings <- function(input, output, session) {
                              "Pastel1", "Pastel2", "Set1", "Set2", "Set3",
                              "Tableau10"),
                  "selected" = "Set1", "width" = "40%")
-            # TODO: coloring mouseover vert.
-            # TODO: coloring click vert.
         )
 
         mapping
