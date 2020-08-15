@@ -1,7 +1,7 @@
 let IAOReader = class {
     // Canvas dimensions.
     width = 1280; height = 720;
-    margin = { top: 40, right: 30, bottom: 30, left: 30 };
+    margin = { top: 40, right: 30, bottom: 40, left: 30 };
 
     // Plot elements.
     svg; x_axis; y_axis; lines; title;
@@ -59,8 +59,8 @@ let IAOReader = class {
             .style("stroke", "var(--plot-color-vert)");
 
         this.vert.append("text")
-            .attr("y", this.height - this.margin.bottom + 6)
-            .attr("dy", "1em")
+            .attr("y", this.height - this.margin.bottom + 9)
+            .attr("dy", "0.71em")
             .style("fill", "var(--plot-color-vert)");
 
         // This mousemove handler makes the vertical guide follow the cursor.
@@ -301,11 +301,18 @@ let IAOReader = class {
             .setProperty("--plot-color-axes-labels", color);
     }
 
+    set axes_labels_font_size(size) {
+        if (0 <= size && size <= 32) {
+            this.x_axis.selectAll("text").attr("font-size", size + "px");
+            d3.selectAll("g.verts text").attr("font-size", size + "px");
+        }
+    }
+
     set title_font_size(size) {
         // This makes the tile centered at the initial y.
         if (10 <= size && size <= 72) {
             this.title.attr("y", this.margin.top * 0.75 + (size - 20) / 2 + "px");
-            this.title.style("font-size", size + "px");
+            this.title.attr("font-size", size + "px");
         }
     }
 

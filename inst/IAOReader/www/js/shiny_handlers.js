@@ -87,6 +87,12 @@ Shiny.addCustomMessageHandler("plot_settings_vertical_offset", function(vertical
 });
 
 
+// [[ Axes settings ]]
+Shiny.addCustomMessageHandler("plot_settings_axes_labels_font_size", function(font_size) {
+    iaoreader.axes_labels_font_size = font_size;
+});
+
+
 // [[ Color settings ]]
 Shiny.addCustomMessageHandler("plot_settings_color_palette", function(color_palette_name) {
     var color_palette;

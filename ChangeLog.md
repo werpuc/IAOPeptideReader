@@ -1,3 +1,9 @@
+###### v0.7.0 (2020-08-15):
+ * This version marks an end of implementation of plot settings regarding color and text properties of plot elements.
+ * Added numericInput for customizing axes labels font size.
+ * Added axes settings section to the plot settings.
+ * Fixed vertical guides label placement.
+
 ###### v0.6.22 (2020-08-15):
  * Fixed ugly overflow of plot settings.
  * Improved input settings table handling of many files.

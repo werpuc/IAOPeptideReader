@@ -71,7 +71,6 @@ div#plot svg {
 
 div#plot g.verts text {
     font-family: sans-serif;
-    font-size: 10px;
     font-weight: bold;
     text-anchor: middle;
 }
