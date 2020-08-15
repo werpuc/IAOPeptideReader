@@ -32,7 +32,7 @@ input_settings <- function(input, output, session) {
     
     observeEvent(input[["files_upload"]], {
         file_input_meta <- input[["files_upload"]]
-        # TODO: remove this if after development.
+        # TODO(dev): remove this if after development.
         if (class(file_input_meta) != "data.frame" && file_input_meta == -1) {
             file_input_meta <- prop_fim()
         }
@@ -214,13 +214,13 @@ input_settings <- function(input, output, session) {
             res[[file_name]] <- data_filtered
         }
 
-        # TODO: reduce the amount of data sent to JS (Start, End and FileName should suffice).
-        session$sendCustomMessage("update_data", unique(rbindlist(res)))
+        session$sendCustomMessage(
+            "update_data", unique(rbindlist(res))[, .(Start, End, FileName)])
     })
 }
 
 
-# TODO: remove this function after development.
+# TODO(dev): remove this function after development.
 prop_fim <- function() {
     file_names <- c(
         sprintf("example_data%d.csv", 1:2),

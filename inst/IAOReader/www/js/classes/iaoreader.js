@@ -390,11 +390,6 @@ let IAOReader = class {
                 m[1] < this.margin.top || m[1] > this.height - this.margin.bottom)
     }
 
-    // TODO: remove if unused.
-    move_vert_to_mouse(vert, m) {
-        this.move_vert(vert, this.x_scale.invert(m[0]));
-    }
-
     move_vert(vert, x_dest) {
         // This round makes the guide snap to integer values on the axis.
         var x = Math.round(x_dest);
@@ -409,33 +404,3 @@ let IAOReader = class {
 
 // This variable's value is assigned by Shiny main server function.
 var iaoreader;
-
-//    // Drag 
-//    // TODO: calculate coverage and lambda_k for mouseover/click line.
-//    // TODO: dragging creates an area for which Lambda_k is calculated.
-//    // TODO: double click clears vertical line and drag area.
-//    // TODO: add hints for the above.
-//    // TODO: reset mouseover vert position on window enter (?) to reset it after alt-tabbing into the app.
-//
-//    var drag_coords = {start: null, end: null};
-//
-//    svg.on("click", function() {
-//        // TODO: on click reset coords.
-//        drag_coords.start = 0;
-//        drag_coords.end = 0;
-//    });
-//
-//    // TODO: translate mouse click to axis values.
-//    var drag = d3.drag()
-//        .on("start", function() {
-//            // TODO: set initial x value to drag_coords.start.
-//        })
-//        .on("drag", function() {
-//            // TODO: keep updating the end value.
-//        })
-//        .on("end", function() {
-//            // TODO: save final x value to drag_coords.end.
-//            // TODO: send drag_coords to R for Lambda_k calculation.
-//        });
-//
-//    svg.call(drag);

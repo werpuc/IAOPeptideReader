@@ -1,3 +1,7 @@
+###### v0.6.11 (2020-08-15):
+ * TODOs and redundant functions clean-up.
+ * Reducend data sent to JS to Start, End and FileName columns.
+
 ###### v0.6.10 (2020-08-15):
  * Implemented updateColorInput function to avoid code redundancy.
 

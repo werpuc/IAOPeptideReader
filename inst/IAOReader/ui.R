@@ -4,8 +4,6 @@ source(file.path("ui", "sidebar_panel_ui.R"), local = TRUE, chdir = TRUE)
 
 # Main UI function -------------------------------------------------------------
 ui <- function() {
-    # TODO: is it okay to have so many small files to organize the code or will
-    #       it negatively affect the page loading times?
     css_names <- c(
         "iaoreader_theme.css",
         "HaDeX_theme.css"
@@ -30,7 +28,7 @@ ui <- function() {
                     id = "title",
                     title = paste("Version:", packageVersion("iaoreader")),
                     "IAO Reader",
-                    # TODO: remove after development.
+                    # TODO(dev): remove after development.
                     tags$i("development version", style = "font-size: 14px;")
                 ),
                 tags$a(

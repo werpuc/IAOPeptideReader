@@ -19,7 +19,7 @@ input_settings_ui <- function() {
         fileInput("files_upload", "Upload input files", multiple = TRUE,
                   accept = ".csv"),
 
-        # TODO: remove this div after development.
+        # TODO(dev): remove this div after development.
         div(
             align = "center",
             actionButton(
