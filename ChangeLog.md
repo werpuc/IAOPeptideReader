@@ -1,3 +1,6 @@
+###### v0.7.2 (2020-08-15):
+ * Replaced `Remove` label with trash bin icon in the input summary table.
+
 ###### v0.7.1 (2020-08-15):
  * Adjusted plot title vertical placement.
  * Updated global CSS overflow and scrolling properties.
