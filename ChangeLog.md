@@ -1,3 +1,8 @@
+###### v0.6.22 (2020-08-15):
+ * Fixed ugly overflow of plot settings.
+ * Improved input settings table handling of many files.
+ * Removed outer padding of the sidebar.
+
 ###### v0.6.21 (2020-08-15):
  * Added font-weight switch between bold and normal for the plot title.
 

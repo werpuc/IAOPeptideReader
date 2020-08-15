@@ -13,6 +13,7 @@ ul.nav.nav-tabs {
 /* Fix for selectInputs to not get clipped by .tab-content parent element. */
 div.tab-content {
     overflow-y: visible;
+    max-height: unset;
 }
 
 p.bad_files_info, p.no_file_uploaded {
@@ -111,8 +112,13 @@ div#previewed_file div.has-items {
  * -------------------------------------------------------------------------- */
 
 /* Improving sidebar layout. */
+body > div.container-fluid > div > form.well {
+    padding: 0;
+}
+
 #sidebar_panel .tab-content > .active {
     margin: 0 10px;
+    padding-bottom: 20px;
 }
 
 #sidebar_panel .tab-content > .active > *:not(h3) {
@@ -146,15 +152,6 @@ div#previewed_file div.has-items {
 }
 
 /* Input summary table. */
-#input_summary_table table {
-    display: inline-block;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    min-height: 120px;
-    max-height: 40vh;
-    width: 100%;
-}
-
 #input_summary_table thead {
     background-color: var(--theme-color-main);
     color: var(--theme-color-bright-text);
