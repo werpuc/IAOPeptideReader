@@ -36,11 +36,16 @@ Shiny.addCustomMessageHandler("seq_len_check", function(is_ok) {
  * Plot settings
  * -------------------------------------------------------------------------- */
 
+Shiny.addCustomMessageHandler("reset_color_input", function(reset_meta) {
+    var color_input = document.getElementById(reset_meta.input_id);
+    color_input.value = reset_meta.color;
+    color_input.dispatchEvent(new Event("change"));
+});
+
 // [[ Plot title ]]
 Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
     iaoreader.title.text(title_text);
 });
-
 
 // [[ Vertical guide ]]
 Shiny.addCustomMessageHandler("plot_settings_vert_show", function(vert_show) {
@@ -118,12 +123,6 @@ Shiny.addCustomMessageHandler("plot_settings_color_palette", function(color_pale
 
     iaoreader.color_palette = color_palette;
     iaoreader.update_plot();
-});
-
-Shiny.addCustomMessageHandler("reset_color_input", function(reset_meta) {
-    var color_input = document.getElementById(reset_meta.input_id);
-    color_input.value = reset_meta.color;
-    color_input.dispatchEvent(new Event("change"));
 });
 
 Shiny.addCustomMessageHandler("plot_settings_show_background", function(show_background) {

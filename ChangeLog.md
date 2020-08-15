@@ -1,3 +1,8 @@
+###### v0.6.18 (2020-08-15):
+ * Fixed colorInputs width.
+ * Moved widths of inputs to a single variable for easier manipulation.
+ * Unified case in plot settings subtitles.
+
 ###### v0.6.17 (2020-08-15):
  * Added title font size configuration interface to JS.
 

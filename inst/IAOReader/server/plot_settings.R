@@ -3,12 +3,15 @@ plot_settings <- function(input, output, session) {
     # Plot Settings input mapping ----------------------------------------------
     # This mapping allows automatic UI and server handlers generation.
     plot_settings_input_mapping <- reactive({
+        width <- "40%"
+
         mapping <- list(
+            h3("Title Settings"),
             list("input_id" = "plot_settings_title_text",
                  "input_type" = "text",
-                 "label" = "Plot Title",
+                 "label" = "Plot title",
                  "value" = "Peptide Coverage"),
-            h3("Vertical guides"),
+            h3("Vertical Guides"),
             list("input_id" = "plot_settings_vert_show",
                  "input_type" = "checkbox",
                  "label" = "Show guide on mouseover",
@@ -21,13 +24,15 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "color",
                  "label" = "Mouseover guide color",
                  "value" = "#00008B",
-                 "onchange" = "iaoreader.vert_color = this.value;"),
+                 "onchange" = "iaoreader.vert_color = this.value;",
+                 "width" = width),
             list("input_id" = "vert_click_color",
                  "input_type" = "color",
                  "label" = "Persistent guide color",
                  "value" = "#8B008B",
-                 "onchange" = "iaoreader.vert_click_color = this.value;"),
-            h3("Plot space optimization"),
+                 "onchange" = "iaoreader.vert_click_color = this.value;",
+                 "width" = width),
+            h3("Plot Space Optimization"),
             list("input_id" = "plot_settings_optimize_height",
                  "input_type" = "checkbox",
                  "label" = "Optimize plot's height",
@@ -36,8 +41,8 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "numeric",
                  "label" = "Vertical spacing between files",
                  "value" = 5,
-                 "min" = 1, "step" = 1, "width" = "40%"),
-            h3("Color settings"),
+                 "min" = 1, "step" = 1, "width" = width),
+            h3("Color Settings"),
             list("input_id" = "plot_settings_show_background",
                  "input_type" = "checkbox",
                  "label" = "Show background",
@@ -46,24 +51,27 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "color",
                  "label" = "Background color",
                  "value" = "#ffffff",
-                 "onchange" = "iaoreader.background_color = this.value;"),
+                 "onchange" = "iaoreader.background_color = this.value;",
+                 "width" = width),
             list("input_id" = "plot_settings_color_palette",
                  "input_type" = "select",
                  "label" = "Lines color palette",
                  "value" = c("Accent", "Category10", "Dark2", "Paired",
                              "Pastel1", "Pastel2", "Set1", "Set2", "Set3",
                              "Tableau10"),
-                 "selected" = "Set1", "width" = "40%"),
+                 "selected" = "Set1", "width" = width),
             list("input_id" = "axes_color",
                  "input_type" = "color",
                  "label" = "Axes color",
                  "value" = "#000000",
-                 "onchange" = "iaoreader.axes_color = this.value;"),
+                 "onchange" = "iaoreader.axes_color = this.value;",
+                 "width" = width),
             list("input_id" = "axes_labels_color",
                  "input_type" = "color",
                  "label" = "Axes labels color",
                  "value" = "#000000",
-                 "onchange" = "iaoreader.axes_labels_color = this.value;")
+                 "onchange" = "iaoreader.axes_labels_color = this.value;",
+                 "width" = width)
         )
 
         mapping
@@ -120,11 +128,11 @@ plot_settings <- function(input, output, session) {
 
 
 # Color Input ------------------------------------------------------------------
-colorInput <- function(input_id, label, value, onchange, width = "40%") {
+colorInput <- function(input_id, label, value, onchange, width) {
     div(class = "color_input",
         h5(label),
         tags$input(id = input_id, type = "color", value = value,
-                   onchange = onchange, width = width))
+                   onchange = onchange, style = sprintf("width: %s;", width)))
 }
 
 updateColorInput <- function(session, input_id, value) {
