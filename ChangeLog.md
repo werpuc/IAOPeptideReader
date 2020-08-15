@@ -1,3 +1,6 @@
+###### v0.6.20 (2020-08-15):
+ * Added colorInput for title text color.
+
 ###### v0.6.19 (2020-08-15):
  * Added numericInput for title font size.
  * Added title font size verification before setting it.

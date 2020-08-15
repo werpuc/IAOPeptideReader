@@ -309,6 +309,10 @@ let IAOReader = class {
         }
     }
 
+    set title_color(color) {
+        this.title.attr("fill", color);
+    }
+
 
     /* -------------------------------------------------------------------------
      * Drawing plot elements

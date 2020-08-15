@@ -7,7 +7,6 @@ plot_settings <- function(input, output, session) {
 
         mapping <- list(
             h3("Title Settings"),
-            # TODO: text color.
             list("input_id" = "plot_settings_title_text",
                  "input_type" = "text",
                  "label" = "Plot title",
@@ -17,6 +16,13 @@ plot_settings <- function(input, output, session) {
                  "label" = "Title font size [px]",
                  "value" = "20",
                  "min" = 10, "max" = 72, "step" = 1, "width" = width),
+            # TODO: font-weight (not) bold.
+            list("input_id" = "plot_settings_title_color",
+                 "input_type" = "color",
+                 "label" = "Title color",
+                 "value" = "#000000",
+                 "onchange" = "iaoreader.title_color = this.value;",
+                 "width" = width),
             h3("Vertical Guides"),
             list("input_id" = "plot_settings_vert_show",
                  "input_type" = "checkbox",
