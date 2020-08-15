@@ -29,7 +29,7 @@ let IAOReader = class {
             .attr("id", "plot_title")
             .attr("text-anchor", "middle")
             .attr("x", "50%")
-            .attr("y", this.margin.top / 2 + "px");
+            .attr("y", this.margin.top * 0.75 + "px");
 
         // Creating X axis g tag.
         this.x_axis = this.svg.append("g")
@@ -299,6 +299,12 @@ let IAOReader = class {
     set axes_labels_color(color) {
         document.documentElement.style
             .setProperty("--plot-color-axes-labels", color);
+    }
+
+    set title_font_size(size) {
+        // This makes the tile centered at the initial y.
+        this.title.attr("y", this.margin.top * 0.75 + (size - 20) / 2 + "px");
+        this.title.style("font-size", size + "px");
     }
 
 

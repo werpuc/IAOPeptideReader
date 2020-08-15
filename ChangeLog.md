@@ -1,3 +1,6 @@
+###### v0.6.17 (2020-08-15):
+ * Added title font size configuration interface to JS.
+
 ###### v0.6.16 (2020-08-15):
  * Incorporated plot_settings class functionalities into the IAOReader class.
  * Restructured `www/js` directory.
