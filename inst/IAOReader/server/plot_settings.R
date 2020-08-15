@@ -35,7 +35,7 @@ plot_settings <- function(input, output, session) {
             div(id = "background_color_input",
                 h5("Background color"),
                 tags$input(id = "plot_background_color", type = "color",
-                           onchange = "iaoreader.update_background_color()",
+                           onchange = "iaoreader.background_color = this.value",
                            value = "#ffffff")),
             list("input_id" = "plot_settings_color_palette",
                  "input_type" = "select",

@@ -14,7 +14,6 @@ let IAOReader = class {
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
     show_background;
 
-
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
     file_names_displayed = new Map();
@@ -22,7 +21,8 @@ let IAOReader = class {
     constructor() {
         // Creating the SVG tag.
         this.svg = d3.select("div#plot").append("svg")
-            .attr("viewBox", "0 0 " + this.width + " " + this.height);
+            .attr("viewBox", "0 0 " + this.width + " " + this.height)
+            .style("background", "#ffffff");
 
         // Creating X axis g tag.
         this.x_axis = this.svg.append("g")
@@ -267,6 +267,10 @@ let IAOReader = class {
         return d3.max(this.plot_data.map(d => d.y));
     }
 
+    get background_color() {
+        return this.svg.style("background");
+    }
+
 
     /* -------------------------------------------------------------------------
      * Setters
@@ -284,6 +288,10 @@ let IAOReader = class {
     set vert_click_color(color) {
         document.documentElement.style
             .setProperty("--plot-color-vert-click", color);
+    }
+
+    set background_color(color) {
+        this.svg.style("background", this.show_background ? color : "");
     }
 
 
@@ -335,11 +343,6 @@ let IAOReader = class {
                     .attr("y2", d => this.y_scale(d.y))
                     .style("stroke-width", 2)
                     .style("stroke", d => this.file_color(d.FileName));
-    }
-
-    update_background_color() {
-        var color = document.getElementById("plot_background_color").value;
-        this.svg.style("background", this.show_background ? color : "");
     }
 
 

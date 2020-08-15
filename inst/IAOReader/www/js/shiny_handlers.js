@@ -121,10 +121,10 @@ Shiny.addCustomMessageHandler("plot_settings_color_palette", function(color_pale
 
 Shiny.addCustomMessageHandler("reset_background_color", function(_) {
     document.getElementById("plot_background_color").value = "#ffffff";
-    iaoreader.update_background_color();
+    iaoreader.background_color = "#ffffff";
 });
 
 Shiny.addCustomMessageHandler("plot_settings_show_background", function(show_background) {
     iaoreader.show_background = show_background;
-    iaoreader.update_background_color();
+    iaoreader.background_color = iaoreader.background_color;
 });

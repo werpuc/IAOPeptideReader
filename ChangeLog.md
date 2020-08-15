@@ -1,3 +1,6 @@
+###### v0.6.8 (2020-08-15):
+ * Improved background color setting implementation.
+
 ###### v0.6.7 (2020-08-15):
  * Added setters for vertical lines' colors.
 
