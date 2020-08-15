@@ -28,8 +28,7 @@ let IAOReader = class {
         this.title = this.svg.append("text")
             .attr("id", "plot_title")
             .attr("text-anchor", "middle")
-            .attr("x", "50%")
-            .attr("y", this.margin.top * 0.75 + "px");
+            .attr("x", "50%");
 
         // Creating X axis g tag.
         this.x_axis = this.svg.append("g")
@@ -311,7 +310,7 @@ let IAOReader = class {
     set title_font_size(size) {
         // This makes the tile centered at the initial y.
         if (10 <= size && size <= 72) {
-            this.title.attr("y", this.margin.top * 0.75 + (size - 20) / 2 + "px");
+            this.title.attr("y", this.margin.top * 0.60 + (size - 20) / 2 + "px");
             this.title.attr("font-size", size + "px");
         }
     }

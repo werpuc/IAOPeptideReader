@@ -1,3 +1,7 @@
+###### v0.7.1 (2020-08-15):
+ * Adjusted plot title vertical placement.
+ * Updated global CSS overflow and scrolling properties.
+
 ###### v0.7.0 (2020-08-15):
  * This version marks an end of implementation of plot settings regarding color and text properties of plot elements.
  * Added numericInput for customizing axes labels font size.
