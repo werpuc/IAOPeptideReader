@@ -1,3 +1,6 @@
+###### v0.6.21 (2020-08-15):
+ * Added font-weight switch between bold and normal for the plot title.
+
 ###### v0.6.20 (2020-08-15):
  * Added colorInput for title text color.
 

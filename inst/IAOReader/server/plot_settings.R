@@ -16,7 +16,10 @@ plot_settings <- function(input, output, session) {
                  "label" = "Title font size [px]",
                  "value" = "20",
                  "min" = 10, "max" = 72, "step" = 1, "width" = width),
-            # TODO: font-weight (not) bold.
+            list("input_id" = "plot_settings_title_bold",
+                 "input_type" = "checkbox",
+                 "label" = "Bold font",
+                 "value" = FALSE),
             list("input_id" = "plot_settings_title_color",
                  "input_type" = "color",
                  "label" = "Title color",
