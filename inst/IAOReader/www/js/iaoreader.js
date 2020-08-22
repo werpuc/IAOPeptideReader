@@ -12,7 +12,7 @@ let IAOReader = class {
 
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
-    show_background; color_palette;
+    show_background; color_palette; show_lambda_values;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -517,8 +517,10 @@ let IAOReader = class {
             .select("text")
                 .text(x);
 
-        // Mouseover vert uses the top placement.
-        this.draw_lambda_values(vert, x, vert == this.vert);
+        if (this.show_lambda_values) {
+            // Mouseover vert uses the top placement.
+            this.draw_lambda_values(vert, x, vert == this.vert);
+        }
     }
 }
 

@@ -80,6 +80,10 @@ Shiny.addCustomMessageHandler("plot_settings_k_parameter", function(k_parameter)
     }
 });
 
+Shiny.addCustomMessageHandler("plot_settings_show_lambda_values", function(show_lambda_values) {
+    iaoreader.show_lambda_values = show_lambda_values;
+});
+
 
 // [[ Height adjustments ]]
 Shiny.addCustomMessageHandler("plot_settings_optimize_height", function(optimize_height) {

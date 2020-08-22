@@ -1,3 +1,6 @@
+###### v0.7.11 (2020-08-22):
+ * Added an option to disable displaying the lambda values.
+
 ###### v0.7.10 (2020-08-22):
  * Added box behind the lambda values displayed on the plot.
  * Excluded lambda values text from the font size adjustment in plot settings.
