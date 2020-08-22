@@ -317,7 +317,11 @@ let IAOReader = class {
     }
 
     set background_color(color) {
-        this.svg.style("background", this.show_background ? color : "");
+        var color_to_set = this.show_background ? color : "";
+
+        this.svg.style("background", color_to_set);
+        this.svg.selectAll(".verts rect.lambda")
+            .style("fill", color_to_set);
     }
 
     set axes_color(color) {
@@ -332,7 +336,8 @@ let IAOReader = class {
     set axes_labels_font_size(size) {
         if (0 <= size && size <= 32) {
             this.x_axis.selectAll("text").attr("font-size", size + "px");
-            d3.selectAll("g.verts text").attr("font-size", size + "px");
+            d3.selectAll("g.verts text:not(.lambda)")
+                .attr("font-size", size + "px");
         }
     }
 
@@ -421,22 +426,41 @@ let IAOReader = class {
         var lambda_values = this.lambda(x);
 
         // Adding new values to the vert.
-        vert.selectAll("text.lambda").remove();
+        vert.selectAll(".lambda").remove();
         for (const [file_name, y] of Object.entries(heights)) {
             var lambda_val = Math.round(lambda_values[file_name] * 100);
             var dx = 13 + 4 * lambda_val.toString().length;
 
-            vert.append("text")
+            // TODO: customize the rect's color.
+            var rect = vert.append("rect")
+                .attr("class", "lambda")
+                .style("fill", this.svg.style("background-color"))
+                .style("filter", "invert(1)");
+
+            var text = vert.append("text")
                 .attr("class", "lambda")
                 .attr("y", this.y_scale(y))
                 .attr("fill", this.file_color(file_name))
                 .attr("dx", top_placement ? -dx : dx)
                 .text(lambda_val + "%");
+
+            this.draw_text_bbox(text, rect);
         }
 
         // TODO: offset the values from the vert.
         // TODO: create a box for them to be clearly visible.
         // TODO: do the same for click vert (maybe with offset in different direction).
+    }
+
+    draw_text_bbox(text_element, rect_element, padding = 6) {
+        var bbox = text_element.node().getBBox();
+
+        rect_element
+            .attr("x", bbox.x - padding / 2)
+            .attr("y", bbox.y - padding / 2)
+            .attr("height", bbox.height + padding)
+            .attr("width", bbox.width + padding)
+            .attr("rx", padding / 2);
     }
 
 

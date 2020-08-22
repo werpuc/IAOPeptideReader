@@ -1,3 +1,7 @@
+###### v0.7.10 (2020-08-22):
+ * Added box behind the lambda values displayed on the plot.
+ * Excluded lambda values text from the font size adjustment in plot settings.
+
 ###### v0.7.9 (2020-08-22):
  * Added horizontal offset to the lambda values on the vertical guides.
 
