@@ -13,6 +13,7 @@ let IAOReader = class {
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
     show_background; color_palette; show_lambda_values;
+    lambda_values_bg = "#FFFFFF";
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -317,11 +318,7 @@ let IAOReader = class {
     }
 
     set background_color(color) {
-        var color_to_set = this.show_background ? color : "";
-
-        this.svg.style("background", color_to_set);
-        this.svg.selectAll(".verts rect.lambda")
-            .style("fill", color_to_set);
+        this.svg.style("background", this.show_background ? color : "");
     }
 
     set axes_color(color) {
@@ -431,11 +428,10 @@ let IAOReader = class {
             var lambda_val = Math.round(lambda_values[file_name] * 100);
             var dx = 13 + 4 * lambda_val.toString().length;
 
-            // TODO: customize the rect's color.
             var rect = vert.append("rect")
                 .attr("class", "lambda")
-                .style("fill", this.svg.style("background-color"))
-                .style("filter", "invert(1)");
+                .style("fill", this.lambda_values_bg);
+                //.style("filter", "invert(1)");
 
             var text = vert.append("text")
                 .attr("class", "lambda")
