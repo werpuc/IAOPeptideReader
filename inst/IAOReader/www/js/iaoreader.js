@@ -399,7 +399,7 @@ let IAOReader = class {
                     .style("stroke", d => this.file_color(d.FileName));
     }
 
-    draw_lambda_values(x) {
+    draw_lambda_values(vert, x) {
         if (this.plot_data === null) return;
 
         var disp_files = this.displayed_files;
@@ -420,9 +420,9 @@ let IAOReader = class {
         var lambda_values = this.lambda(x);
 
         // Adding new values to the vert.
-        this.vert.selectAll("text.lambda").remove();
+        vert.selectAll("text.lambda").remove();
         for (const [file_name, y] of Object.entries(heights)) {
-            this.vert.append("text")
+            vert.append("text")
                 .attr("class", "lambda")
                 .attr("y", this.y_scale(y))
                 .attr("fill", this.file_color(file_name))
@@ -488,7 +488,7 @@ let IAOReader = class {
             .select("text")
                 .text(x);
 
-        this.draw_lambda_values(x);
+        this.draw_lambda_values(vert, x);
     }
 }
 

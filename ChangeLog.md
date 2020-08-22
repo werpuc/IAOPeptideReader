@@ -1,3 +1,6 @@
+###### v0.7.7 (2020-08-22):
+ * Added lambda measure values to the persistent vertical guide.
+
 ###### v0.7.6 (2020-08-15):
  * The lambda measure values are now displayed on the plot on mouseover.
  * Restricted IAOReader lambda method to account only for currently displayed files.
