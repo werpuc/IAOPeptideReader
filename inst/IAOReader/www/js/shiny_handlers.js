@@ -84,6 +84,12 @@ Shiny.addCustomMessageHandler("plot_settings_show_lambda_values", function(show_
     iaoreader.show_lambda_values = show_lambda_values;
 });
 
+Shiny.addCustomMessageHandler("plot_settings_lambda_values_bg_invert", function(lambda_values_bg_invert) {
+    iaoreader.lambda_values_bg_invert = lambda_values_bg_invert;
+    iaoreader.svg.selectAll(".verts rect.lambda")
+        .style("filter", "invert(" + +lambda_values_bg_invert + ")");
+});
+
 
 // [[ Height adjustments ]]
 Shiny.addCustomMessageHandler("plot_settings_optimize_height", function(optimize_height) {

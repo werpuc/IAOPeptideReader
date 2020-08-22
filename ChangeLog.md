@@ -1,3 +1,6 @@
+###### v0.7.13 (2020-08-22):
+ * Added checkbox for inverting lambda values background.
+
 ###### v0.7.12 (2020-08-22):
  * Added lambda values box's color customization.
 
