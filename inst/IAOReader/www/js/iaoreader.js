@@ -423,11 +423,15 @@ let IAOReader = class {
         // Adding new values to the vert.
         vert.selectAll("text.lambda").remove();
         for (const [file_name, y] of Object.entries(heights)) {
+            var lambda_val = Math.round(lambda_values[file_name] * 100);
+            var dx = 13 + 4 * lambda_val.toString().length;
+
             vert.append("text")
                 .attr("class", "lambda")
                 .attr("y", this.y_scale(y))
                 .attr("fill", this.file_color(file_name))
-                .text(Math.round(lambda_values[file_name] * 100) + "%");
+                .attr("dx", top_placement ? -dx : dx)
+                .text(lambda_val + "%");
         }
 
         // TODO: offset the values from the vert.

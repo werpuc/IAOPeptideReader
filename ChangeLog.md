@@ -1,3 +1,6 @@
+###### v0.7.9 (2020-08-22):
+ * Added horizontal offset to the lambda values on the vertical guides.
+
 ###### v0.7.8 (2020-08-22):
  * Moved lambda measure values to the lowers line for the persistent vertical guide.
 
