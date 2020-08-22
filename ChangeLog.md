@@ -1,3 +1,6 @@
+###### v0.7.8 (2020-08-22):
+ * Moved lambda measure values to the lowers line for the persistent vertical guide.
+
 ###### v0.7.7 (2020-08-22):
  * Added lambda measure values to the persistent vertical guide.
 

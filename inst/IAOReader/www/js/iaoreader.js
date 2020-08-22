@@ -399,21 +399,22 @@ let IAOReader = class {
                     .style("stroke", d => this.file_color(d.FileName));
     }
 
-    draw_lambda_values(vert, x) {
+    draw_lambda_values(vert, x, top_placement) {
         if (this.plot_data === null) return;
 
         var disp_files = this.displayed_files;
         var vert_lines = this.plot_data.filter(d => d.Start <= x && x <= d.End);
+        var comparison_func = top_placement ? Math.max : Math.min;
 
         // Getting highest line at given point for every file.
         var heights = new Map();
         vert_lines.forEach(function(d) {
             if (!disp_files.includes(d.FileName)) return;
             if (heights[d.FileName] === undefined) {
-                heights[d.FileName] = -Infinity;
+                heights[d.FileName] = top_placement ? -Infinity : Infinity;
             }
 
-            heights[d.FileName] = Math.max(d.y, heights[d.FileName]);
+            heights[d.FileName] = comparison_func(d.y, heights[d.FileName]);
         });
 
         // Calculating lambda values.
@@ -488,7 +489,8 @@ let IAOReader = class {
             .select("text")
                 .text(x);
 
-        this.draw_lambda_values(vert, x);
+        // Mouseover vert uses the top placement.
+        this.draw_lambda_values(vert, x, vert == this.vert);
     }
 }
 
