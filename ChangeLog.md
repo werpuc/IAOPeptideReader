@@ -1,3 +1,8 @@
+###### v0.7.16 (2020-08-24):
+ * Fixed an issue where lambda values would not reappear after setting update.
+ * Fixed an issue where lambda values would not update after adjusting k parameter.
+ * Added spacing between vertical guides and the lambda values.
+
 ###### v0.7.15 (2020-08-24):
  * Fixed lambda values not being removed after disabling showing them.
 

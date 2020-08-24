@@ -1,7 +1,7 @@
 let IAOReader = class {
     // Canvas dimensions.
     width = 1280; height = 720;
-    margin = { top: 40, right: 30, bottom: 40, left: 30 };
+    margin = { top: 40, right: 35, bottom: 40, left: 35 };
 
     // Plot elements.
     svg; x_axis; y_axis; lines; title;
@@ -407,7 +407,7 @@ let IAOReader = class {
                     .style("stroke", d => this.file_color(d.FileName));
     }
 
-    draw_lambda_values(vert, x, top_placement) {
+    draw_lambda_values(vert, x, top_placement, horizontal_padding = 3) {
         if (this.plot_data === null) return;
 
         vert.selectAll(".lambda").remove();
@@ -434,7 +434,7 @@ let IAOReader = class {
         // Adding new values to the vert.
         for (const [file_name, y] of Object.entries(heights)) {
             var lambda_val = Math.round(lambda_values[file_name] * 100);
-            var dx = 13 + 4 * lambda_val.toString().length;
+            var dx = 13 + 4 * lambda_val.toString().length + horizontal_padding;
 
             var rect = vert.append("rect")
                 .attr("class", "lambda")
@@ -523,6 +523,19 @@ let IAOReader = class {
 
         // Mouseover vert uses the top placement.
         this.draw_lambda_values(vert, x, vert == this.vert);
+    }
+
+    redraw_vert(vert) {
+        var transform_value = vert.attr("transform");
+
+        // Check to avoid errors if vert was not used at least once.
+        if (transform_value === null) return;
+
+        var vert_px_position = +transform_value
+            .replace("translate(", "").split(",")[0];
+
+        // This moves vert to it's current position to redraw lambda values.
+        this.move_vert(vert, this.x_scale.invert(vert_px_position));
     }
 }
 
