@@ -82,6 +82,7 @@ Shiny.addCustomMessageHandler("plot_settings_k_parameter", function(k_parameter)
 
 Shiny.addCustomMessageHandler("plot_settings_show_lambda_values", function(show_lambda_values) {
     iaoreader.show_lambda_values = show_lambda_values;
+    // TODO: make the values appear on selection.
 });
 
 Shiny.addCustomMessageHandler("plot_settings_lambda_values_bg_invert", function(lambda_values_bg_invert) {

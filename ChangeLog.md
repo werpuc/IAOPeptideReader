@@ -1,3 +1,6 @@
+###### v0.7.15 (2020-08-24):
+ * Fixed lambda values not being removed after disabling showing them.
+
 ###### v0.7.14 (2020-08-24):
  * Fixed lambda values background color not updating on the persistent guide.
 

@@ -410,6 +410,9 @@ let IAOReader = class {
     draw_lambda_values(vert, x, top_placement) {
         if (this.plot_data === null) return;
 
+        vert.selectAll(".lambda").remove();
+        if (!this.show_lambda_values) return;
+
         var disp_files = this.displayed_files;
         var vert_lines = this.plot_data.filter(d => d.Start <= x && x <= d.End);
         var comparison_func = top_placement ? Math.max : Math.min;
@@ -429,7 +432,6 @@ let IAOReader = class {
         var lambda_values = this.lambda(x);
 
         // Adding new values to the vert.
-        vert.selectAll(".lambda").remove();
         for (const [file_name, y] of Object.entries(heights)) {
             var lambda_val = Math.round(lambda_values[file_name] * 100);
             var dx = 13 + 4 * lambda_val.toString().length;
@@ -519,10 +521,8 @@ let IAOReader = class {
             .select("text")
                 .text(x);
 
-        if (this.show_lambda_values) {
-            // Mouseover vert uses the top placement.
-            this.draw_lambda_values(vert, x, vert == this.vert);
-        }
+        // Mouseover vert uses the top placement.
+        this.draw_lambda_values(vert, x, vert == this.vert);
     }
 }
 
