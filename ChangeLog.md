@@ -1,3 +1,6 @@
+###### v0.7.14 (2020-08-24):
+ * Fixed lambda values background color not updating on the persistent guide.
+
 ###### v0.7.13 (2020-08-22):
  * Added checkbox for inverting lambda values background.
 

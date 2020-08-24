@@ -13,7 +13,7 @@ let IAOReader = class {
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
     show_background; color_palette; show_lambda_values;
-    lambda_values_bg = "#FFFFFF"; lambda_values_bg_invert;
+    lambda_values_bg_color = "#FFFFFF"; lambda_values_bg_invert;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -350,6 +350,12 @@ let IAOReader = class {
         this.title.attr("fill", color);
     }
 
+    set lambda_values_bg(color) {
+        this.lambda_values_bg_color = color;
+        this.svg.selectAll("rect.lambda")
+            .style("fill", color);
+    }
+
 
     /* -------------------------------------------------------------------------
      * Drawing plot elements
@@ -430,7 +436,7 @@ let IAOReader = class {
 
             var rect = vert.append("rect")
                 .attr("class", "lambda")
-                .style("fill", this.lambda_values_bg)
+                .style("fill", this.lambda_values_bg_color)
                 .style("filter", "invert(" + +this.lambda_values_bg_invert + ")");
 
             var text = vert.append("text")
