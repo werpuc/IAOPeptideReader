@@ -1,3 +1,7 @@
+###### v0.7.17 (2020-08-27):
+ * Reduced maximum X-axis font size to 30.
+ * Moved value verification to Shiny handler.
+
 ###### v0.7.16 (2020-08-24):
  * Fixed an issue where lambda values would not reappear after setting update.
  * Fixed an issue where lambda values would not update after adjusting k parameter.

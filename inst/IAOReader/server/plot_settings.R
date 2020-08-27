@@ -93,7 +93,7 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "numeric",
                  "label" = "Axes labels font size [px]",
                  "value" = "10",
-                 "min" = 0, "max" = 36, "step" = 1, "width" = width),
+                 "min" = 0, "max" = 30, "step" = 1, "width" = width),
             h3("Color Settings"),
             list("input_id" = "plot_settings_show_background",
                  "input_type" = "checkbox",

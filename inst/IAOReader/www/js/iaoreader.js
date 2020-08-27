@@ -59,6 +59,7 @@ let IAOReader = class {
             .style("stroke", "var(--plot-color-vert)");
 
         this.vert.append("text")
+            .attr("class", "axis-label")
             .attr("y", this.height - this.margin.bottom + 9)
             .attr("dy", "0.71em")
             .style("fill", "var(--plot-color-vert)");
@@ -331,11 +332,9 @@ let IAOReader = class {
     }
 
     set axes_labels_font_size(size) {
-        if (0 <= size && size <= 32) {
-            this.x_axis.selectAll("text").attr("font-size", size + "px");
-            d3.selectAll("g.verts text:not(.lambda)")
-                .attr("font-size", size + "px");
-        }
+        this.x_axis.selectAll("text").attr("font-size", size + "px");
+        d3.selectAll("g.verts text.axis-label")
+            .attr("font-size", size + "px");
     }
 
     set title_font_size(size) {
@@ -518,7 +517,7 @@ let IAOReader = class {
 
         vert
             .attr("transform", "translate(" + this.x_scale(x) + ", 0)")
-            .select("text")
+            .select("text.axis-label")
                 .text(x);
 
         // Mouseover vert uses the top placement.
