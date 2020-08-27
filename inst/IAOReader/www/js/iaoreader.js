@@ -58,6 +58,11 @@ let IAOReader = class {
             .style("stroke-width", 2)
             .style("stroke", "var(--plot-color-vert)");
 
+        this.vert.append("rect")
+            .attr("class", "axis-label")
+            .style("fill", "white")
+            .style("stroke", "var(--plot-color-vert)");
+
         this.vert.append("text")
             .attr("class", "axis-label")
             .attr("y", this.height - this.margin.bottom + 9)
@@ -102,6 +107,9 @@ let IAOReader = class {
             .style("visibility", "hidden");
 
         this.vert_click.select("line")
+            .style("stroke", "var(--plot-color-vert-click)");
+
+        this.vert_click.select("rect")
             .style("stroke", "var(--plot-color-vert-click)");
 
         this.vert_click.select("text")
@@ -522,6 +530,10 @@ let IAOReader = class {
 
         // Mouseover vert uses the top placement.
         this.draw_lambda_values(vert, x, vert == this.vert);
+
+        // Drawing a box around the label.
+        this.draw_text_bbox(
+            vert.select("text.axis-label"), vert.select("rect.axis-label"), 3);
     }
 
     redraw_vert(vert) {

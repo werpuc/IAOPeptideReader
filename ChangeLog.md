@@ -1,3 +1,7 @@
+###### v0.7.18 (2020-08-27):
+ * Added background boxes for vertical guide axis labels.
+ * Added `iaoreader.redraw_vert` call to the font size handler to update text box size.
+
 ###### v0.7.17 (2020-08-27):
  * Reduced maximum X-axis font size to 30.
  * Moved value verification to Shiny handler.
