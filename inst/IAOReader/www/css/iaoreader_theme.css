@@ -69,6 +69,10 @@ a#github_url {
     margin-top: 10px;
 }
 
+#download_svg {
+    margin: 5px 5px 0px 0px;
+}
+
 /* [[ Plot ]] */
 :root {
     --plot-color-vert: #00008B;

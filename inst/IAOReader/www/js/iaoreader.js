@@ -565,6 +565,16 @@ let IAOReader = class {
         // This moves vert to it's current position to redraw lambda values.
         this.move_vert(vert, this.x_scale.invert(vert_px_position));
     }
+
+
+    /* -------------------------------------------------------------------------
+     * Downloading plot as SVG
+     * ---------------------------------------------------------------------- */
+
+    download_svg() {
+        // TODO: make it work.
+        console.log("(Not) downloading SVG...");
+    }
 }
 
 

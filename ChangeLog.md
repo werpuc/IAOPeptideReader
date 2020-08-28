@@ -1,3 +1,6 @@
+###### v0.8.2 (2020-08-28):
+ * Added button for downloading plot as an SVG - for now it's just a prop.
+
 ###### v0.8.1 (2020-08-28):
  * Adjusted top margins of **Coverage Plot** and **Summary Table** headers.
 

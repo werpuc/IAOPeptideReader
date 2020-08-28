@@ -32,6 +32,11 @@ Shiny.addCustomMessageHandler("seq_len_check", function(is_ok) {
 });
 
 
+Shiny.addCustomMessageHandler("download_svg", function(_) {
+    iaoreader.download_svg();
+});
+
+
 /* -----------------------------------------------------------------------------
  * Plot settings
  * -------------------------------------------------------------------------- */
