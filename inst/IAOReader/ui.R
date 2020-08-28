@@ -13,7 +13,8 @@ ui <- function() {
         "d3.min.js",
         "shiny_handlers.js",
         "iaoreader.js",
-        "lambda_measures.js"
+        "lambda_measures.js",
+        "download_svg.js"
     )
 
     tagList(

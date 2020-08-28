@@ -1,3 +1,6 @@
+###### v0.8.6 (2020-08-28):
+ * Implemented SVG download.
+
 ###### v0.8.5 (2020-08-28):
  * Reduced maximum title font size to 48px.
  * Moved font size check to Shiny handler.

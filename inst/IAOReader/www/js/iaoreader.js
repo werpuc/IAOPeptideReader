@@ -570,8 +570,7 @@ let IAOReader = class {
      * ---------------------------------------------------------------------- */
 
     download_svg() {
-        // TODO: make it work.
-        console.log("(Not) downloading SVG...");
+        download_svg_node(this.svg.node());
     }
 }
 
