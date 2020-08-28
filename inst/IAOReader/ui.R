@@ -12,7 +12,8 @@ ui <- function() {
     scripts_names <- c(
         "d3.min.js",
         "shiny_handlers.js",
-        "iaoreader.js"
+        "iaoreader.js",
+        "lambda_measures.js"
     )
 
     tagList(

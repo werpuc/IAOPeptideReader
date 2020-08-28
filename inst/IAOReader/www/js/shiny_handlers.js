@@ -44,7 +44,8 @@ Shiny.addCustomMessageHandler("reset_color_input", function(reset_meta) {
 
 // [[ Plot title ]]
 Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
-    iaoreader.title.text(title_text);
+    iaoreader.title_text = title_text;
+    iaoreader.draw_plot_title();
 });
 
 Shiny.addCustomMessageHandler("plot_settings_title_font_size", function(font_size) {
@@ -74,6 +75,32 @@ Shiny.addCustomMessageHandler("plot_settings_allow_verts_marking", function(allo
     cl.remove("allow-verts-marking");
 });
 
+Shiny.addCustomMessageHandler("plot_settings_k_parameter", function(k_parameter) {
+    if (k_parameter >= 0) {
+        iaoreader.k_parameter = k_parameter;
+        iaoreader.redraw_vert(iaoreader.vert);
+        iaoreader.redraw_vert(iaoreader.vert_click);
+        iaoreader.draw_plot_title();
+    }
+});
+
+Shiny.addCustomMessageHandler("plot_settings_title_includes_k", function(include_k) {
+    iaoreader.title_includes_k = include_k;
+    iaoreader.draw_plot_title();
+});
+
+Shiny.addCustomMessageHandler("plot_settings_show_lambda_values", function(show_lambda_values) {
+    iaoreader.show_lambda_values = show_lambda_values;
+    iaoreader.redraw_vert(iaoreader.vert);
+    iaoreader.redraw_vert(iaoreader.vert_click);
+});
+
+Shiny.addCustomMessageHandler("plot_settings_lambda_values_bg_invert", function(lambda_values_bg_invert) {
+    iaoreader.lambda_values_bg_invert = lambda_values_bg_invert;
+    iaoreader.svg.selectAll(".verts rect.lambda")
+        .style("filter", "invert(" + +lambda_values_bg_invert + ")");
+});
+
 
 // [[ Height adjustments ]]
 Shiny.addCustomMessageHandler("plot_settings_optimize_height", function(optimize_height) {
@@ -89,7 +116,11 @@ Shiny.addCustomMessageHandler("plot_settings_vertical_offset", function(vertical
 
 // [[ Axes settings ]]
 Shiny.addCustomMessageHandler("plot_settings_axes_labels_font_size", function(font_size) {
-    iaoreader.axes_labels_font_size = font_size;
+    if (0 <= font_size && font_size <= 26) {
+        iaoreader.axes_labels_font_size = font_size;
+        iaoreader.redraw_vert(iaoreader.vert);
+        iaoreader.redraw_vert(iaoreader.vert_click);
+    }
 });
 
 

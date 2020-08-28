@@ -1,3 +1,83 @@
+###### v0.7.23 (2020-08-28):
+ * Added option to include k parameter in plot title.
+ * Changed plot title setter to an update function.
+
+###### v0.7.22 (2020-08-28):
+ * Changed plot title updating to setter.
+
+###### v0.7.21 (2020-08-28):
+ * Added `redraw_vert` calls to Shiny handlers for options to update properly.
+
+###### v0.7.20 (2020-08-28):
+ * Added vertical offset to the lambda values so that they don't obstruct lines.
+ * Reordered function calls within `move_vert` due to `move_lambda_values` using parameters set by `draw_text_bbox` called for axis label.
+
+###### v0.7.19 (2020-08-28):
+ * Added redrawing mouseover vertical guide on font change.
+ * Reduced maximum X-axis font size to 26.
+ * Increased `dy` attribute of vertical guides axis label to not overlap with the plot.
+
+###### v0.7.18 (2020-08-27):
+ * Added background boxes for vertical guide axis labels.
+ * Added `iaoreader.redraw_vert` call to the font size handler to update text box size.
+
+###### v0.7.17 (2020-08-27):
+ * Reduced maximum X-axis font size to 30.
+ * Moved value verification to Shiny handler.
+
+###### v0.7.16 (2020-08-24):
+ * Fixed an issue where lambda values would not reappear after setting update.
+ * Fixed an issue where lambda values would not update after adjusting k parameter.
+ * Added spacing between vertical guides and the lambda values.
+
+###### v0.7.15 (2020-08-24):
+ * Fixed lambda values not being removed after disabling showing them.
+
+###### v0.7.14 (2020-08-24):
+ * Fixed lambda values background color not updating on the persistent guide.
+
+###### v0.7.13 (2020-08-22):
+ * Added checkbox for inverting lambda values background.
+
+###### v0.7.12 (2020-08-22):
+ * Added lambda values box's color customization.
+
+###### v0.7.11 (2020-08-22):
+ * Added an option to disable displaying the lambda values.
+
+###### v0.7.10 (2020-08-22):
+ * Added box behind the lambda values displayed on the plot.
+ * Excluded lambda values text from the font size adjustment in plot settings.
+
+###### v0.7.9 (2020-08-22):
+ * Added horizontal offset to the lambda values on the vertical guides.
+
+###### v0.7.8 (2020-08-22):
+ * Moved lambda measure values to the lowers line for the persistent vertical guide.
+
+###### v0.7.7 (2020-08-22):
+ * Added lambda measure values to the persistent vertical guide.
+
+###### v0.7.6 (2020-08-15):
+ * The lambda measure values are now displayed on the plot on mouseover.
+ * Restricted IAOReader lambda method to account only for currently displayed files.
+
+###### v0.7.5 (2020-08-15):
+ * Added K penalty parameter customization to plot settings.
+
+###### v0.7.4 (2020-08-15):
+ * Implemented lambda measure methods for IAOReader class.
+
+###### v0.7.3 (2020-08-15):
+ * Implemented `lambda` and `lambda_segment` functions for single files.
+
+###### v0.7.2 (2020-08-15):
+ * Replaced `Remove` label with trash bin icon in the input summary table.
+
+###### v0.7.1 (2020-08-15):
+ * Adjusted plot title vertical placement.
+ * Updated global CSS overflow and scrolling properties.
+
 ###### v0.7.0 (2020-08-15):
  * This version marks an end of implementation of plot settings regarding color and text properties of plot elements.
  * Added numericInput for customizing axes labels font size.

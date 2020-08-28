@@ -1,7 +1,7 @@
 let IAOReader = class {
     // Canvas dimensions.
     width = 1280; height = 720;
-    margin = { top: 40, right: 30, bottom: 40, left: 30 };
+    margin = { top: 40, right: 35, bottom: 40, left: 35 };
 
     // Plot elements.
     svg; x_axis; y_axis; lines; title;
@@ -12,7 +12,9 @@ let IAOReader = class {
 
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
-    show_background; color_palette;
+    show_background; color_palette; show_lambda_values;
+    lambda_values_bg_color = "#FFFFFF"; lambda_values_bg_invert;
+    title_text; k_parameter; title_includes_k;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -28,8 +30,7 @@ let IAOReader = class {
         this.title = this.svg.append("text")
             .attr("id", "plot_title")
             .attr("text-anchor", "middle")
-            .attr("x", "50%")
-            .attr("y", this.margin.top * 0.75 + "px");
+            .attr("x", "50%");
 
         // Creating X axis g tag.
         this.x_axis = this.svg.append("g")
@@ -58,9 +59,15 @@ let IAOReader = class {
             .style("stroke-width", 2)
             .style("stroke", "var(--plot-color-vert)");
 
+        this.vert.append("rect")
+            .attr("class", "axis-label")
+            .style("fill", "white")
+            .style("stroke", "var(--plot-color-vert)");
+
         this.vert.append("text")
+            .attr("class", "axis-label")
             .attr("y", this.height - this.margin.bottom + 9)
-            .attr("dy", "0.71em")
+            .attr("dy", "0.81em")
             .style("fill", "var(--plot-color-vert)");
 
         // This mousemove handler makes the vertical guide follow the cursor.
@@ -101,6 +108,9 @@ let IAOReader = class {
             .style("visibility", "hidden");
 
         this.vert_click.select("line")
+            .style("stroke", "var(--plot-color-vert-click)");
+
+        this.vert_click.select("rect")
             .style("stroke", "var(--plot-color-vert-click)");
 
         this.vert_click.select("text")
@@ -190,6 +200,35 @@ let IAOReader = class {
             d.y = d.y - differences[d.FileName] + offset;
             return d;
         });
+    }
+
+    lambda(n0) {
+        return this.lambda_segment(n0, n0);
+    }
+
+    lambda_segment(n1, n2) {
+        if (this.plot_data === null) return null;
+
+        var disp_files = this.displayed_files;
+        var files_data = new Map();
+
+        // Transforming data into map of arrays.
+        this.plot_data.forEach(function(d) {
+            if (!disp_files.includes(d.FileName)) return;
+            if (files_data[d.FileName] === undefined) {
+                files_data[d.FileName] = new Array();
+            }
+
+            files_data[d.FileName] = files_data[d.FileName]
+                .concat({Start: d.Start, End: d.End});
+        });
+
+        var results = new Map();
+        for (const [k, v] of Object.entries(files_data)) {
+            results[k] = lambda_segment(v, n1, n2, this.k_parameter);
+        }
+
+        return results;
     }
 
 
@@ -302,22 +341,27 @@ let IAOReader = class {
     }
 
     set axes_labels_font_size(size) {
-        if (0 <= size && size <= 32) {
-            this.x_axis.selectAll("text").attr("font-size", size + "px");
-            d3.selectAll("g.verts text").attr("font-size", size + "px");
-        }
+        this.x_axis.selectAll("text").attr("font-size", size + "px");
+        d3.selectAll("g.verts text.axis-label")
+            .attr("font-size", size + "px");
     }
 
     set title_font_size(size) {
         // This makes the tile centered at the initial y.
         if (10 <= size && size <= 72) {
-            this.title.attr("y", this.margin.top * 0.75 + (size - 20) / 2 + "px");
+            this.title.attr("y", this.margin.top * 0.60 + (size - 20) / 2 + "px");
             this.title.attr("font-size", size + "px");
         }
     }
 
     set title_color(color) {
         this.title.attr("fill", color);
+    }
+
+    set lambda_values_bg(color) {
+        this.lambda_values_bg_color = color;
+        this.svg.selectAll("rect.lambda")
+            .style("fill", color);
     }
 
 
@@ -371,6 +415,82 @@ let IAOReader = class {
                     .style("stroke", d => this.file_color(d.FileName));
     }
 
+    draw_lambda_values(vert, x, top_placement, horizontal_padding = 3) {
+        if (this.plot_data === null) return;
+
+        vert.selectAll(".lambda").remove();
+        if (!this.show_lambda_values) return;
+
+        var disp_files = this.displayed_files;
+        var vert_lines = this.plot_data.filter(d => d.Start <= x && x <= d.End);
+        var comparison_func = top_placement ? Math.max : Math.min;
+
+        // Getting highest line at given point for every file.
+        var heights = new Map();
+        vert_lines.forEach(function(d) {
+            if (!disp_files.includes(d.FileName)) return;
+            if (heights[d.FileName] === undefined) {
+                heights[d.FileName] = top_placement ? -Infinity : Infinity;
+            }
+
+            heights[d.FileName] = comparison_func(d.y, heights[d.FileName]);
+        });
+
+        // Calculating lambda values.
+        var lambda_values = this.lambda(x);
+
+        // Adding new values to the vert.
+        for (const [file_name, y] of Object.entries(heights)) {
+            var lambda_val = Math.round(lambda_values[file_name] * 100);
+            var dx = 13 + 4 * lambda_val.toString().length + horizontal_padding;
+
+            var rect = vert.append("rect")
+                .attr("class", "lambda")
+                .style("fill", this.lambda_values_bg_color)
+                .style("filter", "invert(" + +this.lambda_values_bg_invert + ")");
+
+            var text = vert.append("text")
+                .attr("class", "lambda")
+                .attr("y", this.y_scale(y))
+                .attr("fill", this.file_color(file_name))
+                .attr("dx", top_placement ? -dx : dx)
+                .attr("dy", top_placement ? -11 : 20)
+                .text(lambda_val + "%");
+
+            this.draw_text_bbox(text, rect);
+
+            // If the background box moves below X-axis then move it sideways
+            // in order to not obstruct axis label.
+            var rect_lower_limit = +rect.attr("y") + +rect.attr("height");
+            if (this.y_scale.invert(rect_lower_limit) < 0) {
+                var dx_adj = vert.select("rect.axis-label").attr("width") / 2;
+                text.attr("dx", dx + (top_placement ? -dx_adj : dx_adj));
+                this.draw_text_bbox(text, rect);
+            }
+        }
+    }
+
+    draw_text_bbox(text_element, rect_element, padding = 6) {
+        var bbox = text_element.node().getBBox();
+
+        rect_element
+            .attr("x", bbox.x - padding / 2)
+            .attr("y", bbox.y - padding / 2)
+            .attr("height", bbox.height + padding)
+            .attr("width", bbox.width + padding)
+            .attr("rx", padding / 2);
+    }
+
+    draw_plot_title() {
+        var title_text = this.title_text;
+
+        if (this.title_includes_k) {
+            title_text += " (k = " + this.k_parameter + ")";
+        }
+
+        this.title.text(title_text);
+    }
+
 
     /* -------------------------------------------------------------------------
      * Lines coloring
@@ -422,8 +542,28 @@ let IAOReader = class {
 
         vert
             .attr("transform", "translate(" + this.x_scale(x) + ", 0)")
-            .select("text")
+            .select("text.axis-label")
                 .text(x);
+
+        // Drawing a box around the label.
+        this.draw_text_bbox(
+            vert.select("text.axis-label"), vert.select("rect.axis-label"), 3);
+
+        // Mouseover vert uses the top placement.
+        this.draw_lambda_values(vert, x, vert == this.vert);
+    }
+
+    redraw_vert(vert) {
+        var transform_value = vert.attr("transform");
+
+        // Check to avoid errors if vert was not used at least once.
+        if (transform_value === null) return;
+
+        var vert_px_position = +transform_value
+            .replace("translate(", "").split(",")[0];
+
+        // This moves vert to it's current position to redraw lambda values.
+        this.move_vert(vert, this.x_scale.invert(vert_px_position));
     }
 }
 

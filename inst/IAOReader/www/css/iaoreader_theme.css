@@ -2,6 +2,10 @@
  * Global
  * -------------------------------------------------------------------------- */
 
+body {
+    overflow: hidden;
+}
+
 body > div.container-fluid {
     padding: 10px;
 }
@@ -12,8 +16,8 @@ ul.nav.nav-tabs {
 
 /* Fix for selectInputs to not get clipped by .tab-content parent element. */
 div.tab-content {
-    overflow-y: visible;
-    max-height: unset;
+    overflow-y: scroll;
+    max-height: calc(100vh - var(--top-bar-height) - 60px);
 }
 
 p.bad_files_info, p.no_file_uploaded {
@@ -209,6 +213,10 @@ body > div.container-fluid > div > form.well {
 
 
 /* [[ Plot Settings ]] */
+div#plot_settings_inputs > h3:first-of-type {
+    margin-top: 5px;
+}
+
 div#plot_settings_inputs > h3 {
     margin-top: 25px;
 }
