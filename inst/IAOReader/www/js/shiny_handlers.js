@@ -45,6 +45,7 @@ Shiny.addCustomMessageHandler("reset_color_input", function(reset_meta) {
 // [[ Plot title ]]
 Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
     iaoreader.title_text = title_text;
+    iaoreader.draw_plot_title();
 });
 
 Shiny.addCustomMessageHandler("plot_settings_title_font_size", function(font_size) {
@@ -79,7 +80,13 @@ Shiny.addCustomMessageHandler("plot_settings_k_parameter", function(k_parameter)
         iaoreader.k_parameter = k_parameter;
         iaoreader.redraw_vert(iaoreader.vert);
         iaoreader.redraw_vert(iaoreader.vert_click);
+        iaoreader.draw_plot_title();
     }
+});
+
+Shiny.addCustomMessageHandler("plot_settings_title_includes_k", function(include_k) {
+    iaoreader.title_includes_k = include_k;
+    iaoreader.draw_plot_title();
 });
 
 Shiny.addCustomMessageHandler("plot_settings_show_lambda_values", function(show_lambda_values) {

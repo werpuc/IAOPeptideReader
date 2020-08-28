@@ -14,6 +14,7 @@ let IAOReader = class {
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
     show_background; color_palette; show_lambda_values;
     lambda_values_bg_color = "#FFFFFF"; lambda_values_bg_invert;
+    title_text; k_parameter; title_includes_k;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -345,10 +346,6 @@ let IAOReader = class {
             .attr("font-size", size + "px");
     }
 
-    set title_text(text) {
-        this.title.text(text);
-    }
-
     set title_font_size(size) {
         // This makes the tile centered at the initial y.
         if (10 <= size && size <= 72) {
@@ -482,6 +479,16 @@ let IAOReader = class {
             .attr("height", bbox.height + padding)
             .attr("width", bbox.width + padding)
             .attr("rx", padding / 2);
+    }
+
+    draw_plot_title() {
+        var title_text = this.title_text;
+
+        if (this.title_includes_k) {
+            title_text += " (k = " + this.k_parameter + ")";
+        }
+
+        this.title.text(title_text);
     }
 
 

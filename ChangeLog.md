@@ -1,3 +1,7 @@
+###### v0.7.23 (2020-08-28):
+ * Added option to include k parameter in plot title.
+ * Changed plot title setter to an update function.
+
 ###### v0.7.22 (2020-08-28):
  * Changed plot title updating to setter.
 
