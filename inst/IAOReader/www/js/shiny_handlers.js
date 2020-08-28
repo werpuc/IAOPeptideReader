@@ -42,6 +42,7 @@ Shiny.addCustomMessageHandler("reset_color_input", function(reset_meta) {
     color_input.dispatchEvent(new Event("change"));
 });
 
+
 // [[ Plot title ]]
 Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
     iaoreader.title_text = title_text;
@@ -55,6 +56,7 @@ Shiny.addCustomMessageHandler("plot_settings_title_font_size", function(font_siz
 Shiny.addCustomMessageHandler("plot_settings_title_bold", function(title_bold) {
     iaoreader.title.attr("font-weight", title_bold ? "bold" : "normal");
 });
+
 
 // [[ Vertical guide ]]
 Shiny.addCustomMessageHandler("plot_settings_vert_show", function(vert_show) {

@@ -1,3 +1,6 @@
+###### v0.8.1 (2020-08-28):
+ * Adjusted top margins of **Coverage Plot** and **Summary Table** headers.
+
 ###### v0.7.23 (2020-08-28):
  * Added option to include k parameter in plot title.
  * Changed plot title setter to an update function.

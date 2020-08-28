@@ -61,6 +61,14 @@ a#github_url {
     padding-right: 10px;
 }
 
+#plot_coverage_header {
+    margin-top: 0;
+}
+
+#summary_table_header {
+    margin-top: 10px;
+}
+
 /* [[ Plot ]] */
 :root {
     --plot-color-vert: #00008B;
