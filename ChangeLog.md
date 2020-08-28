@@ -1,3 +1,6 @@
+###### v0.7.22 (2020-08-28):
+ * Changed plot title updating to setter.
+
 ###### v0.7.21 (2020-08-28):
  * Added `redraw_vert` calls to Shiny handlers for options to update properly.
 
