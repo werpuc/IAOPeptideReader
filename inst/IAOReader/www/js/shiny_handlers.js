@@ -107,8 +107,9 @@ Shiny.addCustomMessageHandler("plot_settings_vertical_offset", function(vertical
 
 // [[ Axes settings ]]
 Shiny.addCustomMessageHandler("plot_settings_axes_labels_font_size", function(font_size) {
-    if (0 <= font_size && font_size <= 30) {
+    if (0 <= font_size && font_size <= 26) {
         iaoreader.axes_labels_font_size = font_size;
+        iaoreader.redraw_vert(iaoreader.vert);
         iaoreader.redraw_vert(iaoreader.vert_click);
     }
 });

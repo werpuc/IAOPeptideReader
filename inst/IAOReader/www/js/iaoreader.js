@@ -66,7 +66,7 @@ let IAOReader = class {
         this.vert.append("text")
             .attr("class", "axis-label")
             .attr("y", this.height - this.margin.bottom + 9)
-            .attr("dy", "0.71em")
+            .attr("dy", "0.81em")
             .style("fill", "var(--plot-color-vert)");
 
         // This mousemove handler makes the vertical guide follow the cursor.

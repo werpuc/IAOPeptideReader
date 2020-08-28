@@ -1,3 +1,8 @@
+###### v0.7.19 (2020-08-28):
+ * Added redrawing mouseover vertical guide on font change.
+ * Reduced maximum X-axis font size to 26.
+ * Increased `dy` attribute of vertical guides axis label to not overlap with the plot.
+
 ###### v0.7.18 (2020-08-27):
  * Added background boxes for vertical guide axis labels.
  * Added `iaoreader.redraw_vert` call to the font size handler to update text box size.
