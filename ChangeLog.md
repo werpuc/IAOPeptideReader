@@ -1,3 +1,6 @@
+###### v0.8.4 (2020-08-28):
+ * Removed uses of `dx` and `dy` attributes from lambda values. This will help with SVG export.
+
 ###### v0.8.3 (2020-08-28):
  * Changed the way the Y-axis ticks are not displayed.
 

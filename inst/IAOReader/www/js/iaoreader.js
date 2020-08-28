@@ -443,7 +443,7 @@ let IAOReader = class {
         // Adding new values to the vert.
         for (const [file_name, y] of Object.entries(heights)) {
             var lambda_val = Math.round(lambda_values[file_name] * 100);
-            var dx = 13 + 4 * lambda_val.toString().length + horizontal_padding;
+            var x = 13 + 4 * lambda_val.toString().length + horizontal_padding;
 
             var rect = vert.append("rect")
                 .attr("class", "lambda")
@@ -452,10 +452,9 @@ let IAOReader = class {
 
             var text = vert.append("text")
                 .attr("class", "lambda")
-                .attr("y", this.y_scale(y))
+                .attr("x", top_placement ? -x : x)
+                .attr("y", this.y_scale(y) + (top_placement ? -11 : 20))
                 .attr("fill", this.file_color(file_name))
-                .attr("dx", top_placement ? -dx : dx)
-                .attr("dy", top_placement ? -11 : 20)
                 .text(lambda_val + "%");
 
             this.draw_text_bbox(text, rect);
@@ -464,8 +463,8 @@ let IAOReader = class {
             // in order to not obstruct axis label.
             var rect_lower_limit = +rect.attr("y") + +rect.attr("height");
             if (this.y_scale.invert(rect_lower_limit) < 0) {
-                var dx_adj = vert.select("rect.axis-label").attr("width") / 2;
-                text.attr("dx", dx + (top_placement ? -dx_adj : dx_adj));
+                var x_adj = vert.select("rect.axis-label").attr("width") / 2;
+                text.attr("x", x + (top_placement ? -x_adj : x_adj));
                 this.draw_text_bbox(text, rect);
             }
         }
