@@ -77,12 +77,14 @@ Shiny.addCustomMessageHandler("plot_settings_allow_verts_marking", function(allo
 Shiny.addCustomMessageHandler("plot_settings_k_parameter", function(k_parameter) {
     if (k_parameter >= 0) {
         iaoreader.k_parameter = k_parameter;
+        iaoreader.redraw_vert(iaoreader.vert);
         iaoreader.redraw_vert(iaoreader.vert_click);
     }
 });
 
 Shiny.addCustomMessageHandler("plot_settings_show_lambda_values", function(show_lambda_values) {
     iaoreader.show_lambda_values = show_lambda_values;
+    iaoreader.redraw_vert(iaoreader.vert);
     iaoreader.redraw_vert(iaoreader.vert_click);
 });
 

@@ -1,3 +1,6 @@
+###### v0.7.21 (2020-08-28):
+ * Added `redraw_vert` calls to Shiny handlers for options to update properly.
+
 ###### v0.7.20 (2020-08-28):
  * Added vertical offset to the lambda values so that they don't obstruct lines.
  * Reordered function calls within `move_vert` due to `move_lambda_values` using parameters set by `draw_text_bbox` called for axis label.
