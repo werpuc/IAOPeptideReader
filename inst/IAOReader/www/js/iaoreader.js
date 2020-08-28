@@ -453,14 +453,20 @@ let IAOReader = class {
                 .attr("y", this.y_scale(y))
                 .attr("fill", this.file_color(file_name))
                 .attr("dx", top_placement ? -dx : dx)
+                .attr("dy", top_placement ? -11 : 20)
                 .text(lambda_val + "%");
 
             this.draw_text_bbox(text, rect);
-        }
 
-        // TODO: offset the values from the vert.
-        // TODO: create a box for them to be clearly visible.
-        // TODO: do the same for click vert (maybe with offset in different direction).
+            // If the background box moves below X-axis then move it sideways
+            // in order to not obstruct axis label.
+            var rect_lower_limit = +rect.attr("y") + +rect.attr("height");
+            if (this.y_scale.invert(rect_lower_limit) < 0) {
+                var dx_adj = vert.select("rect.axis-label").attr("width") / 2;
+                text.attr("dx", dx + (top_placement ? -dx_adj : dx_adj));
+                this.draw_text_bbox(text, rect);
+            }
+        }
     }
 
     draw_text_bbox(text_element, rect_element, padding = 6) {
@@ -528,12 +534,12 @@ let IAOReader = class {
             .select("text.axis-label")
                 .text(x);
 
-        // Mouseover vert uses the top placement.
-        this.draw_lambda_values(vert, x, vert == this.vert);
-
         // Drawing a box around the label.
         this.draw_text_bbox(
             vert.select("text.axis-label"), vert.select("rect.axis-label"), 3);
+
+        // Mouseover vert uses the top placement.
+        this.draw_lambda_values(vert, x, vert == this.vert);
     }
 
     redraw_vert(vert) {

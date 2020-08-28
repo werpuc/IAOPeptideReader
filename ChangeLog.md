@@ -1,3 +1,7 @@
+###### v0.7.20 (2020-08-28):
+ * Added vertical offset to the lambda values so that they don't obstruct lines.
+ * Reordered function calls within `move_vert` due to `move_lambda_values` using parameters set by `draw_text_bbox` called for axis label.
+
 ###### v0.7.19 (2020-08-28):
  * Added redrawing mouseover vertical guide on font change.
  * Reduced maximum X-axis font size to 26.
