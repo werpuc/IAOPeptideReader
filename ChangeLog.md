@@ -1,3 +1,7 @@
+###### v0.8.5 (2020-08-28):
+ * Reduced maximum title font size to 48px.
+ * Moved font size check to Shiny handler.
+
 ###### v0.8.4 (2020-08-28):
  * Removed uses of `dx` and `dy` attributes from lambda values. This will help with SVG export.
 

@@ -55,7 +55,9 @@ Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
 });
 
 Shiny.addCustomMessageHandler("plot_settings_title_font_size", function(font_size) {
-    iaoreader.title_font_size = font_size;
+    if (10 <= font_size && font_size <= 48) {
+        iaoreader.title_font_size = font_size;
+    }
 });
 
 Shiny.addCustomMessageHandler("plot_settings_title_bold", function(title_bold) {

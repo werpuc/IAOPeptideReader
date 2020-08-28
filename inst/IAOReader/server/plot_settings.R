@@ -15,7 +15,7 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "numeric",
                  "label" = "Title font size [px]",
                  "value" = "20",
-                 "min" = 10, "max" = 72, "step" = 1, "width" = width),
+                 "min" = 10, "max" = 48, "step" = 1, "width" = width),
             list("input_id" = "plot_settings_title_bold",
                  "input_type" = "checkbox",
                  "label" = "Bold font",
