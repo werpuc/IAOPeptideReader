@@ -398,6 +398,7 @@ let IAOReader = class {
 
     draw_y_axis() {
         this.y_axis.call(d3.axisLeft().scale(this.y_scale));
+        this.y_axis.selectAll("g.tick").remove();
     }
 
     draw_lines() {

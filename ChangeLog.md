@@ -1,3 +1,6 @@
+###### v0.8.3 (2020-08-28):
+ * Changed the way the Y-axis ticks are not displayed.
+
 ###### v0.8.2 (2020-08-28):
  * Added button for downloading plot as an SVG - for now it's just a prop.
 
