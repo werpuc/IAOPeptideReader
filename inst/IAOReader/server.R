@@ -16,9 +16,4 @@ server <- function(input, output, session) {
     observeEvent(input[["download_svg"]], {
         session$sendCustomMessage("download_svg", 1)
     }, ignoreInit = TRUE)
-
-    # TODO: update with real statistics.
-    output[["summary_table"]] <- renderTable({
-        data.frame("X" = 1:3, "Y" = 4:6, "Z" = 7:9, "XYZ" = 11:13)
-    })
 }

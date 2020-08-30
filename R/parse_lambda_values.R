@@ -17,12 +17,12 @@ parse_lambda_values <- function(json_data, null_value = "-") {
 }
 
 
-single_lambda_value_to_vec <- function(x_value_list, null_value, precision) {
+single_lambda_value_to_vec <- function(x_value_list, null_value) {
     values <- lapply(
         x_value_list,
         function(x_val) {
             if (is.null(x_val)) return(null_value)
-            x_val
+            round(x_val * 100)
         }
     )
 

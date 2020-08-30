@@ -217,6 +217,21 @@ input_settings <- function(input, output, session) {
         session$sendCustomMessage(
             "update_data", unique(rbindlist(res))[, .(Start, End, FileName)])
     })
+
+
+    # Summary table ------------------------------------------------------------
+    observeEvent(list(input[["plot_settings_k_parameter"]], any_file_good()), {
+        req(any_file_good())
+
+        session$sendCustomMessage("update_plot", 1)
+    })
+
+    output[["summary_table"]] <- renderTable({
+        summary_table_data <- input[["summary_table"]]
+
+        req(summary_table_data)
+        parse_lambda_values(summary_table_data)
+    })
 }
 
 
