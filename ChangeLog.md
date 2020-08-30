@@ -1,3 +1,9 @@
+###### v0.9.0 (2020-08-30):
+ * This version marks end of development of all application's main functionalities.
+ * Fixed overflow behavior in the summary table display.
+ * Added debounce to the summary table update trigger in order to fix the table not being updated quickly enough.
+ * Added column with file names to summary table.
+
 ###### v0.8.9 (2020-08-30):
  * Added summary table display.
  * Updated parsing function to convert to percent.
