@@ -161,6 +161,10 @@ body > div.container-fluid > div > form.well {
 
 
 /* [[ Input Settings ]] */
+#files_upload_progress.active {
+    margin-bottom: 0;
+}
+
 #sequence_length[is_wrong] {
     border-color: orangered;
     border-width: 2px;

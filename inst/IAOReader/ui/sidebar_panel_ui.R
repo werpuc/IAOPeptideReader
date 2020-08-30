@@ -19,11 +19,11 @@ input_settings_ui <- function() {
         fileInput("files_upload", "Upload input files", multiple = TRUE,
                   accept = ".csv"),
 
-        # TODO(dev): remove this div after development.
+        # Button for uploading sample data into the application.
         div(
             align = "center",
             actionButton(
-                "dev_upload", "Upload development data",
+                "sample_upload", "Upload sample data",
                 onclick = paste0(
                     'Shiny.setInputValue("files_upload", null);',
                     'Shiny.setInputValue("files_upload", -1);'

@@ -32,10 +32,12 @@ input_settings <- function(input, output, session) {
     
     observeEvent(input[["files_upload"]], {
         file_input_meta <- input[["files_upload"]]
-        # TODO(dev): remove this if after development.
+
+        # This allows programatically imitating upload of sample data.
         if (class(file_input_meta) != "data.frame" && file_input_meta == -1) {
-            file_input_meta <- prop_fim()
+            file_input_meta <- sample_fim()
         }
+
         req(file_input_meta)
 
         input_settings_rv[["fm"]] <- list()
@@ -241,8 +243,8 @@ input_settings <- function(input, output, session) {
 }
 
 
-# TODO(dev): remove this function after development.
-prop_fim <- function() {
+# This function creates files input meta for sample files.
+sample_fim <- function() {
     file_names <- c(
         sprintf("example_data%d.csv", 1:2),
         sprintf("incorrect_data%d.csv", 1:3)

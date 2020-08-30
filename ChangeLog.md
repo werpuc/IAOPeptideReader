@@ -1,3 +1,7 @@
+###### v0.9.1 (2020-08-30):
+ * Changed the development data upload to sample data upload.
+ * Updated CSS for the upload button.
+
 ###### v0.9.0 (2020-08-30):
  * This version marks end of development of all application's main functionalities.
  * Fixed overflow behavior in the summary table display.
