@@ -1,3 +1,6 @@
+###### v0.8.7 (2020-08-30):
+ * Added function for parsing lambda values to a data.frame from a JSON.
+
 ###### v0.8.6 (2020-08-28):
  * Implemented SVG download.
 
