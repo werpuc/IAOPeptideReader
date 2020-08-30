@@ -1,3 +1,8 @@
+###### v0.9.2 (2020-08-30):
+ * Moved the upload sample data button to be less prominent.
+ * Added percent symbol to the summary table.
+ * Added alignment to the summary table.
+
 ###### v0.9.1 (2020-08-30):
  * Changed the development data upload to sample data upload.
  * Updated CSS for the upload button.

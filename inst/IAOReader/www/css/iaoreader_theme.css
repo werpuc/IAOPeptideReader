@@ -73,6 +73,10 @@ a#github_url {
     overflow: scroll;
 }
 
+#summary_table tr > *:first-child {
+    text-align: left !important;
+}
+
 #download_svg {
     margin: 5px 5px 0px 0px;
 }
@@ -161,8 +165,16 @@ body > div.container-fluid > div > form.well {
 
 
 /* [[ Input Settings ]] */
-#files_upload_progress.active {
+#file_upload_div div.form-group, #file_upload_div div.progress {
     margin-bottom: 0;
+}
+
+#file_upload_div div.shiny-split-layout > div:nth-child(2) {
+    vertical-align: bottom;
+}
+
+#sample_upload {
+    margin-bottom: 20px;
 }
 
 #sequence_length[is_wrong] {

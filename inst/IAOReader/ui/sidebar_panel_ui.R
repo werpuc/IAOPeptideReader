@@ -16,17 +16,22 @@ sidebar_panel_ui <- function() {
 input_settings_ui <- function() {
     tabPanel(
         "Input Settings",
-        fileInput("files_upload", "Upload input files", multiple = TRUE,
-                  accept = ".csv"),
 
-        # Button for uploading sample data into the application.
         div(
-            align = "center",
-            actionButton(
-                "sample_upload", "Upload sample data",
-                onclick = paste0(
-                    'Shiny.setInputValue("files_upload", null);',
-                    'Shiny.setInputValue("files_upload", -1);'
+            id = "file_upload_div",
+            splitLayout(
+                cellWidths = c("90%", "auto"),
+                fileInput("files_upload", "Upload input files", multiple = TRUE,
+                          accept = ".csv"),
+
+                # Button for uploading sample data into the application.
+                actionButton(
+                    "sample_upload", icon("upload"),
+                    title = "Upload sample data",
+                    onclick = paste0(
+                        'Shiny.setInputValue("files_upload", null);',
+                        'Shiny.setInputValue("files_upload", -1);'
+                    )
                 )
             )
         ),

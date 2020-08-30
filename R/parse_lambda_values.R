@@ -22,7 +22,7 @@ single_lambda_value_to_vec <- function(x_value_list, null_value) {
         x_value_list,
         function(x_val) {
             if (is.null(x_val)) return(null_value)
-            round(x_val * 100)
+            paste0(round(x_val * 100), "%")
         }
     )
 
