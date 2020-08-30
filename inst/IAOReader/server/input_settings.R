@@ -100,8 +100,6 @@ input_settings <- function(input, output, session) {
 
 
     # Max sequence length output -----------------------------------------------
-    # TODO: create a summary which displays maximum seq length for current filtering.
-    # TODO: add similar options for setting sequence start.
     output[["sequence_length_max"]] <- renderText({
         req(any_file_good())
 
@@ -216,6 +214,29 @@ input_settings <- function(input, output, session) {
 
         session$sendCustomMessage(
             "update_data", unique(rbindlist(res))[, .(Start, End, FileName)])
+    })
+
+
+    # Summary table ------------------------------------------------------------
+    # Note: debouncing allows the calculation to finish in time. Therefore, it
+    #       ensures that the table is up to date.
+    summary_table_listener <- debounce(millis = 150, reactive({
+        input[["plot_settings_k_parameter"]]
+        any_file_good()
+    }))
+
+    observeEvent(summary_table_listener(), {
+        req(any_file_good())
+
+        session$sendCustomMessage("update_plot", 1)
+    })
+
+    output[["summary_table"]] <- renderTable({
+        summary_table_data <- input[["summary_table"]]
+
+        req(summary_table_data)
+        summary_table <- parse_lambda_values(summary_table_data)
+        cbind("File Name" = rownames(summary_table), summary_table)
     })
 }
 

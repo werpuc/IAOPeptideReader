@@ -19,10 +19,17 @@ peptide_coverage_ui <- function() {
         no_file_uploaded_wrapper(
             no_file_good_wrapper(
 
-                h3("Coverage Plot"),
+                h3(id = "plot_coverage_header", "Coverage Plot"),
                 div(id = "plot"),
+                div(
+                    align = "right",
+                    actionButton(
+                        "download_svg",
+                        HTML(paste(icon("download"), "Save plot (.svg)"))
+                    )
+                ),
 
-                h3("Summary Table"),
+                h3(id = "summary_table_header", "Summary Table"),
                 div(
                     align = "center",
                     tableOutput("summary_table")

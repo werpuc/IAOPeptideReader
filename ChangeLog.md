@@ -1,3 +1,39 @@
+###### v0.9.0 (2020-08-30):
+ * This version marks end of development of all application's main functionalities.
+ * Fixed overflow behavior in the summary table display.
+ * Added debounce to the summary table update trigger in order to fix the table not being updated quickly enough.
+ * Added column with file names to summary table.
+
+###### v0.8.9 (2020-08-30):
+ * Added summary table display.
+ * Updated parsing function to convert to percent.
+
+###### v0.8.8 (2020-08-30):
+ * Added function for calculating summary table data to the IAOReader class.
+ * Added Shiny handler for updating the plot.
+
+###### v0.8.7 (2020-08-30):
+ * Added function for parsing lambda values to a data.frame from a JSON.
+
+###### v0.8.6 (2020-08-28):
+ * Implemented SVG download.
+
+###### v0.8.5 (2020-08-28):
+ * Reduced maximum title font size to 48px.
+ * Moved font size check to Shiny handler.
+
+###### v0.8.4 (2020-08-28):
+ * Removed uses of `dx` and `dy` attributes from lambda values. This will help with SVG export.
+
+###### v0.8.3 (2020-08-28):
+ * Changed the way the Y-axis ticks are not displayed.
+
+###### v0.8.2 (2020-08-28):
+ * Added button for downloading plot as an SVG - for now it's just a prop.
+
+###### v0.8.1 (2020-08-28):
+ * Adjusted top margins of **Coverage Plot** and **Summary Table** headers.
+
 ###### v0.7.23 (2020-08-28):
  * Added option to include k parameter in plot title.
  * Changed plot title setter to an update function.

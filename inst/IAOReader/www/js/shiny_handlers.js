@@ -32,6 +32,16 @@ Shiny.addCustomMessageHandler("seq_len_check", function(is_ok) {
 });
 
 
+Shiny.addCustomMessageHandler("download_svg", function(_) {
+    iaoreader.download_svg();
+});
+
+
+Shiny.addCustomMessageHandler("update_plot", function(_) {
+    iaoreader.update_plot();
+});
+
+
 /* -----------------------------------------------------------------------------
  * Plot settings
  * -------------------------------------------------------------------------- */
@@ -42,6 +52,7 @@ Shiny.addCustomMessageHandler("reset_color_input", function(reset_meta) {
     color_input.dispatchEvent(new Event("change"));
 });
 
+
 // [[ Plot title ]]
 Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
     iaoreader.title_text = title_text;
@@ -49,12 +60,15 @@ Shiny.addCustomMessageHandler("plot_settings_title_text", function(title_text) {
 });
 
 Shiny.addCustomMessageHandler("plot_settings_title_font_size", function(font_size) {
-    iaoreader.title_font_size = font_size;
+    if (10 <= font_size && font_size <= 48) {
+        iaoreader.title_font_size = font_size;
+    }
 });
 
 Shiny.addCustomMessageHandler("plot_settings_title_bold", function(title_bold) {
     iaoreader.title.attr("font-weight", title_bold ? "bold" : "normal");
 });
+
 
 // [[ Vertical guide ]]
 Shiny.addCustomMessageHandler("plot_settings_vert_show", function(vert_show) {
