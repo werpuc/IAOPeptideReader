@@ -231,6 +231,16 @@ let IAOReader = class {
         return results;
     }
 
+    calculate_summary_table() {
+        var lambda_values = {};
+
+        for (var i = this.x_min; i <= this.x_max; i++) {
+            lambda_values[i] = this.lambda(i);
+        }
+
+        Shiny.setInputValue("summary_table", lambda_values);
+    }
+
 
     /* -------------------------------------------------------------------------
      * Getters
@@ -388,6 +398,8 @@ let IAOReader = class {
 
         this.unmark_lines(this.vert_click_mark);
         this.vert_click.style("visibility", "hidden");
+
+        this.calculate_summary_table();
     }
 
     draw_x_axis() {

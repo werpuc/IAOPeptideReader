@@ -1,3 +1,7 @@
+###### v0.8.8 (2020-08-30):
+ * Added function for calculating summary table data to the IAOReader class.
+ * Added Shiny handler for updating the plot.
+
 ###### v0.8.7 (2020-08-30):
  * Added function for parsing lambda values to a data.frame from a JSON.
 

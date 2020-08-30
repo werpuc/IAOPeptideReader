@@ -37,6 +37,11 @@ Shiny.addCustomMessageHandler("download_svg", function(_) {
 });
 
 
+Shiny.addCustomMessageHandler("update_plot", function(_) {
+    iaoreader.update_plot();
+});
+
+
 /* -----------------------------------------------------------------------------
  * Plot settings
  * -------------------------------------------------------------------------- */
