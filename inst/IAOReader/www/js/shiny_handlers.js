@@ -185,8 +185,6 @@ Shiny.addCustomMessageHandler("plot_settings_color_palette", function(color_pale
 });
 
 Shiny.addCustomMessageHandler("plot_settings_show_background", function(show_background) {
-    iaoreader.show_background = show_background;
-
-    var color = document.getElementById("plot_background_color").value;
-    iaoreader.background_color = color;
+    iaoreader.background
+        .style("visibility", show_background ? "visible" : "hidden");
 });

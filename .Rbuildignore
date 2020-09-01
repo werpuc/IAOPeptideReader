@@ -6,3 +6,4 @@
 ^\..*ignore$
 ^dev$
 ^app\.R$
+^tags$
