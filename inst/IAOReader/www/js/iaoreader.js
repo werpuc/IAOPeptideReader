@@ -12,9 +12,8 @@ let IAOReader = class {
 
     // Axis limits values and other variables.
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
-    show_background; color_palette; show_lambda_values;
-    lambda_values_bg_color = "#FFFFFF"; lambda_values_bg_invert;
-    title_text; k_parameter; title_includes_k;
+    color_palette; show_lambda_values; lambda_values_bg_color = "#FFFFFF";
+    lambda_values_bg_invert; title_text; k_parameter; title_includes_k;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -343,7 +342,7 @@ let IAOReader = class {
     }
 
     set background_color(color) {
-        this.background.style("fill", this.show_background ? color : "");
+        this.background.style("fill", color);
     }
 
     set axes_color(color) {

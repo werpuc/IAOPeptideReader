@@ -1,3 +1,7 @@
+###### v0.9.5 (2020-09-01):
+ * Changed the background display option behavior. Now it is handled via visibility rather than setting color to `""`.
+ * Now all elements - not only containers - with `visibility: hidden` won't be added to the SVG.
+
 ###### v0.9.4 (2020-09-01):
  * Replaced `svg` tag `background` attribute with appending a background `rect` to the SVG.
 

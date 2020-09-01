@@ -28,13 +28,14 @@ function copy_style(dest, src) {
             src_child = src_children[i],
             dest_tag_name = dest_child.tagName;
 
+        // Removing hidden elements to avoid them being shown in SVG editors.
+        if (window.getComputedStyle(src_child)["visibility"] === "hidden") {
+            dest_child.remove();
+            continue;
+        }
+
         // If current tag is container then descend recursively.
         if (container_elements.indexOf(dest_tag_name) != -1) {
-            if (window.getComputedStyle(src_child)["visibility"] === "hidden") {
-                dest_child.remove();
-                return;
-            }
-
             copy_style(dest_child, src_child);
         }
 
