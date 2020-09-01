@@ -4,7 +4,7 @@ let IAOReader = class {
     margin = { top: 40, right: 35, bottom: 40, left: 35 };
 
     // Plot elements.
-    svg; x_axis; y_axis; lines; title;
+    svg; background; x_axis; y_axis; lines; title;
     vert; vert_click;
 
     // Vertical guides mark class names.
@@ -23,8 +23,13 @@ let IAOReader = class {
     constructor() {
         // Creating the SVG tag.
         this.svg = d3.select("div#plot").append("svg")
-            .attr("viewBox", "0 0 " + this.width + " " + this.height)
-            .style("background", "#ffffff");
+            .attr("viewBox", "0 0 " + this.width + " " + this.height);
+
+        // Adding background rect.
+        this.background = this.svg.append("g").append("rect")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .style("fill", "#ffffff");
 
         // Creating title.
         this.title = this.svg.append("text")
@@ -338,7 +343,7 @@ let IAOReader = class {
     }
 
     set background_color(color) {
-        this.svg.style("background", this.show_background ? color : "");
+        this.background.style("fill", this.show_background ? color : "");
     }
 
     set axes_color(color) {

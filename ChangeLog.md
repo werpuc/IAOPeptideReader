@@ -1,3 +1,6 @@
+###### v0.9.4 (2020-09-01):
+ * Replaced `svg` tag `background` attribute with appending a background `rect` to the SVG.
+
 ###### v0.9.3 (2020-09-01):
  * Elements with `visibility: hidden` won't be added to the SVG anymore.
  * Added `tags` to `.gitignore` and `.Rbuildignore`.
