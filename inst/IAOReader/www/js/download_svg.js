@@ -19,28 +19,33 @@ function download_svg_node(svg_node){
 }
 
 
-function copy_style(dest, src){
+function copy_style(dest, src) {
     var dest_children = dest.childNodes,
         src_children = src.childNodes;     
 
-    for (var i = 0; i < dest_children.length; i++){
+    for (var i = 0; i < dest_children.length; i++) {
         var dest_child = dest_children[i],
             src_child = src_children[i],
             dest_tag_name = dest_child.tagName;
 
         // If current tag is container then descend recursively.
-        if (container_elements.indexOf(dest_tag_name) != -1){
+        if (container_elements.indexOf(dest_tag_name) != -1) {
+            if (window.getComputedStyle(src_child)["visibility"] === "hidden") {
+                dest_child.remove();
+                return;
+            }
+
             copy_style(dest_child, src_child);
         }
 
         // If tag is a one which should have style carried over then proceed to
         // copying the style.
-        if (dest_tag_name in relevant_styles){
+        if (dest_tag_name in relevant_styles) {
             var src_style = window.getComputedStyle(src_child),
                 style_string = "", current_style, current_style_val;
 
             // Copy every relevant style for given tag name.
-            for (var j = 0; j < relevant_styles[dest_tag_name].length; j++){
+            for (var j = 0; j < relevant_styles[dest_tag_name].length; j++) {
                 current_style = relevant_styles[dest_tag_name][j];
                 current_style_val = src_style.getPropertyValue(current_style);
 

@@ -1,3 +1,7 @@
+###### v0.9.3 (2020-09-01):
+ * Elements with `visibility: hidden` won't be added to the SVG anymore.
+ * Added `tags` to `.gitignore` and `.Rbuildignore`.
+
 ###### v0.9.2 (2020-08-30):
  * Moved the upload sample data button to be less prominent.
  * Added percent symbol to the summary table.
