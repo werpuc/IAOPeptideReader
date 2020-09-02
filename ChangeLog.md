@@ -1,3 +1,6 @@
+###### v0.9.9 (2020-09-02):
+ * Added checks for time since clicking to differentiate dragging and single click.
+
 ###### v0.9.8 (2020-09-02):
  * Moved mouseover guide to top and on click guide right below it.
  * Fixed names of variables

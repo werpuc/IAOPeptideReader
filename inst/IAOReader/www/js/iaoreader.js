@@ -14,6 +14,7 @@ let IAOReader = class {
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
     color_palette; show_lambda_values; lambda_values_bg_color = "#FFFFFF";
     lambda_values_bg_invert; title_text; k_parameter; title_includes_k;
+    drag_start_time; drag_start_x;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -143,38 +144,39 @@ let IAOReader = class {
         // This is drag behavior definition which moves drag guides.
         // TODO: add background rect.
         var drag = d3.drag()
-            // Moves both ends of the drag area to the beginning.
-            // TODO: fix that click also fires drag start handler.
+            // This handler saves current position in time. The time is then
+            // verivied within the drag handler. This approach has been
+            // introduced to avoid moving drag verts on single click.
             .on("start", function() {
                 var m = d3.mouse(this);
-
                 if (self.mouse_out_of_bonds(m)) return;
 
                 var x = self.x_scale.invert(m[0]);
+                self.drag_t0 = Date.now();
+                self.drag_start_x = x;
+            })
+            // Moves the end vert as well as the start vert to it's rightful
+            // position. Only if 300ms has passed since initial click.
+            .on("drag", function() {
+                // Assuming that anything under 300ms is a single click and not
+                // a drag.
+                if (Date.now() - self.drag_t0 < 300) return;
+                var m = d3.mouse(this);
+                if (self.mouse_out_of_bonds(m)) return;
 
-                self.move_vert(self.vert_drag_start, x, false);
+                var x = self.x_scale.invert(m[0]);
+                self.move_vert(self.vert_drag_start, self.drag_start_x, false);
                 self.move_vert(self.vert_drag_end, x, false);
                 self.vert_drag_start.style("visibility", "visible");
                 self.vert_drag_end.style("visibility", "visible");
             })
-            // Moves the end vert as well as the mouseover vert.
-            .on("drag", function() {
-                var m = d3.mouse(this);
-
-                if (self.mouse_out_of_bonds(m)) return;
-
-                var x = self.x_scale.invert(m[0]);
-
-                self.move_vert(self.vert_drag_end, x, false);
-            })
             // This handler ensures that the end vert is placed correctly.
             .on("end", function() {
+                if (Date.now() - self.drag_t0 < 300) return;
                 var m = d3.mouse(this);
-
                 if (self.mouse_out_of_bonds(m)) return;
 
                 var x = self.x_scale.invert(m[0]);
-
                 self.move_vert(self.vert_drag_end, x, false);
                 self.move_vert(self.vert, x);
             });
