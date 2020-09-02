@@ -166,18 +166,17 @@ let IAOReader = class {
                 var x = self.x_scale.invert(m[0]);
 
                 self.move_vert(self.vert_drag_end, x, false);
-                self.move_vert(self.vert, x);
             })
             // This handler ensures that the end vert is placed correctly.
             .on("end", function() {
                 var m = d3.mouse(this);
 
                 if (self.mouse_out_of_bonds(m)) return;
-                console.log("end");
 
                 var x = self.x_scale.invert(m[0]);
 
                 self.move_vert(self.vert_drag_end, x, false);
+                self.move_vert(self.vert, x);
             });
 
         this.svg.call(drag);
@@ -190,9 +189,12 @@ let IAOReader = class {
 
             self.unmark_lines(self.vert_click_mark);
             self.vert_click.style("visibility", "hidden");
-            self.vert_drag_left.style("visibility", "hidden");
-            self.vert_drag_right.style("visibility", "hidden");
+            self.vert_drag_start.style("visibility", "hidden");
+            self.vert_drag_end.style("visibility", "hidden");
         })
+
+        this.vert_click.raise();
+        this.vert.raise();
     }
 
     /* -------------------------------------------------------------------------

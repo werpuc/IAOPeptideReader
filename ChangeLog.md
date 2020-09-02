@@ -1,3 +1,7 @@
+###### v0.9.8 (2020-09-02):
+ * Moved mouseover guide to top and on click guide right below it.
+ * Fixed names of variables
+
 ###### v0.9.7 (2020-09-02):
  * Added drag vertical guides.
  * Made drawing lambda values optional to facilitate addition of drag vertical guides.
