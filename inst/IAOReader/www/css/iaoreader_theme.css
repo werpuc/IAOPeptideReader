@@ -85,6 +85,7 @@ a#github_url {
 :root {
     --plot-color-vert: #00008B;
     --plot-color-vert-click: #8B008B;
+    --plot-color-vert-drag: pink;
     --plot-color-axes: #000000;
     --plot-color-axes-labels: #000000;
 }

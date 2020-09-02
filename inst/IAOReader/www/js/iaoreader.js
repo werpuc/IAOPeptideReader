@@ -136,13 +136,23 @@ let IAOReader = class {
             .attr("id", "vert_drag_start")
             .attr("class", "verts drag");
 
+        this.vert_drag_start.select("line")
+            .style("stroke", "var(--plot-color-vert-drag)");
+
+        this.vert_drag_start.select("rect")
+            .style("stroke", "var(--plot-color-vert-drag)");
+
+        this.vert_drag_start.select("text")
+            .style("fill", "var(--plot-color-vert-drag)");
+
         this.vert_drag_end = this.vert_drag_start.clone(true)
-            .attr("id", "vert_drag_end");
+            .attr("id", "vert_drag_end")
+            .style("fill", "var(--plot-color-vert-drag)");
 
         this.drag_background = this.svg.append("g").append("rect")
             .attr("id", "drag_background")
             .attr("class", "drag")
-            .style("fill", "var(--plot-color-vert-click)")
+            .style("fill", "var(--plot-color-vert-drag)")
             .style("opacity", 0.2)
             .style("visibility", "hidden");
 
@@ -398,6 +408,11 @@ let IAOReader = class {
     set vert_click_color(color) {
         document.documentElement.style
             .setProperty("--plot-color-vert-click", color);
+    }
+
+    set vert_drag_color(color) {
+        document.documentElement.style
+            .setProperty("--plot-color-vert-drag", color);
     }
 
     set background_color(color) {

@@ -1,3 +1,6 @@
+###### v0.9.13 (2020-09-02):
+ * Added JS interface for updating drag guides and area color.
+
 ###### v0.9.12 (2020-09-02):
  * Improved drag colored area creation.
 
