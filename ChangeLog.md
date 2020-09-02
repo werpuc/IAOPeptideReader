@@ -1,3 +1,6 @@
+###### v0.9.12 (2020-09-02):
+ * Improved drag colored area creation.
+
 ###### v0.9.11 (2020-09-02):
  * Added colored area between the two drag ends.
 

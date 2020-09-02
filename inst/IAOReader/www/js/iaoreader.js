@@ -170,18 +170,8 @@ let IAOReader = class {
                 if (self.drag_start_x === x) return;
                 self.move_vert(self.vert_drag_start, self.drag_start_x, false);
                 self.move_vert(self.vert_drag_end, x, false);
+                self.move_drag_rect(self.drag_start_x, x);
                 self.svg.selectAll(".drag").style("visibility", "visible");
-
-                // Drawing the area between the two drag ends.
-                var x1 = self.x_scale(self.drag_start_x), x2 = self.x_scale(x),
-                    y1 = self.y_scale(1), y2 = self.y_scale(self.y_max),
-                    width = Math.abs(x2 - x1), height = Math.abs(y2 - y1);
-
-                self.drag_background
-                    .attr("x", Math.min(x1, x2))
-                    .attr("y", Math.min(y1, y2))
-                    .attr("width", width)
-                    .attr("height", height);
             })
             // This handler ensures that the end vert is placed correctly.
             .on("end", function() {
@@ -193,6 +183,7 @@ let IAOReader = class {
                 if (self.drag_start_x === x) return;
                 self.move_vert(self.vert_drag_end, x, false);
                 self.move_vert(self.vert, x);
+                self.move_drag_rect(self.drag_start_x, x);
             });
 
         this.svg.call(drag);
@@ -648,6 +639,18 @@ let IAOReader = class {
 
         // This moves vert to it's current position to redraw lambda values.
         this.move_vert(vert, this.x_scale.invert(vert_px_position));
+    }
+
+    move_drag_rect(x1, x2) {
+        var x1 = this.x_scale(Math.round(x1)), x2 = this.x_scale(Math.round(x2)),
+            y1 = this.y_scale(1), y2 = this.y_scale(this.y_max),
+            width = Math.abs(x2 - x1), height = Math.abs(y2 - y1);
+
+        this.drag_background
+            .attr("x", Math.min(x1, x2))
+            .attr("y", Math.min(y1, y2))
+            .attr("width", width)
+            .attr("height", height);
     }
 
 
