@@ -62,7 +62,7 @@ function copy_style(dest, src) {
 
 var container_elements = ["svg", "g"];
 var relevant_styles = {
-    "rect": ["fill", "stroke", "stroke-width", "filter"],
+    "rect": ["fill", "stroke", "stroke-width", "filter", "opacity"],
     "path": ["fill", "stroke", "stroke-width"],
     "line": ["stroke", "stroke-width"],
     "text": ["fill", "font-size", "text-anchor", "font-family"]

@@ -1,3 +1,7 @@
+###### v0.9.14 (2020-09-02):
+ * Added drag guides color selection to the plot settings.
+ * Opacity style now will be properly added to the downloaded SVG.
+
 ###### v0.9.13 (2020-09-02):
  * Added JS interface for updating drag guides and area color.
 
