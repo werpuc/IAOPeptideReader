@@ -131,6 +131,7 @@ let IAOReader = class {
         })
 
         // TODO: add different color for these.
+        // TODO: Lambda_k calculation on drag.
         this.vert_drag_start = this.vert_click.clone(true)
             .attr("id", "vert_drag_start")
             .attr("class", "verts drag");
@@ -138,8 +139,14 @@ let IAOReader = class {
         this.vert_drag_end = this.vert_drag_start.clone(true)
             .attr("id", "vert_drag_end");
 
+        this.drag_background = this.svg.append("g").append("rect")
+            .attr("id", "drag_background")
+            .attr("class", "drag")
+            .style("fill", "var(--plot-color-vert-click)")
+            .style("opacity", 0.2)
+            .style("visibility", "hidden");
+
         // This is drag behavior definition which moves drag guides.
-        // TODO: add background rect.
         var drag = d3.drag()
             // This handler saves current position in time. The time is then
             // verivied within the drag handler. This approach has been
@@ -163,8 +170,18 @@ let IAOReader = class {
                 if (self.drag_start_x === x) return;
                 self.move_vert(self.vert_drag_start, self.drag_start_x, false);
                 self.move_vert(self.vert_drag_end, x, false);
-                self.vert_drag_start.style("visibility", "visible");
-                self.vert_drag_end.style("visibility", "visible");
+                self.svg.selectAll(".drag").style("visibility", "visible");
+
+                // Drawing the area between the two drag ends.
+                var x1 = self.x_scale(self.drag_start_x), x2 = self.x_scale(x),
+                    y1 = self.y_scale(1), y2 = self.y_scale(self.y_max),
+                    width = Math.abs(x2 - x1), height = Math.abs(y2 - y1);
+
+                self.drag_background
+                    .attr("x", Math.min(x1, x2))
+                    .attr("y", Math.min(y1, y2))
+                    .attr("width", width)
+                    .attr("height", height);
             })
             // This handler ensures that the end vert is placed correctly.
             .on("end", function() {
@@ -188,8 +205,7 @@ let IAOReader = class {
 
             self.unmark_lines(self.vert_click_mark);
             self.vert_click.style("visibility", "hidden");
-            self.vert_drag_start.style("visibility", "hidden");
-            self.vert_drag_end.style("visibility", "hidden");
+            self.svg.selectAll(".drag").style("visibility", "hidden");
         })
 
         this.vert_click.raise();

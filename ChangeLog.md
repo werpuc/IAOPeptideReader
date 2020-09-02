@@ -1,3 +1,6 @@
+###### v0.9.11 (2020-09-02):
+ * Added colored area between the two drag ends.
+
 ###### v0.9.10 (2020-09-02):
  * Parametrized the time minimum time difference after which dragging starts.
  * Added check to not move drag ends if both start and end would end up on the same X-axis value.
