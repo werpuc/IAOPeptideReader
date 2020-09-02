@@ -133,6 +133,55 @@ let IAOReader = class {
             self.vert_click.style("visibility", "visible");
         })
 
+        this.vert_drag_start = this.vert_click.clone(true)
+            .attr("id", "vert_drag_start")
+            .attr("class", "verts drag");
+
+        this.vert_drag_end = this.vert_drag_start.clone(true)
+            .attr("id", "vert_drag_end");
+
+        // This is drag behavior definition which moves drag guides.
+        // TODO: add background rect.
+        var drag = d3.drag()
+            // Moves both ends of the drag area to the beginning.
+            // TODO: fix that click also fires drag start handler.
+            .on("start", function() {
+                var m = d3.mouse(this);
+
+                if (self.mouse_out_of_bonds(m)) return;
+
+                var x = self.x_scale.invert(m[0]);
+
+                self.move_vert(self.vert_drag_start, x, false);
+                self.move_vert(self.vert_drag_end, x, false);
+                self.vert_drag_start.style("visibility", "visible");
+                self.vert_drag_end.style("visibility", "visible");
+            })
+            // Moves the end vert as well as the mouseover vert.
+            .on("drag", function() {
+                var m = d3.mouse(this);
+
+                if (self.mouse_out_of_bonds(m)) return;
+
+                var x = self.x_scale.invert(m[0]);
+
+                self.move_vert(self.vert_drag_end, x, false);
+                self.move_vert(self.vert, x);
+            })
+            // This handler ensures that the end vert is placed correctly.
+            .on("end", function() {
+                var m = d3.mouse(this);
+
+                if (self.mouse_out_of_bonds(m)) return;
+                console.log("end");
+
+                var x = self.x_scale.invert(m[0]);
+
+                self.move_vert(self.vert_drag_end, x, false);
+            });
+
+        this.svg.call(drag);
+
         // This handler clears the persistent guide created on click.
         this.svg.on("dblclick", function() {
             var m = d3.mouse(this);
@@ -141,6 +190,8 @@ let IAOReader = class {
 
             self.unmark_lines(self.vert_click_mark);
             self.vert_click.style("visibility", "hidden");
+            self.vert_drag_left.style("visibility", "hidden");
+            self.vert_drag_right.style("visibility", "hidden");
         })
     }
 
@@ -550,7 +601,7 @@ let IAOReader = class {
                 m[1] < this.margin.top || m[1] > this.height - this.margin.bottom)
     }
 
-    move_vert(vert, x_dest) {
+    move_vert(vert, x_dest, draw_values = true) {
         // This round makes the guide snap to integer values on the axis.
         var x = Math.round(x_dest);
 
@@ -564,7 +615,9 @@ let IAOReader = class {
             vert.select("text.axis-label"), vert.select("rect.axis-label"), 3);
 
         // Mouseover vert uses the top placement.
-        this.draw_lambda_values(vert, x, vert == this.vert);
+        if (draw_values) {
+            this.draw_lambda_values(vert, x, vert == this.vert);
+        }
     }
 
     redraw_vert(vert) {

@@ -1,3 +1,7 @@
+###### v0.9.7 (2020-09-02):
+ * Added drag vertical guides.
+ * Made drawing lambda values optional to facilitate addition of drag vertical guides.
+
 ###### v0.9.6 (2020-09-02):
  * Reordered color options in plot settings.
  * Increased sidebar bottom padding.

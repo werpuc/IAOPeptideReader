@@ -1,6 +1,6 @@
 Package: iaoreader
 Title: A Web Application for Analysing IAO Files
-Version: 0.9.6
+Version: 0.9.7
 Authors@R: 
     person(given = "Tymoteusz", family = "Makowski",
            role = c("aut", "cre"),
