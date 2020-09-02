@@ -137,7 +137,7 @@ body > div.container-fluid > div > form.well {
 
 #sidebar_panel .tab-content > .active {
     margin: 0 10px;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 }
 
 #sidebar_panel .tab-content > .active > *:not(h3) {

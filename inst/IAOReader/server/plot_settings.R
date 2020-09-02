@@ -99,6 +99,13 @@ plot_settings <- function(input, output, session) {
                  "value" = "10",
                  "min" = 0, "max" = 26, "step" = 1, "width" = width),
             h3("Color Settings"),
+            list("input_id" = "plot_settings_color_palette",
+                 "input_type" = "select",
+                 "label" = "Lines color palette",
+                 "value" = c("Accent", "Category10", "Dark2", "Paired",
+                             "Pastel1", "Pastel2", "Set1", "Set2", "Set3",
+                             "Tableau10"),
+                 "selected" = "Set1", "width" = width),
             list("input_id" = "plot_settings_show_background",
                  "input_type" = "checkbox",
                  "label" = "Show background",
@@ -108,14 +115,7 @@ plot_settings <- function(input, output, session) {
                  "label" = "Background color",
                  "value" = "#ffffff",
                  "onchange" = "iaoreader.background_color = this.value;",
-                 "width" = width),
-            list("input_id" = "plot_settings_color_palette",
-                 "input_type" = "select",
-                 "label" = "Lines color palette",
-                 "value" = c("Accent", "Category10", "Dark2", "Paired",
-                             "Pastel1", "Pastel2", "Set1", "Set2", "Set3",
-                             "Tableau10"),
-                 "selected" = "Set1", "width" = width)
+                 "width" = width)
         )
 
         mapping
