@@ -14,7 +14,7 @@ let IAOReader = class {
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
     color_palette; show_lambda_values; lambda_values_bg_color = "#FFFFFF";
     lambda_values_bg_invert; title_text; k_parameter; title_includes_k;
-    drag_start_time; drag_start_x;
+    ts_delta = 100; click_timestamp; drag_start_x;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -79,7 +79,6 @@ let IAOReader = class {
         var self = this;
         this.svg.on("mousemove", function() {
             if (!self.vert_show) return;
-
             var m = d3.mouse(this);
 
             if (self.mouse_out_of_bonds(m)) {
@@ -89,7 +88,6 @@ let IAOReader = class {
             }
 
             var x = self.x_scale.invert(m[0]);
-
             self.mark_lines(x, self.vert_mark);
             self.move_vert(self.vert, x);
         })
@@ -124,16 +122,15 @@ let IAOReader = class {
         // This handler creates persistent guide on click.
         this.svg.on("click", function() {
             var m = d3.mouse(this);
-
             if (self.mouse_out_of_bonds(m)) return;
 
             var x = self.x_scale.invert(m[0]);
-
             self.mark_lines(x, self.vert_click_mark);
             self.move_vert(self.vert_click, x);
             self.vert_click.style("visibility", "visible");
         })
 
+        // TODO: add different color for these.
         this.vert_drag_start = this.vert_click.clone(true)
             .attr("id", "vert_drag_start")
             .attr("class", "verts drag");
@@ -152,19 +149,18 @@ let IAOReader = class {
                 if (self.mouse_out_of_bonds(m)) return;
 
                 var x = self.x_scale.invert(m[0]);
-                self.drag_t0 = Date.now();
+                self.click_timestamp = Date.now();
                 self.drag_start_x = x;
             })
             // Moves the end vert as well as the start vert to it's rightful
-            // position. Only if 300ms has passed since initial click.
+            // position. Only if <ts_delta>ms has passed since initial click.
             .on("drag", function() {
-                // Assuming that anything under 300ms is a single click and not
-                // a drag.
-                if (Date.now() - self.drag_t0 < 300) return;
+                if (Date.now() - self.click_timestamp < self.ts_delta) return;
                 var m = d3.mouse(this);
                 if (self.mouse_out_of_bonds(m)) return;
 
                 var x = self.x_scale.invert(m[0]);
+                if (self.drag_start_x === x) return;
                 self.move_vert(self.vert_drag_start, self.drag_start_x, false);
                 self.move_vert(self.vert_drag_end, x, false);
                 self.vert_drag_start.style("visibility", "visible");
@@ -172,11 +168,12 @@ let IAOReader = class {
             })
             // This handler ensures that the end vert is placed correctly.
             .on("end", function() {
-                if (Date.now() - self.drag_t0 < 300) return;
+                if (Date.now() - self.click_timestamp < self.ts_delta) return;
                 var m = d3.mouse(this);
                 if (self.mouse_out_of_bonds(m)) return;
 
                 var x = self.x_scale.invert(m[0]);
+                if (self.drag_start_x === x) return;
                 self.move_vert(self.vert_drag_end, x, false);
                 self.move_vert(self.vert, x);
             });

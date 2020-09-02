@@ -1,3 +1,8 @@
+###### v0.9.10 (2020-09-02):
+ * Parametrized the time minimum time difference after which dragging starts.
+ * Added check to not move drag ends if both start and end would end up on the same X-axis value.
+ * Renamed `drag_t0` and `drag_start_time` to `click_timestamp`.
+
 ###### v0.9.9 (2020-09-02):
  * Added checks for time since clicking to differentiate dragging and single click.
 
