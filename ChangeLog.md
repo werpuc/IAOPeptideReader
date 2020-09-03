@@ -1,3 +1,6 @@
+###### v0.9.17 (2020-09-03):
+ * Added segment measure values to the plot. This took some adjustments in already existing interfaces.
+
 ###### v0.9.16 (2020-09-03):
  * Fixed SVG download.
 

@@ -178,7 +178,7 @@ let IAOReader = class {
                 var x = self.x_scale.invert(m[0]);
                 if (self.drag_start_x === x) return;
                 self.move_vert(self.vert_drag_start, self.drag_start_x, false);
-                self.move_vert(self.vert_drag_end, x, false);
+                self.move_vert(self.vert_drag_end, x, true, self.drag_start_x);
                 self.move_drag_rect(self.drag_start_x, x);
                 self.svg.selectAll(".drag").style("visibility", "visible");
             })
@@ -190,7 +190,7 @@ let IAOReader = class {
 
                 var x = self.x_scale.invert(m[0]);
                 if (self.drag_start_x === x) return;
-                self.move_vert(self.vert_drag_end, x, false);
+                self.move_vert(self.vert_drag_end, x, true, self.drag_start_x);
                 self.move_vert(self.vert, x);
                 self.move_drag_rect(self.drag_start_x, x);
             });
@@ -208,6 +208,7 @@ let IAOReader = class {
             self.svg.selectAll(".drag").style("visibility", "hidden");
         })
 
+        this.vert_drag_end.raise();
         this.vert_click.raise();
         this.vert.raise();
     }
@@ -509,8 +510,11 @@ let IAOReader = class {
         vert.selectAll(".lambda").remove();
         if (!this.show_lambda_values) return;
 
+        var n1 = Math.min(x1, x2),
+            n2 = Math.max(x1, x2);
+
         var disp_files = this.displayed_files;
-        var vert_lines = this.plot_data.filter(d => d.Start <= x1 && x2 <= d.End);
+        var vert_lines = this.plot_data.filter(d => d.Start <= n1 && n2 <= d.End);
         var comparison_func = top_placement ? Math.max : Math.min;
 
         // Getting highest line at given point for every file.
@@ -525,12 +529,21 @@ let IAOReader = class {
         });
 
         // Calculating lambda values.
-        var lambda_values = this.lambda_segment(x1, x2);
+        var lambda_values = this.lambda_segment(n1, n2);
 
         // Adding new values to the vert.
-        for (const [file_name, y] of Object.entries(heights)) {
+        for (var [file_name, y] of Object.entries(heights)) {
             var lambda_val = Math.round(lambda_values[file_name] * 100);
-            var x = 13 + 4 * lambda_val.toString().length + horizontal_padding;
+            var x = 13 + 4 * lambda_val.toString().length + horizontal_padding,
+                x = top_placement ? -x : x;
+            var y = this.y_scale(y) + (top_placement ? -11 : 20);
+
+            // Segment measure variant.
+            if (x1 !== x2) {
+                x = (this.x_scale(x2) - this.x_scale(x1)) / 2;
+                // TODO: fix y overlapping.
+                // y = ...;
+            }
 
             var rect = vert.append("rect")
                 .attr("class", "lambda")
@@ -539,8 +552,8 @@ let IAOReader = class {
 
             var text = vert.append("text")
                 .attr("class", "lambda")
-                .attr("x", top_placement ? -x : x)
-                .attr("y", this.y_scale(y) + (top_placement ? -11 : 20))
+                .attr("x", x)
+                .attr("y", y)
                 .attr("fill", this.file_color(file_name))
                 .text(lambda_val + "%");
 
@@ -549,7 +562,7 @@ let IAOReader = class {
             // If the background box moves below X-axis then move it sideways
             // in order to not obstruct axis label.
             var rect_lower_limit = +rect.attr("y") + +rect.attr("height");
-            if (this.y_scale.invert(rect_lower_limit) < 0) {
+            if (x1 === x2 && this.y_scale.invert(rect_lower_limit) < 0) {
                 var x_adj = vert.select("rect.axis-label").attr("width") / 2;
                 text.attr("x", x + (top_placement ? -x_adj : x_adj));
                 this.draw_text_bbox(text, rect);
