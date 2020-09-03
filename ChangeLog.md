@@ -1,3 +1,6 @@
+###### v0.9.16 (2020-09-03):
+ * Fixed SVG download.
+
 ###### v0.9.15 (2020-09-03):
  * Updated the `draw_lambda_values` function to account for segment measure.
 

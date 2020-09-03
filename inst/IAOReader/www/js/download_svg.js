@@ -28,12 +28,6 @@ function copy_style(dest, src) {
             src_child = src_children[i],
             dest_tag_name = dest_child.tagName;
 
-        // Removing hidden elements to avoid them being shown in SVG editors.
-        if (window.getComputedStyle(src_child)["visibility"] === "hidden") {
-            dest_child.remove();
-            continue;
-        }
-
         // If current tag is container then descend recursively.
         if (container_elements.indexOf(dest_tag_name) != -1) {
             copy_style(dest_child, src_child);
@@ -55,6 +49,12 @@ function copy_style(dest, src) {
 
             // Apply created style_string to the destination element.
             dest_child.setAttribute("style", style_string);
+
+            // Removing hidden elements to avoid them being shown in SVG editors.
+            // Doing it at the end to avoid messing the structure up.
+            if (window.getComputedStyle(src_child)["visibility"] === "hidden") {
+                dest_child.remove();
+            }
         }
     }
 }
