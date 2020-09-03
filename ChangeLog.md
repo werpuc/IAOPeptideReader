@@ -1,3 +1,51 @@
+###### v0.10.0 (2020-09-03):
+ * This marks end of implementation of measure values on the plot.
+ * Measure values now properly update when changing plot settings.
+ * Turned off measure value display if it is undefined.
+ * Changed the way height for measure values display is calculated to account for lines starting or ending within the segment.
+
+###### v0.9.17 (2020-09-03):
+ * Added segment measure values to the plot. This took some adjustments in already existing interfaces.
+
+###### v0.9.16 (2020-09-03):
+ * Fixed SVG download.
+
+###### v0.9.15 (2020-09-03):
+ * Updated the `draw_lambda_values` function to account for segment measure.
+
+###### v0.9.14 (2020-09-02):
+ * Added drag guides color selection to the plot settings.
+ * Opacity style now will be properly added to the downloaded SVG.
+
+###### v0.9.13 (2020-09-02):
+ * Added JS interface for updating drag guides and area color.
+
+###### v0.9.12 (2020-09-02):
+ * Improved drag colored area creation.
+
+###### v0.9.11 (2020-09-02):
+ * Added colored area between the two drag ends.
+
+###### v0.9.10 (2020-09-02):
+ * Parametrized the time minimum time difference after which dragging starts.
+ * Added check to not move drag ends if both start and end would end up on the same X-axis value.
+ * Renamed `drag_t0` and `drag_start_time` to `click_timestamp`.
+
+###### v0.9.9 (2020-09-02):
+ * Added checks for time since clicking to differentiate dragging and single click.
+
+###### v0.9.8 (2020-09-02):
+ * Moved mouseover guide to top and on click guide right below it.
+ * Fixed names of variables
+
+###### v0.9.7 (2020-09-02):
+ * Added drag vertical guides.
+ * Made drawing lambda values optional to facilitate addition of drag vertical guides.
+
+###### v0.9.6 (2020-09-02):
+ * Reordered color options in plot settings.
+ * Increased sidebar bottom padding.
+
 ###### v0.9.5 (2020-09-01):
  * Changed the background display option behavior. Now it is handled via visibility rather than setting color to `""`.
  * Now all elements - not only containers - with `visibility: hidden` won't be added to the SVG.

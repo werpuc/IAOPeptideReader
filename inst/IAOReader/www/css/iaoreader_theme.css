@@ -85,6 +85,7 @@ a#github_url {
 :root {
     --plot-color-vert: #00008B;
     --plot-color-vert-click: #8B008B;
+    --plot-color-vert-drag: #FF1493;
     --plot-color-axes: #000000;
     --plot-color-axes-labels: #000000;
 }
@@ -137,7 +138,7 @@ body > div.container-fluid > div > form.well {
 
 #sidebar_panel .tab-content > .active {
     margin: 0 10px;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 }
 
 #sidebar_panel .tab-content > .active > *:not(h3) {

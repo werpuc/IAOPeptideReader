@@ -14,6 +14,7 @@ let IAOReader = class {
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
     color_palette; show_lambda_values; lambda_values_bg_color = "#FFFFFF";
     lambda_values_bg_invert; title_text; k_parameter; title_includes_k;
+    ts_delta = 100; click_timestamp; drag_start_x;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -78,7 +79,6 @@ let IAOReader = class {
         var self = this;
         this.svg.on("mousemove", function() {
             if (!self.vert_show) return;
-
             var m = d3.mouse(this);
 
             if (self.mouse_out_of_bonds(m)) {
@@ -88,7 +88,6 @@ let IAOReader = class {
             }
 
             var x = self.x_scale.invert(m[0]);
-
             self.mark_lines(x, self.vert_mark);
             self.move_vert(self.vert, x);
         })
@@ -123,15 +122,80 @@ let IAOReader = class {
         // This handler creates persistent guide on click.
         this.svg.on("click", function() {
             var m = d3.mouse(this);
-
             if (self.mouse_out_of_bonds(m)) return;
 
             var x = self.x_scale.invert(m[0]);
-
             self.mark_lines(x, self.vert_click_mark);
             self.move_vert(self.vert_click, x);
             self.vert_click.style("visibility", "visible");
         })
+
+        // TODO: Lambda_k calculation on drag.
+        this.vert_drag_start = this.vert_click.clone(true)
+            .attr("id", "vert_drag_start")
+            .attr("class", "verts drag");
+
+        this.vert_drag_start.select("line")
+            .style("stroke", "var(--plot-color-vert-drag)");
+
+        this.vert_drag_start.select("rect")
+            .style("stroke", "var(--plot-color-vert-drag)");
+
+        this.vert_drag_start.select("text")
+            .style("fill", "var(--plot-color-vert-drag)");
+
+        this.vert_drag_end = this.vert_drag_start.clone(true)
+            .attr("id", "vert_drag_end")
+            .style("fill", "var(--plot-color-vert-drag)");
+
+        this.drag_background = this.svg.append("g").append("rect")
+            .attr("id", "drag_background")
+            .attr("class", "drag")
+            .style("fill", "var(--plot-color-vert-drag)")
+            .style("opacity", 0.2)
+            .style("visibility", "hidden");
+
+        // This is drag behavior definition which moves drag guides.
+        var drag = d3.drag()
+            // This handler saves current position in time. The time is then
+            // verivied within the drag handler. This approach has been
+            // introduced to avoid moving drag verts on single click.
+            .on("start", function() {
+                var m = d3.mouse(this);
+                if (self.mouse_out_of_bonds(m)) return;
+
+                var x = self.x_scale.invert(m[0]);
+                self.click_timestamp = Date.now();
+                self.drag_start_x = x;
+            })
+            // Moves the end vert as well as the start vert to it's rightful
+            // position. Only if <ts_delta>ms has passed since initial click.
+            .on("drag", function() {
+                if (Date.now() - self.click_timestamp < self.ts_delta) return;
+                var m = d3.mouse(this);
+                if (self.mouse_out_of_bonds(m)) return;
+
+                var x = self.x_scale.invert(m[0]);
+                if (self.drag_start_x === x) return;
+                self.move_vert(self.vert_drag_start, self.drag_start_x, false);
+                self.move_vert(self.vert_drag_end, x, true, self.drag_start_x);
+                self.move_drag_rect(self.drag_start_x, x);
+                self.svg.selectAll(".drag").style("visibility", "visible");
+            })
+            // This handler ensures that the end vert is placed correctly.
+            .on("end", function() {
+                if (Date.now() - self.click_timestamp < self.ts_delta) return;
+                var m = d3.mouse(this);
+                if (self.mouse_out_of_bonds(m)) return;
+
+                var x = self.x_scale.invert(m[0]);
+                if (self.drag_start_x === x) return;
+                self.move_vert(self.vert_drag_end, x, true, self.drag_start_x);
+                self.move_vert(self.vert, x);
+                self.move_drag_rect(self.drag_start_x, x);
+            });
+
+        this.svg.call(drag);
 
         // This handler clears the persistent guide created on click.
         this.svg.on("dblclick", function() {
@@ -141,7 +205,12 @@ let IAOReader = class {
 
             self.unmark_lines(self.vert_click_mark);
             self.vert_click.style("visibility", "hidden");
+            self.svg.selectAll(".drag").style("visibility", "hidden");
         })
+
+        this.vert_drag_end.raise();
+        this.vert_click.raise();
+        this.vert.raise();
     }
 
     /* -------------------------------------------------------------------------
@@ -341,6 +410,11 @@ let IAOReader = class {
             .setProperty("--plot-color-vert-click", color);
     }
 
+    set vert_drag_color(color) {
+        document.documentElement.style
+            .setProperty("--plot-color-vert-drag", color);
+    }
+
     set background_color(color) {
         this.background.style("fill", color);
     }
@@ -430,20 +504,23 @@ let IAOReader = class {
                     .style("stroke", d => this.file_color(d.FileName));
     }
 
-    draw_lambda_values(vert, x, top_placement, horizontal_padding = 3) {
+    draw_lambda_values(vert, x1, top_placement, x2, horizontal_padding = 3) {
         if (this.plot_data === null) return;
 
         vert.selectAll(".lambda").remove();
         if (!this.show_lambda_values) return;
 
+        var n1 = Math.min(x1, x2),
+            n2 = Math.max(x1, x2);
+
         var disp_files = this.displayed_files;
-        var vert_lines = this.plot_data.filter(d => d.Start <= x && x <= d.End);
         var comparison_func = top_placement ? Math.max : Math.min;
 
         // Getting highest line at given point for every file.
         var heights = new Map();
-        vert_lines.forEach(function(d) {
+        this.plot_data.forEach(function(d) {
             if (!disp_files.includes(d.FileName)) return;
+            if (d.End < n1 || n2 < d.Start) return;
             if (heights[d.FileName] === undefined) {
                 heights[d.FileName] = top_placement ? -Infinity : Infinity;
             }
@@ -452,12 +529,21 @@ let IAOReader = class {
         });
 
         // Calculating lambda values.
-        var lambda_values = this.lambda(x);
+        var lambda_values = this.lambda_segment(n1, n2);
 
         // Adding new values to the vert.
-        for (const [file_name, y] of Object.entries(heights)) {
+        for (var [file_name, y] of Object.entries(heights)) {
             var lambda_val = Math.round(lambda_values[file_name] * 100);
-            var x = 13 + 4 * lambda_val.toString().length + horizontal_padding;
+            if (isNaN(lambda_val)) continue;
+
+            var x = 13 + 4 * lambda_val.toString().length + horizontal_padding,
+                x = top_placement ? -x : x;
+            var y = this.y_scale(y) + (top_placement ? -11 : 20);
+
+            // Segment measure variant.
+            if (x1 !== x2) {
+                x = (this.x_scale(x2) - this.x_scale(x1)) / 2;
+            }
 
             var rect = vert.append("rect")
                 .attr("class", "lambda")
@@ -466,8 +552,8 @@ let IAOReader = class {
 
             var text = vert.append("text")
                 .attr("class", "lambda")
-                .attr("x", top_placement ? -x : x)
-                .attr("y", this.y_scale(y) + (top_placement ? -11 : 20))
+                .attr("x", x)
+                .attr("y", y)
                 .attr("fill", this.file_color(file_name))
                 .text(lambda_val + "%");
 
@@ -476,7 +562,7 @@ let IAOReader = class {
             // If the background box moves below X-axis then move it sideways
             // in order to not obstruct axis label.
             var rect_lower_limit = +rect.attr("y") + +rect.attr("height");
-            if (this.y_scale.invert(rect_lower_limit) < 0) {
+            if (x1 === x2 && this.y_scale.invert(rect_lower_limit) < 0) {
                 var x_adj = vert.select("rect.axis-label").attr("width") / 2;
                 text.attr("x", x + (top_placement ? -x_adj : x_adj));
                 this.draw_text_bbox(text, rect);
@@ -550,21 +636,25 @@ let IAOReader = class {
                 m[1] < this.margin.top || m[1] > this.height - this.margin.bottom)
     }
 
-    move_vert(vert, x_dest) {
+    move_vert(vert, x1, draw_values = true, x2 = x1) {
         // This round makes the guide snap to integer values on the axis.
-        var x = Math.round(x_dest);
+        x1 = Math.round(x1);
+        x2 = Math.round(x2);
 
         vert
-            .attr("transform", "translate(" + this.x_scale(x) + ", 0)")
+            .attr("transform", "translate(" + this.x_scale(x1) + ", 0)")
             .select("text.axis-label")
-                .text(x);
+                .text(x1);
 
         // Drawing a box around the label.
         this.draw_text_bbox(
             vert.select("text.axis-label"), vert.select("rect.axis-label"), 3);
 
         // Mouseover vert uses the top placement.
-        this.draw_lambda_values(vert, x, vert == this.vert);
+        if (draw_values) {
+            var top_placement = vert == this.vert || vert == this.vert_drag_end;
+            this.draw_lambda_values(vert, x1, top_placement, x2);
+        }
     }
 
     redraw_vert(vert) {
@@ -577,7 +667,21 @@ let IAOReader = class {
             .replace("translate(", "").split(",")[0];
 
         // This moves vert to it's current position to redraw lambda values.
-        this.move_vert(vert, this.x_scale.invert(vert_px_position));
+        var x1 = this.x_scale.invert(vert_px_position),
+            x2 = vert == this.vert_drag_end ? this.drag_start_x : x1;
+        this.move_vert(vert, x1, true, x2);
+    }
+
+    move_drag_rect(x1, x2) {
+        var x1 = this.x_scale(Math.round(x1)), x2 = this.x_scale(Math.round(x2)),
+            y1 = this.y_scale(1), y2 = this.y_scale(this.y_max),
+            width = Math.abs(x2 - x1), height = Math.abs(y2 - y1);
+
+        this.drag_background
+            .attr("x", Math.min(x1, x2))
+            .attr("y", Math.min(y1, y2))
+            .attr("width", width)
+            .attr("height", height);
     }
 
 
