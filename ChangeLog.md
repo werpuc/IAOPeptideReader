@@ -1,3 +1,6 @@
+###### v0.9.15 (2020-09-03):
+ * Updated the `draw_lambda_values` function to account for segment measure.
+
 ###### v0.9.14 (2020-09-02):
  * Added drag guides color selection to the plot settings.
  * Opacity style now will be properly added to the downloaded SVG.

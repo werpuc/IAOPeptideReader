@@ -503,14 +503,14 @@ let IAOReader = class {
                     .style("stroke", d => this.file_color(d.FileName));
     }
 
-    draw_lambda_values(vert, x, top_placement, horizontal_padding = 3) {
+    draw_lambda_values(vert, x1, top_placement, x2, horizontal_padding = 3) {
         if (this.plot_data === null) return;
 
         vert.selectAll(".lambda").remove();
         if (!this.show_lambda_values) return;
 
         var disp_files = this.displayed_files;
-        var vert_lines = this.plot_data.filter(d => d.Start <= x && x <= d.End);
+        var vert_lines = this.plot_data.filter(d => d.Start <= x1 && x2 <= d.End);
         var comparison_func = top_placement ? Math.max : Math.min;
 
         // Getting highest line at given point for every file.
@@ -525,7 +525,7 @@ let IAOReader = class {
         });
 
         // Calculating lambda values.
-        var lambda_values = this.lambda(x);
+        var lambda_values = this.lambda_segment(x1, x2);
 
         // Adding new values to the vert.
         for (const [file_name, y] of Object.entries(heights)) {
@@ -623,14 +623,15 @@ let IAOReader = class {
                 m[1] < this.margin.top || m[1] > this.height - this.margin.bottom)
     }
 
-    move_vert(vert, x_dest, draw_values = true) {
+    move_vert(vert, x1, draw_values = true, x2 = x1) {
         // This round makes the guide snap to integer values on the axis.
-        var x = Math.round(x_dest);
+        x1 = Math.round(x1);
+        x2 = Math.round(x2);
 
         vert
-            .attr("transform", "translate(" + this.x_scale(x) + ", 0)")
+            .attr("transform", "translate(" + this.x_scale(x1) + ", 0)")
             .select("text.axis-label")
-                .text(x);
+                .text(x1);
 
         // Drawing a box around the label.
         this.draw_text_bbox(
@@ -638,7 +639,7 @@ let IAOReader = class {
 
         // Mouseover vert uses the top placement.
         if (draw_values) {
-            this.draw_lambda_values(vert, x, vert == this.vert);
+            this.draw_lambda_values(vert, x1, vert == this.vert, x2);
         }
     }
 
