@@ -94,6 +94,7 @@ Shiny.addCustomMessageHandler("plot_settings_k_parameter", function(k_parameter)
         iaoreader.k_parameter = k_parameter;
         iaoreader.redraw_vert(iaoreader.vert);
         iaoreader.redraw_vert(iaoreader.vert_click);
+        iaoreader.redraw_vert(iaoreader.vert_drag_end);
         iaoreader.draw_plot_title();
     }
 });
@@ -107,6 +108,7 @@ Shiny.addCustomMessageHandler("plot_settings_show_lambda_values", function(show_
     iaoreader.show_lambda_values = show_lambda_values;
     iaoreader.redraw_vert(iaoreader.vert);
     iaoreader.redraw_vert(iaoreader.vert_click);
+    iaoreader.redraw_vert(iaoreader.vert_drag_end);
 });
 
 Shiny.addCustomMessageHandler("plot_settings_lambda_values_bg_invert", function(lambda_values_bg_invert) {

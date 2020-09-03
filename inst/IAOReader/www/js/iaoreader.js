@@ -514,13 +514,13 @@ let IAOReader = class {
             n2 = Math.max(x1, x2);
 
         var disp_files = this.displayed_files;
-        var vert_lines = this.plot_data.filter(d => d.Start <= n1 && n2 <= d.End);
         var comparison_func = top_placement ? Math.max : Math.min;
 
         // Getting highest line at given point for every file.
         var heights = new Map();
-        vert_lines.forEach(function(d) {
+        this.plot_data.forEach(function(d) {
             if (!disp_files.includes(d.FileName)) return;
+            if (d.End < n1 || n2 < d.Start) return;
             if (heights[d.FileName] === undefined) {
                 heights[d.FileName] = top_placement ? -Infinity : Infinity;
             }
@@ -534,6 +534,8 @@ let IAOReader = class {
         // Adding new values to the vert.
         for (var [file_name, y] of Object.entries(heights)) {
             var lambda_val = Math.round(lambda_values[file_name] * 100);
+            if (isNaN(lambda_val)) continue;
+
             var x = 13 + 4 * lambda_val.toString().length + horizontal_padding,
                 x = top_placement ? -x : x;
             var y = this.y_scale(y) + (top_placement ? -11 : 20);
@@ -541,8 +543,6 @@ let IAOReader = class {
             // Segment measure variant.
             if (x1 !== x2) {
                 x = (this.x_scale(x2) - this.x_scale(x1)) / 2;
-                // TODO: fix y overlapping.
-                // y = ...;
             }
 
             var rect = vert.append("rect")
@@ -652,7 +652,8 @@ let IAOReader = class {
 
         // Mouseover vert uses the top placement.
         if (draw_values) {
-            this.draw_lambda_values(vert, x1, vert == this.vert, x2);
+            var top_placement = vert == this.vert || vert == this.vert_drag_end;
+            this.draw_lambda_values(vert, x1, top_placement, x2);
         }
     }
 
@@ -666,7 +667,9 @@ let IAOReader = class {
             .replace("translate(", "").split(",")[0];
 
         // This moves vert to it's current position to redraw lambda values.
-        this.move_vert(vert, this.x_scale.invert(vert_px_position));
+        var x1 = this.x_scale.invert(vert_px_position),
+            x2 = vert == this.vert_drag_end ? this.drag_start_x : x1;
+        this.move_vert(vert, x1, true, x2);
     }
 
     move_drag_rect(x1, x2) {

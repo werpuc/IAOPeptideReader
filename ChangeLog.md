@@ -1,3 +1,9 @@
+###### v0.10.0 (2020-09-03):
+ * This marks end of implementation of measure values on the plot.
+ * Measure values now properly update when changing plot settings.
+ * Turned off measure value display if it is undefined.
+ * Changed the way height for measure values display is calculated to account for lines starting or ending within the segment.
+
 ###### v0.9.17 (2020-09-03):
  * Added segment measure values to the plot. This took some adjustments in already existing interfaces.
 
