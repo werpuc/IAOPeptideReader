@@ -21,7 +21,7 @@ function download_svg_node(svg_node){
 
 function copy_style(dest, src) {
     var dest_children = dest.childNodes,
-        src_children = src.childNodes;     
+        src_children = src.childNodes;
 
     for (var i = 0; i < dest_children.length; i++) {
         var dest_child = dest_children[i],

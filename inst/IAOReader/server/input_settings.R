@@ -29,7 +29,7 @@ input_settings <- function(input, output, session) {
         fm <- isolate(input_settings_rv[["fm"]])
         fm[order(names(fm))]
     })
-    
+
     observeEvent(input[["files_upload"]], {
         file_input_meta <- input[["files_upload"]]
 
@@ -138,7 +138,7 @@ input_settings <- function(input, output, session) {
         is_ok <- is_seq_len_ok()
 
         # Sending is_ok to seq_len_check handler which turns on and off the red
-        # border around sequence length input. 
+        # border around sequence length input.
         session$sendCustomMessage("seq_len_check", is_ok)
 
         if (is_ok) {
@@ -253,7 +253,7 @@ sample_fim <- function() {
 
     data.frame(
         "name" = file_names,
-        "datapath" = paste0("./dev/data/",  file_names), 
+        "datapath" = paste0("./dev/data/",  file_names),
         stringsAsFactors = FALSE
     )
 }

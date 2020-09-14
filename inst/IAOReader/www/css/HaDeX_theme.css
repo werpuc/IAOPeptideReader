@@ -50,13 +50,13 @@
   --theme-color-warning-text: #B82;
   --theme-color-background: #f8f1ff;
   --theme-color-background-warning: #EC9;
-  
+
   --theme-color-first: #715d91;
   --theme-color-second: #decdf5;
   --theme-color-light: #f8f1ff;
   --theme-color-gray: #d1d1d1;
   --theme-color-dark: #534d56;
-  
+
   --top-bar-height: 125px;
 }
 
@@ -66,7 +66,7 @@ html {
 	-webkit-text-size-adjust: 100%
 }
 
-span { 
+span {
       display: block;
       max-width: 100%;
       word-wrap: break-word;
@@ -1230,7 +1230,7 @@ fieldset[disabled] a.btn {
 }
 
 .btn-default,
-a.dt-button, 
+a.dt-button,
 .paginate_button {
 	color: var(--theme-color-bright-text) !important;
 	background-color: var(--theme-color-buttons) !important;
@@ -1240,7 +1240,7 @@ a.dt-button,
 
 .btn-default:focus,
 .btn-default.focus,
-a.dt-button:focus, 
+a.dt-button:focus,
 .paginate_button:focus {
 	color: var(--theme-color-text) !important;
 	background-color: var(--theme-color-buttons-secondary) !important;
@@ -1249,7 +1249,7 @@ a.dt-button:focus,
 }
 
 .btn-default:hover,
-a.dt-button:hover, 
+a.dt-button:hover,
 .paginate_button:hover {
 	color: var(--theme-color-text) !important;
 	background-color: var(--theme-color-buttons-secondary) !important;
@@ -1259,7 +1259,7 @@ a.dt-button:hover,
 
 .btn-default:active,
 .btn-default.active,
-a.dt-button:active, 
+a.dt-button:active,
 .paginate_button:active,
 .open>.dropdown-toggle.btn-default {
 	color: var(--theme-color-text) !important;
@@ -1642,7 +1642,7 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 	min-height: 20px;
   padding: 19px;
   margin-bottom: 0px;
-  background-color: #fff; 
+  background-color: #fff;
   border: none;
   border-radius: 6px;
   -webkit-box-shadow: none;
@@ -1781,22 +1781,22 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
     background: var(--theme-color-buttons);
 }
 
-thead, 
+thead,
 tfoot {
   background-color: var(--theme-color-accent);
 }
 
-.col-sm-1, 
-.col-sm-10, 
-.col-sm-11, 
-.col-sm-12, 
-.col-sm-2, 
-.col-sm-3, 
-.col-sm-4, 
-.col-sm-5, 
-.col-sm-6, 
-.col-sm-7, 
-.col-sm-8, 
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
 .col-sm-9 {
   padding: 0px;
   /*max-height: calc(100vh - 125px);
@@ -1902,11 +1902,11 @@ float: right;
   display: none;
 }
 
-.tab-pane > h4, 
-.tab-pane > span, 
-.tab-pane > .form-group, 
-.tab-pane > .collapse-button, 
-.tab-pane > p, .tab-pane > img, 
+.tab-pane > h4,
+.tab-pane > span,
+.tab-pane > .form-group,
+.tab-pane > .collapse-button,
+.tab-pane > p, .tab-pane > img,
 .tab-pane > ul,
 .tab-pane > .hideable,
 .tab-pane > .row {
@@ -1949,8 +1949,8 @@ float: right;
   border-radius: 6px;
 }
 
-button.dt-button, 
-div.dt-button, 
+button.dt-button,
+div.dt-button,
 a.dt-button,
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   border: none !important;

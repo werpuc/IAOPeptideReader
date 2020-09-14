@@ -19,7 +19,7 @@ let IAOReader = class {
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
     file_names_displayed = new Map();
-    
+
     constructor() {
         // Creating the SVG tag.
         this.svg = d3.select("div#plot").append("svg")
@@ -241,7 +241,7 @@ let IAOReader = class {
 
     filter_data() {
         if (this.plot_data_raw === null) return null;
-        
+
         var self = this;
 
         // Note: upper limit isn't inclusive due to lines starting at x_max
@@ -613,7 +613,7 @@ let IAOReader = class {
     unmark_lines(class_name) {
         this.mark_lines(null, class_name, true);
     }
-    
+
     file_color(file_name) {
         var color_id = this.displayed_files.indexOf(file_name);
 
