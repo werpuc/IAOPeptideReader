@@ -1,3 +1,6 @@
+###### v0.10.2 (2020-09-14):
+ * Added `info-circle` icon to file upload label for later addition of information modal.
+
 ###### v0.10.1 (2020-09-14):
  * Moved `d3.min.js` to a separate directory.
 

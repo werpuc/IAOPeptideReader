@@ -21,8 +21,13 @@ input_settings_ui <- function() {
             id = "file_upload_div",
             splitLayout(
                 cellWidths = c("90%", "auto"),
-                fileInput("files_upload", "Upload input files", multiple = TRUE,
-                          accept = ".csv"),
+                tagList(
+                    # Manually creating the label so that it won't prompt file
+                    # upload on clikcing it.
+                    tags$label("Upload input files", icon("info-circle")),
+                    fileInput("files_upload", NULL, multiple = TRUE,
+                              accept = ".csv")
+                ),
 
                 # Button for uploading sample data into the application.
                 actionButton(
