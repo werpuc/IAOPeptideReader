@@ -26,7 +26,10 @@ input_settings_ui <- function() {
                     # upload on clikcing it.
                     tags$label(
                         "Upload input files",
-                        actionButton("file_info", icon("info-circle"))
+                        actionButton(
+                            "file_info", icon("info-circle"),
+                            class = "label_icon"
+                        )
                     ),
                     fileInput("files_upload", NULL, multiple = TRUE,
                               accept = ".csv")

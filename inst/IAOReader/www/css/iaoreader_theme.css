@@ -139,22 +139,23 @@ div#previewed_file div.has-items {
  * Sidebar Panel
  * -------------------------------------------------------------------------- */
 
-#file_info {
+button.label_icon, button.label_icon:hover, button.label_icon:active,
+button.label_icon:focus, button.label_icon:active:hover {
     padding: 0 !important;
     background: none !important;
     border: none !important;
 }
 
-#file_info:active {
+button.label_icon:active {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 
-#file_info > i {
+button.label_icon > i {
     color: var(--theme-color-buttons) !important;
 }
 
-#file_info > i:hover {
+button.label_icon > i:hover {
     color: var(--theme-color-buttons-secondary) !important;
 }
 

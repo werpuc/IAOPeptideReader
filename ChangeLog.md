@@ -1,3 +1,6 @@
+###### v0.10.5 (2020-09-14):
+ * Updated CSS to account for multiple icon buttons.
+
 ###### v0.10.4 (2020-09-14):
  * Added basic modal.
  * Updated modal CSS.
