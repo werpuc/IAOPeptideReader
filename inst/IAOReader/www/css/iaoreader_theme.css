@@ -30,6 +30,14 @@ p.no_good_file {
     font-weight: bold;
 }
 
+/* Modals */
+div.modal-header > h2.modal_title {
+    margin: -15px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    box-shadow: 0px 1px 5px 0px var(--theme-color-dark);
+}
+
 /* -----------------------------------------------------------------------------
  *  Title Panel
  * -------------------------------------------------------------------------- */

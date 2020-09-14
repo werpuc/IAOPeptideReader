@@ -16,4 +16,15 @@ server <- function(input, output, session) {
     observeEvent(input[["download_svg"]], {
         session$sendCustomMessage("download_svg", 1)
     }, ignoreInit = TRUE)
+
+    observeEvent(input[["file_info"]], {
+        modal <- modalDialog(
+            title = h2(
+                class = "modal_title",
+                "IAO Reader Input Files' Structure"
+            ),
+            easyClose = TRUE
+        )
+        showModal(modal)
+    })
 }

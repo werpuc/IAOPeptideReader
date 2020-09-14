@@ -1,3 +1,7 @@
+###### v0.10.4 (2020-09-14):
+ * Added basic modal.
+ * Updated modal CSS.
+
 ###### v0.10.3 (2020-09-14):
  * Added invisible `actionButton` underneath the `info-circle` icon to facilitate communication with Shiny server.
 
