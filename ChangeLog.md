@@ -1,3 +1,6 @@
+###### v0.10.7 (2020-09-14):
+ * Added an empty modal for informations about the measure.
+
 ###### v0.10.6 (2020-09-14):
  * Created separate file for modals.
 
