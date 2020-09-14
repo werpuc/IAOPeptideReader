@@ -10,7 +10,6 @@ ui <- function() {
     )
 
     scripts_names <- c(
-        "d3.min.js",
         "shiny_handlers.js",
         "iaoreader.js",
         "lambda_measures.js",
@@ -40,6 +39,7 @@ ui <- function() {
         fluidPage(
             lapply(css_names, attach_css),
             lapply(scripts_names, attach_script),
+            attach_script("d3.min.js", "www/d3.js"),
             sidebar_panel_ui(),
             main_panel_ui()
         )

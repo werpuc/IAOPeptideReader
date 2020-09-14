@@ -1,3 +1,6 @@
+###### v0.10.1 (2020-09-14):
+ * Moved `d3.min.js` to a separate directory.
+
 ###### v0.10.0 (2020-09-03):
  * This marks end of implementation of measure values on the plot.
  * Measure values now properly update when changing plot settings.
