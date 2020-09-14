@@ -24,7 +24,10 @@ input_settings_ui <- function() {
                 tagList(
                     # Manually creating the label so that it won't prompt file
                     # upload on clikcing it.
-                    tags$label("Upload input files", icon("info-circle")),
+                    tags$label(
+                        "Upload input files",
+                        actionButton("file_info", icon("info-circle"))
+                    ),
                     fileInput("files_upload", NULL, multiple = TRUE,
                               accept = ".csv")
                 ),

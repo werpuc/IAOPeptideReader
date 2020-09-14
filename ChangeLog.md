@@ -1,3 +1,6 @@
+###### v0.10.3 (2020-09-14):
+ * Added invisible `actionButton` underneath the `info-circle` icon to facilitate communication with Shiny server.
+
 ###### v0.10.2 (2020-09-14):
  * Added `info-circle` icon to file upload label for later addition of information modal.
 

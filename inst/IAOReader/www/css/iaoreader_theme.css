@@ -131,6 +131,25 @@ div#previewed_file div.has-items {
  * Sidebar Panel
  * -------------------------------------------------------------------------- */
 
+#file_info {
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+}
+
+#file_info:active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#file_info > i {
+    color: var(--theme-color-buttons) !important;
+}
+
+#file_info > i:hover {
+    color: var(--theme-color-buttons-secondary) !important;
+}
+
 /* Improving sidebar layout. */
 body > div.container-fluid > div > form.well {
     padding: 0;
