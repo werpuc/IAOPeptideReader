@@ -1,5 +1,6 @@
 source(file.path("server", "plot_settings.R"), local = TRUE, chdir = TRUE)
 source(file.path("server", "input_settings.R"), local = TRUE, chdir = TRUE)
+source(file.path("server", "modals.R"), local = TRUE, chdir = TRUE)
 
 
 # Main server function ---------------------------------------------------------
@@ -12,19 +13,9 @@ server <- function(input, output, session) {
 
     plot_settings(input, output, session)
     input_settings(input, output, session)
+    modals(input, output, session)
 
     observeEvent(input[["download_svg"]], {
         session$sendCustomMessage("download_svg", 1)
     }, ignoreInit = TRUE)
-
-    observeEvent(input[["file_info"]], {
-        modal <- modalDialog(
-            title = h2(
-                class = "modal_title",
-                "IAO Reader Input Files' Structure"
-            ),
-            easyClose = TRUE
-        )
-        showModal(modal)
-    })
 }
