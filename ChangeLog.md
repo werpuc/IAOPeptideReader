@@ -1,3 +1,6 @@
+###### v0.10.10 (2020-09-21):
+ * Aligned `Dismiss` buttons in modals.
+
 ###### v0.10.9 (2020-09-21):
  * Added table caption.
 

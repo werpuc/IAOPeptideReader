@@ -40,6 +40,7 @@ modals <- function(input, output, session) {
                 class = "modal_title",
                 "IAO Reader Input Files' Structure"
             ),
+            footer = div(align = "center", modalButton("Dismiss")),
             easyClose = TRUE
         )
         showModal(modal)
@@ -52,6 +53,7 @@ modals <- function(input, output, session) {
                 class = "modal_title",
                 "IAO Reader Measure"
             ),
+            footer = div(align = "center", modalButton("Dismiss")),
             easyClose = TRUE
         )
         showModal(modal)
