@@ -1,3 +1,6 @@
+###### v0.10.9 (2020-09-21):
+ * Added table caption.
+
 ###### v0.10.8 (2020-09-16):
  * Added example table to the modal with file structure details.
 

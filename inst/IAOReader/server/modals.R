@@ -1,6 +1,7 @@
 modals <- function(input, output, session) {
     # TODO: add information to the modal.
     observeEvent(input[["file_info"]], {
+        # TODO: update with realistic values.
         table_values <- list(
             c("A", "x", 1, 12),
             c("A", "x", 7, 20),
@@ -20,7 +21,6 @@ modals <- function(input, output, session) {
                             )
                         )
                     ),
-                    # TODO: update with realistic values.
                     tags$tbody(
                         lapply(
                             lapply(
@@ -30,6 +30,10 @@ modals <- function(input, output, session) {
                             tags$tr
                         )
                     )
+                ),
+                tags$span(
+                    id = "file_info_example_caption",
+                    "An example fragment of an IAO Reader input file."
                 )
             ),
             title = h2(

@@ -56,6 +56,10 @@ div.modal-header > h2.modal_title {
     border-bottom: 1px solid var(--theme-color-main);
 }
 
+#file_info_example_caption {
+    padding: 8px 0;
+}
+
 
 /* -----------------------------------------------------------------------------
  *  Title Panel
