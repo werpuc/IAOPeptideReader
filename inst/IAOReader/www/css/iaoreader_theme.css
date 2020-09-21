@@ -38,6 +38,10 @@ div.modal-header > h2.modal_title {
     box-shadow: 0px 1px 5px 0px var(--theme-color-dark);
 }
 
+#file_info_description {
+    padding: 8px 15px;
+}
+
 #file_info_example {
     text-align: center;
 }

@@ -1,3 +1,6 @@
+###### v0.10.11 (2020-09-21):
+ * Added file structure description.
+
 ###### v0.10.10 (2020-09-21):
  * Aligned `Dismiss` buttons in modals.
 

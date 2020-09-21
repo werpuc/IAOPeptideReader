@@ -1,5 +1,4 @@
 modals <- function(input, output, session) {
-    # TODO: add information to the modal.
     observeEvent(input[["file_info"]], {
         # TODO: update with realistic values.
         table_values <- list(
@@ -9,6 +8,12 @@ modals <- function(input, output, session) {
         )
 
         modal <- modalDialog(
+            tags$div(
+                tags$span(
+                    id = "file_info_description",
+                    file_info_description
+                )
+            ),
             tags$div(
                 align = "center",
                 tags$table(
@@ -59,3 +64,23 @@ modals <- function(input, output, session) {
         showModal(modal)
     })
 }
+
+
+file_info_description <- tagList(
+    tags$p(
+        "The IAO Reader application expects that uploaded file's format is the",
+        "Comma Separated Values. Additionally, there are four columns which",
+        "uploaded CSV file is required to have. The file may contain any",
+        "additional columns but those won't be utilized by the IAO Reader."
+    ),
+    tags$p(
+        HTML(
+            "The required columns are: <code>Protein</code>,",
+            "<code>State</code>, <code>Start</code>, and <code>End</code>.",
+            "Value types of required columns are <code>character</code>,",
+            "<code>character</code>, <code>integer</code>, and",
+            "<code>integer</code> values respectively. An example of such data",
+            "is presented in a table below."
+        )
+    )
+)
