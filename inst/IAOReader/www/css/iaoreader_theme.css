@@ -104,6 +104,10 @@ a#github_url {
     margin-top: 10px;
 }
 
+#measure_info {
+    cursor: help;
+}
+
 #summary_table {
     overflow: scroll;
 }

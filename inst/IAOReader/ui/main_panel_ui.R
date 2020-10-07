@@ -30,6 +30,16 @@ peptide_coverage_ui <- function() {
                 ),
 
                 h3(id = "summary_table_header", "Summary Table"),
+                p(
+                    id = "summary_table_description",
+                    "Table rows represent uploaded files. Table columns display",
+                    tags$a(
+                        id = "measure_info",
+                        onclick = "Shiny.setInputValue('measure_info', Date.now());",
+                        "measure"
+                    ),
+                    "values for every element of the sequence."
+                ),
                 div(
                     align = "center",
                     tableOutput("summary_table")

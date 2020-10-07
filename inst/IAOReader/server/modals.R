@@ -52,6 +52,21 @@ modals <- function(input, output, session) {
     })
 
     # TODO: add information to the modal.
+    # TODO: add option to open k_param_info modal from this modal.
+    observeEvent(input[["measure_info"]], {
+        modal <- modalDialog(
+            title = h2(
+                class = "modal_title",
+                "IAO Reader Measure"
+            ),
+            footer = div(align = "center", modalButton("Dismiss")),
+            easyClose = TRUE
+        )
+        showModal(modal)
+    })
+
+    # TODO: add information to the modal.
+    # TODO: add option to open measure_info modal from this modal.
     observeEvent(input[["k_param_info"]], {
         modal <- modalDialog(
             title = h2(
