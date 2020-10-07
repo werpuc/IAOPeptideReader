@@ -23,7 +23,7 @@ input_settings_ui <- function() {
                 cellWidths = c("90%", "auto"),
                 tagList(
                     # Manually creating the label so that it won't prompt file
-                    # upload on clikcing it.
+                    # upload on clicking it.
                     tags$label(
                         "Upload input files",
                         actionButton(

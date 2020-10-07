@@ -1,3 +1,7 @@
+###### v0.10.12 (2020-10-07):
+ * Removed unused `add_class` function.
+ * Fixed various typos.
+
 ###### v0.10.11 (2020-09-21):
  * Added file structure description.
 
@@ -266,7 +270,7 @@
 
 ###### v0.6.11 (2020-08-15):
  * TODOs and redundant functions clean-up.
- * Reducend data sent to JS to Start, End and FileName columns.
+ * Reduced data sent to JS to Start, End and FileName columns.
 
 ###### v0.6.10 (2020-08-15):
  * Implemented updateColorInput function to avoid code redundancy.
@@ -321,7 +325,7 @@
  * Fixed Y-axis range being to wide.
 
 ###### v0.5.9 (2020-08-14):
- * Added function which adjusts height based on the calculated height differences and (hardcoded for now) offset.
+ * Added function which adjusts height based on the calculated height differences and (hard-coded for now) offset.
  * Added assertion to previously implemented function.
 
 ###### v0.5.8 (2020-08-14):
@@ -347,7 +351,7 @@
  * This version marks start of differentiation between `master` and `devel` branches.
 
 ###### v0.5.1 (2020-08-09):
- * Continous delivery config update.
+ * Continuous delivery config update.
 
 ###### v0.5.0 (2020-08-09):
  * Added continuous delivery to the [shinyapps.io](https://www.shinyapps.io/).

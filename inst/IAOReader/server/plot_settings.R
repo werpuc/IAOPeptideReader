@@ -58,7 +58,7 @@ plot_settings <- function(input, output, session) {
                  "label" = "Show measure values",
                  "value" = TRUE),
             # Manually creating the label so that it won't prompt file
-            # upload on clikcing it.
+            # upload on clicking it.
             tags$label(
                 "K penalty parameter",
                 actionButton(
@@ -127,7 +127,7 @@ plot_settings <- function(input, output, session) {
             list("input_id" = "plot_background_color",
                  "input_type" = "color",
                  "label" = "Background color",
-                 "value" = "#ffffff",
+                 "value" = "#FFFFFF",
                  "onchange" = "iaoreader.background_color = this.value;",
                  "width" = width)
         )

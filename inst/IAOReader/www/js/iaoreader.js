@@ -158,7 +158,7 @@ let IAOReader = class {
         // This is drag behavior definition which moves drag guides.
         var drag = d3.drag()
             // This handler saves current position in time. The time is then
-            // verivied within the drag handler. This approach has been
+            // verified within the drag handler. This approach has been
             // introduced to avoid moving drag verts on single click.
             .on("start", function() {
                 var m = d3.mouse(this);
@@ -435,7 +435,7 @@ let IAOReader = class {
     }
 
     set title_font_size(size) {
-        // This makes the tilte centered at the initial y.
+        // This makes the title centered at the initial y.
         this.title.attr("y", this.margin.top * 0.60 + (size - 20) / 2 + "px");
         this.title.attr("font-size", size + "px");
     }

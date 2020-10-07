@@ -33,7 +33,7 @@ input_settings <- function(input, output, session) {
     observeEvent(input[["files_upload"]], {
         file_input_meta <- input[["files_upload"]]
 
-        # This allows programatically imitating upload of sample data.
+        # This allows programmatically imitating upload of sample data.
         if (class(file_input_meta) != "data.frame" && file_input_meta == -1) {
             file_input_meta <- sample_fim()
         }
