@@ -62,7 +62,7 @@ plot_settings <- function(input, output, session) {
             tags$label(
                 "K penalty parameter",
                 actionButton(
-                    "measure_info", icon("info-circle"), class = "label_icon"
+                    "k_param_info", icon("info-circle"), class = "label_icon"
                 )
             ),
             list("input_id" = "plot_settings_k_parameter",

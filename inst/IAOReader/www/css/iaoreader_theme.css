@@ -171,6 +171,7 @@ button.label_icon:focus, button.label_icon:active:hover {
     padding: 0 !important;
     background: none !important;
     border: none !important;
+    cursor: help;
 }
 
 button.label_icon:active {

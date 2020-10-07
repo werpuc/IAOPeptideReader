@@ -1,3 +1,7 @@
+###### v0.10.13 (2020-10-07):
+ * Renamed `measure_info` modal to `k_param_info` to separate these two informations.
+ * Changed cursor for the info icons.
+
 ###### v0.10.12 (2020-10-07):
  * Removed unused `add_class` function.
  * Fixed various typos.
