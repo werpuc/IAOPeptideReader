@@ -1,3 +1,6 @@
+###### v0.10.15 (2020-10-08):
+ * Restructured `modals.R` file.
+
 ###### v0.10.14 (2020-10-07):
  * Prepared structure for measure information modal.
  * Added brief description of the summary table in the main panel.

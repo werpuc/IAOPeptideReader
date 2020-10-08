@@ -64,6 +64,10 @@ div.modal-header > h2.modal_title {
     padding: 8px 0;
 }
 
+.measure_info {
+    cursor: help;
+}
+
 
 /* -----------------------------------------------------------------------------
  *  Title Panel
@@ -102,10 +106,6 @@ a#github_url {
 
 #summary_table_header {
     margin-top: 10px;
-}
-
-#measure_info {
-    cursor: help;
 }
 
 #summary_table {
