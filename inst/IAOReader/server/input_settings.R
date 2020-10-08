@@ -233,7 +233,6 @@ input_settings <- function(input, output, session) {
         session$sendCustomMessage("update_plot", 1)
     })
 
-    # TODO: fix the table display when there are no files currently visible.
     output[["summary_table"]] <- renderTable(align = "c", {
         summary_table_data <- input[["summary_table"]]
 

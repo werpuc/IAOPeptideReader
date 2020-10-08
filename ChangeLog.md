@@ -1,3 +1,7 @@
+###### v0.10.18 (2020-10-08):
+ * Updated summary table description.
+ * Removed finished TODO elements.
+
 ###### v0.10.17 (2020-10-08):
  * Updated modals flow.
 

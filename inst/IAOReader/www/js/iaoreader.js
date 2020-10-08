@@ -130,7 +130,6 @@ let IAOReader = class {
             self.vert_click.style("visibility", "visible");
         })
 
-        // TODO: Lambda_k calculation on drag.
         this.vert_drag_start = this.vert_click.clone(true)
             .attr("id", "vert_drag_start")
             .attr("class", "verts drag");
