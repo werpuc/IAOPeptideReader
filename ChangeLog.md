@@ -1,3 +1,6 @@
+###### v0.10.16 (2020-10-08):
+ * Added `modal_link` wrapper to facilitate opening modals with inline text links.
+
 ###### v0.10.15 (2020-10-08):
  * Restructured `modals.R` file.
 

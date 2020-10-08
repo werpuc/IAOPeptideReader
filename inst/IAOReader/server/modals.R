@@ -1,6 +1,6 @@
 modals <- function(input, output, session) {
     observeEvent(input[["file_info"]], {
-        modal <- file_info_modal
+        modal <- file_info_modal()
         showModal(modal)
     })
 
@@ -17,13 +17,10 @@ modals <- function(input, output, session) {
 
 
 # TODO: add information to the modal.
-# TODO: add option to open k_param_info modal from this modal.
 measure_info_modal <- function() {
     modalDialog(
-        title = h2(
-            class = "modal_title",
-            "IAO Reader Measure"
-        ),
+        "...", modal_link("k_param_info", "K parameter"), "...",
+        title = h2(class = "modal_title", "IAO Reader Measure"),
         footer = div(align = "center", modalButton("Dismiss")),
         easyClose = TRUE
     )
@@ -31,20 +28,10 @@ measure_info_modal <- function() {
 
 
 # TODO: add information to the modal.
-# TODO: add option to open measure_info modal from this modal.
 k_param_info_modal <- function() {
     modalDialog(
-        "Lorem ipsum",
-        tags$a(
-            class = "measure_info",
-            onclick = "Shiny.setInputValue('measure_info_return', Date.now());",
-            "measure"
-        ),
-        "Lorem ipsum",
-        title = h2(
-            class = "modal_title",
-            "IAO Reader Measure's K Parameter"
-        ),
+        "...", modal_link("measure_info", "measure"), "...",
+        title = h2(class = "modal_title", "IAO Reader Measure's K Parameter"),
         footer = div(align = "center", modalButton("Dismiss")),
         easyClose = TRUE
     )
@@ -93,10 +80,7 @@ file_info_modal <- function() {
                 "An example fragment of an IAO Reader input file."
             )
         ),
-        title = h2(
-            class = "modal_title",
-            "IAO Reader Input Files' Structure"
-        ),
+        title = h2(class = "modal_title", "IAO Reader Input Files' Structure"),
         footer = div(align = "center", modalButton("Dismiss")),
         easyClose = TRUE
     )

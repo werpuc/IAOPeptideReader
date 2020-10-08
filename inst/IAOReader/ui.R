@@ -63,6 +63,11 @@ attach_script <- function(script_name, url_static_path = "www/js") {
     )
 }
 
+modal_link <- function(observer_id, ...) {
+    onclick <- sprintf("Shiny.setInputValue('%s', Date.now());", observer_id)
+    tags$a(class = "measure_info", onclick = onclick, ...)
+}
+
 no_file_uploaded_wrapper <- function(...) {
     tagList(
         conditionalPanel(
