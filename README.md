@@ -34,3 +34,4 @@ The table found below states which file sources which within the app. The main f
 | `ui.R`                    | `ui/main_panel_ui.R`<br>`ui/sidebar_panel_ui.R`                            |
 | `server.R`                | `server/input_settings.R`<br>`server/plot_settings.R`<br>`server/modals.R` |
 | `server/input_settings.R` | `server/data_preview.R`                                                    |
+| `server/modals.R`         | `server/modals/*.R`                                                        |

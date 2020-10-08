@@ -1,3 +1,7 @@
+###### v0.10.20 (2020-10-08):
+ * Updated modals file structure.
+ * Updated `README.md` accordingly.
+
 ###### v0.10.19 (2020-10-08):
  * Added wrapper for creating label with link icon.
 
