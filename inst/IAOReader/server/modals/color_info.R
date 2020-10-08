@@ -5,6 +5,28 @@ color_info_modal <- function() {
 
     modalDialog(
         # TODO: information about palettes source.
+        actionButton(
+            "preview_palettes", "Preview Palettes", class = "collapse-button",
+            `data-toggle` = "collapse", `data-target` = "#palettes_preview"
+        ),
+        div(
+            id = "palettes_preview", class = "hideable",
+            lapply(
+                palettes,
+                function(color_palette) {
+                    tags$div(
+                        class = "palette_preview",
+                        tags$label(
+                            color_palette,
+                            if (color_palette == default_palette) {
+                                tags$i("(default)")
+                            }
+                        ),
+                        img(src = sprintf("/www/images/%s.png", color_palette))
+                    )
+                }
+            )
+        ),
         title = h2(class = "modal_title", "Color Palettes"),
         footer = modal_footer(),
         easyClose = TRUE
