@@ -9,30 +9,42 @@ modals <- function(input, output, session) {
         showModal(modal)
     })
 
+    observeEvent(input[["measure_info_return"]], {
+        modal <- measure_info_modal("k_param_info")
+        showModal(modal)
+    })
+
     observeEvent(input[["k_param_info"]], {
         modal <- k_param_info_modal()
+        showModal(modal)
+    })
+
+    observeEvent(input[["k_param_info_return"]], {
+        modal <- k_param_info_modal("measure_info")
         showModal(modal)
     })
 }
 
 
 # TODO: add information to the modal.
-measure_info_modal <- function() {
+measure_info_modal <- function(return_observer_id = NULL) {
     modalDialog(
-        "...", modal_link("k_param_info", "K parameter"), "...",
+        "To be added...",
+        br(), "See also:", modal_link("k_param_info_return", "K parameter"),
         title = h2(class = "modal_title", "IAO Reader Measure"),
-        footer = div(align = "center", modalButton("Dismiss")),
+        footer = modal_footer(return_observer_id),
         easyClose = TRUE
     )
 }
 
 
 # TODO: add information to the modal.
-k_param_info_modal <- function() {
+k_param_info_modal <- function(return_observer_id = NULL) {
     modalDialog(
-        "...", modal_link("measure_info", "measure"), "...",
+        "To be added...",
+        br(), "See also:", modal_link("measure_info_return", "measure"),
         title = h2(class = "modal_title", "IAO Reader Measure's K Parameter"),
-        footer = div(align = "center", modalButton("Dismiss")),
+        footer = modal_footer(return_observer_id),
         easyClose = TRUE
     )
 }
@@ -81,7 +93,7 @@ file_info_modal <- function() {
             )
         ),
         title = h2(class = "modal_title", "IAO Reader Input Files' Structure"),
-        footer = div(align = "center", modalButton("Dismiss")),
+        footer = modal_footer(),
         easyClose = TRUE
     )
 }
@@ -105,3 +117,19 @@ file_info_description <- tagList(
         )
     )
 )
+
+
+modal_footer <- function(observer_id = NULL) {
+    div(
+        align = "center",
+        if (!is.null(observer_id)) {
+            actionButton(
+                sprintf("return_button_%.0f", Sys.time()), "Return",
+                onclick = sprintf(
+                    "Shiny.setInputValue('%s', Date.now());", observer_id
+                )
+            )
+        },
+        modalButton("Dismiss")
+    )
+}

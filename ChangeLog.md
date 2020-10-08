@@ -1,3 +1,6 @@
+###### v0.10.17 (2020-10-08):
+ * Updated modals flow.
+
 ###### v0.10.16 (2020-10-08):
  * Added `modal_link` wrapper to facilitate opening modals with inline text links.
 
