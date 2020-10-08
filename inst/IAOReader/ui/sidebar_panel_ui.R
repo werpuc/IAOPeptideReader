@@ -22,15 +22,7 @@ input_settings_ui <- function() {
             splitLayout(
                 cellWidths = c("90%", "auto"),
                 tagList(
-                    # Manually creating the label so that it won't prompt file
-                    # upload on clicking it.
-                    tags$label(
-                        "Upload input files",
-                        actionButton(
-                            "file_info", icon("info-circle"),
-                            class = "label_icon"
-                        )
-                    ),
+                    modal_label_link("file_info", "Upload input files"),
                     fileInput("files_upload", NULL, multiple = TRUE,
                               accept = ".csv")
                 ),

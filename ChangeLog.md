@@ -1,3 +1,6 @@
+###### v0.10.19 (2020-10-08):
+ * Added wrapper for creating label with link icon.
+
 ###### v0.10.18 (2020-10-08):
  * Updated summary table description.
  * Removed finished TODO elements.

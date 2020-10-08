@@ -68,6 +68,13 @@ modal_link <- function(observer_id, ...) {
     tags$a(class = "measure_info", onclick = onclick, ...)
 }
 
+modal_label_link <- function(observer_id, label) {
+    tags$label(
+        label,
+        actionButton(observer_id, icon("info-circle"), class = "label_icon")
+    )
+}
+
 no_file_uploaded_wrapper <- function(...) {
     tagList(
         conditionalPanel(

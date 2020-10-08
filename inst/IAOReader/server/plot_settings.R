@@ -57,14 +57,7 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "checkbox",
                  "label" = "Show measure values",
                  "value" = TRUE),
-            # Manually creating the label so that it won't prompt file
-            # upload on clicking it.
-            tags$label(
-                "K penalty parameter",
-                actionButton(
-                    "k_param_info", icon("info-circle"), class = "label_icon"
-                )
-            ),
+            modal_label_link("k_param_info", "K penalty parameter"),
             list("input_id" = "plot_settings_k_parameter",
                  "input_type" = "numeric",
                  "label" = NULL,
