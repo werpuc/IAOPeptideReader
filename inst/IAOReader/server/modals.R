@@ -1,9 +1,16 @@
+source(file.path("modals", "color_info.R"), local = TRUE, chdir = TRUE)
 source(file.path("modals", "file_info.R"), local = TRUE, chdir = TRUE)
 source(file.path("modals", "k_param_info.R"), local = TRUE, chdir = TRUE)
 source(file.path("modals", "measure_info.R"), local = TRUE, chdir = TRUE)
 
 
 modals <- function(input, output, session) {
+    # Color info ---------------------------------------------------------------
+    observeEvent(input[["color_info"]], {
+        modal <- color_info_modal()
+        showModal(modal)
+    })
+
     # File info ----------------------------------------------------------------
     observeEvent(input[["file_info"]], {
         modal <- file_info_modal()

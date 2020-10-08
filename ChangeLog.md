@@ -1,3 +1,6 @@
+###### v0.10.21 (2020-10-08):
+ * Added blank modal for color palettes information.
+
 ###### v0.10.20 (2020-10-08):
  * Updated modals file structure.
  * Updated `README.md` accordingly.
