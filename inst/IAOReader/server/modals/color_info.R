@@ -4,7 +4,21 @@ color_info_modal <- function() {
                   "Pastel2", "Set1", "Set2", "Set3", "Tableau10")
 
     modalDialog(
-        # TODO: information about palettes source.
+        p(
+            "The color palettes used in the IAO Reader are the ones",
+            "implemented in the D3.js library's",
+            external_link(
+                "d3-scale-chromatic module",
+                "https://github.com/d3/d3-scale-chromatic",
+                trailing_dot = TRUE
+            ),
+            "These palettes were derived from Cynthia A. Brewer's",
+            external_link("ColorBrewer", "https://colorbrewer2.org", TRUE),
+        ),
+        p(
+            "The palettes included in the settings are categorical color sets",
+            "which can be previewed below.",
+        ),
         actionButton(
             "preview_palettes", "Preview Palettes", class = "collapse-button",
             `data-toggle` = "collapse", `data-target` = "#palettes_preview"

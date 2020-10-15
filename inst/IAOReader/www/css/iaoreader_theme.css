@@ -68,6 +68,19 @@ div.modal-header > h2.modal_title {
     cursor: help;
 }
 
+#preview_palettes {
+    text-align: center;
+}
+
+.palette_preview > label {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.palette_preview > img {
+    display: block;
+}
+
 
 /* -----------------------------------------------------------------------------
  *  Title Panel

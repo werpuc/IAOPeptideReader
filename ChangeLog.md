@@ -1,3 +1,7 @@
+###### v0.10.23 (2020-10-09):
+ * Added information to the color palettes modal.
+ * Added styling to color palettes preview.
+
 ###### v0.10.22 (2020-10-08):
  * Added colors palettes preview.
 

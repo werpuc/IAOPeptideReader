@@ -63,6 +63,22 @@ attach_script <- function(script_name, url_static_path = "www/js") {
     )
 }
 
+# This function is a wrapper for making clean external inline links.
+# Specifically it allows having the link as a last part of a sentence without
+# leaving awkward white space between the link and the dot.
+external_link <- function(text, href, trailing_dot = FALSE) {
+    a_tag <- sprintf(
+        '<a href="%s" target="_blank" rel="noopener noreferrer">%s %s</a>',
+        href, text, as.character(icon("external-link"))
+    )
+
+    if (trailing_dot) {
+        a_tag <- paste0(a_tag, ".")
+    }
+
+    HTML(a_tag)
+}
+
 modal_link <- function(observer_id, ...) {
     onclick <- sprintf("Shiny.setInputValue('%s', Date.now());", observer_id)
     tags$a(class = "measure_info", onclick = onclick, ...)
