@@ -1,3 +1,6 @@
+###### v0.10.24 (2020-10-25):
+ * Set the field separator to comma and the decimal separator to dot in fread.
+
 ###### v0.10.23 (2020-10-09):
  * Added information to the color palettes modal.
  * Added styling to color palettes preview.

@@ -50,9 +50,11 @@ file_info_modal <- function() {
 file_info_description <- tagList(
     tags$p(
         "The IAO Reader application expects that uploaded file's format is the",
-        "Comma Separated Values. Additionally, there are four columns which",
-        "uploaded CSV file is required to have. The file may contain any",
-        "additional columns but those won't be utilized by the IAO Reader."
+        "Comma Separated Values. The field separator should be a comma and the",
+        "decimal separator should be a dot.  Additionally, there are four",
+        "columns which uploaded CSV file is required to have. The file may",
+        "contain any additional columns but those won't be utilized by the IAO",
+        "Reader."
     ),
     tags$p(
         HTML(

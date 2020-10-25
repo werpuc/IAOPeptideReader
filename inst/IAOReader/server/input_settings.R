@@ -67,7 +67,7 @@ input_settings <- function(input, output, session) {
             } else {
                 # Proceed to read the file if its CSV.
                 tryCatch({
-                    single_file_data <- fread(file_path)
+                    single_file_data <- fread(file_path, sep = ",", dec = ".")
                     single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
                 }, error = function(e) {
                     # The <<- operator allows assigning the value outside
