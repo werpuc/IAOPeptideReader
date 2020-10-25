@@ -1,3 +1,4 @@
+# TODO: Grammarly.
 # TODO: add information to the modal.
 k_param_info_modal <- function(return_observer_id = NULL) {
     modalDialog(

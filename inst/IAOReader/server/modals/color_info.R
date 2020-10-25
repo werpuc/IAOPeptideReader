@@ -1,3 +1,4 @@
+# TODO: Grammarly.
 color_info_modal <- function() {
     default_palette <- "Set1"
     palettes <- c("Accent", "Category10", "Dark2", "Paired", "Pastel1",

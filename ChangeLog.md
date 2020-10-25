@@ -1,3 +1,6 @@
+###### v0.10.25 (2020-10-25):
+ * Updated the file info modal.
+
 ###### v0.10.24 (2020-10-25):
  * Set the field separator to comma and the decimal separator to dot in fread.
 
