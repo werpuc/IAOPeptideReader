@@ -1,3 +1,9 @@
+###### v0.11.3 (2020-10-31):
+ * Moved tooltip to top to avoid it getting obstructed by the click vert's measure value.
+ * Added tooltip background.
+ * Changed tooltip text color.
+ * Moved tooltip away from the cursor.
+
 ###### v0.11.2 (2020-10-31):
  * Fixed tooltip not disappearing then moving out of plot area.
  * Added text styling to the tooltip text.

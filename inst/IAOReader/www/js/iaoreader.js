@@ -80,7 +80,12 @@ let IAOReader = class {
             .attr("id", "tooltip")
             .style("visibility", "hidden");
 
-        this.tooltip.append("text");
+        this.tooltip.append("rect")
+            .style("fill", "var(--theme-color-main)");
+
+        this.tooltip.append("text")
+            .attr("y", "15px")
+            .style("fill", "var(--theme-color-bright-text)");
 
         // This mousemove handler makes the vertical guide follow the cursor.
         var self = this;
@@ -219,6 +224,7 @@ let IAOReader = class {
         this.vert_drag_end.raise();
         this.vert_click.raise();
         this.vert.raise();
+        this.tooltip.raise();
     }
 
     /* -------------------------------------------------------------------------
@@ -720,20 +726,23 @@ let IAOReader = class {
 
         var closest_line = lines_data[line_dists.indexOf(min_dist)];
 
-        var tooltip_text = ""
-            + "<tspan class='name' x='0' dy='1.2em'>File</tspan>  "
-            + closest_line.FileName
-            + "<tspan class='name' x='0' dy='1.2em'>Start</tspan> "
-            + closest_line.Start
-            + "<tspan class='name' x='0' dy='1.2em'>End</tspan>   "
-            + closest_line.End;
+        var x_offset = "10px",
+            tooltip_text = ""
+                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>File</tspan>  "
+                + closest_line.FileName
+                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>Start</tspan> "
+                + closest_line.Start
+                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>End</tspan>   "
+                + closest_line.End;
 
-        this.tooltip
+        var tooltip_text = this.tooltip
             .attr("transform", "translate(" + this.x_scale(x) + ", " +
                 this.y_scale(y) + ")")
             .style("visibility", "visible")
             .select("text")
                 .html(tooltip_text);
+
+        this.draw_text_bbox(tooltip_text, this.tooltip.select("rect"), 12);
     }
 }
 
