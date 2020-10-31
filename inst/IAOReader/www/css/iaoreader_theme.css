@@ -168,6 +168,15 @@ div#plot g.axis g.tick > text {
     color: var(--plot-color-axes-labels);
 }
 
+div#plot g#tooltip {
+    white-space: pre-wrap;
+    font-family: monospace, monospace;
+}
+
+div#plot g#tooltip tspan.name {
+    font-weight: bold;
+}
+
 /* [[ Data Preview ]] */
 /* selectInput for the file to preview (extending the input to file's name). */
 div#previewed_file div.selectize-control, div#previewed_file div.selectize-dropdown {

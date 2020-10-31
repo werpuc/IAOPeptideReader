@@ -111,6 +111,7 @@ let IAOReader = class {
 
             self.unmark_lines(self.vert_mark);
             self.move_vert(self.vert, self.x_min);
+            self.tooltip.style("visibility", "hidden");
         })
 
         // Creating g tag, line and label for click vert.
@@ -701,7 +702,8 @@ let IAOReader = class {
     }
 
     move_tooltip(mouse_x, mouse_y, proximity_threshold = 0.4) {
-        var x = Math.round(mouse_x);
+        var x = Math.round(mouse_x),
+            y = Math.round(mouse_y);
 
         var lines_data = this.lines.selectAll("line")
             .filter(d => d.Start <= x && x <= d.End)
@@ -719,13 +721,16 @@ let IAOReader = class {
         var closest_line = lines_data[line_dists.indexOf(min_dist)];
 
         var tooltip_text = ""
-            + "<tspan x='0' dy='1.2em'>File: " + closest_line.FileName + "</tspan>"
-            + "<tspan x='0' dy='1.2em'>Start: " + closest_line.Start + "</tspan>"
-            + "<tspan x='0' dy='1.2em'>End: " + closest_line.End + "</tspan>";
+            + "<tspan class='name' x='0' dy='1.2em'>File</tspan>  "
+            + closest_line.FileName
+            + "<tspan class='name' x='0' dy='1.2em'>Start</tspan> "
+            + closest_line.Start
+            + "<tspan class='name' x='0' dy='1.2em'>End</tspan>   "
+            + closest_line.End;
 
         this.tooltip
-            .attr("transform", "translate(" + this.x_scale(mouse_x) + ", " +
-                this.y_scale(mouse_y) + ")")
+            .attr("transform", "translate(" + this.x_scale(x) + ", " +
+                this.y_scale(y) + ")")
             .style("visibility", "visible")
             .select("text")
                 .html(tooltip_text);

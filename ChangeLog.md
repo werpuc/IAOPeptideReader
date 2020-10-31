@@ -1,3 +1,8 @@
+###### v0.11.2 (2020-10-31):
+ * Fixed tooltip not disappearing then moving out of plot area.
+ * Added text styling to the tooltip text.
+ * Added snapping of tooltip to integer values to avoid weird small moves.
+
 ###### v0.11.1 (2020-10-31):
  * Added basic tooltip.
 
