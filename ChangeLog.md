@@ -1,3 +1,6 @@
+###### v0.11.1 (2020-10-31):
+ * Added basic tooltip.
+
 ###### v0.11.0 (2020-10-31):
  * Merged implementation of modals.
 

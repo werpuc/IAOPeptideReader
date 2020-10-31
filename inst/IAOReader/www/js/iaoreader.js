@@ -75,6 +75,13 @@ let IAOReader = class {
             .attr("dy", "0.81em")
             .style("fill", "var(--plot-color-vert)");
 
+        // Adding the tooltip g and it's text.
+        this.tooltip = this.svg.append("g")
+            .attr("id", "tooltip")
+            .style("visibility", "hidden");
+
+        this.tooltip.append("text");
+
         // This mousemove handler makes the vertical guide follow the cursor.
         var self = this;
         this.svg.on("mousemove", function() {
@@ -90,6 +97,7 @@ let IAOReader = class {
             var x = self.x_scale.invert(m[0]);
             self.mark_lines(x, self.vert_mark);
             self.move_vert(self.vert, x);
+            self.move_tooltip(x, self.y_scale.invert(m[1]));
         })
 
         // This handler resets position of vert. This is particularly useful
@@ -690,6 +698,37 @@ let IAOReader = class {
 
     download_svg() {
         download_svg_node(this.svg.node());
+    }
+
+    move_tooltip(mouse_x, mouse_y, proximity_threshold = 0.4) {
+        var x = Math.round(mouse_x);
+
+        var lines_data = this.lines.selectAll("line")
+            .filter(d => d.Start <= x && x <= d.End)
+            .data();
+
+        // Retrieving data of the closest line to the cursor.
+        var line_dists = lines_data.map(line => Math.abs(line.y - mouse_y)),
+            min_dist = d3.min(line_dists);
+
+        // Hiding the tooltip so that it effectively gets removed if the
+        // distance from closest line is above the proximity threshold.
+        this.tooltip.style("visibility", "hidden");
+        if (min_dist > proximity_threshold) return;
+
+        var closest_line = lines_data[line_dists.indexOf(min_dist)];
+
+        var tooltip_text = ""
+            + "<tspan x='0' dy='1.2em'>File: " + closest_line.FileName + "</tspan>"
+            + "<tspan x='0' dy='1.2em'>Start: " + closest_line.Start + "</tspan>"
+            + "<tspan x='0' dy='1.2em'>End: " + closest_line.End + "</tspan>";
+
+        this.tooltip
+            .attr("transform", "translate(" + this.x_scale(mouse_x) + ", " +
+                this.y_scale(mouse_y) + ")")
+            .style("visibility", "visible")
+            .select("text")
+                .html(tooltip_text);
     }
 }
 
