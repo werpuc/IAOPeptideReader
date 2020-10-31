@@ -10,7 +10,6 @@ ui <- function() {
     )
 
     scripts_names <- c(
-        "d3.min.js",
         "shiny_handlers.js",
         "iaoreader.js",
         "lambda_measures.js",
@@ -40,6 +39,7 @@ ui <- function() {
         fluidPage(
             lapply(css_names, attach_css),
             lapply(scripts_names, attach_script),
+            attach_script("d3.min.js", "www/d3.js"),
             sidebar_panel_ui(),
             main_panel_ui()
         )
@@ -60,6 +60,34 @@ attach_css <- function(css_name, url_static_path = "www/css") {
 attach_script <- function(script_name, url_static_path = "www/js") {
     tags$head(
         tags$script(src = sprintf("%s/%s", url_static_path, script_name))
+    )
+}
+
+# This function is a wrapper for making clean external inline links.
+# Specifically it allows having the link as a last part of a sentence without
+# leaving awkward white space between the link and the dot.
+external_link <- function(text, href, trailing_dot = FALSE) {
+    a_tag <- sprintf(
+        '<a href="%s" target="_blank" rel="noopener noreferrer">%s %s</a>',
+        href, text, as.character(icon("external-link"))
+    )
+
+    if (trailing_dot) {
+        a_tag <- paste0(a_tag, ".")
+    }
+
+    HTML(a_tag)
+}
+
+modal_link <- function(observer_id, ...) {
+    onclick <- sprintf("Shiny.setInputValue('%s', Date.now());", observer_id)
+    tags$a(class = "measure_info", onclick = onclick, ...)
+}
+
+modal_label_link <- function(observer_id, label) {
+    tags$label(
+        label,
+        actionButton(observer_id, icon("info-circle"), class = "label_icon")
     )
 }
 

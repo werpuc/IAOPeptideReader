@@ -29,11 +29,11 @@ input_settings <- function(input, output, session) {
         fm <- isolate(input_settings_rv[["fm"]])
         fm[order(names(fm))]
     })
-    
+
     observeEvent(input[["files_upload"]], {
         file_input_meta <- input[["files_upload"]]
 
-        # This allows programatically imitating upload of sample data.
+        # This allows programmatically imitating upload of sample data.
         if (class(file_input_meta) != "data.frame" && file_input_meta == -1) {
             file_input_meta <- sample_fim()
         }
@@ -67,7 +67,7 @@ input_settings <- function(input, output, session) {
             } else {
                 # Proceed to read the file if its CSV.
                 tryCatch({
-                    single_file_data <- fread(file_path)
+                    single_file_data <- fread(file_path, sep = ",", dec = ".")
                     single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
                 }, error = function(e) {
                     # The <<- operator allows assigning the value outside
@@ -138,7 +138,7 @@ input_settings <- function(input, output, session) {
         is_ok <- is_seq_len_ok()
 
         # Sending is_ok to seq_len_check handler which turns on and off the red
-        # border around sequence length input. 
+        # border around sequence length input.
         session$sendCustomMessage("seq_len_check", is_ok)
 
         if (is_ok) {
@@ -233,7 +233,6 @@ input_settings <- function(input, output, session) {
         session$sendCustomMessage("update_plot", 1)
     })
 
-    # TODO: fix the table display when there are no files currently visible.
     output[["summary_table"]] <- renderTable(align = "c", {
         summary_table_data <- input[["summary_table"]]
 
@@ -253,7 +252,7 @@ sample_fim <- function() {
 
     data.frame(
         "name" = file_names,
-        "datapath" = paste0("./dev/data/",  file_names), 
+        "datapath" = paste0("./dev/data/",  file_names),
         stringsAsFactors = FALSE
     )
 }

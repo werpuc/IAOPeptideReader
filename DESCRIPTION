@@ -1,7 +1,7 @@
 Package: iaoreader
 Title: A Web Application for Analysing IAO Files
-Version: 0.10.0
-Authors@R: 
+Version: 0.11.0
+Authors@R:
     person(given = "Tymoteusz", family = "Makowski",
            role = c("aut", "cre"),
            email = "tymek.makowski@gmail.com")
@@ -17,6 +17,6 @@ Imports:
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Suggests: 
+Suggests:
     testthat (>= 2.1.0),
     covr

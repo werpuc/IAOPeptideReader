@@ -21,8 +21,11 @@ input_settings_ui <- function() {
             id = "file_upload_div",
             splitLayout(
                 cellWidths = c("90%", "auto"),
-                fileInput("files_upload", "Upload input files", multiple = TRUE,
-                          accept = ".csv"),
+                tagList(
+                    modal_label_link("file_info", "Upload input files"),
+                    fileInput("files_upload", NULL, multiple = TRUE,
+                              accept = ".csv")
+                ),
 
                 # Button for uploading sample data into the application.
                 actionButton(

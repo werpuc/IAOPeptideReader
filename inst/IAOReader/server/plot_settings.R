@@ -4,6 +4,9 @@ plot_settings <- function(input, output, session) {
     # This mapping allows automatic UI and server handlers generation.
     plot_settings_input_mapping <- reactive({
         width <- "40%"
+        default_palette <- "Set1"
+        palettes <- c("Accent", "Category10", "Dark2", "Paired", "Pastel1",
+                      "Pastel2", "Set1", "Set2", "Set3", "Tableau10")
 
         mapping <- list(
             h3("Title Settings"),
@@ -57,9 +60,10 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "checkbox",
                  "label" = "Show measure values",
                  "value" = TRUE),
+            modal_label_link("k_param_info", "K penalty parameter"),
             list("input_id" = "plot_settings_k_parameter",
                  "input_type" = "numeric",
-                 "label" = "K penalty parameter",
+                 "label" = NULL,
                  "value" = "3",
                  "min" = 0, "step" = 1, "width" = width),
             list("input_id" = "plot_settings_title_includes_k",
@@ -105,13 +109,12 @@ plot_settings <- function(input, output, session) {
                  "value" = "10",
                  "min" = 0, "max" = 26, "step" = 1, "width" = width),
             h3("Color Settings"),
+            modal_label_link("color_info", "Lines color palette"),
             list("input_id" = "plot_settings_color_palette",
                  "input_type" = "select",
-                 "label" = "Lines color palette",
-                 "value" = c("Accent", "Category10", "Dark2", "Paired",
-                             "Pastel1", "Pastel2", "Set1", "Set2", "Set3",
-                             "Tableau10"),
-                 "selected" = "Set1", "width" = width),
+                 "label" = NULL,
+                 "value" = palettes,
+                 "selected" = default_palette, "width" = width),
             list("input_id" = "plot_settings_show_background",
                  "input_type" = "checkbox",
                  "label" = "Show background",
@@ -119,7 +122,7 @@ plot_settings <- function(input, output, session) {
             list("input_id" = "plot_background_color",
                  "input_type" = "color",
                  "label" = "Background color",
-                 "value" = "#ffffff",
+                 "value" = "#FFFFFF",
                  "onchange" = "iaoreader.background_color = this.value;",
                  "width" = width)
         )

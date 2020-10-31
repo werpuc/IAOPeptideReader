@@ -1,3 +1,88 @@
+###### v0.11.0 (2020-10-31):
+ * Merged implementation of modals.
+
+###### v0.10.25 (2020-10-25):
+ * Updated the file info modal.
+
+###### v0.10.24 (2020-10-25):
+ * Set the field separator to comma and the decimal separator to dot in fread.
+
+###### v0.10.23 (2020-10-09):
+ * Added information to the color palettes modal.
+ * Added styling to color palettes preview.
+
+###### v0.10.22 (2020-10-08):
+ * Added colors palettes preview.
+
+###### v0.10.21 (2020-10-08):
+ * Added blank modal for color palettes information.
+
+###### v0.10.20 (2020-10-08):
+ * Updated modals file structure.
+ * Updated `README.md` accordingly.
+
+###### v0.10.19 (2020-10-08):
+ * Added wrapper for creating label with link icon.
+
+###### v0.10.18 (2020-10-08):
+ * Updated summary table description.
+ * Removed finished TODO elements.
+
+###### v0.10.17 (2020-10-08):
+ * Updated modals flow.
+
+###### v0.10.16 (2020-10-08):
+ * Added `modal_link` wrapper to facilitate opening modals with inline text links.
+
+###### v0.10.15 (2020-10-08):
+ * Restructured `modals.R` file.
+
+###### v0.10.14 (2020-10-07):
+ * Prepared structure for measure information modal.
+ * Added brief description of the summary table in the main panel.
+
+###### v0.10.13 (2020-10-07):
+ * Renamed `measure_info` modal to `k_param_info` to separate these two informations.
+ * Changed cursor for the info icons.
+
+###### v0.10.12 (2020-10-07):
+ * Removed unused `add_class` function.
+ * Fixed various typos.
+
+###### v0.10.11 (2020-09-21):
+ * Added file structure description.
+
+###### v0.10.10 (2020-09-21):
+ * Aligned `Dismiss` buttons in modals.
+
+###### v0.10.9 (2020-09-21):
+ * Added table caption.
+
+###### v0.10.8 (2020-09-16):
+ * Added example table to the modal with file structure details.
+
+###### v0.10.7 (2020-09-14):
+ * Added an empty modal for informations about the measure.
+
+###### v0.10.6 (2020-09-14):
+ * Created separate file for modals.
+
+###### v0.10.5 (2020-09-14):
+ * Updated CSS to account for multiple icon buttons.
+
+###### v0.10.4 (2020-09-14):
+ * Added basic modal.
+ * Updated modal CSS.
+
+###### v0.10.3 (2020-09-14):
+ * Added invisible `actionButton` underneath the `info-circle` icon to facilitate communication with Shiny server.
+
+###### v0.10.2 (2020-09-14):
+ * Added `info-circle` icon to file upload label for later addition of information modal.
+
+###### v0.10.1 (2020-09-14):
+ * Moved `d3.min.js` to a separate directory.
+
 ###### v0.10.0 (2020-09-03):
  * This marks end of implementation of measure values on the plot.
  * Measure values now properly update when changing plot settings.
@@ -232,7 +317,7 @@
 
 ###### v0.6.11 (2020-08-15):
  * TODOs and redundant functions clean-up.
- * Reducend data sent to JS to Start, End and FileName columns.
+ * Reduced data sent to JS to Start, End and FileName columns.
 
 ###### v0.6.10 (2020-08-15):
  * Implemented updateColorInput function to avoid code redundancy.
@@ -287,7 +372,7 @@
  * Fixed Y-axis range being to wide.
 
 ###### v0.5.9 (2020-08-14):
- * Added function which adjusts height based on the calculated height differences and (hardcoded for now) offset.
+ * Added function which adjusts height based on the calculated height differences and (hard-coded for now) offset.
  * Added assertion to previously implemented function.
 
 ###### v0.5.8 (2020-08-14):
@@ -313,7 +398,7 @@
  * This version marks start of differentiation between `master` and `devel` branches.
 
 ###### v0.5.1 (2020-08-09):
- * Continous delivery config update.
+ * Continuous delivery config update.
 
 ###### v0.5.0 (2020-08-09):
  * Added continuous delivery to the [shinyapps.io](https://www.shinyapps.io/).

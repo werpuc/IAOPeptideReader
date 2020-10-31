@@ -19,7 +19,7 @@ let IAOReader = class {
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
     file_names_displayed = new Map();
-    
+
     constructor() {
         // Creating the SVG tag.
         this.svg = d3.select("div#plot").append("svg")
@@ -130,7 +130,6 @@ let IAOReader = class {
             self.vert_click.style("visibility", "visible");
         })
 
-        // TODO: Lambda_k calculation on drag.
         this.vert_drag_start = this.vert_click.clone(true)
             .attr("id", "vert_drag_start")
             .attr("class", "verts drag");
@@ -158,7 +157,7 @@ let IAOReader = class {
         // This is drag behavior definition which moves drag guides.
         var drag = d3.drag()
             // This handler saves current position in time. The time is then
-            // verivied within the drag handler. This approach has been
+            // verified within the drag handler. This approach has been
             // introduced to avoid moving drag verts on single click.
             .on("start", function() {
                 var m = d3.mouse(this);
@@ -241,7 +240,7 @@ let IAOReader = class {
 
     filter_data() {
         if (this.plot_data_raw === null) return null;
-        
+
         var self = this;
 
         // Note: upper limit isn't inclusive due to lines starting at x_max
@@ -435,7 +434,7 @@ let IAOReader = class {
     }
 
     set title_font_size(size) {
-        // This makes the tilte centered at the initial y.
+        // This makes the title centered at the initial y.
         this.title.attr("y", this.margin.top * 0.60 + (size - 20) / 2 + "px");
         this.title.attr("font-size", size + "px");
     }
@@ -613,7 +612,7 @@ let IAOReader = class {
     unmark_lines(class_name) {
         this.mark_lines(null, class_name, true);
     }
-    
+
     file_color(file_name) {
         var color_id = this.displayed_files.indexOf(file_name);
 

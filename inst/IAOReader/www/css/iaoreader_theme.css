@@ -30,6 +30,58 @@ p.no_good_file {
     font-weight: bold;
 }
 
+/* Modals */
+div.modal-header > h2.modal_title {
+    margin: -15px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    box-shadow: 0px 1px 5px 0px var(--theme-color-dark);
+}
+
+#file_info_description {
+    padding: 8px 15px;
+}
+
+#file_info_example {
+    text-align: center;
+}
+
+#file_info_example thead {
+    background-color: var(--theme-color-main);
+    color: var(--theme-color-bright-text);
+    font-weight: bold;
+}
+
+#file_info_example th {
+    padding: 2px 10px;
+}
+
+#file_info_example tbody {
+    border-bottom: 1px solid var(--theme-color-main);
+}
+
+#file_info_example_caption {
+    padding: 8px 0;
+}
+
+.measure_info {
+    cursor: help;
+}
+
+#preview_palettes {
+    text-align: center;
+}
+
+.palette_preview > label {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.palette_preview > img {
+    display: block;
+}
+
+
 /* -----------------------------------------------------------------------------
  *  Title Panel
  * -------------------------------------------------------------------------- */
@@ -130,6 +182,27 @@ div#previewed_file div.has-items {
 /* -----------------------------------------------------------------------------
  * Sidebar Panel
  * -------------------------------------------------------------------------- */
+
+button.label_icon, button.label_icon:hover, button.label_icon:active,
+button.label_icon:focus, button.label_icon:active:hover {
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    cursor: help;
+}
+
+button.label_icon:active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+button.label_icon > i {
+    color: var(--theme-color-buttons) !important;
+}
+
+button.label_icon > i:hover {
+    color: var(--theme-color-buttons-secondary) !important;
+}
 
 /* Improving sidebar layout. */
 body > div.container-fluid > div > form.well {

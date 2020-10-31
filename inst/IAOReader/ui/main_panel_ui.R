@@ -30,6 +30,13 @@ peptide_coverage_ui <- function() {
                 ),
 
                 h3(id = "summary_table_header", "Summary Table"),
+                p(
+                    id = "summary_table_description",
+                    "Table rows represent uploaded files with data in current",
+                    "plot boundaries. Table columns contain",
+                    modal_link("measure_info", "measure"),
+                    "values for every element of the sequence."
+                ),
                 div(
                     align = "center",
                     tableOutput("summary_table")
