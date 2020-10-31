@@ -102,7 +102,7 @@ let IAOReader = class {
             var x = self.x_scale.invert(m[0]);
             self.mark_lines(x, self.vert_mark);
             self.move_vert(self.vert, x);
-            self.move_tooltip(x, self.y_scale.invert(m[1]));
+            self.draw_tooltip(x, self.y_scale.invert(m[1]));
         })
 
         // This handler resets position of vert. This is particularly useful
@@ -605,6 +605,44 @@ let IAOReader = class {
         this.title.text(title_text);
     }
 
+    draw_tooltip(mouse_x, mouse_y, proximity_threshold = 0.4) {
+        var x = Math.round(mouse_x),
+            y = Math.round(mouse_y);
+
+        var lines_data = this.lines.selectAll("line")
+            .filter(d => d.Start <= x && x <= d.End)
+            .data();
+
+        // Retrieving data of the closest line to the cursor.
+        var line_dists = lines_data.map(line => Math.abs(line.y - mouse_y)),
+            min_dist = d3.min(line_dists);
+
+        // Hiding the tooltip so that it effectively gets removed if the
+        // distance from closest line is above the proximity threshold.
+        this.tooltip.style("visibility", "hidden");
+        if (min_dist > proximity_threshold) return;
+
+        var closest_line = lines_data[line_dists.indexOf(min_dist)];
+
+        var x_offset = "10px",
+            tooltip_text = ""
+                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>File</tspan>  "
+                + closest_line.FileName
+                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>Start</tspan> "
+                + closest_line.Start
+                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>End</tspan>   "
+                + closest_line.End;
+
+        var tooltip_text = this.tooltip
+            .attr("transform", "translate(" + this.x_scale(x) + ", " +
+                this.y_scale(y) + ")")
+            .style("visibility", "visible")
+            .select("text")
+                .html(tooltip_text);
+
+        this.draw_text_bbox(tooltip_text, this.tooltip.select("rect"), 12);
+    }
+
 
     /* -------------------------------------------------------------------------
      * Lines coloring
@@ -705,44 +743,6 @@ let IAOReader = class {
 
     download_svg() {
         download_svg_node(this.svg.node());
-    }
-
-    move_tooltip(mouse_x, mouse_y, proximity_threshold = 0.4) {
-        var x = Math.round(mouse_x),
-            y = Math.round(mouse_y);
-
-        var lines_data = this.lines.selectAll("line")
-            .filter(d => d.Start <= x && x <= d.End)
-            .data();
-
-        // Retrieving data of the closest line to the cursor.
-        var line_dists = lines_data.map(line => Math.abs(line.y - mouse_y)),
-            min_dist = d3.min(line_dists);
-
-        // Hiding the tooltip so that it effectively gets removed if the
-        // distance from closest line is above the proximity threshold.
-        this.tooltip.style("visibility", "hidden");
-        if (min_dist > proximity_threshold) return;
-
-        var closest_line = lines_data[line_dists.indexOf(min_dist)];
-
-        var x_offset = "10px",
-            tooltip_text = ""
-                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>File</tspan>  "
-                + closest_line.FileName
-                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>Start</tspan> "
-                + closest_line.Start
-                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>End</tspan>   "
-                + closest_line.End;
-
-        var tooltip_text = this.tooltip
-            .attr("transform", "translate(" + this.x_scale(x) + ", " +
-                this.y_scale(y) + ")")
-            .style("visibility", "visible")
-            .select("text")
-                .html(tooltip_text);
-
-        this.draw_text_bbox(tooltip_text, this.tooltip.select("rect"), 12);
     }
 }
 
