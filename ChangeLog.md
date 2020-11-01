@@ -1,3 +1,6 @@
+###### v0.11.5 (2020-11-01):
+ * Now the line which has it's infromation displayed is marked by being thicker.
+
 ###### v0.11.4 (2020-11-01):
  * Fixed assertions in two functions.
 

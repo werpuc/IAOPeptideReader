@@ -612,6 +612,7 @@ let IAOReader = class {
 
         var lines = this.lines.selectAll("line")
             .filter(d => d.Start <= x && x <= d.End);
+        lines.style("stroke-width", 2);
 
         if (lines.empty()) return;
         var lines_data = lines.data();
@@ -626,6 +627,14 @@ let IAOReader = class {
         if (min_dist > proximity_threshold) return;
 
         var closest_line = lines_data[line_dists.indexOf(min_dist)];
+
+        // Bolding the line which has it's information displayed.
+        lines.filter(d => (
+            d.Start == closest_line.Start &&
+            d.End == closest_line.End &&
+            d.FileName == closest_line.FileName &&
+            d.y == closest_line.y
+        )).style("stroke-width", 4);
 
         var x_offset = "10px",
             tooltip_text = ""
