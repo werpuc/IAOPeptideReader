@@ -14,7 +14,8 @@ let IAOReader = class {
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
     color_palette; show_lambda_values; lambda_values_bg_color = "#FFFFFF";
     lambda_values_bg_invert; title_text; k_parameter; title_includes_k;
-    ts_delta = 100; click_timestamp; drag_start_x;
+    ts_delta = 100; click_timestamp; drag_start_x; show_tooltip = true;
+    // TODO: move show_tooltip to plot settings.
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -90,8 +91,8 @@ let IAOReader = class {
         // This mousemove handler makes the vertical guide follow the cursor.
         var self = this;
         this.svg.on("mousemove", function() {
-            if (!self.vert_show) return;
-            var m = d3.mouse(this);
+            var m = d3.mouse(this),
+                x = self.x_scale.invert(m[0]);
 
             if (self.mouse_out_of_bonds(m)) {
                 self.unmark_lines(self.vert_mark);
@@ -99,9 +100,11 @@ let IAOReader = class {
                 return;
             }
 
-            var x = self.x_scale.invert(m[0]);
-            self.mark_lines(x, self.vert_mark);
-            self.move_vert(self.vert, x);
+            if (self.vert_show) {
+                self.mark_lines(x, self.vert_mark);
+                self.move_vert(self.vert, x);
+            }
+
             self.draw_tooltip(x, self.y_scale.invert(m[1]));
         })
 
@@ -116,6 +119,8 @@ let IAOReader = class {
 
             self.unmark_lines(self.vert_mark);
             self.move_vert(self.vert, self.x_min);
+
+            self.lines.selectAll("line").style("stroke-width", 2);
             self.tooltip.style("visibility", "hidden");
         })
 
@@ -610,9 +615,10 @@ let IAOReader = class {
         var x = Math.round(mouse_x),
             y = Math.round(mouse_y);
 
-        var lines = this.lines.selectAll("line")
-            .filter(d => d.Start <= x && x <= d.End);
-        lines.style("stroke-width", 2);
+        var all_lines = this.lines.selectAll("line");
+        all_lines.style("stroke-width", 2);
+
+        var lines = all_lines.filter(d => d.Start <= x && x <= d.End);
 
         if (lines.empty()) return;
         var lines_data = lines.data();

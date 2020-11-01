@@ -1,3 +1,7 @@
+###### v0.11.6 (2020-11-01):
+ * Fixed tooltip getting disabled with mouseover vertical guide.
+ * Fixed thicker line getting stuck when cursor left the plot area.
+
 ###### v0.11.5 (2020-11-01):
  * Now the line which has it's infromation displayed is marked by being thicker.
 
