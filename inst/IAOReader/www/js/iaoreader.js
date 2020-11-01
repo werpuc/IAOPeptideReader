@@ -407,6 +407,7 @@ let IAOReader = class {
     }
 
     get y_max() {
+        if (this.plot_data === null) return;
         return d3.max(this.plot_data.map(d => d.y));
     }
 
@@ -609,9 +610,11 @@ let IAOReader = class {
         var x = Math.round(mouse_x),
             y = Math.round(mouse_y);
 
-        var lines_data = this.lines.selectAll("line")
-            .filter(d => d.Start <= x && x <= d.End)
-            .data();
+        var lines = this.lines.selectAll("line")
+            .filter(d => d.Start <= x && x <= d.End);
+
+        if (lines.empty()) return;
+        var lines_data = lines.data();
 
         // Retrieving data of the closest line to the cursor.
         var line_dists = lines_data.map(line => Math.abs(line.y - mouse_y)),

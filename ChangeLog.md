@@ -1,3 +1,6 @@
+###### v0.11.4 (2020-11-01):
+ * Fixed assertions in two functions.
+
 ###### v0.11.3 (2020-10-31):
  * Moved tooltip to top to avoid it getting obstructed by the click vert's measure value.
  * Added tooltip background.
