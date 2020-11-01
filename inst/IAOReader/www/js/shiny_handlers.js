@@ -71,6 +71,10 @@ Shiny.addCustomMessageHandler("plot_settings_title_bold", function(title_bold) {
 
 
 // [[ Vertical guide ]]
+Shiny.addCustomMessageHandler("plot_settings_show_tooltip", function(show_tooltip) {
+    iaoreader.show_tooltip = show_tooltip;
+});
+
 Shiny.addCustomMessageHandler("plot_settings_vert_show", function(vert_show) {
     // vert_show attribute is tracked by the mousemove handler.
     iaoreader.vert_show = vert_show;

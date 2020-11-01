@@ -1,3 +1,6 @@
+###### v0.11.7 (2020-11-01):
+ * Added option to disable the tooltip.
+
 ###### v0.11.6 (2020-11-01):
  * Fixed tooltip getting disabled with mouseover vertical guide.
  * Fixed thicker line getting stuck when cursor left the plot area.
