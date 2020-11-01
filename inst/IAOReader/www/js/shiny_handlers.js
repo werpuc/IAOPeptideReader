@@ -71,6 +71,10 @@ Shiny.addCustomMessageHandler("plot_settings_title_bold", function(title_bold) {
 
 
 // [[ Vertical guide ]]
+Shiny.addCustomMessageHandler("plot_settings_mark_line", function(mark_line) {
+    iaoreader.mark_line = mark_line;
+});
+
 Shiny.addCustomMessageHandler("plot_settings_show_tooltip", function(show_tooltip) {
     iaoreader.show_tooltip = show_tooltip;
 });

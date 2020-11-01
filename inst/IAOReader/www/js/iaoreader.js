@@ -14,7 +14,7 @@ let IAOReader = class {
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
     color_palette; show_lambda_values; lambda_values_bg_color = "#FFFFFF";
     lambda_values_bg_invert; title_text; k_parameter; title_includes_k;
-    ts_delta = 100; click_timestamp; drag_start_x; show_tooltip;
+    ts_delta = 100; click_timestamp; drag_start_x; show_tooltip; mark_line;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -634,12 +634,14 @@ let IAOReader = class {
         var closest_line = lines_data[line_dists.indexOf(min_dist)];
 
         // Bolding the line which has it's information displayed.
-        lines.filter(d => (
-            d.Start == closest_line.Start &&
-            d.End == closest_line.End &&
-            d.FileName == closest_line.FileName &&
-            d.y == closest_line.y
-        )).style("stroke-width", 4);
+        if (this.mark_line) {
+            lines.filter(d => (
+                d.Start == closest_line.Start &&
+                d.End == closest_line.End &&
+                d.FileName == closest_line.FileName &&
+                d.y == closest_line.y
+            )).style("stroke-width", 4);
+        }
 
         if (!this.show_tooltip) return;
 

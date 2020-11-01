@@ -1,3 +1,6 @@
+###### v0.11.8 (2020-11-01):
+ * Added option to disable bolding the line under the mouse.
+
 ###### v0.11.7 (2020-11-01):
  * Added option to disable the tooltip.
 
