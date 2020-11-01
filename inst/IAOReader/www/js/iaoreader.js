@@ -645,7 +645,7 @@ let IAOReader = class {
 
         if (!this.show_tooltip) return;
 
-        var x_offset = "10px",
+        var x_offset = "15px",
             tooltip_text = ""
                 + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>File</tspan>  "
                 + closest_line.FileName
@@ -654,14 +654,18 @@ let IAOReader = class {
                 + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>End</tspan>   "
                 + closest_line.End;
 
-        var tooltip_text_elem = this.tooltip.select("text").html(tooltip_text);
-        this.draw_text_bbox(tooltip_text_elem, this.tooltip.select("rect"), 12);
+        var tooltip_text_elem = this.tooltip.select("text").html(tooltip_text),
+            tooltip_rect_elem = this.tooltip.select("rect");
+        this.draw_text_bbox(tooltip_text_elem, tooltip_rect_elem, 12);
+
+        var tooltip_width = tooltip_rect_elem.attr("width"),
+            tooltip_height = tooltip_rect_elem.attr("height"),
+            x_transform = Math.min(this.x_scale(x), this.width - tooltip_width - 10),
+            y_transform = Math.min(this.y_scale(y), this.height - tooltip_height - 15);
 
         var tooltip_text = this.tooltip
-            .attr("transform", "translate(" + this.x_scale(x) + ", " +
-                this.y_scale(y) + ")")
+            .attr("transform", "translate(" + x_transform + ", " + y_transform + ")")
             .style("visibility", "visible");
-
     }
 
 
