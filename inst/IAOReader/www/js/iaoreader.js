@@ -654,14 +654,14 @@ let IAOReader = class {
                 + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>End</tspan>   "
                 + closest_line.End;
 
+        var tooltip_text_elem = this.tooltip.select("text").html(tooltip_text);
+        this.draw_text_bbox(tooltip_text_elem, this.tooltip.select("rect"), 12);
+
         var tooltip_text = this.tooltip
             .attr("transform", "translate(" + this.x_scale(x) + ", " +
                 this.y_scale(y) + ")")
-            .style("visibility", "visible")
-            .select("text")
-                .html(tooltip_text);
+            .style("visibility", "visible");
 
-        this.draw_text_bbox(tooltip_text, this.tooltip.select("rect"), 12);
     }
 
 
