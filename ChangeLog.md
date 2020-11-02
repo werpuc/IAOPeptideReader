@@ -1,3 +1,6 @@
+###### v0.11.11 (2020-11-02):
+ * Added modal structure for plot information.
+
 ###### v0.11.10 (2020-11-02):
  * Removed redundant chdir argument.
 

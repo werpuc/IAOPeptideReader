@@ -19,7 +19,14 @@ peptide_coverage_ui <- function() {
         no_file_uploaded_wrapper(
             no_file_good_wrapper(
 
-                h3(id = "plot_coverage_header", "Coverage Plot"),
+                h3(
+                    id = "plot_coverage_header", "Coverage Plot",
+                    actionButton(
+                        "plot_info",
+                        icon("info-circle"),
+                        class = "label_icon"
+                    )
+                ),
                 div(id = "plot"),
                 div(
                     align = "right",
