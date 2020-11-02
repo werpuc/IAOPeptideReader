@@ -1,3 +1,6 @@
+###### v0.11.10 (2020-11-02):
+ * Removed redundant chdir argument.
+
 ###### v0.11.9 (2020-11-01):
  * Fixed tooltip overflowing the svg tag.
 

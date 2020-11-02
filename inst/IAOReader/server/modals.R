@@ -1,7 +1,7 @@
-source(file.path("modals", "color_info.R"), local = TRUE, chdir = TRUE)
-source(file.path("modals", "file_info.R"), local = TRUE, chdir = TRUE)
-source(file.path("modals", "k_param_info.R"), local = TRUE, chdir = TRUE)
-source(file.path("modals", "measure_info.R"), local = TRUE, chdir = TRUE)
+source(file.path("modals", "color_info.R"), local = TRUE)
+source(file.path("modals", "file_info.R"), local = TRUE)
+source(file.path("modals", "k_param_info.R"), local = TRUE)
+source(file.path("modals", "measure_info.R"), local = TRUE)
 
 
 modals <- function(input, output, session) {
