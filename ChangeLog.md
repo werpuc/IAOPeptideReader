@@ -1,3 +1,6 @@
+###### v0.11.15 (2020-11-02):
+ * Updated modal headers CSS.
+
 ###### v0.11.14 (2020-11-02):
  * Added information regarding plot settings to the plot info modal.
 
