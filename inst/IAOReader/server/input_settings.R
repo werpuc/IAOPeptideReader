@@ -125,7 +125,7 @@ input_settings <- function(input, output, session) {
         }
 
         sprintf(
-            "Currently displayed: %s.",
+            "Currently displayed files: %s.",
             if (displayed_seq_len == -Inf) "<i>none</i>" else displayed_seq_len
         )
     })

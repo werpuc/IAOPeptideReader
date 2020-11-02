@@ -31,6 +31,7 @@ ui <- function() {
                 tags$a(
                     id = "github_url",
                     href = "https://github.com/tmakowski/iaoreader",
+                    title = "Preview source code on GitHub",
                     icon("github")
                 )
             ),

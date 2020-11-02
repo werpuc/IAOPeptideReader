@@ -30,7 +30,7 @@ input_settings_ui <- function() {
                 # Button for uploading sample data into the application.
                 actionButton(
                     "sample_upload", icon("upload"),
-                    title = "Upload sample data",
+                    title = "Load sample data",
                     onclick = paste0(
                         'Shiny.setInputValue("files_upload", null);',
                         'Shiny.setInputValue("files_upload", -1);'

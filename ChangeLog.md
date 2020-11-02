@@ -1,3 +1,7 @@
+###### v0.11.19 (2020-11-02):
+ * Improved wording in few places.
+ * Improved few hover values.
+
 ###### v0.11.18 (2020-11-02):
  * Added modal link to the measure info to the plot info modal.
  * Added a new layer of modals with correct returns for following links from the plot info modal.
