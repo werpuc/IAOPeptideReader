@@ -1,3 +1,6 @@
+###### v0.11.13 (2020-11-02):
+ * Added information regarding tooltip to the plot info modal.
+
 ###### v0.11.12 (2020-11-02):
  * Created subfolder in the hosted images directory.
 
