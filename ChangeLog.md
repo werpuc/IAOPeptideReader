@@ -1,3 +1,7 @@
+###### v0.11.18 (2020-11-02):
+ * Added modal link to the measure info to the plot info modal.
+ * Added a new layer of modals with correct returns for following links from the plot info modal.
+
 ###### v0.11.17 (2020-11-02):
  * Updated modal_link wrapper to make it possible to add a trailing dot - similarly to the external_link wrapper.
  * Fixed class name in modal_link wrapper.

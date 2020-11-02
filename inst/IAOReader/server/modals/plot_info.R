@@ -13,7 +13,11 @@ plot_info_modal <- function() {
         p(
             "The plot features three types of vertical guides to aid the",
             "analysis of the shown data. Every guide is tied to either the",
-            "point or the segment measure. The point measure is displayed with",
+            "point or the segment",
+            modal_link(
+                "measure_info_return_plot", "measure", trailing_dot = TRUE
+            ),
+            "The point measure is displayed with",
             "a mouseover dynamic guide as well as a static guide appearing",
             "after clicking on the plot. The segment measure requires marking",
             "the ends of the segment with dragging within the plot area. To",

@@ -1,9 +1,9 @@
 # TODO: Grammarly.
 # TODO: add information to the modal.
-measure_info_modal <- function(return_observer_id = NULL) {
+measure_info_modal <- function(return_observer_id, k_param_info_id) {
     modalDialog(
         "To be added...",
-        br(), "See also:", modal_link("k_param_info_return", "K parameter"),
+        br(), "See also:", modal_link(k_param_info_id, "K parameter"),
         title = h2(class = "modal_title", "IAO Reader Measure"),
         footer = modal_footer(return_observer_id),
         easyClose = TRUE
