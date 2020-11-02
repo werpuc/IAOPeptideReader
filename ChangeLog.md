@@ -1,3 +1,6 @@
+###### v0.11.14 (2020-11-02):
+ * Added information regarding plot settings to the plot info modal.
+
 ###### v0.11.13 (2020-11-02):
  * Added information regarding tooltip to the plot info modal.
 

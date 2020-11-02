@@ -9,6 +9,16 @@ plot_info_modal <- function() {
             "tooltip is shown below."
         ),
         div(align = "center", img(src = "/www/images/plot_info/tooltip.png")),
+
+        h3(class = "modal_header", "Plot Settings"),
+        p(
+            "There are multiple customizable settings for the plot. It is",
+            "encouraged to customize those to one's liking in the Plot",
+            "Settings tab in the sidebar panel. If one wishes to reset plot",
+            "settings to an initial state it can be done with a button found",
+            "at the bottom of settings tab."
+        ),
+
         title = h2(class = "modal_title", "Coverage Plot Functionalities"),
         footer = modal_footer(),
         easyClose = TRUE
