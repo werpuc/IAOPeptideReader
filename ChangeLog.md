@@ -1,3 +1,7 @@
+###### v0.11.17 (2020-11-02):
+ * Updated modal_link wrapper to make it possible to add a trailing dot - similarly to the external_link wrapper.
+ * Fixed class name in modal_link wrapper.
+
 ###### v0.11.16 (2020-11-02):
  * Added information regarding vertical guides to the plot info modal.
  * Ran the texts through Grammarly.

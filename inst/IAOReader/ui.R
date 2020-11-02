@@ -79,9 +79,17 @@ external_link <- function(text, href, trailing_dot = FALSE) {
     HTML(a_tag)
 }
 
-modal_link <- function(observer_id, ...) {
+modal_link <- function(observer_id, text, trailing_dot = FALSE) {
     onclick <- sprintf("Shiny.setInputValue('%s', Date.now());", observer_id)
-    tags$a(class = "measure_info", onclick = onclick, ...)
+    a_tag <- sprintf(
+        '<a class="modal_link" onclick="%s">%s</a>', onclick, text
+    )
+
+    if (trailing_dot) {
+        a_tag <- paste0(a_tag, ".")
+    }
+
+    HTML(a_tag)
 }
 
 modal_label_link <- function(observer_id, label) {
