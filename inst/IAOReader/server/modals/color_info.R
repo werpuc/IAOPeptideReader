@@ -37,7 +37,11 @@ color_info_modal <- function() {
                                 tags$i("(default)")
                             }
                         ),
-                        img(src = sprintf("/www/images/%s.png", color_palette))
+                        img(
+                            src = sprintf(
+                                "/www/images/color_info/%s.png", color_palette
+                            )
+                        )
                     )
                 }
             )

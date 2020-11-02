@@ -1,3 +1,6 @@
+###### v0.11.12 (2020-11-02):
+ * Created subfolder in the hosted images directory.
+
 ###### v0.11.11 (2020-11-02):
  * Added modal structure for plot information.
 
