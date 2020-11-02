@@ -1,3 +1,8 @@
+###### v0.11.16 (2020-11-02):
+ * Added information regarding vertical guides to the plot info modal.
+ * Ran the texts through Grammarly.
+ * Removed unnecessary class from plot info modal headers.
+
 ###### v0.11.15 (2020-11-02):
  * Updated modal headers CSS.
 
