@@ -148,6 +148,15 @@ Shiny.addCustomMessageHandler("plot_settings_axes_labels_font_size", function(fo
 });
 
 
+// [[ Legend Settings ]]
+Shiny.addCustomMessageHandler("plot_settings_legend_font_size", function(font_size) {
+    if (8 <= font_size && font_size <= 26) {
+        iaoreader.legend_size = font_size;
+        iaoreader.draw_legend();
+    }
+});
+
+
 // [[ Color settings ]]
 Shiny.addCustomMessageHandler("plot_settings_color_palette", function(color_palette_name) {
     var color_palette;
