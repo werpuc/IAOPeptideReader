@@ -149,6 +149,10 @@ Shiny.addCustomMessageHandler("plot_settings_axes_labels_font_size", function(fo
 
 
 // [[ Legend Settings ]]
+Shiny.addCustomMessageHandler("plot_settings_show_legend", function(show_legend) {
+    iaoreader.legend.style("visibility", show_legend ? "visible" : "hidden");
+});
+
 Shiny.addCustomMessageHandler("plot_settings_legend_font_size", function(font_size) {
     if (8 <= font_size && font_size <= 26) {
         iaoreader.legend_size = font_size;

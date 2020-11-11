@@ -1,3 +1,6 @@
+###### v0.11.26 (2020-11-11):
+ * Added plot setting to toggle the legend.
+
 ###### v0.11.25 (2020-11-11):
  * Added plot setting to change legends font size.
 
