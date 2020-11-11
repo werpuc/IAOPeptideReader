@@ -1,3 +1,6 @@
+###### v0.11.23 (2020-11-11):
+ * Improved legend positioning.
+
 ###### v0.11.22 (2020-11-11):
  * Simplified plot legends code.
 
