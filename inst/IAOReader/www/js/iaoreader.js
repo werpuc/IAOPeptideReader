@@ -531,8 +531,9 @@ let IAOReader = class {
     draw_legend(legend_size = 12, line_height = 20) {
         this.legend.attr("transform", "translate(500, 500)");
         var disp_files = this.displayed_files.reverse();
+        if (disp_files.length == 0) return;
 
-        this.legend.selectAll("text")
+        var labels = this.legend.selectAll("text")
             .data(disp_files)
             .join("text")
                 .attr("x", legend_size + 5)
@@ -548,6 +549,14 @@ let IAOReader = class {
                 .attr("width", legend_size)
                 .attr("height", legend_size)
                 .style("fill", d => this.file_color(d));
+
+        // Moving legend so that it won't leave plot area.
+        var labels_bbox = labels.node().getBBox(),
+            x_pos = this.width - this.margin.right - labels_bbox.width - legend_size - 10,
+            y_pos = this.height - this.margin.bottom - labels_bbox.height - 10;
+
+        this.legend
+            .attr("transform", "translate(" + x_pos + ", " + y_pos + ")");
     }
 
     draw_lambda_values(vert, x1, top_placement, x2, horizontal_padding = 3) {

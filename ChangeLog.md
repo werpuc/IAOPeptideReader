@@ -1,3 +1,6 @@
+###### v0.11.21 (2020-11-11):
+ * Added positioning to the plot legend.
+
 ###### v0.11.20 (2020-11-11):
  * Added rough plot legend.
 
