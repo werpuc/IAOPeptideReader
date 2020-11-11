@@ -15,6 +15,7 @@ let IAOReader = class {
     color_palette; show_lambda_values; lambda_values_bg_color = "#FFFFFF";
     lambda_values_bg_invert; title_text; k_parameter; title_includes_k;
     ts_delta = 100; click_timestamp; drag_start_x; show_tooltip; mark_line;
+    legend_size = 12;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -528,8 +529,10 @@ let IAOReader = class {
                     .style("stroke", d => this.file_color(d.FileName));
     }
 
-    draw_legend(legend_size = 12, line_height = 20) {
+    draw_legend() {
         var legend = this.legend,
+            legend_size = this.legend_size,
+            line_height = legend_size + 8,
             disp_files = this.displayed_files.reverse();
 
         if (disp_files.length == 0) return;
@@ -539,14 +542,14 @@ let IAOReader = class {
             .join("text")
                 .attr("x", legend_size + 5)
                 .attr("y", (d, i) => line_height * i)
-                .style("font-size", legend_size)
+                .style("font-size", legend_size + "px")
                 .text(d => d);
 
         legend.selectAll("rect")
             .data(disp_files)
             .join("rect")
                 .attr("x", 0)
-                .attr("y", (d, i) => (line_height * i - 12))
+                .attr("y", (d, i) => (line_height * i - legend_size + 2))
                 .attr("width", legend_size)
                 .attr("height", legend_size)
                 .style("fill", d => this.file_color(d));

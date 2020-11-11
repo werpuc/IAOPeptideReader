@@ -1,3 +1,6 @@
+###### v0.11.24 (2020-11-11):
+ * Improved legend scaling.
+
 ###### v0.11.23 (2020-11-11):
  * Improved legend positioning.
 
