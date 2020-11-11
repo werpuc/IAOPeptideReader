@@ -53,6 +53,10 @@ let IAOReader = class {
         this.lines = this.svg.append("g")
             .attr("id", "lines");
 
+        // Creating legend g tag.
+        this.legend = this.svg.append("g")
+            .attr("id", "legend");
+
         // Creating g tag, line and label for mouseover vert.
         this.vert = this.svg.append("g")
             .attr("id", "vert")
@@ -488,6 +492,7 @@ let IAOReader = class {
         this.draw_x_axis();
         this.draw_y_axis();
         this.draw_lines();
+        this.draw_legend();
 
         // Resetting verts to their default states.
         this.unmark_lines(this.vert_mark);
@@ -521,6 +526,28 @@ let IAOReader = class {
                     .attr("y2", d => this.y_scale(d.y))
                     .style("stroke-width", 2)
                     .style("stroke", d => this.file_color(d.FileName));
+    }
+
+    draw_legend(legend_size = 12, line_height = 20) {
+        this.legend.attr("transform", "translate(500, 500)");
+        var disp_files = this.displayed_files.reverse();
+
+        this.legend.selectAll("text")
+            .data(disp_files)
+            .join("text")
+                .attr("x", legend_size + 5)
+                .attr("y", (d, i) => line_height * i)
+                .style("font-size", legend_size)
+                .text(d => d);
+
+        this.legend.selectAll("rect")
+            .data(disp_files)
+            .join("rect")
+                .attr("x", 0)
+                .attr("y", (d, i) => (line_height * i - 12))
+                .attr("width", legend_size)
+                .attr("height", legend_size)
+                .style("fill", d => this.file_color(d));
     }
 
     draw_lambda_values(vert, x1, top_placement, x2, horizontal_padding = 3) {

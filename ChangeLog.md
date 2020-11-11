@@ -1,3 +1,6 @@
+###### v0.11.20 (2020-11-11):
+ * Added rough plot legend.
+
 ###### v0.11.19 (2020-11-02):
  * Improved wording in few places.
  * Improved few hover values.

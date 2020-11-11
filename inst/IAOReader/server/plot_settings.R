@@ -91,7 +91,7 @@ plot_settings <- function(input, output, session) {
             h3("Plot Space Optimization"),
             list("input_id" = "plot_settings_optimize_height",
                  "input_type" = "checkbox",
-                 "label" = "Optimize plot's height",
+                 "label" = "Optimize the plot's height",
                  "value" = TRUE),
             list("input_id" = "plot_settings_vertical_offset",
                  "input_type" = "numeric",
