@@ -1,9 +1,12 @@
 file_info_modal <- function() {
-    # TODO: update with realistic values.
     table_values <- list(
-        c("A", "x", 1, 12),
-        c("A", "x", 7, 20),
-        c("A", "x", 14, 24)
+        c("Protein A", "State X", 1, 12),
+        c("Protein A", "State X", 7, 20),
+        c("Protein A", "State X", 14, 24),
+        c("Protein A", "State Y", 12, 15),
+        c("Protein A", "State Y", 17, 22),
+        c("Protein B", "State Z", 1, 5),
+        c("Protein B", "State Z", 8, 25)
     )
 
     modalDialog(

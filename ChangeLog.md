@@ -1,3 +1,6 @@
+###### v0.11.27 (2020-11-13):
+ * Updated file info modal.
+
 ###### v0.11.26 (2020-11-11):
  * Added plot setting to toggle the legend.
 
