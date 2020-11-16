@@ -1,3 +1,6 @@
+###### v0.11.30 (2020-11-16):
+ * Updated phrasing.
+
 ###### v0.11.29 (2020-11-16):
  * Removed redundant modal template.
 
