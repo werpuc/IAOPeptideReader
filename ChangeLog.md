@@ -1,3 +1,6 @@
+###### v0.11.29 (2020-11-16):
+ * Removed redundant modal template.
+
 ###### v0.11.28 (2020-11-16):
  * Added description to the measure info modal.
 

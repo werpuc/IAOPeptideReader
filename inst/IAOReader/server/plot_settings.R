@@ -68,7 +68,7 @@ plot_settings <- function(input, output, session) {
                  "input_type" = "checkbox",
                  "label" = "Show measure values",
                  "value" = TRUE),
-            modal_label_link("k_param_info", "K penalty parameter"),
+            modal_label_link("measure_info", "K penalty parameter"),
             list("input_id" = "plot_settings_k_parameter",
                  "input_type" = "numeric",
                  "label" = NULL,

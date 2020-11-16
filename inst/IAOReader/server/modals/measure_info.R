@@ -1,6 +1,6 @@
 # TODO: Grammarly.
 # TODO: add information to the modal.
-measure_info_modal <- function(return_observer_id, k_param_info_id) {
+measure_info_modal <- function(return_observer_id) {
     modalDialog(
         p(
             "This measure calculates a ratio of long enough peptides covering",
@@ -14,8 +14,6 @@ measure_info_modal <- function(return_observer_id, k_param_info_id) {
             "directions. The K parameter is configurable within the Plot",
             "Settings tab."
         ),
-        # TODO: do something with this:
-        br(), "See also:", modal_link(k_param_info_id, "K parameter"),
         title = h2(class = "modal_title", "IAO Reader Measure"),
         footer = modal_footer(return_observer_id),
         easyClose = TRUE
