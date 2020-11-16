@@ -1,3 +1,6 @@
+###### v0.11.28 (2020-11-16):
+ * Added description to the measure info modal.
+
 ###### v0.11.27 (2020-11-13):
  * Updated file info modal.
 
