@@ -1,3 +1,6 @@
+###### v0.11.38 (2020-11-17):
+ * Fixed drag vertical guides labels boxes not adjusting on font size change.
+
 ###### v0.11.37 (2020-11-17):
  * Fixed drag vertical guides not being hidden on plot update.
 

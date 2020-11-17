@@ -774,7 +774,7 @@ let IAOReader = class {
         }
     }
 
-    redraw_vert(vert) {
+    redraw_vert(vert, draw_values = true) {
         var transform_value = vert.attr("transform");
 
         // Check to avoid errors if vert was not used at least once.
@@ -786,7 +786,7 @@ let IAOReader = class {
         // This moves vert to it's current position to redraw lambda values.
         var x1 = this.x_scale.invert(vert_px_position),
             x2 = vert == this.vert_drag_end ? this.drag_start_x : x1;
-        this.move_vert(vert, x1, true, x2);
+        this.move_vert(vert, x1, draw_values, x2);
     }
 
     move_drag_rect(x1, x2) {

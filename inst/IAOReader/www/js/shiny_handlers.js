@@ -144,6 +144,8 @@ Shiny.addCustomMessageHandler("plot_settings_axes_labels_font_size", function(fo
         iaoreader.axes_labels_font_size = font_size;
         iaoreader.redraw_vert(iaoreader.vert);
         iaoreader.redraw_vert(iaoreader.vert_click);
+        iaoreader.redraw_vert(iaoreader.vert_drag_start, false);
+        iaoreader.redraw_vert(iaoreader.vert_drag_end, false);
     }
 });
 
