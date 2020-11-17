@@ -1,7 +1,7 @@
-source(file.path("modals", "color_info.R"), local = TRUE, chdir = TRUE)
-source(file.path("modals", "file_info.R"), local = TRUE, chdir = TRUE)
-source(file.path("modals", "k_param_info.R"), local = TRUE, chdir = TRUE)
-source(file.path("modals", "measure_info.R"), local = TRUE, chdir = TRUE)
+source(file.path("modals", "color_info.R"), local = TRUE)
+source(file.path("modals", "file_info.R"), local = TRUE)
+source(file.path("modals", "measure_info.R"), local = TRUE)
+source(file.path("modals", "plot_info.R"), local = TRUE)
 
 
 modals <- function(input, output, session) {
@@ -17,25 +17,20 @@ modals <- function(input, output, session) {
         showModal(modal)
     })
 
-    # K parameter info ---------------------------------------------------------
-    observeEvent(input[["k_param_info"]], {
-        modal <- k_param_info_modal()
-        showModal(modal)
-    })
-
-    observeEvent(input[["k_param_info_return"]], {
-        modal <- k_param_info_modal("measure_info")
-        showModal(modal)
-    })
-
     # Measure info -------------------------------------------------------------
     observeEvent(input[["measure_info"]], {
-        modal <- measure_info_modal()
+        modal <- measure_info_modal(NULL)
         showModal(modal)
     })
 
-    observeEvent(input[["measure_info_return"]], {
-        modal <- measure_info_modal("k_param_info")
+    observeEvent(input[["measure_info_return_plot"]], {
+        modal <- measure_info_modal("plot_info")
+        showModal(modal)
+    })
+
+    # Plot info ----------------------------------------------------------------
+    observeEvent(input[["plot_info"]], {
+        modal <- plot_info_modal()
         showModal(modal)
     })
 }

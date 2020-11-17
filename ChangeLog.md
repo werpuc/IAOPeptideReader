@@ -1,3 +1,137 @@
+###### v1.0.0 (2020-11-17):
+ * Removed *development version* notification.
+
+###### v0.11.40 (2020-11-17):
+ * Added segment measure calculation example's description.
+
+###### v0.11.39 (2020-11-17):
+ * Added image for the segment measure calculation example.
+
+###### v0.11.38 (2020-11-17):
+ * Fixed drag vertical guides labels boxes not adjusting on font size change.
+
+###### v0.11.37 (2020-11-17):
+ * Fixed drag vertical guides not being hidden on plot update.
+
+###### v0.11.36 (2020-11-17):
+ * Added example of point measure calculation.
+
+###### v0.11.35 (2020-11-17):
+ * Adjusted vertical position of the plot legend.
+
+###### v0.11.34 (2020-11-17):
+ * Added description of segment measure variant.
+
+###### v0.11.33 (2020-11-17):
+ * Added a structure for the measure calculation example.
+
+###### v0.11.32 (2020-11-17):
+ * Rephrased first paragraph of measure info modal.
+
+###### v0.11.31 (2020-11-17):
+ * Updated measure info modal structure.
+
+###### v0.11.30 (2020-11-16):
+ * Updated phrasing.
+
+###### v0.11.29 (2020-11-16):
+ * Removed redundant modal template.
+
+###### v0.11.28 (2020-11-16):
+ * Added description to the measure info modal.
+
+###### v0.11.27 (2020-11-13):
+ * Updated file info modal.
+
+###### v0.11.26 (2020-11-11):
+ * Added plot setting to toggle the legend.
+
+###### v0.11.25 (2020-11-11):
+ * Added plot setting to change legends font size.
+
+###### v0.11.24 (2020-11-11):
+ * Improved legend scaling.
+
+###### v0.11.23 (2020-11-11):
+ * Improved legend positioning.
+
+###### v0.11.22 (2020-11-11):
+ * Simplified plot legends code.
+
+###### v0.11.21 (2020-11-11):
+ * Added positioning to the plot legend.
+
+###### v0.11.20 (2020-11-11):
+ * Added rough plot legend.
+
+###### v0.11.19 (2020-11-02):
+ * Improved wording in few places.
+ * Improved few hover values.
+
+###### v0.11.18 (2020-11-02):
+ * Added modal link to the measure info to the plot info modal.
+ * Added a new layer of modals with correct returns for following links from the plot info modal.
+
+###### v0.11.17 (2020-11-02):
+ * Updated modal_link wrapper to make it possible to add a trailing dot - similarly to the external_link wrapper.
+ * Fixed class name in modal_link wrapper.
+
+###### v0.11.16 (2020-11-02):
+ * Added information regarding vertical guides to the plot info modal.
+ * Ran the texts through Grammarly.
+ * Removed unnecessary class from plot info modal headers.
+
+###### v0.11.15 (2020-11-02):
+ * Updated modal headers CSS.
+
+###### v0.11.14 (2020-11-02):
+ * Added information regarding plot settings to the plot info modal.
+
+###### v0.11.13 (2020-11-02):
+ * Added information regarding tooltip to the plot info modal.
+
+###### v0.11.12 (2020-11-02):
+ * Created subfolder in the hosted images directory.
+
+###### v0.11.11 (2020-11-02):
+ * Added modal structure for plot information.
+
+###### v0.11.10 (2020-11-02):
+ * Removed redundant chdir argument.
+
+###### v0.11.9 (2020-11-01):
+ * Fixed tooltip overflowing the svg tag.
+
+###### v0.11.8 (2020-11-01):
+ * Added option to disable bolding the line under the mouse.
+
+###### v0.11.7 (2020-11-01):
+ * Added option to disable the tooltip.
+
+###### v0.11.6 (2020-11-01):
+ * Fixed tooltip getting disabled with mouseover vertical guide.
+ * Fixed thicker line getting stuck when cursor left the plot area.
+
+###### v0.11.5 (2020-11-01):
+ * Now the line which has it's infromation displayed is marked by being thicker.
+
+###### v0.11.4 (2020-11-01):
+ * Fixed assertions in two functions.
+
+###### v0.11.3 (2020-10-31):
+ * Moved tooltip to top to avoid it getting obstructed by the click vert's measure value.
+ * Added tooltip background.
+ * Changed tooltip text color.
+ * Moved tooltip away from the cursor.
+
+###### v0.11.2 (2020-10-31):
+ * Fixed tooltip not disappearing then moving out of plot area.
+ * Added text styling to the tooltip text.
+ * Added snapping of tooltip to integer values to avoid weird small moves.
+
+###### v0.11.1 (2020-10-31):
+ * Added basic tooltip.
+
 ###### v0.11.0 (2020-10-31):
  * Merged implementation of modals.
 

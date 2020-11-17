@@ -14,7 +14,8 @@ let IAOReader = class {
     x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
     color_palette; show_lambda_values; lambda_values_bg_color = "#FFFFFF";
     lambda_values_bg_invert; title_text; k_parameter; title_includes_k;
-    ts_delta = 100; click_timestamp; drag_start_x;
+    ts_delta = 100; click_timestamp; drag_start_x; show_tooltip; mark_line;
+    legend_size = 12;
 
     // Data uploaded by the user.
     plot_data_raw = null; plot_data = null; file_names = null;
@@ -53,6 +54,10 @@ let IAOReader = class {
         this.lines = this.svg.append("g")
             .attr("id", "lines");
 
+        // Creating legend g tag.
+        this.legend = this.svg.append("g")
+            .attr("id", "legend");
+
         // Creating g tag, line and label for mouseover vert.
         this.vert = this.svg.append("g")
             .attr("id", "vert")
@@ -75,11 +80,23 @@ let IAOReader = class {
             .attr("dy", "0.81em")
             .style("fill", "var(--plot-color-vert)");
 
+        // Adding the tooltip g and it's text.
+        this.tooltip = this.svg.append("g")
+            .attr("id", "tooltip")
+            .style("visibility", "hidden");
+
+        this.tooltip.append("rect")
+            .style("fill", "var(--theme-color-main)");
+
+        this.tooltip.append("text")
+            .attr("y", "15px")
+            .style("fill", "var(--theme-color-bright-text)");
+
         // This mousemove handler makes the vertical guide follow the cursor.
         var self = this;
         this.svg.on("mousemove", function() {
-            if (!self.vert_show) return;
-            var m = d3.mouse(this);
+            var m = d3.mouse(this),
+                x = self.x_scale.invert(m[0]);
 
             if (self.mouse_out_of_bonds(m)) {
                 self.unmark_lines(self.vert_mark);
@@ -87,9 +104,12 @@ let IAOReader = class {
                 return;
             }
 
-            var x = self.x_scale.invert(m[0]);
-            self.mark_lines(x, self.vert_mark);
-            self.move_vert(self.vert, x);
+            if (self.vert_show) {
+                self.mark_lines(x, self.vert_mark);
+                self.move_vert(self.vert, x);
+            }
+
+            self.draw_tooltip(x, self.y_scale.invert(m[1]));
         })
 
         // This handler resets position of vert. This is particularly useful
@@ -103,6 +123,9 @@ let IAOReader = class {
 
             self.unmark_lines(self.vert_mark);
             self.move_vert(self.vert, self.x_min);
+
+            self.lines.selectAll("line").style("stroke-width", 2);
+            self.tooltip.style("visibility", "hidden");
         })
 
         // Creating g tag, line and label for click vert.
@@ -210,6 +233,7 @@ let IAOReader = class {
         this.vert_drag_end.raise();
         this.vert_click.raise();
         this.vert.raise();
+        this.tooltip.raise();
     }
 
     /* -------------------------------------------------------------------------
@@ -392,6 +416,7 @@ let IAOReader = class {
     }
 
     get y_max() {
+        if (this.plot_data === null) return;
         return d3.max(this.plot_data.map(d => d.y));
     }
 
@@ -468,6 +493,7 @@ let IAOReader = class {
         this.draw_x_axis();
         this.draw_y_axis();
         this.draw_lines();
+        this.draw_legend();
 
         // Resetting verts to their default states.
         this.unmark_lines(this.vert_mark);
@@ -475,6 +501,7 @@ let IAOReader = class {
 
         this.unmark_lines(this.vert_click_mark);
         this.vert_click.style("visibility", "hidden");
+        this.svg.selectAll(".drag").style("visibility", "hidden");
 
         this.calculate_summary_table();
     }
@@ -501,6 +528,39 @@ let IAOReader = class {
                     .attr("y2", d => this.y_scale(d.y))
                     .style("stroke-width", 2)
                     .style("stroke", d => this.file_color(d.FileName));
+    }
+
+    draw_legend() {
+        var legend = this.legend,
+            legend_size = this.legend_size,
+            line_height = legend_size + 8,
+            disp_files = this.displayed_files.reverse();
+
+        if (disp_files.length == 0) return;
+
+        var labels = legend.selectAll("text")
+            .data(disp_files)
+            .join("text")
+                .attr("x", legend_size + 5)
+                .attr("y", (d, i) => line_height * i)
+                .style("font-size", legend_size + "px")
+                .text(d => d);
+
+        legend.selectAll("rect")
+            .data(disp_files)
+            .join("rect")
+                .attr("x", 0)
+                .attr("y", (d, i) => (line_height * i - legend_size + 2))
+                .attr("width", legend_size)
+                .attr("height", legend_size)
+                .style("fill", d => this.file_color(d));
+
+        // Moving legend so that it won't leave plot area.
+        var legend_bbox = legend.node().getBBox(),
+            x_pos = this.width - this.margin.right - legend_bbox.width - 5,
+            y_pos = this.height - this.margin.bottom - legend_bbox.height * 0.8;
+
+        legend.attr("transform", "translate(" + x_pos + ", " + y_pos + ")");
     }
 
     draw_lambda_values(vert, x1, top_placement, x2, horizontal_padding = 3) {
@@ -590,6 +650,64 @@ let IAOReader = class {
         this.title.text(title_text);
     }
 
+    draw_tooltip(mouse_x, mouse_y, proximity_threshold = 0.4) {
+        var x = Math.round(mouse_x),
+            y = Math.round(mouse_y);
+
+        var all_lines = this.lines.selectAll("line");
+        all_lines.style("stroke-width", 2);
+
+        var lines = all_lines.filter(d => d.Start <= x && x <= d.End);
+
+        if (lines.empty()) return;
+        var lines_data = lines.data();
+
+        // Retrieving data of the closest line to the cursor.
+        var line_dists = lines_data.map(line => Math.abs(line.y - mouse_y)),
+            min_dist = d3.min(line_dists);
+
+        // Hiding the tooltip so that it effectively gets removed if the
+        // distance from closest line is above the proximity threshold.
+        this.tooltip.style("visibility", "hidden");
+        if (min_dist > proximity_threshold) return;
+
+        var closest_line = lines_data[line_dists.indexOf(min_dist)];
+
+        // Bolding the line which has it's information displayed.
+        if (this.mark_line) {
+            lines.filter(d => (
+                d.Start == closest_line.Start &&
+                d.End == closest_line.End &&
+                d.FileName == closest_line.FileName &&
+                d.y == closest_line.y
+            )).style("stroke-width", 4);
+        }
+
+        if (!this.show_tooltip) return;
+
+        var x_offset = "15px",
+            tooltip_text = ""
+                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>File</tspan>  "
+                + closest_line.FileName
+                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>Start</tspan> "
+                + closest_line.Start
+                + "<tspan class='name' x='" + x_offset + "' dy='1.2em'>End</tspan>   "
+                + closest_line.End;
+
+        var tooltip_text_elem = this.tooltip.select("text").html(tooltip_text),
+            tooltip_rect_elem = this.tooltip.select("rect");
+        this.draw_text_bbox(tooltip_text_elem, tooltip_rect_elem, 12);
+
+        var tooltip_width = tooltip_rect_elem.attr("width"),
+            tooltip_height = tooltip_rect_elem.attr("height"),
+            x_transform = Math.min(this.x_scale(x), this.width - tooltip_width - 10),
+            y_transform = Math.min(this.y_scale(y), this.height - tooltip_height - 15);
+
+        var tooltip_text = this.tooltip
+            .attr("transform", "translate(" + x_transform + ", " + y_transform + ")")
+            .style("visibility", "visible");
+    }
+
 
     /* -------------------------------------------------------------------------
      * Lines coloring
@@ -656,7 +774,7 @@ let IAOReader = class {
         }
     }
 
-    redraw_vert(vert) {
+    redraw_vert(vert, draw_values = true) {
         var transform_value = vert.attr("transform");
 
         // Check to avoid errors if vert was not used at least once.
@@ -668,7 +786,7 @@ let IAOReader = class {
         // This moves vert to it's current position to redraw lambda values.
         var x1 = this.x_scale.invert(vert_px_position),
             x2 = vert == this.vert_drag_end ? this.drag_start_x : x1;
-        this.move_vert(vert, x1, true, x2);
+        this.move_vert(vert, x1, draw_values, x2);
     }
 
     move_drag_rect(x1, x2) {

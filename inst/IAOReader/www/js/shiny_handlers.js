@@ -71,6 +71,14 @@ Shiny.addCustomMessageHandler("plot_settings_title_bold", function(title_bold) {
 
 
 // [[ Vertical guide ]]
+Shiny.addCustomMessageHandler("plot_settings_mark_line", function(mark_line) {
+    iaoreader.mark_line = mark_line;
+});
+
+Shiny.addCustomMessageHandler("plot_settings_show_tooltip", function(show_tooltip) {
+    iaoreader.show_tooltip = show_tooltip;
+});
+
 Shiny.addCustomMessageHandler("plot_settings_vert_show", function(vert_show) {
     // vert_show attribute is tracked by the mousemove handler.
     iaoreader.vert_show = vert_show;
@@ -136,6 +144,21 @@ Shiny.addCustomMessageHandler("plot_settings_axes_labels_font_size", function(fo
         iaoreader.axes_labels_font_size = font_size;
         iaoreader.redraw_vert(iaoreader.vert);
         iaoreader.redraw_vert(iaoreader.vert_click);
+        iaoreader.redraw_vert(iaoreader.vert_drag_start, false);
+        iaoreader.redraw_vert(iaoreader.vert_drag_end, false);
+    }
+});
+
+
+// [[ Legend Settings ]]
+Shiny.addCustomMessageHandler("plot_settings_show_legend", function(show_legend) {
+    iaoreader.legend.style("visibility", show_legend ? "visible" : "hidden");
+});
+
+Shiny.addCustomMessageHandler("plot_settings_legend_font_size", function(font_size) {
+    if (8 <= font_size && font_size <= 26) {
+        iaoreader.legend_size = font_size;
+        iaoreader.draw_legend();
     }
 });
 

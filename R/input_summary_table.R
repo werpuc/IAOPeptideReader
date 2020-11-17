@@ -64,7 +64,9 @@ input_summary_row_ui <- function(single_file_input_meta) {
         tags$td(
             actionButton(
                 sprintf("%s_remove", input_id), icon("trash"),
-                title = "Removes uploaded file."
+                title = sprintf(
+                    "Remove '%s' file", single_file_input_meta[["file_name"]]
+                )
             )
         )
     )

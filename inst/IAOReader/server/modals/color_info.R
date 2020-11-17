@@ -1,4 +1,3 @@
-# TODO: Grammarly.
 color_info_modal <- function() {
     default_palette <- "Set1"
     palettes <- c("Accent", "Category10", "Dark2", "Paired", "Pastel1",
@@ -37,7 +36,11 @@ color_info_modal <- function() {
                                 tags$i("(default)")
                             }
                         ),
-                        img(src = sprintf("/www/images/%s.png", color_palette))
+                        img(
+                            src = sprintf(
+                                "/www/images/color_info/%s.png", color_palette
+                            )
+                        )
                     )
                 }
             )

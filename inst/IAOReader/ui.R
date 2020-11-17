@@ -24,13 +24,12 @@ ui <- function() {
                 div(
                     id = "title",
                     title = paste("Version:", packageVersion("iaoreader")),
-                    "IAO Reader",
-                    # TODO(dev): remove after development.
-                    tags$i("development version", style = "font-size: 14px;")
+                    "IAO Reader"
                 ),
                 tags$a(
                     id = "github_url",
                     href = "https://github.com/tmakowski/iaoreader",
+                    title = "Preview source code on GitHub",
                     icon("github")
                 )
             ),
@@ -79,9 +78,17 @@ external_link <- function(text, href, trailing_dot = FALSE) {
     HTML(a_tag)
 }
 
-modal_link <- function(observer_id, ...) {
+modal_link <- function(observer_id, text, trailing_dot = FALSE) {
     onclick <- sprintf("Shiny.setInputValue('%s', Date.now());", observer_id)
-    tags$a(class = "measure_info", onclick = onclick, ...)
+    a_tag <- sprintf(
+        '<a class="modal_link" onclick="%s">%s</a>', onclick, text
+    )
+
+    if (trailing_dot) {
+        a_tag <- paste0(a_tag, ".")
+    }
+
+    HTML(a_tag)
 }
 
 modal_label_link <- function(observer_id, label) {
