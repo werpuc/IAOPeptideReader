@@ -23,6 +23,23 @@ measure_info_modal <- function(return_observer_id) {
             "peptides covering the given residue, regardless of their length."
         ),
 
+        actionButton(
+            "show_point_measure_calc", "Point measure calculation example",
+            class = "collapse-button", `data-toggle` = "collapse",
+            `data-target` = "#point_measure_calc"
+        ),
+        div(
+            id = "point_measure_calc", class = "hideable",
+            # TODO: add description.
+            div(
+                align = "center",
+                img(
+                    src = "/www/images/measure_info/point_measure_example.png",
+                    width = "50%"
+                )
+            )
+        ),
+
         h3("Segment Measure Variant"),
         title = h2(class = "modal_title", "IAO Reader Measure"),
         footer = modal_footer(return_observer_id),

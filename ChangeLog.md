@@ -1,3 +1,6 @@
+###### v0.11.33 (2020-11-17):
+ * Added a structure for the measure calculation example.
+
 ###### v0.11.32 (2020-11-17):
  * Rephrased first paragraph of measure info modal.
 
