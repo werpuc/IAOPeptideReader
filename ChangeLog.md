@@ -1,3 +1,6 @@
+###### v0.11.32 (2020-11-17):
+ * Rephrased first paragraph of measure info modal.
+
 ###### v0.11.31 (2020-11-17):
  * Updated measure info modal structure.
 

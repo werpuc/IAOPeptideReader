@@ -4,8 +4,9 @@
 measure_info_modal <- function(return_observer_id) {
     modalDialog(
         p(
-            "Note: the K parameter is configurable via the Plot Settings tab",
-            "for both, point and segment measure variants."
+            HTML("<b>Note:</b>"), "the K parameter mentioned below is",
+            "configurable via the Plot Settings tab for both, point and",
+            "segment measure variants."
         ),
 
         h3("Point Measure Variant"),
