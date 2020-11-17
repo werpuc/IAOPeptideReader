@@ -1,3 +1,6 @@
+###### v0.11.37 (2020-11-17):
+ * Fixed drag vertical guides not being hidden on plot update.
+
 ###### v0.11.36 (2020-11-17):
  * Added example of point measure calculation.
 
