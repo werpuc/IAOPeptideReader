@@ -1,3 +1,6 @@
+###### v0.11.31 (2020-11-17):
+ * Updated measure info modal structure.
+
 ###### v0.11.30 (2020-11-16):
  * Updated phrasing.
 
