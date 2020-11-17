@@ -557,7 +557,7 @@ let IAOReader = class {
         // Moving legend so that it won't leave plot area.
         var legend_bbox = legend.node().getBBox(),
             x_pos = this.width - this.margin.right - legend_bbox.width - 5,
-            y_pos = this.y_scale(0) - legend_bbox.height - 5;
+            y_pos = this.height - this.margin.bottom - legend_bbox.height * 0.8;
 
         legend.attr("transform", "translate(" + x_pos + ", " + y_pos + ")");
     }
