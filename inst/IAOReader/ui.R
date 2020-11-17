@@ -24,9 +24,7 @@ ui <- function() {
                 div(
                     id = "title",
                     title = paste("Version:", packageVersion("iaoreader")),
-                    "IAO Reader",
-                    # TODO(dev): remove after development.
-                    tags$i("development version", style = "font-size: 14px;")
+                    "IAO Reader"
                 ),
                 tags$a(
                     id = "github_url",

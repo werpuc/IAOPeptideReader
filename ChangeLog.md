@@ -1,3 +1,6 @@
+###### v1.0.0 (2020-11-17):
+ * Removed *development version* notification.
+
 ###### v0.11.40 (2020-11-17):
  * Added segment measure calculation example's description.
 
