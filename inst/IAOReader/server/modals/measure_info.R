@@ -9,6 +9,7 @@ measure_info_modal <- function(return_observer_id) {
             "segment measure variants."
         ),
 
+        # Point measure variant
         h3("Point Measure Variant"),
         p(
             "The point measure calculates a ratio of long enough peptides",
@@ -42,7 +43,7 @@ measure_info_modal <- function(return_observer_id) {
                 align = "center",
                 img(
                     src = "/www/images/measure_info/point_measure_example.png",
-                    width = "50%"
+                    width = "60%"
                 )
             ),
             p(
@@ -54,6 +55,7 @@ measure_info_modal <- function(return_observer_id) {
             )
         ),
 
+        # Segment measure variant
         h3("Segment Measure Variant"),
         p(
             "The segment measure is analogous to the point variant. However,",
@@ -66,6 +68,22 @@ measure_info_modal <- function(return_observer_id) {
             "extending a given segment by at least K amino acid residue in",
             "both directions, while the denominator is the total number of",
             "peptides spanning over a given region."
+        ),
+
+        actionButton(
+            "show_segment_measure_calc", "Segment measure calculation example",
+            class = "collapse-button", `data-toggle` = "collapse",
+            `data-target` = "#segment_measure_calc"
+        ),
+        div(
+            id = "segment_measure_calc", class = "hideable",
+            div(
+                align = "center",
+                img(
+                    src = "/www/images/measure_info/segment_measure_example.png",
+                    width = "80%"
+                )
+            )
         ),
         title = h2(class = "modal_title", "IAO Reader Measure"),
         footer = modal_footer(return_observer_id),

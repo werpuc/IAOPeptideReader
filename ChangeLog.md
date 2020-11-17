@@ -1,3 +1,6 @@
+###### v0.11.39 (2020-11-17):
+ * Added image for the segment measure calculation example.
+
 ###### v0.11.38 (2020-11-17):
  * Fixed drag vertical guides labels boxes not adjusting on font size change.
 
