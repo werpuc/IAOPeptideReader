@@ -41,6 +41,18 @@ measure_info_modal <- function(return_observer_id) {
         ),
 
         h3("Segment Measure Variant"),
+        p(
+            "The segment measure is analogous to the point variant. However,",
+            "the segment variant, as the name suggests, uses a selected",
+            "segment of the sequence instead of the point in calculations."
+        ),
+        p(
+            "Therefore, the segment measure calculates a ratio defined by",
+            "a fraction, where the nominator is equal to a number of peptides",
+            "extending a given segment by at least K amino acid residue in",
+            "both directions, while the denominator is the total number of",
+            "peptides spanning over a given region."
+        ),
         title = h2(class = "modal_title", "IAO Reader Measure"),
         footer = modal_footer(return_observer_id),
         easyClose = TRUE

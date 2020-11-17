@@ -1,3 +1,6 @@
+###### v0.11.34 (2020-11-17):
+ * Added description of segment measure variant.
+
 ###### v0.11.33 (2020-11-17):
  * Added a structure for the measure calculation example.
 
