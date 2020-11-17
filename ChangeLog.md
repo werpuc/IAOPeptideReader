@@ -1,3 +1,6 @@
+###### v0.11.40 (2020-11-17):
+ * Added segment measure calculation example's description.
+
 ###### v0.11.39 (2020-11-17):
  * Added image for the segment measure calculation example.
 

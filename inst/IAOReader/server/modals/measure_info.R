@@ -1,6 +1,3 @@
-# TODO: Grammarly.
-# TODO: add information to the modal.
-# TODO: segment measure example.
 measure_info_modal <- function(return_observer_id) {
     modalDialog(
         p(
@@ -60,7 +57,9 @@ measure_info_modal <- function(return_observer_id) {
         p(
             "The segment measure is analogous to the point variant. However,",
             "the segment variant, as the name suggests, uses a selected",
-            "segment of the sequence instead of the point in calculations."
+            "segment of the sequence instead of the point in calculations.",
+            "Additionally, the segment measure requires at least one peptide",
+            "spanning across the whole selected segment."
         ),
         p(
             "Therefore, the segment measure calculates a ratio defined by",
@@ -77,12 +76,31 @@ measure_info_modal <- function(return_observer_id) {
         ),
         div(
             id = "segment_measure_calc", class = "hideable",
+            p(
+                "In the picture below, there is a fragment of the plot for",
+                "three different files. However, only two colors have measure",
+                "values assigned. That is due to the fact that in the top file",
+                "none of the lines spans across the whole segment."
+            ),
+            p(
+                "On the other hand, the middle file has a measure's value",
+                "assigned. However, it is a zero due to the fact that none of",
+                "the lines extend the selected segment by at least 4 (the K",
+                "parameter). Therefore the denominator is and thus the measure",
+                "is equal to 0 (= 0/3)."
+            ),
             div(
                 align = "center",
                 img(
                     src = "/www/images/measure_info/segment_measure_example.png",
                     width = "80%"
                 )
+            ),
+            p(
+                "Finally, the bottommost file has a value of 75%. Since only a",
+                "single peptide does not span by at least 3 in both directions",
+                "(the bottom one) the nominator in the ratio is equal to 3.",
+                "Therefore the measure is equal to 0.75 (= 3/4)."
             )
         ),
         title = h2(class = "modal_title", "IAO Reader Measure"),
