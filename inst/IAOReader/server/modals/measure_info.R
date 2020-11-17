@@ -30,13 +30,27 @@ measure_info_modal <- function(return_observer_id) {
         ),
         div(
             id = "point_measure_calc", class = "hideable",
-            # TODO: add description.
+            p(
+                "In the below picture the point measure for the left-hand side",
+                "vertical guide assumes 100%. That is due to the fact that all",
+                "four lines representing peptides span left and right by at",
+                "least 3 (the K parameter). Therefore, both, nominator and",
+                "denominator are equal to 4 resulting in the ratio of 1",
+                "(= 4/4)."
+            ),
             div(
                 align = "center",
                 img(
                     src = "/www/images/measure_info/point_measure_example.png",
                     width = "50%"
                 )
+            ),
+            p(
+                "However, the right-hand side guide shows only 60% value. This",
+                "is due to the fact that out of total of 5 lines the guide",
+                "crosses only three span by at least 3 residues (the top and",
+                "the bottom are too short). This results in the ratio of 0.6",
+                "(= 3/5)."
             )
         ),
 

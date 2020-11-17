@@ -1,3 +1,6 @@
+###### v0.11.36 (2020-11-17):
+ * Added example of point measure calculation.
+
 ###### v0.11.35 (2020-11-17):
  * Adjusted vertical position of the plot legend.
 
