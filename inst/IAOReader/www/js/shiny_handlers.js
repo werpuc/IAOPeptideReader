@@ -37,8 +37,8 @@ Shiny.addCustomMessageHandler("download_svg", function(_) {
 });
 
 
-Shiny.addCustomMessageHandler("update_plot", function(_) {
-    iaoreader.update_plot();
+Shiny.addCustomMessageHandler("calculate_summary_table", function(_) {
+    iaoreader.calculate_summary_table();
 });
 
 

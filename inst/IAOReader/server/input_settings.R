@@ -230,7 +230,7 @@ input_settings <- function(input, output, session) {
     observeEvent(summary_table_listener(), {
         req(any_file_good())
 
-        session$sendCustomMessage("update_plot", 1)
+        session$sendCustomMessage("calculate_summary_table", 1)
     })
 
     output[["summary_table"]] <- renderTable(align = "c", {

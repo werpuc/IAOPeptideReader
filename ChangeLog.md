@@ -1,3 +1,6 @@
+###### v1.0.1 (2020-11-20):
+ * Fixed vertical guides disappering on K parameter change.
+
 ###### v1.0.0 (2020-11-17):
  * Removed *development version* notification.
 

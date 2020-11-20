@@ -502,8 +502,6 @@ let IAOReader = class {
         this.unmark_lines(this.vert_click_mark);
         this.vert_click.style("visibility", "hidden");
         this.svg.selectAll(".drag").style("visibility", "hidden");
-
-        this.calculate_summary_table();
     }
 
     draw_x_axis() {
