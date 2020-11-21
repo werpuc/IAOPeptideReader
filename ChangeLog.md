@@ -1,3 +1,7 @@
+###### v1.0.2 (2020-11-21):
+ * Rewritten `iaoreader.redraw_vert` method to not use `iaoreader.drag_start_x` which is changed too eagerly. This fixed disappearing measure values on K parameter change.
+ * Added `iaoreader.vert_px_position` utility method.
+
 ###### v1.0.1 (2020-11-20):
  * Fixed vertical guides disappering on K parameter change.
 

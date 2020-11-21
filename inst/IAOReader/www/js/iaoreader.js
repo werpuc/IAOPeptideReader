@@ -772,19 +772,31 @@ let IAOReader = class {
         }
     }
 
+    // This method moves vert to it's current position to redraw lambda values.
     redraw_vert(vert, draw_values = true) {
+        var vert_px_pos = this.vert_px_position(vert);
+        if (vert_px_pos === null) return;
+
+        var x1 = this.x_scale.invert(vert_px_pos),
+            x2 = x1;
+
+        if (vert == this.vert_drag_end) {
+            var vert_start_px_pos = this.vert_px_position(this.vert_drag_start);
+            if (vert_start_px_pos === null) return;
+
+            x2 = this.x_scale.invert(vert_start_px_pos);
+        }
+
+        this.move_vert(vert, x1, draw_values, x2);
+    }
+
+    vert_px_position(vert) {
         var transform_value = vert.attr("transform");
 
         // Check to avoid errors if vert was not used at least once.
-        if (transform_value === null) return;
+        if (transform_value === null) return null;
 
-        var vert_px_position = +transform_value
-            .replace("translate(", "").split(",")[0];
-
-        // This moves vert to it's current position to redraw lambda values.
-        var x1 = this.x_scale.invert(vert_px_position),
-            x2 = vert == this.vert_drag_end ? this.drag_start_x : x1;
-        this.move_vert(vert, x1, draw_values, x2);
+        return +transform_value.replace("translate(", "").split(",")[0];
     }
 
     move_drag_rect(x1, x2) {
