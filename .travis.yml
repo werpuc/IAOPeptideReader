@@ -25,7 +25,3 @@ branches:
 
 after_success:
   - Rscript -e 'covr::codecov()'
-  - if [ "${TRAVIS_BRANCH}" = "master" ] &&
-      [ "${TRAVIS_OS_NAME}" = "linux" ] &&
-      [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
-      [ "${TRAVIS_R_VERSION_STRING}" = "release" ]; then Rscript dev/deploy.R; fi
