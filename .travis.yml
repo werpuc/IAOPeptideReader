@@ -9,6 +9,9 @@ r_packages:
   - pkgload
   - rsconnect
 
+install:
+  - Rscript -e "shinytest::installDependencies()"
+
 os:
   - linux
   - osx
