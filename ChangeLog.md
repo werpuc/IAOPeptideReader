@@ -1,3 +1,6 @@
+###### v1.0.4 (2020-11-25):
+ * Moved sample data from `dev/data` to `inst/sample_data`.
+
 ###### v1.0.3 (2020-11-25):
  * Fixed doubled HTML id attribute.
 
