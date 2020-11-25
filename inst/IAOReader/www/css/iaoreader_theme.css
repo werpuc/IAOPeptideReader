@@ -183,11 +183,11 @@ div#plot g#tooltip tspan.name {
 
 /* [[ Data Preview ]] */
 /* selectInput for the file to preview (extending the input to file's name). */
-div#previewed_file div.selectize-control, div#previewed_file div.selectize-dropdown {
+div#previewed_file_div div.selectize-control, div#previewed_file_div div.selectize-dropdown {
     min-width: max-content;
 }
 
-div#previewed_file div.has-items {
+div#previewed_file_div div.has-items {
     padding-right: 32px;
 }
 

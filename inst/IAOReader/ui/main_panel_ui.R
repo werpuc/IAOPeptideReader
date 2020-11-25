@@ -61,7 +61,7 @@ data_preview_ui <- function() {
         no_file_uploaded_wrapper(
             no_file_good_wrapper(
                 div(
-                    id = "previewed_file",
+                    id = "previewed_file_div",
                     selectInput("previewed_file", "Select File to Preview", NULL)
                 ),
                 DT::dataTableOutput("data_preview")
