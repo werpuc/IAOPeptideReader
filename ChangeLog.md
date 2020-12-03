@@ -1,3 +1,6 @@
+###### v1.0.6 (2020-12-03):
+ * Added file removal shiny tests.
+
 ###### v1.0.5 (2020-12-03):
  * Added file upload tests utilizing `shinytest` package.
 

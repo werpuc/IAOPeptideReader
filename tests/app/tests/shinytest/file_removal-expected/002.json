@@ -1,0 +1,160 @@
+{
+  "input": {
+    "color_info": 0,
+    "download_svg": 0,
+    "file_info": 0,
+    "files_upload": {
+      "name": [
+        "example_data1.csv",
+        "example_data2.csv",
+        "incorrect_data1.csv",
+        "incorrect_data2.csv",
+        "incorrect_data3.csv"
+      ],
+      "size": [
+        3677,
+        1412,
+        32,
+        64,
+        68
+      ],
+      "type": [
+        "text/csv",
+        "text/csv",
+        "text/csv",
+        "text/csv",
+        "text/csv"
+      ],
+      "datapath": [
+        "0.csv",
+        "1.csv",
+        "2.csv",
+        "3.csv",
+        "4.csv"
+      ]
+    },
+    "IS_row_example_data1.csv_display": true,
+    "IS_row_example_data1.csv_protein": "protein1",
+    "IS_row_example_data1.csv_remove": 1,
+    "IS_row_example_data1.csv_state": "state2",
+    "IS_row_example_data2.csv_display": true,
+    "IS_row_example_data2.csv_protein": "protein1",
+    "IS_row_example_data2.csv_remove": 0,
+    "IS_row_example_data2.csv_state": "state1",
+    "IS_row_incorrect_data1.csv_remove": 0,
+    "IS_row_incorrect_data2.csv_remove": 0,
+    "IS_row_incorrect_data3.csv_remove": 0,
+    "measure_info": 0,
+    "plot_info": 0,
+    "plot_settings_allow_verts_marking": true,
+    "plot_settings_axes_labels_font_size": 10,
+    "plot_settings_color_palette": "Set1",
+    "plot_settings_k_parameter": 3,
+    "plot_settings_lambda_values_bg_invert": true,
+    "plot_settings_legend_font_size": 12,
+    "plot_settings_mark_line": true,
+    "plot_settings_optimize_height": true,
+    "plot_settings_reset": 0,
+    "plot_settings_show_background": true,
+    "plot_settings_show_lambda_values": true,
+    "plot_settings_show_legend": true,
+    "plot_settings_show_tooltip": true,
+    "plot_settings_title_bold": false,
+    "plot_settings_title_font_size": 20,
+    "plot_settings_title_includes_k": true,
+    "plot_settings_title_text": "Peptide Coverage",
+    "plot_settings_vert_show": true,
+    "plot_settings_vertical_offset": 5,
+    "previewed_file": "example_data2.csv",
+    "sample_upload": 0,
+    "sequence_length": 246
+  },
+  "output": {
+    "any_file_bad": true,
+    "any_file_good": true,
+    "files_uploaded": true,
+    "input_summary_table": {
+      "html": "<table>\n  <thead>\n    <tr>\n      <td>File Name<\/td>\n      <td>Seq. Length<\/td>\n      <td>Protein<\/td>\n      <td>State<\/td>\n      <td>Display<\/td>\n    <\/tr>\n  <\/thead>\n  <tbody>\n    <tr class=\"import_summary_row\" title=\"\">\n      <td>\n        <p title=\"example_data2.csv\">example_data2.csv<\/p>\n      <\/td>\n      <td>\n        <p>245<\/p>\n      <\/td>\n      <td>\n        <div class=\"form-group shiny-input-container\">\n          <label class=\"control-label shiny-label-null\" for=\"IS_row_example_data2.csv_protein\"><\/label>\n          <div>\n            <select id=\"IS_row_example_data2.csv_protein\"><option value=\"protein1\" selected>protein1<\/option>\n<option value=\"protein2\">protein2<\/option><\/select>\n            <script type=\"application/json\" data-for=\"IS_row_example_data2.csv_protein\" data-nonempty=\"\">{}<\/script>\n          <\/div>\n        <\/div>\n      <\/td>\n      <td>\n        <div class=\"form-group shiny-input-container\">\n          <label class=\"control-label shiny-label-null\" for=\"IS_row_example_data2.csv_state\"><\/label>\n          <div>\n            <select id=\"IS_row_example_data2.csv_state\"><option value=\"state1\" selected>state1<\/option><\/select>\n            <script type=\"application/json\" data-for=\"IS_row_example_data2.csv_state\" data-nonempty=\"\">{}<\/script>\n          <\/div>\n        <\/div>\n      <\/td>\n      <td>\n        <div class=\"form-group shiny-input-container\">\n          <div class=\"checkbox\">\n            <label>\n              <input id=\"IS_row_example_data2.csv_display\" type=\"checkbox\" checked=\"checked\"/>\n              <span><\/span>\n            <\/label>\n          <\/div>\n        <\/div>\n      <\/td>\n      <td>\n        <button id=\"IS_row_example_data2.csv_remove\" type=\"button\" class=\"btn btn-default action-button\" title=\"Remove &#39;example_data2.csv&#39; file\">\n          <i class=\"fa fa-trash\"><\/i>\n        <\/button>\n      <\/td>\n    <\/tr>\n    <tr class=\"import_summary_row error\" title=\"&#39;State&#39; column is missing.\">\n      <td>\n        <p title=\"incorrect_data1.csv\">incorrect_data1.csv<\/p>\n      <\/td>\n      <td>\n        <p><\/p>\n      <\/td>\n      <td><\/td>\n      <td><\/td>\n      <td><\/td>\n      <td>\n        <button id=\"IS_row_incorrect_data1.csv_remove\" type=\"button\" class=\"btn btn-default action-button\" title=\"Remove &#39;incorrect_data1.csv&#39; file\">\n          <i class=\"fa fa-trash\"><\/i>\n        <\/button>\n      <\/td>\n    <\/tr>\n    <tr class=\"import_summary_row error\" title=\"&#39;End&#39; column contains missing (empty) values.\">\n      <td>\n        <p title=\"incorrect_data2.csv\">incorrect_data2.csv<\/p>\n      <\/td>\n      <td>\n        <p><\/p>\n      <\/td>\n      <td><\/td>\n      <td><\/td>\n      <td><\/td>\n      <td>\n        <button id=\"IS_row_incorrect_data2.csv_remove\" type=\"button\" class=\"btn btn-default action-button\" title=\"Remove &#39;incorrect_data2.csv&#39; file\">\n          <i class=\"fa fa-trash\"><\/i>\n        <\/button>\n      <\/td>\n    <\/tr>\n    <tr class=\"import_summary_row error\" title=\"&#39;End&#39; column is not numeric.\">\n      <td>\n        <p title=\"incorrect_data3.csv\">incorrect_data3.csv<\/p>\n      <\/td>\n      <td>\n        <p><\/p>\n      <\/td>\n      <td><\/td>\n      <td><\/td>\n      <td><\/td>\n      <td>\n        <button id=\"IS_row_incorrect_data3.csv_remove\" type=\"button\" class=\"btn btn-default action-button\" title=\"Remove &#39;incorrect_data3.csv&#39; file\">\n          <i class=\"fa fa-trash\"><\/i>\n        <\/button>\n      <\/td>\n    <\/tr>\n  <\/tbody>\n<\/table>",
+      "deps": [
+        {
+          "name": "selectize",
+          "version": "0.11.2",
+          "src": {
+            "href": "shared/selectize"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "css/selectize.bootstrap3.css",
+          "head": "<!--[if lt IE 9]>\n<script src=\"shared/selectize/js/es5-shim.min.js\"><\/script>\n<![endif]-->\n<script src=\"shared/selectize/js/selectize.min.js\"><\/script>",
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        },
+        {
+          "name": "font-awesome",
+          "version": "5.13.0",
+          "src": {
+            "href": "font-awesome-5.13.0"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": [
+            "css/all.min.css",
+            "css/v4-shims.min.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        }
+      ]
+    },
+    "plot_settings_inputs": {
+      "html": "<h3>Title Settings<\/h3>\n<div class=\"form-group shiny-input-container\">\n  <label class=\"control-label\" for=\"plot_settings_title_text\">Plot title<\/label>\n  <input id=\"plot_settings_title_text\" type=\"text\" class=\"form-control\" value=\"Peptide Coverage\"/>\n<\/div>\n<div class=\"form-group shiny-input-container\" style=\"width: 40%;\">\n  <label class=\"control-label\" for=\"plot_settings_title_font_size\">Title font size [px]<\/label>\n  <input id=\"plot_settings_title_font_size\" type=\"number\" class=\"form-control\" value=\"20\" min=\"10\" max=\"48\" step=\"1\"/>\n<\/div>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_title_bold\" type=\"checkbox\"/>\n      <span>Bold font<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<div class=\"color_input\">\n  <h5>Title color<\/h5>\n  <input id=\"plot_settings_title_color\" type=\"color\" value=\"#000000\" onchange=\"iaoreader.title_color = this.value;\" style=\"width: 40%;\"/>\n<\/div>\n<h3>Vertical Guides and Mouse Events<\/h3>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_show_tooltip\" type=\"checkbox\" checked=\"checked\"/>\n      <span>Show toolip<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_mark_line\" type=\"checkbox\" checked=\"checked\"/>\n      <span>Bold lines on mouseover<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_vert_show\" type=\"checkbox\" checked=\"checked\"/>\n      <span>Show guide on mouseover<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_allow_verts_marking\" type=\"checkbox\" checked=\"checked\"/>\n      <span>Color lines crossing the guides<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<div class=\"color_input\">\n  <h5>Mouseover guide color<\/h5>\n  <input id=\"plot_settings_vert_color\" type=\"color\" value=\"#00008B\" onchange=\"iaoreader.vert_color = this.value;\" style=\"width: 40%;\"/>\n<\/div>\n<div class=\"color_input\">\n  <h5>Persistent guide color<\/h5>\n  <input id=\"plot_settings_vert_click_color\" type=\"color\" value=\"#8B008B\" onchange=\"iaoreader.vert_click_color = this.value;\" style=\"width: 40%;\"/>\n<\/div>\n<div class=\"color_input\">\n  <h5>Drag guides color<\/h5>\n  <input id=\"plot_settings_vert_drag_color\" type=\"color\" value=\"#FF1493\" onchange=\"iaoreader.vert_drag_color = this.value;\" style=\"width: 40%;\"/>\n<\/div>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_show_lambda_values\" type=\"checkbox\" checked=\"checked\"/>\n      <span>Show measure values<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<label>\n  K penalty parameter\n  <button class=\"btn btn-default action-button label_icon\" id=\"measure_info\" type=\"button\">\n    <i class=\"fa fa-info-circle\"><\/i>\n  <\/button>\n<\/label>\n<div class=\"form-group shiny-input-container\" style=\"width: 40%;\">\n  <label class=\"control-label shiny-label-null\" for=\"plot_settings_k_parameter\"><\/label>\n  <input id=\"plot_settings_k_parameter\" type=\"number\" class=\"form-control\" value=\"3\" min=\"0\" step=\"1\"/>\n<\/div>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_title_includes_k\" type=\"checkbox\" checked=\"checked\"/>\n      <span>Include k parameter in title<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<div class=\"color_input\">\n  <h5>Measure values background color<\/h5>\n  <input id=\"plot_settings_lambda_values_bg\" type=\"color\" value=\"#FFFFFF\" onchange=\"iaoreader.lambda_values_bg = this.value;\" style=\"width: 40%;\"/>\n<\/div>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_lambda_values_bg_invert\" type=\"checkbox\" checked=\"checked\"/>\n      <span>Invert measure values background color<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<h3>Plot Space Optimization<\/h3>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_optimize_height\" type=\"checkbox\" checked=\"checked\"/>\n      <span>Optimize the plot's height<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<div class=\"form-group shiny-input-container\" style=\"width: 40%;\">\n  <label class=\"control-label\" for=\"plot_settings_vertical_offset\">Vertical spacing between files<\/label>\n  <input id=\"plot_settings_vertical_offset\" type=\"number\" class=\"form-control\" value=\"5\" min=\"1\" step=\"1\"/>\n<\/div>\n<h3>Axes Settings<\/h3>\n<div class=\"color_input\">\n  <h5>Axes color<\/h5>\n  <input id=\"plot_settings_axes_color\" type=\"color\" value=\"#000000\" onchange=\"iaoreader.axes_color = this.value;\" style=\"width: 40%;\"/>\n<\/div>\n<div class=\"color_input\">\n  <h5>Axes labels color<\/h5>\n  <input id=\"plot_settings_axes_labels_color\" type=\"color\" value=\"#000000\" onchange=\"iaoreader.axes_labels_color = this.value;\" style=\"width: 40%;\"/>\n<\/div>\n<div class=\"form-group shiny-input-container\" style=\"width: 40%;\">\n  <label class=\"control-label\" for=\"plot_settings_axes_labels_font_size\">Axes labels font size [px]<\/label>\n  <input id=\"plot_settings_axes_labels_font_size\" type=\"number\" class=\"form-control\" value=\"10\" min=\"0\" max=\"26\" step=\"1\"/>\n<\/div>\n<h3>Legend Settings<\/h3>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_show_legend\" type=\"checkbox\" checked=\"checked\"/>\n      <span>Show legend<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<div class=\"form-group shiny-input-container\" style=\"width: 40%;\">\n  <label class=\"control-label\" for=\"plot_settings_legend_font_size\">Legend labels font size [px]<\/label>\n  <input id=\"plot_settings_legend_font_size\" type=\"number\" class=\"form-control\" value=\"12\" min=\"8\" max=\"26\" step=\"1\"/>\n<\/div>\n<h3>Color Settings<\/h3>\n<label>\n  Lines color palette\n  <button class=\"btn btn-default action-button label_icon\" id=\"color_info\" type=\"button\">\n    <i class=\"fa fa-info-circle\"><\/i>\n  <\/button>\n<\/label>\n<div class=\"form-group shiny-input-container\" style=\"width: 40%;\">\n  <label class=\"control-label shiny-label-null\" for=\"plot_settings_color_palette\"><\/label>\n  <div>\n    <select id=\"plot_settings_color_palette\"><option value=\"Accent\">Accent<\/option>\n<option value=\"Category10\">Category10<\/option>\n<option value=\"Dark2\">Dark2<\/option>\n<option value=\"Paired\">Paired<\/option>\n<option value=\"Pastel1\">Pastel1<\/option>\n<option value=\"Pastel2\">Pastel2<\/option>\n<option value=\"Set1\" selected>Set1<\/option>\n<option value=\"Set2\">Set2<\/option>\n<option value=\"Set3\">Set3<\/option>\n<option value=\"Tableau10\">Tableau10<\/option><\/select>\n    <script type=\"application/json\" data-for=\"plot_settings_color_palette\" data-nonempty=\"\">{}<\/script>\n  <\/div>\n<\/div>\n<div class=\"form-group shiny-input-container\">\n  <div class=\"checkbox\">\n    <label>\n      <input id=\"plot_settings_show_background\" type=\"checkbox\" checked=\"checked\"/>\n      <span>Show background<\/span>\n    <\/label>\n  <\/div>\n<\/div>\n<div class=\"color_input\">\n  <h5>Background color<\/h5>\n  <input id=\"plot_background_color\" type=\"color\" value=\"#FFFFFF\" onchange=\"iaoreader.background_color = this.value;\" style=\"width: 40%;\"/>\n<\/div>",
+      "deps": [
+        {
+          "name": "font-awesome",
+          "version": "5.13.0",
+          "src": {
+            "href": "font-awesome-5.13.0"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": [
+            "css/all.min.css",
+            "css/v4-shims.min.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "selectize",
+          "version": "0.11.2",
+          "src": {
+            "href": "shared/selectize"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "css/selectize.bootstrap3.css",
+          "head": "<!--[if lt IE 9]>\n<script src=\"shared/selectize/js/es5-shim.min.js\"><\/script>\n<![endif]-->\n<script src=\"shared/selectize/js/selectize.min.js\"><\/script>",
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        }
+      ]
+    },
+    "sequence_length_max": "Read from files: 245.",
+    "sequence_length_max_displayed": "Currently displayed files: 245.",
+    "summary_table": {
+      "message": "",
+      "call": "NULL",
+      "type": [
+        "shiny.silent.error",
+        "validation"
+      ]
+    }
+  },
+  "export": {
+
+  }
+}
