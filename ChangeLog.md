@@ -1,3 +1,6 @@
+###### v1.0.5 (2020-12-03):
+ * Added file upload tests utilizing `shinytest` package.
+
 ###### v1.0.4 (2020-11-25):
  * Moved sample data from `dev/data` to `inst/sample_data`.
 
