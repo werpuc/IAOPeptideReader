@@ -1,3 +1,6 @@
+###### v1.0.7 (2020-12-04):
+ * Added summary table shiny tests.
+
 ###### v1.0.6 (2020-12-03):
  * Added file removal shiny tests.
 
