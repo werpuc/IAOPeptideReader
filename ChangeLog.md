@@ -1,3 +1,6 @@
+###### v1.2.2 (2020-12-05):
+ * Updated documentation.
+
 ###### v1.2.1 (2020-12-05):
  * Updated expected shinytest results.
 

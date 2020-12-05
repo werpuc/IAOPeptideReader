@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_shiny_app.R
 \name{run_shiny_app}
 \alias{run_shiny_app}
-\title{Run IAO Reader App}
+\title{Run IAO Peptide Reader App}
 \usage{
 run_shiny_app(port = 8080, run_app = TRUE)
 }
@@ -16,5 +16,5 @@ Shiny application to services such as \url{https://www.shinyapps.io/}.}
 \description{
 This function is responsible for starting the core application
  of this package. The application itself is located inside the
- \code{iaoreader} package files.
+ \code{IAOPeptideReader} package files.
 }
