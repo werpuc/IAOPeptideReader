@@ -245,6 +245,22 @@ input_settings <- function(input, output, session) {
 
 # This function creates files input meta for sample files.
 sample_fim <- function() {
+    data_dir <- system.file("sample_data", package = "iaoreader")
+    if (data_dir == "") {
+        data_dir <- "./inst/sample_data"
+
+        # This is expected to stop when loading package with devtools::load_all
+        # from other directory than the package's root.
+        if (!dir.exists(data_dir)) {
+            stop(
+                sprintf(
+                    "Directory %s does not exist. getwd()=='%s'", data_dir,
+                    getwd()
+                )
+            )
+        }
+    }
+
     file_names <- c(
         sprintf("example_data%d.csv", 1:2),
         sprintf("incorrect_data%d.csv", 1:3)
@@ -252,7 +268,7 @@ sample_fim <- function() {
 
     data.frame(
         "name" = file_names,
-        "datapath" = paste0("./dev/data/",  file_names),
+        "datapath" = file.path(data_dir,  file_names),
         stringsAsFactors = FALSE
     )
 }

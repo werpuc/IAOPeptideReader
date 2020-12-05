@@ -1,3 +1,18 @@
+###### v1.0.8 (2020-12-05):
+ * Added input summary table shiny tests.
+
+###### v1.0.7 (2020-12-04):
+ * Added summary table shiny tests.
+
+###### v1.0.6 (2020-12-03):
+ * Added file removal shiny tests.
+
+###### v1.0.5 (2020-12-03):
+ * Added file upload tests utilizing `shinytest` package.
+
+###### v1.0.4 (2020-11-25):
+ * Moved sample data from `dev/data` to `inst/sample_data`.
+
 ###### v1.0.3 (2020-11-25):
  * Fixed doubled HTML id attribute.
 
