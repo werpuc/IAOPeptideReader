@@ -1,3 +1,9 @@
+###### v1.2.1 (2020-12-05):
+ * Updated expected shinytest results.
+
+###### v1.2.0 (2020-12-05):
+ * Renamed application to IAO Peptide Reader for it to be more precise as it does not process whole IAO.
+
 ###### v1.0.8 (2020-12-05):
  * Added input summary table shiny tests.
 
