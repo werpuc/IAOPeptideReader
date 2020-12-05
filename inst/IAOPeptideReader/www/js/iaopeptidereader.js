@@ -823,4 +823,4 @@ let IAOPeptideReader = class {
 
 
 // This variable's value is assigned by Shiny main server function.
-var iaoreader;
+var iaopr;

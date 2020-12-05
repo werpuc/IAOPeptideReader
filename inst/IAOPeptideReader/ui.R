@@ -5,13 +5,13 @@ source(file.path("ui", "sidebar_panel_ui.R"), local = TRUE, chdir = TRUE)
 # Main UI function -------------------------------------------------------------
 ui <- function() {
     css_names <- c(
-        "iaoreader_theme.css",
+        "iaopeptidereader_theme.css",
         "HaDeX_theme.css"
     )
 
     scripts_names <- c(
         "shiny_handlers.js",
-        "iaoreader.js",
+        "iaopeptidereader.js",
         "lambda_measures.js",
         "download_svg.js"
     )
