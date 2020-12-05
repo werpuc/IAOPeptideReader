@@ -1,4 +1,4 @@
-let IAOReader = class {
+let IAOPeptideReader = class {
     // Canvas dimensions.
     width = 1280; height = 720;
     margin = { top: 40, right: 35, bottom: 40, left: 35 };
@@ -823,4 +823,4 @@ let IAOReader = class {
 
 
 // This variable's value is assigned by Shiny main server function.
-var iaoreader;
+var iaopr;

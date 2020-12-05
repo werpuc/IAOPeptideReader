@@ -40,10 +40,13 @@ file_info_modal <- function() {
             ),
             tags$span(
                 id = "file_info_example_caption",
-                "An example fragment of an IAO Reader input file."
+                "An example fragment of an IAO Peptide Reader input file."
             )
         ),
-        title = h2(class = "modal_title", "IAO Reader Input Files' Structure"),
+        title = h2(
+            class = "modal_title",
+            "IAO Peptide Reader Input Files' Structure"
+        ),
         footer = modal_footer(),
         easyClose = TRUE
     )
@@ -52,16 +55,16 @@ file_info_modal <- function() {
 
 file_info_description <- tagList(
     tags$p(
-        "The IAO Reader application expects that the uploaded file's format is",
-        "the Comma Separated Values. The field separator should be a comma and",
-        "the decimal separator should be a dot. If one wishes to upload",
-        "multiple files then these files should be contained within a single",
-        "directory."
+        "The IAO Peptide Reader application expects that the uploaded file's",
+        "format is the Comma Separated Values. The field separator should be",
+        "a comma and the decimal separator should be a dot. If one wishes to",
+        "upload multiple files then these files should be contained within",
+        "a single directory."
     ),
     tags$p(
         "Additionally, there are four columns that uploaded CSV file is",
         "required to have. The file may contain any additional columns but",
-        "those won't be utilized by the IAO Reader."
+        "those won't be utilized by the IAO Peptide Reader."
     ),
     tags$p(
         HTML(

@@ -5,7 +5,7 @@ color_info_modal <- function() {
 
     modalDialog(
         p(
-            "The color palettes used in the IAO Reader are the ones",
+            "The color palettes used in the IAO Peptide Reader are the ones",
             "implemented in the D3.js library's",
             external_link(
                 "d3-scale-chromatic module",

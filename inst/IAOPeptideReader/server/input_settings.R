@@ -68,7 +68,7 @@ input_settings <- function(input, output, session) {
                 # Proceed to read the file if its CSV.
                 tryCatch({
                     single_file_data <- fread(file_path, sep = ",", dec = ".")
-                    single_res[c("is_ok", "error_messages")] <- verify_iao_data(single_file_data)
+                    single_res[c("is_ok", "error_messages")] <- verify_iao_peptide_data(single_file_data)
                 }, error = function(e) {
                     # The <<- operator allows assigning the value outside
                     # the error handling function.
@@ -245,7 +245,7 @@ input_settings <- function(input, output, session) {
 
 # This function creates files input meta for sample files.
 sample_fim <- function() {
-    data_dir <- system.file("sample_data", package = "iaoreader")
+    data_dir <- system.file("sample_data", package = "IAOPeptideReader")
     if (data_dir == "") {
         data_dir <- "./inst/sample_data"
 

@@ -5,13 +5,13 @@ source(file.path("ui", "sidebar_panel_ui.R"), local = TRUE, chdir = TRUE)
 # Main UI function -------------------------------------------------------------
 ui <- function() {
     css_names <- c(
-        "iaoreader_theme.css",
+        "iaopeptidereader_theme.css",
         "HaDeX_theme.css"
     )
 
     scripts_names <- c(
         "shiny_handlers.js",
-        "iaoreader.js",
+        "iaopeptidereader.js",
         "lambda_measures.js",
         "download_svg.js"
     )
@@ -23,17 +23,18 @@ ui <- function() {
             tagList(
                 div(
                     id = "title",
-                    title = paste("Version:", packageVersion("iaoreader")),
-                    "IAO Reader"
+                    title = paste("Version:", packageVersion("IAOPeptideReader")),
+                    "IAO Peptide Reader"
                 ),
                 tags$a(
                     id = "github_url",
+                    # TODO: update URL.
                     href = "https://github.com/tmakowski/iaoreader",
                     title = "Preview source code on GitHub",
                     icon("github")
                 )
             ),
-            "IAO Reader"
+            "IAO Peptide Reader"
         ),
         fluidPage(
             lapply(css_names, attach_css),

@@ -1,4 +1,4 @@
-test_that("verify_iao_data function works", {
+test_that("verify_iao_peptide_data function works", {
     options(stringsAsFactors = FALSE)
 
     df1 <- data.frame("Protein" = "X", "State" = "Y", "Start" = 1, "End" = 2)
@@ -64,13 +64,13 @@ test_that("verify_iao_data function works", {
         "error_messages" = "'End' column contains missing (empty) values."
     )
 
-    expect_equal(verify_iao_data(df1), r1)
-    expect_equal(verify_iao_data(df2), r2)
-    expect_equal(verify_iao_data(df3), r3)
-    expect_equal(verify_iao_data(df4), r4)
-    expect_equal(verify_iao_data(df5), r5)
-    expect_equal(verify_iao_data(df6), r6)
-    expect_equal(verify_iao_data(df7), r7)
-    expect_equal(verify_iao_data(df8), r8)
-    expect_equal(verify_iao_data(df9), r9)
+    expect_equal(verify_iao_peptide_data(df1), r1)
+    expect_equal(verify_iao_peptide_data(df2), r2)
+    expect_equal(verify_iao_peptide_data(df3), r3)
+    expect_equal(verify_iao_peptide_data(df4), r4)
+    expect_equal(verify_iao_peptide_data(df5), r5)
+    expect_equal(verify_iao_peptide_data(df6), r6)
+    expect_equal(verify_iao_peptide_data(df7), r7)
+    expect_equal(verify_iao_peptide_data(df8), r8)
+    expect_equal(verify_iao_peptide_data(df9), r9)
 })

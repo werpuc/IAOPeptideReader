@@ -6,6 +6,6 @@ rsconnect::setAccountInfo(
 )
 
 rsconnect::deployApp(
-    appName = "iaoreader",
+    appName = "IAOPeptideReader",
     forceUpdate = TRUE
 )

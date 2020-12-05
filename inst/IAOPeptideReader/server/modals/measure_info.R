@@ -103,7 +103,7 @@ measure_info_modal <- function(return_observer_id) {
                 "Therefore the measure is equal to 0.75 (= 3/4)."
             )
         ),
-        title = h2(class = "modal_title", "IAO Reader Measure"),
+        title = h2(class = "modal_title", "IAO Peptide Reader Measure"),
         footer = modal_footer(return_observer_id),
         easyClose = TRUE
     )
