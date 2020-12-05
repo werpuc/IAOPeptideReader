@@ -40,10 +40,13 @@ file_info_modal <- function() {
             ),
             tags$span(
                 id = "file_info_example_caption",
-                "An example fragment of an IAO Reader input file."
+                "An example fragment of an IAO Peptide Reader input file."
             )
         ),
-        title = h2(class = "modal_title", "IAO Reader Input Files' Structure"),
+        title = h2(
+            class = "modal_title",
+            "IAO Peptide Reader Input Files' Structure"
+        ),
         footer = modal_footer(),
         easyClose = TRUE
     )

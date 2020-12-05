@@ -23,17 +23,18 @@ ui <- function() {
             tagList(
                 div(
                     id = "title",
-                    title = paste("Version:", packageVersion("iaoreader")),
-                    "IAO Reader"
+                    title = paste("Version:", packageVersion("IAOPeptideReader")),
+                    "IAO Peptide Reader"
                 ),
                 tags$a(
                     id = "github_url",
+                    # TODO: update URL.
                     href = "https://github.com/tmakowski/iaoreader",
                     title = "Preview source code on GitHub",
                     icon("github")
                 )
             ),
-            "IAO Reader"
+            "IAO Peptide Reader"
         ),
         fluidPage(
             lapply(css_names, attach_css),

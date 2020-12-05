@@ -1,8 +1,8 @@
-#' @title Run IAO Reader App
+#' @title Run IAO Peptide Reader App
 #'
 #' @description This function is responsible for starting the core application
 #'  of this package. The application itself is located inside the
-#'  \code{iaoreader} package files.
+#'  \code{IAOPeptideReader} package files.
 #'
 #' @param port a port on which the Shiny application will be hosted.
 #' @param run_app when \code{FALSE} the app object is returned and the
@@ -19,15 +19,16 @@ run_shiny_app <- function(port = 8080, run_app = TRUE) {
         stop("run_app argument has to be either TRUE or FALSE", call. = FALSE)
     }
 
-    ui_path <- system.file("IAOReader", "ui.R", package = "iaoreader")
-    server_path <- system.file("IAOReader", "server.R", package = "iaoreader")
-    www_path <- system.file("IAOReader", "www", package = "iaoreader")
+    pkg_name <- "IAOPeptideReader"
+    ui_path <- system.file(pkg_name, "ui.R", package = pkg_name)
+    server_path <- system.file(pkg_name, "server.R", package = pkg_name)
+    www_path <- system.file(pkg_name, "www", package = pkg_name)
 
     if (ui_path == "" || server_path == "" || www_path == "") {
         stop(
             paste(
                 "Internal package files are missing.",
-                "Consider re-installing the iaoreader package."
+                "Consider re-installing the", pkg_name, " package."
             ),
             call. = FALSE
         )
@@ -35,7 +36,7 @@ run_shiny_app <- function(port = 8080, run_app = TRUE) {
 
     # Note: sourcing those files allows avoiding namespace issues. If the app
     #       would be run directly with:
-    #           runApp(system.file("shiny_app", package = "iaoreader"))
+    #       runApp(system.file("IAOPeptideReader", package = "IAOPeptideReader"))
     #       then the functions imported by the package could not be used within
     #       the application due to the Shiny creating its own namespace.
     #       By sourcing those files all functions imported by the package are

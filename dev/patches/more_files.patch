@@ -1,7 +1,7 @@
-diff --git a/inst/IAOReader/server/input_settings.R b/inst/IAOReader/server/input_settings.R
+diff --git a/inst/IAOPeptideReader/server/input_settings.R b/inst/IAOPeptideReader/server/input_settings.R
 index c4e86ac..89f00a0 100644
---- a/inst/IAOReader/server/input_settings.R
-+++ b/inst/IAOReader/server/input_settings.R
+--- a/inst/IAOPeptideReader/server/input_settings.R
++++ b/inst/IAOPeptideReader/server/input_settings.R
 @@ -250,9 +250,30 @@ sample_fim <- function() {
          sprintf("incorrect_data%d.csv", 1:3)
      )

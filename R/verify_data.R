@@ -1,4 +1,4 @@
-verify_iao_data <- function(df) {
+verify_iao_peptide_data <- function(df) {
     is_ok <- TRUE
     err_msg <- NULL
 

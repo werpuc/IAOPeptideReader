@@ -7,8 +7,8 @@ source(file.path("server", "modals.R"), local = TRUE, chdir = TRUE)
 server <- function(input, output, session) {
 
     # Poke the handler to initialize the iaoreader JS variable with a new
-    # IAOReader class object. The 1 is sent because something has to be sent
-    # for the handler to work.
+    # IAOPeptideReader class object. The 1 is sent because something has to be
+    # sent for the handler to work.
     session$sendCustomMessage("initialize_iaoreader", 1)
 
     plot_settings(input, output, session)

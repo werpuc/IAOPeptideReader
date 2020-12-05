@@ -1,4 +1,4 @@
-## IAO Reader
+## IAO Peptide Reader
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/hadexversum/iaoreader.svg?branch=master)](https://travis-ci.org/hadexversum/iaoreader)
@@ -13,9 +13,9 @@ This project started as a masters thesis at the [Faculty of Mathematics and Info
 If one wishes to install the package it can be done as shown below.
 ```
 # install.packages("remotes")
-remotes::install_github("hadexversum/iaoreader")
+remotes::install_github("hadexversum/IAOPeptideReader")
 
-iaoreader::run_shiny_app()
+IAOPeptideReader::run_shiny_app()
 ```
 
 ### Remarks

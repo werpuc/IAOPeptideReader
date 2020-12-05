@@ -1,4 +1,4 @@
 library(testthat)
-library(iaoreader)
+library(IAOPeptideReader)
 
-test_check("iaoreader")
+test_check("IAOPeptideReader")
