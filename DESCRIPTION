@@ -1,6 +1,6 @@
 Package: IAOPeptideReader
 Title: A Web Application for Analysing IAO Peptide Files
-Version: 1.2.6
+Version: 1.2.7
 Authors@R:
     person(given = "Tymoteusz", family = "Makowski",
            role = c("aut", "cre"),

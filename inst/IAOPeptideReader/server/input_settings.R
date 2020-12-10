@@ -198,7 +198,7 @@ input_settings <- function(input, output, session) {
             tags$thead(
                 tags$tr(
                     lapply(
-                        c("File Name", "Seq. Length", "Protein", "State", "Display"),
+                        c("File Name", "Sequence", "Protein", "State", "Display"),
                         tags$td
                     )
                 )
