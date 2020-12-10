@@ -1,3 +1,6 @@
+###### v1.2.5 (2020-12-10):
+ * Removed redundant shinycssloaders dependency.
+
 ###### v1.2.4 (2020-12-10):
  * Updated GitHub repository URL.
 
