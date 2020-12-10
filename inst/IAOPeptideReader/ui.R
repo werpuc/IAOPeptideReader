@@ -28,8 +28,7 @@ ui <- function() {
                 ),
                 tags$a(
                     id = "github_url",
-                    # TODO: update URL.
-                    href = "https://github.com/tmakowski/iaoreader",
+                    href = "https://github.com/hadexversum/IAOPeptideReader",
                     title = "Preview source code on GitHub",
                     icon("github")
                 )

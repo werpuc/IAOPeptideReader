@@ -1,9 +1,8 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^.*\.md$
-^.*\.bat$
-^.*\.yml$
-^\..*ignore$
+^\.gitignore$
 ^dev$
 ^app\.R$
 ^tags$
+^\.github$
