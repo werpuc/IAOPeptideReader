@@ -12,6 +12,9 @@ Shiny.addCustomMessageHandler("update_seq_len", function(seq_len) {
 Shiny.addCustomMessageHandler("update_data", function(plot_data) {
     iaopr.update_plot_data(plot_data)
     iaopr.update_plot();
+
+    // This setTimeout allows operations to finish.
+    setTimeout(function() { iaopr.calculate_summary_table(); }, 300);
 });
 
 

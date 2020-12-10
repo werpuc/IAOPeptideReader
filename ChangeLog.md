@@ -1,3 +1,6 @@
+###### v1.2.3 (2020-12-10):
+ * Fixed Summary Table not being calculated after file upload.
+
 ###### v1.2.2 (2020-12-05):
  * Updated documentation.
 

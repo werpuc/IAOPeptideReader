@@ -220,14 +220,7 @@ input_settings <- function(input, output, session) {
 
 
     # Summary table ------------------------------------------------------------
-    # Note: debouncing allows the calculation to finish in time. Therefore, it
-    #       ensures that the table is up to date.
-    summary_table_listener <- debounce(millis = 150, reactive({
-        input[["plot_settings_k_parameter"]]
-        any_file_good()
-    }))
-
-    observeEvent(summary_table_listener(), {
+    observeEvent(input[["plot_settings_k_parameter"]], ignoreInit = TRUE, {
         req(any_file_good())
 
         session$sendCustomMessage("calculate_summary_table", 1)
