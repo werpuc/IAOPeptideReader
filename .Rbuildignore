@@ -5,3 +5,4 @@
 ^dev$
 ^app\.R$
 ^tags$
+^\.github$
