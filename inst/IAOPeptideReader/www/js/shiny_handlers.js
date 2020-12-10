@@ -3,6 +3,12 @@ Shiny.addCustomMessageHandler("initialize_iaopr", function(_) {
 });
 
 
+Shiny.addCustomMessageHandler("update_seq_start", function(seq_start) {
+    iaopr.x_min = seq_start;
+    iaopr.update_plot();
+});
+
+
 Shiny.addCustomMessageHandler("update_seq_len", function(seq_len) {
     iaopr.x_max = seq_len;
     iaopr.update_plot();
@@ -21,6 +27,17 @@ Shiny.addCustomMessageHandler("update_data", function(plot_data) {
 Shiny.addCustomMessageHandler("set_file_visibility", function(file_vis) {
     iaopr.set_file_visibility(file_vis.FileName, file_vis.Visibility);
     iaopr.update_plot();
+});
+
+
+Shiny.addCustomMessageHandler("seq_start_check", function(is_ok) {
+    var seq_start_input = document.getElementById("sequence_start");
+
+    if (is_ok) {
+        seq_start_input.removeAttribute("is_wrong");
+    } else {
+        seq_start_input.setAttribute("is_wrong", "");
+    }
 });
 
 

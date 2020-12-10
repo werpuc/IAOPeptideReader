@@ -264,7 +264,7 @@ body > div.container-fluid > div > form.well {
     margin-bottom: 20px;
 }
 
-#sequence_length[is_wrong] {
+#sequence_start[is_wrong], #sequence_length[is_wrong] {
     border-color: orangered;
     border-width: 2px;
 }

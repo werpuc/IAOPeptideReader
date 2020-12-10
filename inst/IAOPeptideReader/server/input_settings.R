@@ -173,21 +173,46 @@ input_settings <- function(input, output, session) {
     })
 
 
+    # Sequence start input ----------------------------------------------------
+    is_seq_start_ok <- reactive(is_positive_integer(input[["sequence_start"]]))
+
+    observe({
+        seq_start <- isolate(input[["sequence_start"]])
+        seq_len <- input[["sequence_length"]]
+
+        # This makes this check independent when sequence length is NA.
+        len_ok <- (!is.na(seq_len) && seq_start < seq_len) || is.na(seq_len)
+
+        is_ok <- is_seq_start_ok() && len_ok
+
+        # Sending is_ok to seq_start_check handler which turns on and off the
+        # red border around sequence start input.
+        session$sendCustomMessage("seq_start_check", is_ok)
+
+        if (is_ok) {
+            session$sendCustomMessage("update_seq_start", seq_start)
+        }
+    })
+
+
     # Sequence length input ----------------------------------------------------
     is_seq_len_ok <- reactive(is_positive_integer(input[["sequence_length"]]))
 
     observe({
-        is_ok <- is_seq_len_ok()
+        seq_length <- isolate(input[["sequence_length"]])
+        seq_start <- input[["sequence_start"]]
+
+        # This makes this check independent when sequence start is NA.
+        start_ok <- (!is.na(seq_start) && seq_start < seq_length) || is.na(seq_start)
+
+        is_ok <- is_seq_len_ok() && start_ok
 
         # Sending is_ok to seq_len_check handler which turns on and off the red
         # border around sequence length input.
         session$sendCustomMessage("seq_len_check", is_ok)
 
         if (is_ok) {
-            session$sendCustomMessage(
-                "update_seq_len",
-                isolate(input[["sequence_length"]])
-            )
+            session$sendCustomMessage("update_seq_len", seq_length)
         }
     })
 

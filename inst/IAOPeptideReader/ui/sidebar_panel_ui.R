@@ -42,7 +42,7 @@ input_settings_ui <- function() {
         conditionalPanel(
             "output.files_uploaded",
 
-            h3("Sequence Length"),
+            h3("Sequence Settings"),
             div(
                 id = "seq_len_div", class = "sidebar_margin", align = "center",
                 no_file_good_wrapper(
@@ -54,8 +54,8 @@ input_settings_ui <- function() {
                                 # Note: setting value to one makes the initial value
                                 #       okay. This prevents the red border flashing on
                                 #       the initial upload.
-                                x <- numericInput("sequence_start", NULL, 1, width = "100%")
-                                x[["attribs"]][["title"]] <- "Sequence start should be a positive integer."
+                                x <- numericInput("sequence_start", "Sequence Start", 1, width = "100%")
+                                x[["attribs"]][["title"]] <- "Sequence start should be a positive integer lesser than the sequence length."
                                 x
                             }
                         ),
@@ -79,8 +79,8 @@ input_settings_ui <- function() {
                                 # Note: setting value to one makes the initial value
                                 #       okay. This prevents the red border flashing on
                                 #       the initial upload.
-                                x <- numericInput("sequence_length", NULL, 1, width = "100%")
-                                x[["attribs"]][["title"]] <- "Sequence length should be a positive integer."
+                                x <- numericInput("sequence_length", "Sequence Length", 2, width = "100%")
+                                x[["attribs"]][["title"]] <- "Sequence length should be a positive integer greater than the sequence start."
                                 x
                             }
                         ),
