@@ -55,7 +55,8 @@
     "plot_settings_vertical_offset": 5,
     "previewed_file": "example_data2.csv",
     "sample_upload": 0,
-    "sequence_length": 246
+    "sequence_length": 246,
+    "sequence_start": 2
   },
   "output": {
     "any_file_bad": {
@@ -127,6 +128,22 @@
       ]
     },
     "sequence_length_max_displayed": {
+      "message": "",
+      "call": "NULL",
+      "type": [
+        "shiny.silent.error",
+        "validation"
+      ]
+    },
+    "sequence_start_min": {
+      "message": "",
+      "call": "NULL",
+      "type": [
+        "shiny.silent.error",
+        "validation"
+      ]
+    },
+    "sequence_start_min_displayed": {
       "message": "",
       "call": "NULL",
       "type": [

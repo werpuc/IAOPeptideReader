@@ -1,3 +1,7 @@
+###### v1.3.1 (2020-12-10):
+ * Updated shinytest snapshots.
+ * Disabled Input Summary Table screenshots.
+
 ###### v1.3.0 (2020-12-10):
  * Added handling of sequence start value to JS.
  * Added verification of sequence start input.
