@@ -1,9 +1,6 @@
 ## IAO Peptide Reader
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/hadexversum/iaoreader.svg?branch=master)](https://travis-ci.org/hadexversum/iaoreader)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/tmakowski/iaoreader?branch=master&svg=true)](https://ci.appveyor.com/project/tmakowski/iaoreader)
-[![Codecov test coverage](https://codecov.io/gh/tmakowski/iaoreader/branch/master/graph/badge.svg)](https://codecov.io/gh/tmakowski/iaoreader?branch=master)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 <!-- badges: end -->
 
