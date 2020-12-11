@@ -39,7 +39,7 @@ measure_info_modal <- function(return_observer_id) {
             div(
                 align = "center",
                 img(
-                    src = "/www/images/measure_info/point_measure_example.png",
+                    src = paste0(img_url, "/measure_info/point_measure_example.png"),
                     width = "60%"
                 )
             ),
@@ -92,7 +92,7 @@ measure_info_modal <- function(return_observer_id) {
             div(
                 align = "center",
                 img(
-                    src = "/www/images/measure_info/segment_measure_example.png",
+                    src = paste0(img_url, "/measure_info/segment_measure_example.png"),
                     width = "80%"
                 )
             ),

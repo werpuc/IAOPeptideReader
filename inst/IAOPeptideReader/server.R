@@ -3,6 +3,12 @@ source(file.path("server", "input_settings.R"), local = TRUE, chdir = TRUE)
 source(file.path("server", "modals.R"), local = TRUE, chdir = TRUE)
 
 
+img_url <- paste0(
+    "https://raw.githubusercontent.com/hadexversum/",
+    "IAOPeptideReader/deploy/inst/IAOPeptideReader/www/images"
+)
+
+
 # Main server function ---------------------------------------------------------
 server <- function(input, output, session) {
 

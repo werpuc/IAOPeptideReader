@@ -7,7 +7,7 @@ plot_info_modal <- function() {
             "line one has to hover over the line of choice. An example of the",
             "said tooltip is shown below."
         ),
-        div(align = "center", img(src = "/www/images/plot_info/tooltip.png")),
+        div(align = "center", img(src = paste0(img_url, "/plot_info/tooltip.png"))),
 
         h3("Vertical Guides"),
         p(
@@ -27,7 +27,7 @@ plot_info_modal <- function() {
         ),
         div(
             align = "center",
-            img(src = "/www/images/plot_info/guides.png", width = "75%")
+            img(src = paste0(img_url, "/plot_info/guides.png"), width = "75%")
         ),
 
         h3("Plot Settings"),

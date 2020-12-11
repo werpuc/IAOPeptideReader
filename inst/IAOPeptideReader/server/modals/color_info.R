@@ -38,7 +38,7 @@ color_info_modal <- function() {
                         ),
                         img(
                             src = sprintf(
-                                "/www/images/color_info/%s.png", color_palette
+                                "%s/color_info/%s.png", img_url, color_palette
                             )
                         )
                     )
