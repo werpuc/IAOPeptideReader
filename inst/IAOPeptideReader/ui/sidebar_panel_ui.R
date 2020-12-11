@@ -42,28 +42,56 @@ input_settings_ui <- function() {
         conditionalPanel(
             "output.files_uploaded",
 
-            h3("Sequence Length"),
+            h3("Sequence Settings"),
             div(
                 id = "seq_len_div", class = "sidebar_margin", align = "center",
                 no_file_good_wrapper(
                     div(
-                        class = "manual_split_layout", style = "width: 29%;",
-                        {
-                            # Note: setting value to one makes the initial value
-                            #       okay. This prevents the red border flashing on
-                            #       the initial upload.
-                            x <- numericInput("sequence_length", NULL, 1, width = "100%")
-                            x[["attribs"]][["title"]] <- "Sequence length should be a positive integer."
-                            x
-                        }
-                    ),
-                    div(
-                        class = "manual_split_layout", style = "width: 69%;",
+                        # Sequence minimum start
                         div(
-                            tags$strong("Maximum Sequence Length")
+                            class = "manual_split_layout", style = "width: 29%;",
+                            {
+                                # Note: setting value to one makes the initial value
+                                #       okay. This prevents the red border flashing on
+                                #       the initial upload.
+                                x <- numericInput("sequence_start", "Sequence Start", 1, width = "100%")
+                                x[["attribs"]][["title"]] <- "Sequence start should be a positive integer lesser than the sequence length."
+                                x
+                            }
                         ),
-                        textOutput("sequence_length_max"),
-                        htmlOutput("sequence_length_max_displayed"),
+                        div(
+                            class = "manual_split_layout", style = "width: 69%;",
+                            div(
+                                tags$strong("Minimum Sequence Start")
+                            ),
+                            textOutput("sequence_start_min"),
+                            htmlOutput("sequence_start_min_displayed"),
+                        )
+                    ),
+
+                    div(
+                        style = "margin-top: 15px;",
+
+                        # Sequence maximum length
+                        div(
+                            class = "manual_split_layout", style = "width: 29%;",
+                            {
+                                # Note: setting value to one makes the initial value
+                                #       okay. This prevents the red border flashing on
+                                #       the initial upload.
+                                x <- numericInput("sequence_length", "Sequence Length", 2, width = "100%")
+                                x[["attribs"]][["title"]] <- "Sequence length should be a positive integer greater than the sequence start."
+                                x
+                            }
+                        ),
+                        div(
+                            class = "manual_split_layout", style = "width: 69%;",
+                            div(
+                                tags$strong("Maximum Sequence Length")
+                            ),
+                            textOutput("sequence_length_max"),
+                            htmlOutput("sequence_length_max_displayed"),
+                        )
                     )
                 )
             ),

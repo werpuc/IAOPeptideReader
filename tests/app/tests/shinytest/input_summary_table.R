@@ -1,5 +1,5 @@
 app <- ShinyDriver$new("../../")
-app$snapshotInit("input_summary_table")
+app$snapshotInit("input_summary_table", screenshot = FALSE)
 
 
 # Testing ----------------------------------------------------------------------

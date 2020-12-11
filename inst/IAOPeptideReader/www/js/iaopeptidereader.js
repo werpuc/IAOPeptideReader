@@ -11,7 +11,7 @@ let IAOPeptideReader = class {
     vert_mark = "vert-mark"; vert_click_mark = "vert-click-mark";
 
     // Axis limits values and other variables.
-    x_min = 1; x_max; vert_show; optimize_height; vertical_offset;
+    x_min; x_max; vert_show; optimize_height; vertical_offset;
     color_palette; show_lambda_values; lambda_values_bg_color = "#FFFFFF";
     lambda_values_bg_invert; title_text; k_parameter; title_includes_k;
     ts_delta = 100; click_timestamp; drag_start_x; show_tooltip; mark_line;

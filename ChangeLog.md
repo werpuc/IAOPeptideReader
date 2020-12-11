@@ -1,3 +1,18 @@
+###### v1.3.1 (2020-12-10):
+ * Updated shinytest snapshots.
+ * Disabled Input Summary Table screenshots.
+
+###### v1.3.0 (2020-12-10):
+ * Added handling of sequence start value to JS.
+ * Added verification of sequence start input.
+ * Added verification of sequence start and length input values.
+
+###### v1.2.7 (2020-12-10):
+ * Added sequence start to Input Summary Table.
+
+###### v1.2.6 (2020-12-10):
+ * Added R part for minimum sequece start value.
+
 ###### v1.2.5 (2020-12-10):
  * Removed redundant shinycssloaders dependency.
 

@@ -4,6 +4,7 @@
 #       "file_name" = /character/,
 #       "is_ok" = /TRUE or FALSE/,
 #       "error_messages" = /character vector or NULL/,
+#       "sequence_start" = /numeric or NULL/,
 #       "sequence_length" = /numeric or NULL/,
 #       "protein_state_mapping" = /named (character) list of character vectors or NULL/
 #       "selected_protein" = /character or NULL/,
@@ -41,7 +42,13 @@ input_summary_row_ui <- function(single_file_input_meta) {
                 single_file_input_meta[["file_name"]]
             )
         ),
-        tags$td(tags$p(single_file_input_meta[["sequence_length"]])),
+        tags$td(
+            tags$p(
+                single_file_input_meta[["sequence_start"]],
+                "-", 
+                single_file_input_meta[["sequence_length"]]
+            )
+        ),
         tags$td(
             if (is_ok) {
                 selectInput(

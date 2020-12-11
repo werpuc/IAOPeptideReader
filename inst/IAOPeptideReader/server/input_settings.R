@@ -6,7 +6,8 @@ input_settings <- function(input, output, session) {
     data_preview(input, output, session, input_settings_rv, any_file_good)
 
     input_settings_rv <- reactiveValues(
-        "fm" = list(), "obs" = list(), "data" = list(), "seq_max_len" = -Inf
+        "fm" = list(), "obs" = list(), "data" = list(), "seq_min_start" = Inf,
+        "seq_max_len" = -Inf
     )
 
 
@@ -42,6 +43,7 @@ input_settings <- function(input, output, session) {
 
         input_settings_rv[["fm"]] <- list()
         input_settings_rv[["data"]] <- list()
+        seq_min_start <- Inf
         seq_max_len <- -Inf
 
         for (i in 1:nrow(file_input_meta)) {
@@ -54,6 +56,7 @@ input_settings <- function(input, output, session) {
                 "file_name" = file_name,
                 "is_ok" = FALSE,
                 "error_messages" = NULL,
+                "sequence_start" = NULL,
                 "sequence_length" = NULL,
                 "protein_state_mapping" = NULL,
                 "selected_protein" = NULL,
@@ -80,9 +83,12 @@ input_settings <- function(input, output, session) {
 
             # Retrieving information from correct files.
             if (single_res[["is_ok"]]) {
+                seq_start <- min(single_file_data[["Start"]])
                 seq_len <- max(single_file_data[["End"]])
+                seq_min_start <- min(seq_min_start, seq_start)
                 seq_max_len <- max(seq_max_len, seq_len)
 
+                single_res[["sequence_start"]] <- seq_start
                 single_res[["sequence_length"]] <- seq_len
                 single_res[["protein_state_mapping"]] <- read_protein_state_mapping(single_file_data)
 
@@ -92,12 +98,48 @@ input_settings <- function(input, output, session) {
             input_settings_rv[["fm"]][[file_name]] <- single_res
         }
 
+        input_settings_rv[["seq_min_start"]] <- seq_min_start
         input_settings_rv[["seq_max_len"]] <- seq_max_len
+        updateNumericInput(session, "sequence_start", value = seq_min_start)
         updateNumericInput(session, "sequence_length", value = seq_max_len)
     })
 
     is_okay_values <- reactive({
         sapply(files_meta(), `[[`, "is_ok")
+    })
+
+
+    # Min sequence start output -----------------------------------------------
+    output[["sequence_start_min"]] <- renderText({
+        req(any_file_good())
+
+        sprintf(
+            "Read from files: %d.",
+            min(unlist(lapply(isolate(files_meta()), `[[`, "sequence_start")))
+        )
+    })
+
+    output[["sequence_start_min_displayed"]] <- renderText({
+        req(any_file_good())
+
+        displayed_seq_start <- Inf
+        for (sfim in files_meta()) {
+            if (sfim[["is_ok"]] && sfim[["display"]]) {
+                displayed_seq_start <- min(
+                    displayed_seq_start,
+                    sfim[["sequence_start"]]
+                )
+            }
+        }
+
+        sprintf(
+            "Currently displayed files: %s.",
+            if (displayed_seq_start == Inf) {
+                "<i>none</i>"
+            } else {
+                displayed_seq_start
+            }
+        )
     })
 
 
@@ -131,21 +173,46 @@ input_settings <- function(input, output, session) {
     })
 
 
+    # Sequence start input ----------------------------------------------------
+    is_seq_start_ok <- reactive(is_positive_integer(input[["sequence_start"]]))
+
+    observe({
+        seq_start <- isolate(input[["sequence_start"]])
+        seq_len <- input[["sequence_length"]]
+
+        # This makes this check independent when sequence length is NA.
+        len_ok <- (!is.na(seq_len) && seq_start < seq_len) || is.na(seq_len)
+
+        is_ok <- is_seq_start_ok() && len_ok
+
+        # Sending is_ok to seq_start_check handler which turns on and off the
+        # red border around sequence start input.
+        session$sendCustomMessage("seq_start_check", is_ok)
+
+        if (is_ok) {
+            session$sendCustomMessage("update_seq_start", seq_start)
+        }
+    })
+
+
     # Sequence length input ----------------------------------------------------
     is_seq_len_ok <- reactive(is_positive_integer(input[["sequence_length"]]))
 
     observe({
-        is_ok <- is_seq_len_ok()
+        seq_length <- isolate(input[["sequence_length"]])
+        seq_start <- input[["sequence_start"]]
+
+        # This makes this check independent when sequence start is NA.
+        start_ok <- (!is.na(seq_start) && seq_start < seq_length) || is.na(seq_start)
+
+        is_ok <- is_seq_len_ok() && start_ok
 
         # Sending is_ok to seq_len_check handler which turns on and off the red
         # border around sequence length input.
         session$sendCustomMessage("seq_len_check", is_ok)
 
         if (is_ok) {
-            session$sendCustomMessage(
-                "update_seq_len",
-                isolate(input[["sequence_length"]])
-            )
+            session$sendCustomMessage("update_seq_len", seq_length)
         }
     })
 
@@ -156,7 +223,7 @@ input_settings <- function(input, output, session) {
             tags$thead(
                 tags$tr(
                     lapply(
-                        c("File Name", "Seq. Length", "Protein", "State", "Display"),
+                        c("File Name", "Sequence", "Protein", "State", "Display"),
                         tags$td
                     )
                 )
