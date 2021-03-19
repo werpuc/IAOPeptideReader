@@ -1,7 +1,6 @@
 source(file.path("ui", "main_panel_ui.R"), local = TRUE, chdir = TRUE)
 source(file.path("ui", "sidebar_panel_ui.R"), local = TRUE, chdir = TRUE)
 
-
 # Main UI function -------------------------------------------------------------
 ui <- function() {
     css_names <- c(
@@ -36,11 +35,29 @@ ui <- function() {
             "IAO Peptide Reader"
         ),
         fluidPage(
-            lapply(css_names, attach_css),
-            lapply(scripts_names, attach_script),
-            attach_script("d3.min.js", "www/d3.js"),
-            sidebar_panel_ui(),
-            main_panel_ui()
+            tabsetPanel(
+                tabPanel("Start",
+                         h3("Welcome to IAOPeptideReader!"),
+                         h4("Thank you for using our tool."),
+                         h4("For more information on usage of the tool, check the helpers."),
+                         h2("HaDeXversum"),
+                         h4("IAOPeptideReader is a part of a tool family caled HaDeXversum, focused on analysing the data from the HDX experiments."),
+                         h4("Other parts of the HaDeXversum are:"),
+                         h3("HaDeX"),
+                         h4("A web server for processing the data files from DynamX. HaDeX calculates deuterium uptake in different forms, and provides customizable plots. Results of the analysis are available as a report."),
+                         h3("Contact"),
+                         h4("Do not hesistate to contact us: hadex@ibb.waw.pl")
+                         ),
+                tabPanel("IAO Peptide",
+                         lapply(css_names, attach_css),
+                         lapply(scripts_names, attach_script),
+                         attach_script("d3.min.js", "www/d3.js"),
+                         sidebar_panel_ui(),
+                         main_panel_ui()
+                         
+                         )
+            )
+            
         )
     )
 }
