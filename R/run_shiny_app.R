@@ -10,6 +10,8 @@
 #'  Shiny application to services such as \url{https://www.shinyapps.io/}.
 #'
 #' @rawNamespace import(shiny, except = c(dataTableOutput, renderDataTable))
+#' @rawNamespace import(markdown)
+#' 
 #' @importFrom DT dataTableOutput renderDataTable
 #' @importFrom data.table fread rbindlist
 #'

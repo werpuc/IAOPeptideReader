@@ -37,17 +37,10 @@ ui <- function() {
         fluidPage(
             tabsetPanel(
                 tabPanel("Start",
-                         h3("Welcome to IAOPeptideReader!"),
-                         h4("Thank you for using our tool."),
-                         h4("For more information on usage of the tool, check the helpers."),
-                         h2("HaDeXversum"),
-                         h4("IAOPeptideReader is a part of a tool family caled HaDeXversum, focused on analysing the data from the HDX experiments."),
-                         h4("Other parts of the HaDeXversum are:"),
-                         h3("HaDeX"),
-                         h4("A web server for processing the data files from DynamX. HaDeX calculates deuterium uptake in different forms, and provides customizable plots. Results of the analysis are available as a report."),
-                         h3("Contact"),
-                         h4("Do not hesistate to contact us: hadex@ibb.waw.pl")
-                         ),
+                         includeMarkdown(system.file("IAOPeptideReader", "about.md", package = "IAOPeptideReader")),
+                         br(),
+                         img(src = system.file("IAOPeptideReader", "ibb_icons.png", package = "IAOPeptideReader"), height = 100),
+                         br()),
                 tabPanel("IAO Peptide",
                          lapply(css_names, attach_css),
                          lapply(scripts_names, attach_script),
